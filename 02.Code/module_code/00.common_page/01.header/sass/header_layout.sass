@@ -1,0 +1,65 @@
+@import "../../../../common_code/total/sass/total"
+
+// 헤더
+.header__logo, .footer__right__logo
+  background: $main-color
+  color: $point-color
+
+
+.header__navi__btn-menu--open
+  height: 48px
+  float: right
+  color: $point-color
+
+.icon-menu, .icon-cancel
+  font-size: 20px
+
+// 모바일 메인 네비게이션
+.header__navi
+  position: relative
+
+.header__navi__btn-menu--close
+  background-color: #ff5c5c
+  height: 48px
+  position: absolute
+  right: 0
+
+.header__navi__lnb_list
+  margin-top: 48px
+  // height: 168px
+
+.navi_menu
+ display: inline-block
+
+.navi_menu_tutor
+  margin: 28px 0
+
+
+.navi_menu_service
+  margin: 28px 0
+  &::before
+    content: ''
+    background: #aaa
+    position: absolute
+    top: 122px
+    left: 20px
+    width: 90%
+    height: 1px
+
+.navi_menu_join , .navi_menu_login
+  padding: 17px 0
+  text-align: center
+  border: 2px solid $point-color
+
+.navi_menu_join
+  background: $point-color
+  color: #fff
+
+.navi_menu_login
+  background: #fff
+  color: $point-color
+
+
+@media screen and (min-width: 500px)
+  .header__navi__lnb
+    display: blockß

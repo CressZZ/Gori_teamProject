@@ -9,9 +9,22 @@ $big_col_percentage: (($big_col_width)/($big_body_width)) * 100%
 $big_gap_percentage: (($big_gap_width)/($big_body_width)) * 100%
 
 
+
+// @media screen and (max-width: 699px)
+
+@for $i from 1 through 4
+  .col-#{$i}-4
+    width: ($i * $small_col_percentage)
+
+
+@for $i from 1 through 4
+  .push-#{$i}-4
+    margin-left: ($i * $small_col_percentage)
+
 [class*=col]
   float: left
   margin-right: -100%
+  // padding-right: 20px
 
 
 .row
@@ -21,18 +34,8 @@ $big_gap_percentage: (($big_gap_width)/($big_body_width)) * 100%
     display: block
 
 
-@for $i from 1 through 4
-  .col-#{$i}-4
-    width: ($i * $small_col_percentage)
 
-@for $i from 1 through 4
-  .push-#{$i}-4
-    margin-left: ($i * $small_col_percentage)
-
-
-
-
-@media screen and (min-width: 500px)
+@media screen and (min-width: 600px)
   @for $i from 1 through 12
     .col-#{$i}-12
       width: ($i * $big_col_percentage) + (($i - 1) * $big_gap_percentage)

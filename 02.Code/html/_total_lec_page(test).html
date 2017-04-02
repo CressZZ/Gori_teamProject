@@ -10,8 +10,8 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   <script src = "../js/grid_view.js"></script>
-  <link rel="stylesheet" href="../css/total_page.css">
-  <link rel="stylesheet" href="../fontello.css">
+  <link rel="stylesheet" href="../fontello/css/fontello.css">
+  <link rel="stylesheet" href="../css/total_lec_page.css">
 
 
 </head>
@@ -20,278 +20,350 @@
   <!-- skip-nav -->
   <a href="#" class="skip-nav">본문 바로가기</a>
   <div class="wrapper">
+    <header class="header row">
+       <!-- 고리 로고 -->
+       <div class="header__heading row">
+         <div class="header__logo__heading">
+           <h1 class="header__logo col-4-4 col-12-12">
+             <a href="#">
+               <p class="header__logo--title push-1-12">Gori</p>
+             </a>
+           </h1>
+         </div>
+         <nav class="header__navi col-4-4 ">
 
-  <!-- header -->
-  <header class="header row">
-    <!-- 고리 로고 -->
-    <div class="header__heading row">
-      <h1 class="header__logo col-4-4 col-12-12">
-        <a href="#">
-          <!-- 이미지 로고는 생략할 예정 -->
-          <!-- <img class ="header__logo--pc" src="pc-images/logo.png" alt="Gori"> -->
-          <!-- <img class ="header__logo--mobile" src="mobile-images/logo.png" alt="Gori"> -->
-          <p class="header__logo--title pd20">Gori</p>
-        </a>
-      </h1>
-      <!-- menu -->
-      <!--  <ul class="header__navi__lnb_list off<<<<<">-->
-    <nav class="header__navi col-4-4 ">
-      <button class="header__navi__btn-menu--open pd20 on" type="button" name="button"><i class="icon-menu"></i></button>
-      <button class="header__navi__btn-menu--close pd20 off" type="button" name="button"><i class="icon-cancel"></i></button>
-      <ul class="header__navi__lnb_list">
-        <li><a href="#" class="navi_menu navi_menu_tutor pd20 ">튜터등록</a></li>
-        <li><a href="#" class="navi_menu navi_menu_service pd20">서비스소개</a></li>
-        <li><a href="#" class="navi_menu navi_menu_join col-2-4 is_logout">회원가입</a></li>
-        <li><a href="#" class="navi_menu navi_menu_mypage is_login off">마이페이지</a></li>
-        <li><a href="#" class="navi_menu navi_menu_login col-2-4 push-2-4 is_logout">로그인</a></li>
-        <li><a href="#" class="navi_menu navi_menu_logout is_login off">로그아웃</a></li>
+           <button class="header__navi__btn-menu--open pd20 on" type="button" name="button"><i class="icon-menu"></i></button>
+
+           <button class="header__navi__btn-menu--close pd20 off" type="button" name="button"><i class="icon-cancel"></i></button>
+
+           <ul class="header__navi__lnb_list">
+             <li><a href="#" class="navi_menu navi_menu_tutor ">튜터등록</a></li>
+             <li><a href="#" class="navi_menu navi_menu_service ">서비스소개</a></li>
+             <li><a href="#" class="navi_menu navi_menu_join col-2-4 col-12-12 is_logout ">회원가입</a></li>
+             <li><a href="#" class="navi_menu navi_menu_mypage is_login off ">마이페이지</a></li>
+             <li><a href="#" class="navi_menu navi_menu_login col-2-4 push-2-4 col-12-12 push-12-12 is_logout">로그인</a></li>
+             <li><a href="#" class="navi_menu navi_menu_logout is_login off">로그아웃</a></li>
+           </ul>
+
+         </nav>
+       </div>
+     </header>
+
+    <!-- summery -->
+    <section class="summery">
+      <h2 class="hidden__heading">수업 안내</h2>
+      <div class="row">
+        <div class="summery__review col-2-4">
+          <!-- 재활용을 위해 [class*=__stars]를 활용하는 것을 추천 -->
+          <!-- 1.class__stars, 2.summery__stars -->
+          <div class="summery__review__stars">
+            <div class="star-1st"><i class="icon-star"></i></div>
+            <div class="star-2nd"><i class="icon-star"></i></div>
+            <div class="star-3rd"><i class="icon-star"></i></div>
+            <div class="star-4th"><i class="icon-star"></i></div>
+            <div class="star-5th"><i class="icon-star"></i></div>
+          </div>
+          <div class="row"><span class="into__review__num">후기 23개</span></div>
+        </div>
+      </div>
+      <h3 class="summery__class-title is_new">초심자를 위한 주식 사용 설명서</h3>
+      <div class="summery__gen-info">
+        <span class="summery__gen-info__group">그룹</span>
+        <span class="summery__gen-info__location-detail">장소협의</span>
+        <span class="summery__gen-info__times">4회</span>
+        <span class="summery__gen-info__time">1시간</span>
+      </div>
+      <div class="summery__price-info">
+        <span class="summery__price-info__total"><i class="icon-won"></i>20,000</span>
+        <span class="summery__price-info__each">총4회 240,000원</span>
+      </div>
+    </section>
+
+  <!-- apply -->
+  <section class="apply">
+    <h2 class="hidden__heading">수업 상세정보</h2>
+
+      <div class="apply__wrapper">
+        <div class="apply__info">
+          <!-- div빼고 ul만 살림 (이전에는 div가 ul을 감싸는 구조로, div가 필요 없다고 판단) -->
+          <div class="">
+            <ul class="apply__info__list ">
+              <li class="apply__info__location">
+                <i class="fontello icon-location"></i>
+                <strong>신촌</strong>
+                <span>지역상의후 변경가능</span>
+              </li>
+              <li class="apply__info__time">
+                <i class="fontello icon-clock"></i>
+                <strong>1시간/회</strong>
+                <span>AM 9:30-PM 5:00</span>
+              </li>
+              <li class="apply__info__group">
+                <i class="fontello icon-group-circled"></i>
+                <strong>최대4인</strong>
+                <span>최소인원 3명</span>
+              </li>
+              <li class="apply__info__week">
+                <i class="fontello icon-calendar"></i>
+                <strong>월/수/금</strong>
+                <span>총4회 / 240,000원</span>
+              </li>
+              <li class="apply__info__additional-cost">
+                <i class="fontello icon-won"></i>
+                <strong>추가비용 <span>있음</span></strong>
+                <span>개인카페음료</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+          <div class="apply__buttons">
+            <button class="apply__buttons__btn-wish ">찜하기
+              <a href="#" class="apply__buttons__heart">
+                <i class="icon-heart-empty"></i>
+              </a>
+            </button>
+            <button class="apply__buttons__btn-apply">수업 신청하기</button>
+            <!-- 하트를 div에서 a로 change 함. 클릭이 되야 한다고 판단 -->
+          </div>
+
+      </div>
+
+  </section>
+
+  <!-- class_nav -->
+  <section class="class_nav row">
+    <nav class="class_nav__wrapper col-4-4 col-7-12">
+      <ul>
+        <li class="right-border"><a href="#" >수업소개</a></li>
+        <li><a href="#" class="">리뷰보기</a></li>
+        <li class="left-border"><a href="#" >문의하기</a></li>
       </ul>
     </nav>
-  </div>
-  </header>
+  </section>
 
-  <!-- Banner -->
-  <section class="banner">
-    <h2 class="hidden__heading">서비스 광고 영상 및 배너</h2>
-    <!-- Carousel -->
-    <div class="banner__carousel" id="carousel">
-      <!-- Carousel list -->
-      <ul class="banner__carousel__list">
-        <li>
-          <video autoplay="" class="video_play" loop="" muted="" width="100%">
-            <source src="../../../media/video/sample.mp4" type="video/webm">
-          </video>
+
+  <!-- speaking -->
+  <section class="speaking">
+    <h2 class="hidden__heading">튜터소개</h2>
+    <div class="row">
+
+      <div class="row">
+        <img src="../media/img/user.jpg" alt="tutor picture" class="speaking__tutor-picture  col-1-4">
+        <strong class="speaking__tutor-speaking col-3-4 col-5-12 push-1-4 push-2-12"> " 그 누구보다 세심히, 꼼꼼하게 가" 그 누구보다 세심히, 꼼꼼하게 가르칠 수 있습니다. "르칠 수 있습니다. "</strong>
+
+      </div>
+      <p class="speaking__descrip col-4-4 col-7-12">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit ametLorem ipsum dolor sit amet</p>
+    </div>
+  </section>
+  <!-- hr은 일단 삭제 해 보았습니다.  -->
+  <!-- intro -->
+  <section class="intro">
+    <div class="row">
+      <div class="intro__wrap col-4-4 col-7-12">
+        <h2 class="intro__heading">수업소개</h2>
+        <div class="intro__img-container">
+          <img src="../media/img/temp/cat.jpg" alt="">
+        </div>
+        <p class="intro__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni eaque, nostrum possimus maxime minima, dolor quos, dignissimos molestiae, tempore nobis non aliquid cum quia. Fugit quidem aperiam quasi fuga, facere obcaecati vitae fugiat! Dolorem et accusantium illum temporibus. Error, ab.</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- location(map) -->
+  <section class="location row">
+    <h2 class="location__heading">위치</h2>
+    <div class="col-7-12 col-4-4" id="map"></div>
+  </section>
+
+
+
+  <!-- curriculum -->
+  <section class="curriculum">
+
+      <h2 class="curriculum__heading">커리큘럼</h2>
+      <ul class="curriculum__list">
+        <li class="row">
+          <strong>1회차</strong></br>
+          <span class="col-7-12 col-4-4">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Наш ведущими однажды точках взгляд предупреждал! Языкового вопрос осталось запятой.</span>
         </li>
-        <li class="row col-4-4 off"><img class="banner__carousel__list__item" src="img/cat.jpg" alt="홍보배너"></li>
-        <li class="row col-4-4 off"><img class="banner__carousel__list__item" src="img/cat.jpg" alt="소개"></li>
+        <li class="row">
+          <strong>2회차</strong></br>
+          <span class="col-7-12 col-4-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore nisi sapiente laboriosam, fugiat nemo fugit, temporibus dolorem nulla non incidunt.</span>
+        </li>
       </ul>
-      <!-- Carousel nav ( ○○●○○ )  -->
-      <ul class="banner__carousel__nav col-2-4 push-1-4">
-        <li data-target="#carousel" data-slide-to="0"><a href="#" class="carousel">◦</a></li>
-        <li data-target="#carousel" data-slide-to="1"><a href="#" class="carousel active">●</a></li>
-        <li data-target="#carousel" data-slide-to="2"><a href="#" class="carousel">◦</a></li>
-      </ul>
-      <!-- Carousel buttons-->
-      <div class="banner__carousel__buttons ">
-        <button class="banner__carousel__left pd20" type="button"><i class="icon-left-open-big"></i></button>
-        <button class="banner__carousel__right col-4-4 pd20" type="button"><i class="icon-right-open-big"></i></button>
-        <!-- <button class="header__navi__btn-menu--open pd20 on" type="button" name="button"><i class="icon-menu"></i></button> -->
+    </section>
+
+
+  <!-- review -->
+  <section class="review">
+    <div class="row">
+      <div class="review-section-1 col-4-4 col-7-12">
+        <h2 class="review__heading ">리뷰</h2>
+        <div>
+          <button type="button" class="review__btn">리뷰작성 + </button>
+
+        </div>
       </div>
     </div>
-    <!-- Banner-input -->
-    <!--모바일에서는 검색란 뺄것-->
-    <form action="submit" class="banner__search">
-      <input class="banner__search__input" type="search" autofocus placeholder="input your message"><button class="banner__search__btn" type="button">검색</button>
-    </form>
-  </section>
-
-  <!-- Categori -->
-  <section class="categori row">
-    <h2 class="hidden__heading">CATEGORI</h2>
-
-
-      <!-- categori list 하나 삭제. 어학? -->
-      <!-- 반응형 이미지를 구현하기 위해 img를 div에 한번 더 넣음. 괜히 복잡해보이므로 수정 가능하다면 수정 추천 -->
-
-    <div class="categori__section-1">
-      <a href="www.google.com"><img  src="../../../media/img/temp/416506.jpg" class="categori__list-1-2"></a>
-      <a href="www.google.com"><img  src="../../../media/img/temp/416506.jpg" class="categori__list-1-2"></a>
-    </div>
-    <div class="categori__section-2">
-      <a href="www.google.com"><img  src="../../../media/img/temp/416506.jpg" class="categori__list-1-2"></a>
-    </div>
-    <div class="categori__section-3">
-      <a href="www.google.com"><img  src="../../../media/img/temp/416506.jpg" class="categori__list-1-2"></a>
-      <a href="www.google.com"><img  src="../../../media/img/temp/416506.jpg" class="categori__list-1-2"></a>
-    </div>
-
-  </section>
-
-  <!-- class -->
-  <section class="class-list row">
-    <h2 class="class-list__heading ">CLASS</h2>
-    <p class="class-list__subtitle ">이달의 인기강의</p>
-    <!-- ::before 선택자로 '+' 기호 추가 요망 -->
-    <!-- Carousel -->
-    <div class="class-list__carousel row" id="carousel-class">
-      <!-- Carousel list -->
-      <ul class="class-list__carousel__list row">
-        <!-- is_new class -->
-        <li class="">
-
-          <!-- <a class="class">는 재활용이 가능 하도록 별도관리. -->
-          <a href="#" class="class">
-            <!-- 아래 <div class="is_new"> 는 가상선택자로 하는 것을 추천  -->
-            <div class="is_new">new</div>
-            <img src="img/check-icon.png" alt="" class="class__is_wish">
-            <img src="img/user-icon.png" alt="" class="class__tutor-picture">
-            <p class="class__tutor-name">cressZZ</p>
-            <div class="class__star-total">
-              <div class="star-1st"></div>
-              <div class="star-2nd"></div>
-              <div class="star-3rd"></div>
-              <div class="star-4th"></div>
-              <div class="star-5th"></div>
-              <p class="start-total-num">3</p>
-            </div>
-            <h2 class="class__intro__title">강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다 강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다  </h2>
-            <dl class="class__intro">
-              <dd class="class__intro__group">그룹수업</dd>
-              <dd class="class__intro__review-num">후기 갯수</dd>
-              <dd class="class__intro__location">신사</dd>
-              <dd class="class__intro__times">4회</dd>
-              <dd class="class__intro__time">1시</dd>
-            </dl>
-          </a>
-
+    <div class="review-section-2 row">
+      <ul class="col-4-4 col-7-12 row review__stars">
+        <li>
+          <strong>종합점수</strong>
+          <div class="reveiw__stars__total">
+            <div class="star-1st"><i class="icon-star"></i></div>
+            <div class="star-2nd"><i class="icon-star"></i></div>
+            <div class="star-3rd"><i class="icon-star"></i></div>
+            <div class="star-4th"><i class="icon-star"></i></div>
+            <div class="star-5th"><i class="icon-star"></i></div>
+          </div>
         </li>
-        <li class="">
-
-          <!-- <a class="class">는 재활용이 가능 하도록 별도관리. -->
-          <a href="#" class="class">
-            <!-- 아래 <div class="is_new"> 는 가상선택자로 하는 것을 추천  -->
-            <div class="is_new">new</div>
-            <img src="img/check-icon.png" alt="" class="class__is_wish">
-            <img src="img/user-icon.png" alt="" class="class__tutor-picture">
-            <p class="class__tutor-name">cressZZ</p>
-            <div class="class__star-total">
-              <div class="star-1st"></div>
-              <div class="star-2nd"></div>
-              <div class="star-3rd"></div>
-              <div class="star-4th"></div>
-              <div class="star-5th"></div>
-              <p class="start-total-num">3</p>
-            </div>
-            <h2 class="class__intro__title">강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다 강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다  </h2>
-            <dl class="class__intro">
-              <dd class="class__intro__group">그룹수업</dd>
-              <dd class="class__intro__review-num">후기 갯수</dd>
-              <dd class="class__intro__location">신사</dd>
-              <dd class="class__intro__times">4회</dd>
-              <dd class="class__intro__time">1시</dd>
-            </dl>
-          </a>
-
+        <li>
+          <strong>전달력</strong>
+          <div class="reveiw__stars__transfer">
+            <div class="star-1st"><i class="icon-star"></i></div>
+            <div class="star-2nd"><i class="icon-star"></i></div>
+            <div class="star-3rd"><i class="icon-star"></i></div>
+            <div class="star-4th"><i class="icon-star"></i></div>
+            <div class="star-5th"><i class="icon-star"></i></div>
+          </div>
         </li>
-        <li class="">
-
-          <!-- <a class="class">는 재활용이 가능 하도록 별도관리. -->
-          <a href="#" class="class">
-            <!-- 아래 <div class="is_new"> 는 가상선택자로 하는 것을 추천  -->
-            <div class="is_new">new</div>
-            <img src="img/check-icon.png" alt="" class="class__is_wish">
-            <img src="img/user-icon.png" alt="" class="class__tutor-picture">
-            <p class="class__tutor-name">cressZZ</p>
-            <div class="class__star-total">
-              <div class="star-1st"></div>
-              <div class="star-2nd"></div>
-              <div class="star-3rd"></div>
-              <div class="star-4th"></div>
-              <div class="star-5th"></div>
-              <p class="start-total-num">3</p>
-            </div>
-            <h2 class="class__intro__title">강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다 강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다  </h2>
-            <dl class="class__intro">
-              <dd class="class__intro__group">그룹수업</dd>
-              <dd class="class__intro__review-num">후기 갯수</dd>
-              <dd class="class__intro__location">신사</dd>
-              <dd class="class__intro__times">4회</dd>
-              <dd class="class__intro__time">1시</dd>
-            </dl>
-          </a>
-
+        <li>
+          <strong>준비성</strong>
+          <div class="reveiw__stars__ready">
+            <div class="star-1st"><i class="icon-star"></i></div>
+            <div class="star-2nd"><i class="icon-star"></i></div>
+            <div class="star-3rd"><i class="icon-star"></i></div>
+            <div class="star-4th"><i class="icon-star"></i></div>
+            <div class="star-5th"><i class="icon-star"></i></div>
+          </div>
         </li>
-        <li class="">
-
-          <!-- <a class="class">는 재활용이 가능 하도록 별도관리. -->
-          <a href="#" class="class">
-            <!-- 아래 <div class="is_new"> 는 가상선택자로 하는 것을 추천  -->
-            <div class="is_new">new</div>
-            <img src="img/check-icon.png" alt="" class="class__is_wish">
-            <img src="img/user-icon.png" alt="" class="class__tutor-picture">
-            <p class="class__tutor-name">cressZZ</p>
-            <div class="class__star-total">
-              <div class="star-1st"></div>
-              <div class="star-2nd"></div>
-              <div class="star-3rd"></div>
-              <div class="star-4th"></div>
-              <div class="star-5th"></div>
-              <p class="start-total-num">3</p>
-            </div>
-            <h2 class="class__intro__title">강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다 강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다  </h2>
-            <dl class="class__intro">
-              <dd class="class__intro__group">그룹수업</dd>
-              <dd class="class__intro__review-num">후기 갯수</dd>
-              <dd class="class__intro__location">신사</dd>
-              <dd class="class__intro__times">4회</dd>
-              <dd class="class__intro__time">1시</dd>
-            </dl>
-          </a>
-
+        <li>
+          <strong>친절도</strong>
+          <div class="reveiw__stars__kind">
+            <div class="star-1st"><i class="icon-star"></i></div>
+            <div class="star-2nd"><i class="icon-star"></i></div>
+            <div class="star-3rd"><i class="icon-star"></i></div>
+            <div class="star-4th"><i class="icon-star"></i></div>
+            <div class="star-5th"><i class="icon-star"></i></div>
+          </div>
         </li>
-        <li class="">
-
-          <!-- <a class="class">는 재활용이 가능 하도록 별도관리. -->
-          <a href="#" class="class">
-            <!-- 아래 <div class="is_new"> 는 가상선택자로 하는 것을 추천  -->
-            <div class="is_new">new</div>
-            <img src="img/check-icon.png" alt="" class="class__is_wish">
-            <img src="img/user-icon.png" alt="" class="class__tutor-picture">
-            <p class="class__tutor-name">cressZZ</p>
-            <div class="class__star-total">
-              <div class="star-1st"></div>
-              <div class="star-2nd"></div>
-              <div class="star-3rd"></div>
-              <div class="star-4th"></div>
-              <div class="star-5th"></div>
-              <p class="start-total-num">3</p>
-            </div>
-            <h2 class="class__intro__title">강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다 강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다  </h2>
-            <dl class="class__intro">
-              <dd class="class__intro__group">그룹수업</dd>
-              <dd class="class__intro__review-num">후기 갯수</dd>
-              <dd class="class__intro__location">신사</dd>
-              <dd class="class__intro__times">4회</dd>
-              <dd class="class__intro__time">1시</dd>
-            </dl>
-          </a>
-
+        <li>
+          <strong>시간준수</strong>
+          <div class="reveiw__stars__sincerity">
+            <div class="star-1st"><i class="icon-star"></i></div>
+            <div class="star-2nd"><i class="icon-star"></i></div>
+            <div class="star-3rd"><i class="icon-star"></i></div>
+            <div class="star-4th"><i class="icon-star"></i></div>
+            <div class="star-5th"><i class="icon-star"></i></div>
+          </div>
         </li>
-        <li class="">
-
-          <!-- <a class="class">는 재활용이 가능 하도록 별도관리. -->
-          <a href="#" class="class">
-            <!-- 아래 <div class="is_new"> 는 가상선택자로 하는 것을 추천  -->
-            <div class="is_new">new</div>
-            <img src="img/check-icon.png" alt="" class="class__is_wish">
-            <img src="img/user-icon.png" alt="" class="class__tutor-picture">
-            <p class="class__tutor-name">cressZZ</p>
-            <div class="class__star-total">
-              <div class="star-1st"></div>
-              <div class="star-2nd"></div>
-              <div class="star-3rd"></div>
-              <div class="star-4th"></div>
-              <div class="star-5th"></div>
-              <p class="start-total-num">3</p>
-            </div>
-            <h2 class="class__intro__title">강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다 강의 제목입니다. 강의 제목 입니다강의 제목 입니다.의 제목입니다. 강의 제목 입니다강의 제목 입니다  </h2>
-            <dl class="class__intro">
-              <dd class="class__intro__group">그룹수업</dd>
-              <dd class="class__intro__review-num">후기 갯수</dd>
-              <dd class="class__intro__location">신사</dd>
-              <dd class="class__intro__times">4회</dd>
-              <dd class="class__intro__time">1시</dd>
-            </dl>
-          </a>
-
+        <li>
+          <strong>커리큘럼</strong>
+          <div class="reveiw__stars__curriculum">
+            <div class="star-1st"><i class="icon-star"></i></div>
+            <div class="star-2nd"><i class="icon-star"></i></div>
+            <div class="star-3rd"><i class="icon-star"></i></div>
+            <div class="star-4th"><i class="icon-star"></i></div>
+            <div class="star-5th"><i class="icon-star"></i></div>
+          </div>
         </li>
       </ul>
-      <button type="button">더보기</button>
-      <!-- Carousel left button-->
-      <button class="class-list__carousel__left" type="button"></button>
-      <!-- Carousel right button-->
-      <button class="class-list__carousel__right" type="button"></button>
-      <!-- carousel 끝! -->
+
+    </div>
+    <div class="review__write">
+      <!-- css작업 고려해서 div로 나누어 보았습니다. -->
+      <div class="row">
+
+        <div class="review__write__writer col-4-4 col-7-12">
+          <div class="review__write__writer__info-1">
+            <img class="review__write__writer__picture" src="../media/img/user.jpg">
+            <strong class="review__write__writer__id">홍길동</strong>
+          </div>
+          <div class="review__write__writer__info-2">
+            <time class="review__write__writer__info__date" data-time="1490167752" data-type="date">
+              2017-03-22
+            </time>
+            <p class="review__write__writer__descrip">Lorem ipsum dolor sit amet.</p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- css작업 고려해서 div로 나누어 보았습니다. -->
+      <div class="row">
+
+        <div class="review__write__writer col-4-4 col-7-12">
+          <div class="review__write__writer__info-1">
+            <img class="review__write__writer__picture" src="../media/img/user.jpg">
+            <strong class="review__write__writer__id">홍길동</strong>
+          </div>
+          <div class="review__write__writer__info-2">
+            <time class="review__write__writer__info__date" data-time="1490167752" data-type="date">
+              2017-03-22
+            </time>
+            <p class="review__write__writer__descrip">Lorem ipsum dolor sit amet.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="review__page col-4-4 col-7-12" style="">
+        <a href="#" class="review__page__btn on_page">1</a>
+        <a href="#" class="review__page__btn">2</a>
+        <a href="#" class="review__page__btn">3</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QnA -->
+  <section class="qna">
+    <h2 class="qna__heading">문의하기 32</h2>
+    <div class="row">
+      <div class="qna__write col-4-4 col-7-12">
+        <textarea name="" rows="8" cols="80" placeholder="input text" wrap="on"></textarea>
+        <button type="button" class="">등록</button>
+      </div>
+
+    </div>
+    <ul class="qna__list">
+      <li class="qna__list__q">
+        <div class="row">
+          <div class="qna__list__q__writer col-4-4 col-7-12">
+            <span><div>Q</div>작성자</span>
+            <span class="qna__list__q__date">17.03.24 15:08</span>
+          </div>
+        </div>
+        <div class="row">
+          <p class="qna__list__q__descrip col-4-4 col-7-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente laudantium velit adipisci repudiandae, eaque tempora quis aliquam ducimus sequi sit dolore pariatur, eos animi id voluptas molestias praesentium illum eveniet.</p>
+        </div>
+      </li>
+      <li class="qna__list__a">
+        <div class="row">
+          <div class="qna__list__a__writer col-4-4 col-7-12" >
+            <span><div>A</div>작성자</span>
+            <span class="qna__list__a__date">17.03.24 15:08</span>
+          </div>
+        </div>
+        <div class="row">
+          <p class="qna__list__a__descrip col-4-4 col-7-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente laudantium velit adipisci repudiandae, eaque tempora quis aliquam ducimus sequi sit dolore pariatur, eos animi id voluptas molestias praesentium illum eveniet.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="row">
+      <div class="qna__page col-4-4 col-7-12">
+        <a href="#" class="qna__page__btn on_page">1</a>
+        <a href="#" class="qna__page__btn">2</a>
+        <a href="#" class="qna__page__btn">3</a>
+      </div>
+
     </div>
   </section>
 
@@ -338,7 +410,19 @@
     <!-- </div> -->
   </footer>
 
+  <script>
+    function initMap() {
+      // Create a map object and specify the DOM element for display.
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        scrollwheel: false,
+        zoom: 8
+      });
+    }
 
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjUnvTeaPsjSyxabVD9CFTNbEbnS8mZ4o&callback=initMap"
+  async defer></script>
 </div>
 </body>
 </html>

@@ -1,4 +1,25 @@
-@import "total"
+@import "source"
+@import "mixin"
 
-section
-  background-color: rgb(221, 164, 130)
+#map
+  height: 600px
+
+.location__heading
+  margin-bottom: $stand-height
+
+
+@media screen and (max-width: 599px)
+  .location
+    // padding: 0 20px
+    @include bording-mobile-2nd
+
+  .location__heading
+    padding: 0 20px
+
+
+
+@media screen and (min-width: 600px)
+  .location
+    max-width: 940px
+    margin: 0 auto 24px auto
+    @include bording-pc

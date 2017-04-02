@@ -1,4 +1,22 @@
-@import "total"
+@import "source"
+@import "mixin"
 
-section
-  background-color: rgb(221, 164, 130)
+.curriculum__heading
+  margin-bottom: $stand-height
+
+.curriculum__list
+  li
+    margin-bottom: $stand-height
+
+@media screen and (max-width:599px)
+  .curriculum
+    padding: 0 20px
+    @include bording-mobile
+
+
+
+@media screen and (min-width: 600px)
+  .curriculum
+    max-width: 940px
+    margin: 0 auto
+    @include bording-pc

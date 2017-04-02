@@ -1,51 +1,23 @@
-
-// 공통부분 사이즈
-body
-  position: relative
-  max-width: 440px
-
-.wrapper
-  // background-color: rgb(176, 120, 255)
-  width: 100%
-  margin: 0 auto
-
-
-// hidden__heading
-.hidden__heading
-  position: absolute
-  left: -9999px
-
-
-//skip-nave
-.skip-nav
-  position: absolute
-  left: -9999px
+.skip-nav, .hidden__heading
+ position: absolute
+ left: -9999px
 
 .skip-nav:focus
-  position: absolute
-  left: 0
+ position: absolute
+ left: 0
 
-// display on / off
+.pd20
+ padding: 0 20px
+
 .off
-  display: none !important
+ display: none !important
 
 .small-off
-  display: none !important
+ display: none
 
-// ir
-.ir
-  text-indent: 100%
-  overflow: hidden
-  white-space: nowrap
+.wrapper
+ margin: 0 auto
 
-// pd20
-.pd20
-  padding: 0 20px
-
-@media screen and (min-width: 500px)
-  body
-    position: relative
-    max-width: 100vw
-
-  .wrapper
-    max-width: 940px
+// 추가
+button
+ cursor: pointer

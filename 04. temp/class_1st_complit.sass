@@ -1,0 +1,19 @@
+.class-list
+  text-align: center
+  background-color: rgb(32, 235, 168)
+  // width: 100vw
+.class-list__carousel
+  background-color: rgb(83, 83, 252)
+.class-list__carousel__list
+  display: flex
+  // li는 6개 (8*50% = 300%)
+  width: 400%
+  background-color: #e1ffbf
+  @for $i from 2 through 8
+    li
+      &:nth-child(#{$i})
+        margin-left: 10px
+  li
+    width: 12.5%
+    white-space: nowrap
+    border: 1px solid black

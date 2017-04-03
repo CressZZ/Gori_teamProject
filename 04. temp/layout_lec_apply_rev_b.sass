@@ -1,0 +1,80 @@
+@import "total"
+@import "layout_lec_summary"
+
+
+.apply
+  font-size: $font-m-size
+  // background: #104
+
+.fontello
+  color: $main-color
+  font-size: 15px
+  vertical-align: text-top
+  text-align: center
+
+
+.apply__buttons
+ position: fixed
+
+
+.apply__buttons__btn-wish, .apply__buttons__btn-apply
+  width: 220px
+  font-size: $font-m-size
+  padding: 17px 0
+  text-align: center
+  border: 2px solid $point-color
+
+.apply__buttons__btn-apply
+  background: $point-color
+  color: #fff
+
+.apply__buttons__btn-wish
+  background: #fff
+  color: $point-color
+
+.apply__info
+  padding: 20px
+  color: $font-main-color
+
+.apply__info>li
+  // background: #187
+  padding:  10px 0px
+
+.apply__info>li>span
+ // background: #109
+ float: right
+ color: $font-sub-color
+
+
+@media screen and (min-width: 500px)
+
+
+  //apply
+
+  .apply__wrapper
+    width: 380px
+    // height: 289px
+    border: 1px solid $font-faint-color
+    border-bottom: 1px solid #fff
+
+  .apply__info
+    // background: #321
+
+  .apply__buttons
+   position: fixed
+
+  .apply__buttons__btn-wish, .apply__buttons__btn-apply
+    // width: 160px
+    width: 190px
+    font-size: $font-m-size
+    padding: 15px 0
+    text-align: center
+    border: 2px solid $point-color
+
+  .apply__buttons__btn-apply
+    background: $point-color
+    color: #fff
+
+  .apply__buttons__btn-wish
+    background: #fff
+    color: $point-color

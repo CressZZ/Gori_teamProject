@@ -20,35 +20,123 @@
 
 
 
-    <!-- summery -->
-    <section class="summery">
-      <h2 class="hidden__heading">수업 안내</h2>
-      <div class="summery__review">
-        <!-- 재활용을 위해 [class*=__stars]를 활용하는 것을 추천 -->
-        <!-- 1.class__stars, 2.summery__stars -->
-        <div class="summery__review__stars">
-          <div class="star-1st"></div>
-          <div class="star-2nd"></div>
-          <div class="star-3rd"></div>
-          <div class="star-4th"></div>
-          <div class="star-5th"></div>
+    <!-- review -->
+    <section class="review">
+      <div class="row">
+        <div class="review-section-1 col-4-4 col-7-12">
+          <h2 class="review__heading ">리뷰</h2>
+          <button type="button" class="review__btn">리뷰작성<i class = "icon-plus"></i></button>
         </div>
-        <span class="into__review__num">후기 23개</span>
       </div>
-      <h3 class="summery__class-title is_new">초심자를 위한 주식 사용 설명서</h3>
-      <div class="summery__gen-info">
-        <span class="summery__gen-info__group">그룹</span>
-        <span class="summery__gen-info__location-detail">장소협의</span>
-        <span class="summery__gen-info__times">4회</span>
-        <span class="summery__gen-info__time">1시간</span>
+      <div class="review-section-2 row">
+        <ul class="col-4-4 col-7-12 row review__stars">
+          <li>
+            <strong>종합점수</strong>
+            <div class="reveiw__stars__total">
+              <div class="star-1st"></div>
+              <div class="star-2nd"></div>
+              <div class="star-3rd"></div>
+              <div class="star-4th"></div>
+              <div class="star-5th"></div>
+            </div>
+          </li>
+          <li>
+            <strong>전달력</strong>
+            <div class="reveiw__stars__transfer">
+              <div class="star-1st"></div>
+              <div class="star-2nd"></div>
+              <div class="star-3rd"></div>
+              <div class="star-4th"></div>
+              <div class="star-5th"></div>
+            </div>
+          </li>
+          <li>
+            <strong>준비성</strong>
+            <div class="reveiw__stars__ready">
+              <div class="star-1st"></div>
+              <div class="star-2nd"></div>
+              <div class="star-3rd"></div>
+              <div class="star-4th"></div>
+              <div class="star-5th"></div>
+            </div>
+          </li>
+          <li>
+            <strong>친절도</strong>
+            <div class="reveiw__stars__kind">
+              <div class="star-1st"></div>
+              <div class="star-2nd"></div>
+              <div class="star-3rd"></div>
+              <div class="star-4th"></div>
+              <div class="star-5th"></div>
+            </div>
+          </li>
+          <li>
+            <strong>시간준수</strong>
+            <div class="reveiw__stars__sincerity">
+              <div class="star-1st"></div>
+              <div class="star-2nd"></div>
+              <div class="star-3rd"></div>
+              <div class="star-4th"></div>
+              <div class="star-5th"></div>
+            </div>
+          </li>
+          <li>
+            <strong>커리큘럼</strong>
+            <div class="reveiw__stars__curriculum">
+              <div class="star-1st"></div>
+              <div class="star-2nd"></div>
+              <div class="star-3rd"></div>
+              <div class="star-4th"></div>
+              <div class="star-5th"></div>
+            </div>
+          </li>
+        </ul>
+
       </div>
-      <div class="summery__price-info">
-        <span class="summery__price-info__total">20,000</span>
-        <span class="summery__price-info__each">총4회 240,000원</span>
+      <div class="review__write">
+        <!-- css작업 고려해서 div로 나누어 보았습니다. -->
+        <div class="row">
+
+          <div class="review__write__writer col-4-4 col-7-12">
+            <div class="review__write__writer__info-1">
+              <img class="review__write__writer__picture" src="../media/img/user.jpg">
+              <strong class="review__write__writer__id">홍길동</strong>
+            </div>
+            <div class="review__write__writer__info-2">
+              <time class="review__write__writer__info__date" data-time="1490167752" data-type="date">
+                2017-03-22
+              </time>
+              <p class="review__write__writer__descrip">Lorem ipsum dolor sit amet.</p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- css작업 고려해서 div로 나누어 보았습니다. -->
+        <div class="row">
+
+          <div class="review__write__writer col-4-4 col-7-12">
+            <div class="review__write__writer__info-1">
+              <img class="review__write__writer__picture" src="../media/img/user.jpg">
+              <strong class="review__write__writer__id">홍길동</strong>
+            </div>
+            <div class="review__write__writer__info-2">
+              <time class="review__write__writer__info__date" data-time="1490167752" data-type="date">
+                2017-03-22
+              </time>
+              <p class="review__write__writer__descrip">Lorem ipsum dolor sit amet.</p>
+
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="summery__tutor">
-        <img src="#" alt="tutor picture" class="summery__tutor__picture">
-        <sapn class="summery__tutor__name">아이디 | 홍길동</sapn>
+      <div class="row">
+        <div class="review__page col-4-4 col-7-12" style="">
+          <a href="#" class="review__page__btn on_page">1</a>
+          <a href="#" class="review__page__btn">2</a>
+          <a href="#" class="review__page__btn">3</a>
+        </div>
+
       </div>
     </section>
 

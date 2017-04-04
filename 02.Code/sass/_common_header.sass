@@ -9,6 +9,10 @@
   font-size: 38px
   font-weight: 800
 
+
+.header__logo a
+ // padding: 10px
+
 .header__logo--title
   padding: 0 20px
 
@@ -36,7 +40,12 @@
   color: $point-color
 
 .header__navi__lnb_list
-  margin: 71px 0
+  // margin-top: 71px
+  font-size: $font-m-size
+  // height: 168px
+
+.navi_menu_tutor
+  padding-top: 71px
   font-size: $font-m-size
   // height: 168px
 
@@ -59,7 +68,7 @@
     height: 1px
 
 .navi_menu_join , .navi_menu_login
-  padding: 17px 0
+  padding: 17px 20px
   text-align: center
   border: 2px solid $point-color
 
@@ -76,7 +85,7 @@
   padding-left: 20px
 
 
-@media screen and (min-width: 700px)
+@media screen and (min-width: 600px)
   .header__logo__wrapper, .header__navi__wrapper
     max-width: 940px
     margin: 0 auto
@@ -100,6 +109,9 @@
   .header__navi__wrapper
     position: relative
 
+  .header__navi
+    width: 100%
+
   .header__navi ul
     position: absolute
     top: -88px
@@ -107,6 +119,11 @@
 
   .navi_menu
     display: inline
+
+  .navi_menu_tutor
+    padding-top: 0px
+    // font-size: $font-m-size
+    // height: 168px
 
   .header__navi__lnb_list li,
   .header__navi__lnb_list a
@@ -120,7 +137,7 @@
     margin: 30px 0
 
   .navi_menu_join , .navi_menu_login
-    padding: 17px 0
+    padding: 17px 30px
     text-align: center
     border: 0
     background: none
@@ -143,3 +160,8 @@
     position: absolute
     top: -88px
     right: 2.2%
+
+  .navi_menu_tutor
+    padding-top: 0px
+    // font-size: $font-m-size
+    // height: 168px

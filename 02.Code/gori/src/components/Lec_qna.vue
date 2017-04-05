@@ -1,7 +1,7 @@
 <template lang="html">
   <!-- QnA -->
-  <section class="qna">
-    <h2 class="qna__heading">문의하기 32</h2>
+  <section class="qna" id="qna">
+    <h2 class="qna__heading" >문의하기 32</h2>
     <div class="row">
       <div class="qna__write col-4-4 col-7-12">
         <textarea name="" rows="8" cols="80" placeholder="input text" wrap="on"></textarea>

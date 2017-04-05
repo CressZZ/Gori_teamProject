@@ -1,9 +1,9 @@
 <template lang="html">
   <!-- review -->
-  <section class="review">
+  <section class="review" id="review">
     <div class="row">
       <div class="review-section-1 col-4-4 col-7-12">
-        <h2 class="review__heading ">리뷰</h2>
+        <h2 class="review__heading"  >리뷰</h2>
         <div>
           <button type="button" class="review__btn">리뷰작성 + </button>
 

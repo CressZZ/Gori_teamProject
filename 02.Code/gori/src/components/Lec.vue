@@ -150,6 +150,6 @@ export default {
 </script>
 
   <style lang="sass">
-    @import "../sass/total"
-    @import "../sass/lec-index"
+    // @import "../sass/total"
+    // @import "../sass/lec-index"
   </style>

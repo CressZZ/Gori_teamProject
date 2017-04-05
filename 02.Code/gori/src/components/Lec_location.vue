@@ -12,7 +12,7 @@ export default {
 </script>
 
   <style lang="sass">
-    @import "../sass/gen_source"
-    @import "../sass/gen_mixin"
-    @import "../sass/lec_location"
+    // @import "../sass/gen_source"
+    // @import "../sass/gen_mixin"
+    // @import "../sass/lec_location"
   </style>

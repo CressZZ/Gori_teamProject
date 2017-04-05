@@ -18,5 +18,5 @@ export default {
 </script>
 
 <style lang="sass">
-  // @import "sass/index"
+  @import "sass/total"
 </style>

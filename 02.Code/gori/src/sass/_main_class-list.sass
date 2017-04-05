@@ -1,7 +1,19 @@
 
 @media screen and (max-width: 599px)
+  .class-list__heading_wrapper
+    // background: #ca4
+    padding: 48px 0
+
   .class-list
     text-align: center
+
+  .class-list__heading
+    font-size: $font-xl-size
+
+  .class-list__subtitle
+    padding: 5px
+    font-size: $font-m-size
+
   .class-list__carousel
     // 감추기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // overflow: hidden
@@ -16,14 +28,12 @@
       position: relative
       display: inline-block
       width: 49.5%
-      border: 1px solid black
+      border: 1px solid $font-faint-color
       // font-size: 1rem
 
-  .class-list__heading_wrapper
-    background: red
-    padding: 20px 0
 
-  .class-list__carousel
+
+   .class-list__carousel
     .is_new
       font-size: 3px
       position: absolute
@@ -34,7 +44,7 @@
       padding: 1px 4px
 
     .class__wish
-      background: #102
+      background: $font-faint-color
       width: 25px
       height: 25px
       border-radius: 50%
@@ -43,6 +53,7 @@
       position: absolute
       top: 31%
       left: 53%
+
     .icon-heart
       font-size: $font-m-size
       color: red
@@ -67,11 +78,12 @@
     .start-total-num
       padding: 0 0 0 3px
 
-    .icon-star
-      color: gold
+  .icon-star
+    color: gold
 
-    .icon-star::before
-      margin: 0
+  .icon-star::before
+    margin: 0
+
 
   .class__intro__title
     font-size: $font-m-size
@@ -108,11 +120,24 @@
     padding: 10px 30px
     border-radius: 2px
     background-color: $point-color
+    font-size: $font-s-size
 
   .class-list__carousel__left, .class-list__carousel__right
     display: none
 
 @media screen and (min-width: 600px) and (max-width:1079px)
+
+  .class-list__heading_wrapper
+    // background: #ca4
+    padding: 48px 0
+
+  .class-list__heading
+    font-size: $font-xl-size
+
+  .class-list__subtitle
+    padding: 5px
+    font-size: $font-m-size
+
   .class-list
     text-align: center
     max-width: 940px
@@ -220,6 +245,8 @@
     padding: 10px 30px
     border-radius: 2px
     background-color: $point-color
+    font-size: $font-s-size
+
 
   .class-list__carousel__left, .class-list__carousel__right
     display: none
@@ -228,6 +255,18 @@
 
   .wrapper
     // background-color: rgb(62, 222, 148)
+  .class-list__heading_wrapper
+    // background: #ca4
+    padding: 48px 0
+
+
+  .class-list__heading
+    font-size: $font-xl-size
+
+  .class-list__subtitle
+    padding: 5px
+    font-size: $font-m-size
+
   .class-list
     text-align: center
     max-width: 940px
@@ -335,6 +374,7 @@
     padding: 10px 30px
     border-radius: 2px
     background-color: $point-color
+    font-size: $font-s-size
 
   .class-list__carousel__left, .class-list__carousel__right
     position: relative

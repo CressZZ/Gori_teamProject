@@ -240,5 +240,5 @@ export default {
 
 <style lang="sass">
   @import "../sass/total"
-  @import "../sass/main-index"
+  @import "../sass/main_class_list"
 </style>

@@ -1,0 +1,91 @@
+
+.qna__heading
+  margin-bottom: 24px
+.qna__list
+  margin-bottom: 24px
+.qna__list__q__writer, .qna__list__a__writer
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 24px
+  span
+    display: flex
+    justify-content: space-between
+    align-items: center
+    div
+      border-radius: 50%
+      text-align: center
+      line-height: 24px
+      color: white
+      font-weight: 700
+      background-color: rgba(29, 29, 29, 0.73)
+      width: 24px
+      height: 24px
+
+.qna__list__a__writer
+  padding-left: 30px
+
+.qna__list__a__descrip
+  padding-left: 30px
+
+.qna__list__q__descrip
+  margin-bottom: 24px
+
+.qna__page
+  display: flex
+  justify-content: center
+  a
+    width: 50px
+    display: flex
+    justify-content: center
+  a:first-child::before
+    content: "<"
+    display: block
+    margin-right: 10px
+  a:last-child::after
+    content: ">"
+    display: block
+    margin-left: 10px
+
+@media screen and (max-width: 599px)
+  .qna
+    padding: 0 20px
+    @include bording-mobile
+
+  .qna__write
+    margin-bottom: 24px
+    textarea
+      display: block
+      float: left
+      width: 75%
+      max-width: 75%
+      max-height: 72px
+      background-color: rgb(88, 88, 88)
+    button
+      display: block
+      width: 25%
+      height: 72px
+      background-color: rgb(3, 199, 207)
+
+
+@media screen and (min-width: 600px)
+  .qna
+    max-width: 940px
+    margin: 0 auto
+    @include bording-pc (transparent)
+  .qna__heading
+    margin-bottom: 24px
+
+  .qna__write
+    margin-bottom: 24px
+    textarea
+      display: block
+      float: left
+      max-width: 80%
+      max-height: 72px
+      background-color: rgb(88, 88, 88)
+    button
+      display: block
+      width: 20%
+      height: 72px
+      background-color: rgb(3, 199, 207)

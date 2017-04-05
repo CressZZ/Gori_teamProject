@@ -1,10 +1,10 @@
 <template lang="html">
   <!-- hr은 일단 삭제 해 보았습니다.  -->
   <!-- intro -->
-  <section class="intro">
+  <section class="intro" id="intro">
     <div class="row">
       <div class="intro__wrap col-4-4 col-7-12">
-        <h2 class="intro__heading">수업소개</h2>
+        <h2 class="intro__heading" >수업소개</h2>
         <div class="intro__img-container">
           <img src="../media/img/temp/cat.jpg" alt="">
         </div>

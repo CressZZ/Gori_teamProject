@@ -19,7 +19,8 @@ export const routes = [
     components: {
       default: Lec,
       Header: Header,
-      Footer: Footer
+      Footer: Footer,
+      // Map: Map
     }
   },
   {

@@ -13,7 +13,7 @@
           <div class="star-4th"><i class="icon-star"></i></div>
           <div class="star-5th"><i class="icon-star"></i></div>
         </div>
-        <div class="row"><span class="into__review__num">후기 23개</span></div>
+        <div class="row"><span class="into__review__num">후기 {{review_num}}개</span></div>
       </div>
     </div>
     <h3 class="summery__class-title">초심자를 위한 주식 사용 설명서</h3>
@@ -33,11 +33,20 @@
 
 <script>
 export default {
-}
+  data(){
+    return{
+      review_num: "23",
+    }
+  },
+  methods: {
+
+    },
+  }
+
 </script>
 
   <style lang="sass">
-    @import "../sass/gen_source"
-    @import "../sass/gen_mixin"
-    @import "../sass/lec_summary"
+    // @import "../sass/gen_source"
+    // @import "../sass/gen_mixin"
+    // @import "../sass/lec_summary"
   </style>

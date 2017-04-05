@@ -39,9 +39,11 @@
 
 
           <div class="apply__buttons">
-            <button class="apply__buttons__btn-wish ">찜하기
+            <button
+            class="apply__buttons__btn-wish"
+             @click.prevent = "toggleWishList()">찜하기
               <a href="#" class="apply__buttons__heart">
-                <i class="icon-heart-empty"></i>
+                <i v-bind:class="{ 'icon-heart-empty': !is_wishList, 'icon-heart': is_wishList }"></i>
               </a>
             </button>
             <button class="apply__buttons__btn-apply">수업 신청하기</button>
@@ -55,11 +57,23 @@
 
 <script>
 export default {
+  data(){
+    return {
+      is_wishList: false
+    }
+  },
+  methods: {
+    toggleWishList(){
+      console.log("addWishList");
+      this.is_wishList = !this.is_wishList
+    },
+
+  },
 }
 </script>
 
   <style lang="sass">
-    @import "../sass/gen_source"
-    @import "../sass/gen_mixin"
-    @import "../sass/lec_apply"
+    // @import "../sass/gen_source"
+    // @import "../sass/gen_mixin"
+    // @import "../sass/lec_apply"
   </style>

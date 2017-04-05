@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form id="pointWriteArea">
+    <fieldset>
+      <legend><h1 class="blind">리뷰</h1></legend>
+    <!-- 모바일 기기로 접근 시 : 클래스 t_layer_view 추가 -->
+        <div class="t_layer_view">
+          <div class="drag_star">
+            <div class="lft">
+              <div class="total_score">
+              <h2 class="blind">종합점수</h2>
+                <ul>
+                  <li class="st_off" id="total">
+                    <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
+                    <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
+                    <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
+                    <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
+                    <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                  </li>
+                </ul>
+                <span class="blind">종합점수</span><span class="star_count"><em id="totalValue">0<span class="blind">점 </span></em><em>/<span class="blind"> 총 </span>10<span class="blind">점</span></em></span>
+              </div>
+              <div class="total_score">
+                <h2 class="blind">커리큘럼</h2>
+                <ul>
+                  <li class="st_off" id="curriculum">
+                    <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
+                    <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
+                    <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
+                    <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
+                    <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                  </li>
+                </ul>
+                <span class="blind">커리큘럼</span><span class="star_count"><em id="curriculumValue">0<span class="blind">점 </span></em><em>/<span class="blind"> 총 </span>10<span class="blind">점</span></em></span>
+              </div>
+              <div class="total_score">
+                <h2 class="blind">전달력</h2>
+                <ul>
+                  <li class="st_off" id="skills">
+                    <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
+                    <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
+                    <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
+                    <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
+                    <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                  </li>
+                </ul>
+              <span class="blind">전달력</span><span class="star_count"><em id="skillsValue">0<span class="blind">점 </span></em><em>/<span class="blind"> 총 </span>10<span class="blind">점</span></em></span>
+              </div>
+                <div class="total_score">
+                  <h2 class="blind">준비성</h2>
+                  <ul>
+                    <li class="st_off" id="preparation">
+                      <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
+                      <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
+                      <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
+                      <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
+                      <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                    </li>
+                  </ul>
+                <span class="blind">준비성</span><span class="star_count"><em id="preparationValue">0<span class="blind">점 </span></em><em>/<span class="blind"> 총 </span>10<span class="blind">점</span></em></span>
+                </div>
+                <div class="total_score">
+                  <h2 class="blind">친절도</h2>
+                  <ul>
+                    <li class="st_off" id="dedication">
+                      <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
+                      <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
+                      <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
+                      <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
+                      <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                    </li>
+                  </ul>
+                <span class="blind">친절도</span><span class="star_count"><em id="dedicationValue">0<span class="blind">점 </span></em><em>/<span class="blind"> 총 </span>10<span class="blind">점</span></em></span>
+                </div>
+                <div class="total_score">
+                  <h2 class="blind">시간준수</h2>
+                  <ul>
+                    <li class="st_off" id="punctuality">
+                      <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
+                      <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
+                      <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
+                      <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
+                      <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                    </li>
+                  </ul>
+                <span class="blind">시간준수</span><span class="star_count"><em id="punctualityValue">0<span class="blind">점 </span></em><em>/<span class="blind"> 총 </span>10<span class="blind">점</span></em></span>
+                </div>
+              </div>
+        </div>
+        <div class="review-content">
+        <textarea name="content" id="content"></textarea>
+        <button type="submit" class="review_add">리뷰작성</button>
+        </div>
+      </div>
+    </fieldset>
+    </form>
+</body>
+</html>

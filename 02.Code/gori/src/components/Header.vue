@@ -2,7 +2,6 @@
     <div>
       <!-- skip-nav -->
       <a href="#" class="skip-nav">본문 바로가기</a>
-      <div class="wrapper">
         <!-- header -->
         <header class="header row">
           <!-- 고리 로고 -->
@@ -32,7 +31,7 @@
             </nav>
           </div>
         </header>
-      </div>
+
    </div>
 </template>
 

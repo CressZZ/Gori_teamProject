@@ -8,18 +8,18 @@ export const routes = [
     path: '',
     name: 'main',
     components: {
-      default: Main,
-      Header: Header,
-      Footer: Footer
+      'default': Main,
+      'header': Header,
+      'footer': Footer
     }
   },
   {
     path: '/lec',
     name: 'lec',
     components: {
-      default: Lec,
-      Header: Header,
-      Footer: Footer,
+      'default': Lec,
+      'header': Header,
+      'footer': Footer
       // Map: Map
     }
   },

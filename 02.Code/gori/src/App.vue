@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <router-view name='join'></router-view>
+    <router-view name='login'></router-view>
     <router-view name="header"></router-view>
       <router-view></router-view>
     <router-view name="footer"></router-view>

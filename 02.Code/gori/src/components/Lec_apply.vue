@@ -73,7 +73,7 @@ export default {
 </script>
 
   <style lang="sass">
-    // @import "../sass/gen_source"
-    // @import "../sass/gen_mixin"
-    // @import "../sass/lec_apply"
+    @import "../sass/gen_source"
+    @import "../sass/gen_mixin"
+    @import "../sass/lec_apply"
   </style>

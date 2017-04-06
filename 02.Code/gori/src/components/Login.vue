@@ -2,7 +2,7 @@
   <div id="join" v-cloak>
     <div v-if="is_visible" class="modal is-active">
       <div class="modal-background" @click="closeModal"></div>
-      <div class="modal-content">
+        <div class="modal-content" >
         <div class="box">
         <div class="login__container">
             <h1 class="login__heading">로그인</h1>

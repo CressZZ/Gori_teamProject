@@ -129,14 +129,6 @@
           </section>
 
 
-          <!-- <div class="header__heading row">
-          <h1 class="header__logo col-4-4 col-12-12">
-          <div class="header__logo__wrapper">
-          <a href="#">
-          <p class="header__logo--title">Gori</p>
-        </a>
-      </div>
-    </h1> -->
 
 
     </div>
@@ -148,6 +140,6 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "../sass/total"
-  @import "../sass/main_class-list"
+  // @import "../sass/total"
+  // @import "../sass/main_class-list"
 </style>

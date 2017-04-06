@@ -62,6 +62,6 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "../sass/total"
-  @import "../sass/common_login_join"
+  // @import "../sass/total"
+  // @import "../sass/common_login_join"
 </style>

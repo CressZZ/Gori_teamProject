@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "../sass/total"
-  @import "../sass/main_carousel"
+  // @import "../sass/total"
+  // @import "../sass/main_carousel"
 
 </style>

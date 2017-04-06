@@ -20,5 +20,6 @@ export default {
 </script>
 
 <style lang="sass">
-  // @import "sass/index"
+  @import "sass/index"
+
 </style>

@@ -16,7 +16,7 @@
         <div class="row"><span class="into__review__num">후기 {{review_num}}개</span></div>
       </div>
     </div>
-    <h3 class="summery__class-title">초심자를 위한 주식 사용 설명서</h3>
+    <h3 class="summery__class-title">초심자를 위한 주식 사용 설명서{{id}}</h3>
     <div class="summery__gen-info">
       <span class="summery__gen-info__group">그룹</span>
       <span class="summery__gen-info__location-detail">장소협의</span>
@@ -36,6 +36,7 @@ export default {
   data(){
     return{
       review_num: "23",
+      id: this.$route.params.id,
     }
   },
   methods: {
@@ -46,7 +47,7 @@ export default {
 </script>
 
   <style lang="sass">
-    @import "../sass/gen_source"
-    @import "../sass/gen_mixin"
-    @import "../sass/lec_summary"
+    // @import "../sass/gen_source"
+    // @import "../sass/gen_mixin"
+    // @import "../sass/lec_summary"
   </style>

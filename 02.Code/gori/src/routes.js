@@ -4,6 +4,7 @@ import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Join from './components/Join.vue'
 import Login from './components/Login.vue'
+// import LecMap from './components/Lec_map.vue'
 
 export const routes = [
   {
@@ -13,8 +14,9 @@ export const routes = [
       'default': Main,
       'header': Header,
       'footer': Footer,
-      'join': Join,
-      'login': Login,
+      // join과 login 일단 꺼놈
+      // 'join': Join,
+      // 'login': Login,
 
     }
   },
@@ -25,10 +27,14 @@ export const routes = [
       'default': Lec,
       'header': Header,
       'footer': Footer,
-      'join': Join,
-      'login': Login,
-      // Map: Map
-    }
+      // join과 login 일단 꺼놈
+      // 'join': Join,
+      // 'login': Login,
+      // 'map': LecMap
+    },
+    children: [
+      // {path: '', component: UserEdit, name: 'LecMap' },
+    ]
   },
   {
     path: '*', redirect: '/'

@@ -52,6 +52,6 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "../sass/total"
-  @import "../sass/common_footer"
+  // @import "../sass/total"
+  // @import "../sass/common_footer"
 </style>

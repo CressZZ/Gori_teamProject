@@ -41,6 +41,6 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "../sass/total"
-  @import "../sass/main-index"
+  // @import "../sass/total"
+  // @import "../sass/main-index"
 </style>

@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     toggleWishList(){
-      console.log("addWishList");
+      // console.log("addWishList");
       this.is_wishList = !this.is_wishList
     },
 
@@ -73,7 +73,7 @@ export default {
 </script>
 
   <style lang="sass">
-    @import "../sass/gen_source"
-    @import "../sass/gen_mixin"
-    @import "../sass/lec_apply"
+    // @import "../sass/gen_source"
+    // @import "../sass/gen_mixin"
+    // @import "../sass/lec_apply"
   </style>

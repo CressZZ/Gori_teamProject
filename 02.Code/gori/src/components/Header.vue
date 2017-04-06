@@ -22,9 +22,9 @@
                 <ul class="header__navi__lnb_list">
                   <li><a href="#" class="navi_menu navi_menu_tutor ">튜터등록</a></li>
                   <li><a href="#" class="navi_menu navi_menu_service ">서비스소개</a></li>
-                  <li><a href="#" class="navi_menu navi_menu_join col-2-4 col-12-12 is_logout ">회원가입</a></li>
+                  <li><a href="#" class="navi_menu navi_menu_join is_logout ">회원가입</a></li>
                   <li><a href="#" class="navi_menu navi_menu_mypage is_login off ">마이페이지</a></li>
-                  <li><a href="#" class="navi_menu navi_menu_login col-2-4 push-2-4 col-12-12 push-12-12 is_logout">로그인</a></li>
+                  <li><a href="#" class="navi_menu navi_menu_login is_logout">로그인</a></li>
                   <li><a href="#" class="navi_menu navi_menu_logout is_login off">로그아웃</a></li>
                 </ul>
               </div>

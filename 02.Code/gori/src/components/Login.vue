@@ -14,7 +14,7 @@
               <div class="checkbox-custom checkbox-default">
               <button class="login__email-btn" ng-click="Login()">로그인</button>
               <input id="remember_me" name="user[remember_me]" type="checkbox">
-              <label for="remember_me">로그인 상태 유지</label>
+              <label class="remember_me" for="remember_me">로그인 상태 유지</label>
               </div>
             </form>
             <div class="login_else">

@@ -15,7 +15,7 @@ export const routes = [
       'header': Header,
       'footer': Footer,
       // join과 login 일단 꺼놈
-      // 'join': Join,
+      'join': Join,
       // 'login': Login,
 
     }

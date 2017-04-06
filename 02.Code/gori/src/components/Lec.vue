@@ -37,6 +37,10 @@
 
   </lec-review>
 
+  <lec-review-modal>
+
+  </lec-review-modal>
+
   <lec-qna>
 
   </lec-qna>
@@ -56,7 +60,7 @@ import LecLocation from './Lec_location.vue'
 import LecQna from './Lec_qna.vue'
 import LecReview from './Lec_review.vue'
 import LecClassNav from './Lec_class-nav.vue'
-
+import LecReviewModal from './lec_review_modal.vue'
 
 export default {
   data(){
@@ -74,6 +78,7 @@ export default {
     LecQna,
     LecReview,
     LecClassNav,
+    LecReviewModal,
 
   }
 

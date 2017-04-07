@@ -1,168 +1,115 @@
 
+@media screen and (max-width: 599px)
+  .header
+    margin-bottom: 24px
 
-// 헤더
-.header__logo
-  background: $main-color
-  color: $point-color
-  height: 72px
-  padding: 18px 0px
-  font-size: 38px
-  font-weight: 800
+  .header__heading
+    background: $main-color
+    padding: 0 20px
+    height: 72px
+    display: flex
+    justify-content: space-between
+    align-items: center
 
+  .header__logo
+    color: $point-color
+    font-size: 38px
+    font-weight: 800
 
-.header__logo a
- // padding: 10px
+  .header__navi__btn-menu--open,
+  .header__navi__btn-menu--close
+    height: 68px
+    float: right
+    color: $point-color
+    .icon-menu, .icon-cancel
+      font-size: 30px
+      font-weight: 800
 
-.header__logo--title
-  padding: 0 20px
-
-.header__navi__btn-menu--open
-  height: 68px
-  float: right
-  color: $point-color
-
-
-.icon-menu, .icon-cancel
-  font-size: 30px
-  font-weight: 800
-  // padding: 15px 0px
-
-// // 모바일 메인 네비게이션
-.header__navi
-  position: relative
-  // background: #652
-
-.header__navi__btn-menu--close
-  // background-color: #ff5c5c
-  height: 64px
-  position: absolute
-  right: 0
-  color: $point-color
-
-.header__navi__lnb_list
-  // margin-top: 71px
-  font-size: $font-m-size
-  // position: absolute
-  // height: 168px
-
-.navi_menu_tutor
-  padding-top: 71px
-  font-size: $font-m-size
-  // height: 168px
-
-.navi_menu
- display: inline-block
-
-.navi_menu_tutor
-  margin: 30px 0
+  .header__navi
+    display: block
 
 
-.navi_menu_service
-  margin: 28px 0
-  &::before
-    content: ''
-    background: #aaa
-    position: absolute
-    top: 148px
-    left: 20px
-    width: 90%
-    height: 1px
+  .header__navi__lnb_list
+    li
+      height: 72px
+      font-size: $font-m-size
+      display: flex
+      align-items: center
+  .navi_menu_service
+    // margin: 28px 0
+    &::before
+      content: ''
+      background: #aaa
+      position: absolute
+      top: 148px
+      left: 20px
+      width: 90%
+      height: 1px
 
-.navi_menu_join , .navi_menu_login
-  padding: 17px 20px
-  text-align: center
-  border: 2px solid $point-color
+  .navi_menu_tutor, .navi_menu_service
+    padding: 20px
+    a
+      padding: 20px 60% 20px 0
 
-.navi_menu_join
-  background: $point-color
-  color: #fff
+  .header__navi__lnb_list-sec-2
+    display: flex
+    justify-content: center
+    li
+      width: 50%
+      font-size: $font-m-size
+      display: flex
+      align-items: center
 
-.navi_menu_login
-  background: #fff
-  color: $point-color
 
-.navi_menu_tutor,
-.navi_menu_service
-  padding-left: 20px
+  .navi_menu_join , .navi_menu_login
+    border: 2px solid $point-color
+    display: flex
+    justify-content: center
+
+  .navi_menu_join
+    background: $point-color
+    color: #fff
+    a
+      display: block
+      padding: 20px
+            // background-color: red
+  .navi_menu_login
+    background: #fff
+    color: $point-color
+    a
+      padding: 20px
 
 
 @media screen and (min-width: 600px)
-  .header__logo__wrapper, .header__navi__wrapper
+  .header
+    background: $main-color
+
+  .header__wrapper
     max-width: 940px
     margin: 0 auto
+    height: 72px
+    display: flex
+    justify-content: space-between
+    align-items: center
 
+  .header__logo
+    color: $point-color
+    font-size: 38px
+    font-weight: 800
 
-  .header__logo--title
-    padding: 0 20px
-
-  .icon-menu, .icon-cancel
+  .header__navi__btn-menu--open,
+  .header__navi__btn-menu--close
     display: none
 
-  .header__navi__lnb_list
-    height: 168px
-    display: inline-block
-    margin-left: 100px
-    float: right
-    // background: #f28
-    padding: 14.5px 0
-    margin: 71px 0px
-
-  .header__navi__wrapper
-    position: relative
-
   .header__navi
-    width: 100%
+    display: flex
 
-  .header__navi ul
-    position: absolute
-    top: -88px
-    right: 5.5%
+  .header__navi__lnb_list, .header__navi__lnb_list-sec-2
+    display: flex
+    font-size: $font-l-size
+    color: white
 
-  .navi_menu
-    display: inline
-
-  .navi_menu_tutor
-    padding-top: 0px
-    // font-size: $font-m-size
-    // height: 168px
-
-  .header__navi__lnb_list li,
-  .header__navi__lnb_list a
-    display: inline-block
-    vertical-align: middle
-    color: #fff
-    // background: #f31
-
-
-  .navi_menu_tutor
-    margin: 30px 0
-
-  .navi_menu_join , .navi_menu_login
-    padding: 17px 30px
-    text-align: center
-    border: 0
-    background: none
-
-  .navi_menu_join
-    padding-left: 20px
-
-@media screen and (min-width: 996px)
-
-  .header__logo__wrapper, .header__navi__wrapper
-    max-width: 940px
-    margin: 0 auto
-    // background: #29a
-
-
-  .header__logo--title
-    padding: 0
-
-  .header__navi ul
-    position: absolute
-    top: -88px
-    right: 2.2%
-
-  .navi_menu_tutor
-    padding-top: 0px
-    // font-size: $font-m-size
-    // height: 168px
+    li
+      margin-left: 40px
+      a
+        padding: 20px 0 

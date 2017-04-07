@@ -15,10 +15,9 @@ export const routes = [
       'header': Header,
       'footer': Footer,
       // join과 login 일단 꺼놈
-      // 'join': Join,
-      // 'login': Login,
-
-    }
+      'join': Join,
+      'login': Login,
+    },
   },
   {
     path: '/lec',
@@ -28,8 +27,8 @@ export const routes = [
       'header': Header,
       'footer': Footer,
       // join과 login 일단 꺼놈
-      // 'join': Join,
-      // 'login': Login,
+      'join': Join,
+      'login': Login,
       // 'map': LecMap
     },
     children: [

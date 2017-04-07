@@ -1,11 +1,11 @@
 <template lang="html" >
   <!-- class_nav -->
   <section
-  class="class_nav" >
-    <nav class="class_nav__wrapper " style="z-index: 99" :style="{ position: cssPosition, top: cssTop + 'px'}" >
+  class="class_nav" :class ="{isFixed: isFixed}" :style="{height: navHeight + 'px'}" >
+    <nav class="class_nav__wrapper" style="z-index: 99" >
       <ul>
         <li class="right-border">
-          <a href="#intro">수업소개</a></li>
+          <a href="" @click.prevent="scrollTointro">수업소개</a></li>
         <li>
           <a href="#review" class="">리뷰보기</a>
         </li>
@@ -24,32 +24,40 @@ export default {
 
   data() {
     return{
-      cssPosition: "",
-      cssTop: null,
-      windowTop: null,
-      navTop: null,
-      ishover: false,
+      isFixed: false,
+      navHeight: $(".class_nav__wrapper>ul").height(),
+
+
     }
   },
   methods: {
     navPosition(){
-        this.windowTop = $(window).scrollTop();
-          if($(window).width() < 600){
-          if(this.windowTop > 770){
-            this.cssPosition = "fixed"
-            this.cssTop = 0;
-          }
-        } if  (this.windowTop < 769){
-          this.cssPosition="";
-          this.cssTop = null;
+      if ($(window).width() < 600){
+        if( $(window).scrollTop() > $(".class_nav").offset().top ) {
+          this.isFixed = true
+          this.navHeight = 0
         }
-   },
+        else{
+          this.isFixed= false
+          this.navHeight = $(".class_nav__wrapper>ul").height()
+        }
+      }
+      else {
+        this.isFixed = false
+        this.navHeight = $(".class_nav__wrapper>ul").height()
+      }
+    },
+
+
+  },
+  computed: {
+
 
   },
 
-  created(){
+  mounted(){
+    // this.window.
     $(window).on('scroll', this.navPosition);
-    console.log('navTop:');
 
 
   },
@@ -57,16 +65,17 @@ export default {
     window.removeEventListener('scroll', this.navPosition);
   },
 }
-// $(window).on('scroll', function(){
 
 </script>
 
   <style lang="sass">
-    // @import "../sass/gen_source"
-    // @import "../sass/gen_mixin"
-    // @import "../sass/lec_class-nav"
-    // .class_nav__wrapper
-    //   z-index: 99
-    .hover
-      background-color: red
+    .isFixed
+      // height: 0 !important
+      .class_nav__wrapper
+        position: fixed
+        top: 0
+
+    .class_nav
+      height:
+      transition: 0.7s height
   </style>

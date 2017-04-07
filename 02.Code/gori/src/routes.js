@@ -14,7 +14,6 @@ export const routes = [
       'default': Main,
       'header': Header,
       'footer': Footer,
-      // join과 login 일단 꺼놈
       'join': Join,
       'login': Login,
     },
@@ -26,7 +25,6 @@ export const routes = [
       'default': Lec,
       'header': Header,
       'footer': Footer,
-      // join과 login 일단 꺼놈
       'join': Join,
       'login': Login,
       // 'map': LecMap

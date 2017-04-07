@@ -2,7 +2,7 @@
   <div id="login"  v-cloak>
     <div v-if="loginvisibles" class="modal is-active">
       <div class="modal-background" @click="closeModal"></div>
-      <div class="modal-content">
+        <div class="modal-content" >
         <div class="box">
         <div class="login__container">
             <h1 class="login__heading">로그인</h1>
@@ -15,6 +15,7 @@
               <div class="checkbox-custom checkbox-default">
                 <input id="remember_me" name="user[remember_me]" type="checkbox">
                 <label for="remember_me">로그인 상태 유지</label>
+
               </div>
             </form>
             <div class="login_else">

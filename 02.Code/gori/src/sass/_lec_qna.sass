@@ -3,6 +3,8 @@
   margin-bottom: 24px
 .qna__list
   margin-bottom: 24px
+
+
 .qna__list__q__writer, .qna__list__a__writer
   display: flex
   justify-content: space-between
@@ -51,7 +53,12 @@
   .qna
     padding: 0 20px
     @include bording-mobile
-
+  .qna__list__q
+    margin-bottom: 24px
+    @include bording-mobile (black, dashed)
+    &:last-child
+      &::after
+        border-bottom: 0
   .qna__write
     margin-bottom: 24px
     textarea
@@ -75,7 +82,12 @@
     @include bording-pc (transparent)
   .qna__heading
     margin-bottom: 24px
-
+  .qna__list__q
+    margin-bottom: 24px
+    @include bording-pc (black, dashed)
+    &:last-child
+      &::after
+        border-bottom: 0
   .qna__write
     margin-bottom: 24px
     textarea

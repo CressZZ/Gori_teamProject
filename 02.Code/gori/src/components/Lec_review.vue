@@ -5,8 +5,7 @@
       <div class="review-section-1 col-4-4 col-7-12">
         <h2 class="review__heading"  >리뷰</h2>
         <div>
-          <button type="button" class="review__btn">리뷰작성 + </button>
-
+          <button type="button" class="review__btn" @click="isvisible">리뷰작성 + </button>
         </div>
       </div>
     </div>
@@ -120,11 +119,35 @@
       </div>
 
     </div>
+
+    <lec-review-modal :isvisibles="isvisibles" @isvisibles = "isvisible">
+    </lec-review-modal>
+
   </section>
+
+
 </template>
 
 <script>
+import LecReviewModal from './lec_review_modal.vue'
+
 export default {
+  data(){
+    return{
+      isvisibles: false
+
+    }
+  },
+  methods: {
+    isvisible() {
+      this.isvisibles = !this.isvisibles
+      console.log('click');
+    }
+  },
+  components: {
+    LecReviewModal,
+  },
+
 }
 </script>
 

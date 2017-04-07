@@ -40,13 +40,13 @@
   </lec-curriculum>
 
 
-  <lec-review>
+  <lec-review >
 
   </lec-review>
 
-  <lec-review-modal>
+  <!-- <lec-review-modal :isvisibles = "isvisibles" @isvisibles = "isvisible">
 
-  </lec-review-modal>
+  </lec-review-modal> -->
 
   <lec-qna>
 
@@ -70,15 +70,23 @@ import LecLocation from './Lec_location.vue'
 import LecQna from './Lec_qna.vue'
 import LecReview from './Lec_review.vue'
 import LecClassNav from './Lec_class-nav.vue'
-import LecReviewModal from './lec_review_modal.vue'
+// import LecReviewModal from './lec_review_modal.vue'
 
 export default {
   data(){
     return {
       // intoTop: $(".intro").scrollTop(),
-
+      // isvisibles: false
     }
   },
+
+  methods: {
+    // isvisible(){
+    //   this.isvisibles = !this.isvisibles;
+    //   console.log("isissdsdi");
+    // },
+  },
+
   components: {
     LecSummary,
     LecSpeaking,
@@ -89,7 +97,7 @@ export default {
     LecQna,
     LecReview,
     LecClassNav,
-    LecReviewModal,
+    // LecReviewModal,
 
   },
   // props: ['visibles'],

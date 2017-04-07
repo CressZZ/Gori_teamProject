@@ -22,6 +22,7 @@
             </div>
             <!-- menu -->
             <!--  <ul class="header__navi__lnb_list off<<<<<">-->
+
             <nav class="header__navi":class="{off: isoffs}">
                 <ul class="header__navi__lnb_list"  >
                   <li class="navi_menu navi_menu_tutor ">
@@ -46,6 +47,7 @@
                   <li class="navi_menu navi_menu_logout is_login off">
                     <a href="#" >로그아웃</a>
                   </li>
+
                 </ul>
 
             </nav>

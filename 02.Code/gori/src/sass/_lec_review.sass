@@ -33,20 +33,25 @@
     display: flex
     flex-flow: row wrap
     margin-bottom: 48px
-
-    strong
-      min-width: 40px
-      display: block
     li
       display: flex
       align-items: center
-      justify-content: space-between
+      // justify-content: space-between
       width: 50%
+      strong
+        width: 40%
+        min-width: 50px
+        display: block
       [class *= reveiw__stars__]
         display: flex
-        justify-content: space-between
+        // justify-content: space-between
         margin-right: 20%
         color: gold
+  .review__write > div
+    @include bording-mobile (black, dashed)
+    &:last-child
+      &::after
+        border-bottom: 0
 
   .review__write__writer__info-1
     width: 16%
@@ -88,17 +93,25 @@
     li
       display: flex
       align-items: center
-      justify-content: space-between
+      // justify-content: space-between
       width: 50%
+      strong
+        width: 40%
+        min-width: 70px
+      .review__stars__total
       [class *= reveiw__stars__]
+        width: 40%
         display: flex
-        justify-content: space-between
+        // justify-content: space-between
         margin-right: 30px
         color: gold
 
   .review__write > div
-    &:first-child
-      @include bording-pc (black, dashed)
+    @include bording-pc (black, dashed)
+    &:last-child
+      &::after
+        border-bottom: 0
+
       // border-color: black
 
   .review__write__writer__info-1

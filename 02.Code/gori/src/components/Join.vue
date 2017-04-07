@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="join" v-cloak>
-    <div v-if="is_visible" class="modal is-active">
+    <div v-if="joinvisibles" class="modal is-active">
       <div class="modal-background" @click="closeModal"></div>
         <div class="modal-content">
         <div class="box">
@@ -37,15 +37,16 @@
 export default {
   data: function() {
     return {
-      is_visible: true
+      // joinvisible: false
     }
   },
   methods: {
     closeModal: function() {
       console.log('clicked');
-      this.is_visible = false;
+      this.$emit('joinnonVisible');
     }
-  }
+  },
+props: ['joinvisibles'],
 }
 </script>
 

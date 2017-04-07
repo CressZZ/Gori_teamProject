@@ -34,7 +34,7 @@ body
   padding: 0px 0 24px 0
 
 .login__field, .sign-up__field
-  font-size: 0
+  // font-size: 0
 
 input
   border: 1px solid $point-color
@@ -50,18 +50,31 @@ input
   color: #fff
   font-size: $font-m-size
 
+// 로그인 상태유지 변경!!!!!!
+.checkbox-custom
+  display: flex
+  align-items: center
+  font-size: $font-m-size
+  
+  justify-content: space-between
+  width: 300px
+  margin: 0 auto !important
+  input
+    width: 50px
+    margin: 0
+
 .panel-line
- padding: 0px 30px 20px 30px
- position: relative
+  padding: 0px 30px 20px 30px
+  position: relative
 
 .or
- width: 60px
- height: 20px
- background: #fff
- position: absolute
- top: -6px
- left: 40%
- font-size: $font-base-size
+  width: 60px
+  height: 20px
+  background: #fff
+  position: absolute
+  top: -6px
+  left: 40%
+  font-size: $font-base-size
 
 .divider
   border: 0

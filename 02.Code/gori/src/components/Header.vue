@@ -104,8 +104,8 @@ export default {
       this.currentPage = "pc"
       this.isoffs = false
     } else if (this.windowWidth < 599) {
-      this.currentPage = "pc"
-      this.isoffs = true       
+      this.currentPage = "mobile"
+      this.isoffs = true
     }
     window.addEventListener('resize', this.windowResize);
   },

@@ -1,6 +1,6 @@
 <template lang="html">
   <!-- review -->
-  <div v-if="is_visible" class="modal is-active">
+  <div v-if="isvisibles" class="modal is-active">
     <div class="modal-background" @click="closeModal"></div>
     <div class="modal-content">
           <form id="pointWriteArea">
@@ -100,21 +100,28 @@
              <button class="modal-close" @click="closeModal">X</button>
           </div>
           </div>
+    
+
 </template>
 
 <script>
+import LecReviewModal from './lec_review_modal.vue'
+
 export default {
   data: function() {
     return {
-      is_visible: true
+      // isvisibles: true
     }
   },
   methods: {
     closeModal: function() {
       console.log('clicked');
-      this.is_visible = false;
+      this.$emit('isvisibles')
     }
-  }
+  },
+  props:  ['isvisibles'],
+
+
 }
 </script>
 

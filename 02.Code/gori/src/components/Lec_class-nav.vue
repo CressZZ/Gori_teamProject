@@ -27,18 +27,36 @@ export default {
       isFixed: false,
       navHeight: $(".class_nav__wrapper>ul").height(),
 
-
+      isoffs: true,
+      WindowWidth: window.innerWidth,
+      currentPage: "pc"
     }
   },
   methods: {
+    windowResize(e){
+      this.windowWidth = e.currentTarget.innerWidth;
+      console.log("windowWidth:",this.windowWidth)
+      if (this.windowWidth > 600){
+        this.isoffs = false
+        this.currentPage = "pc"
+      } else if (this.windowWidth < 599){
+        if(this.currentPage === "pc"){
+          this.isoffs = true
+          this.currentPage = "mobile"
+        }
+      }
+      // if (this.windowWidth < 599){
+        // this.isoffs = true
+      // }
+    },
     navPosition(){
-      if ($(window).width() < 600){
+      if (this.currentPage === "mobile"){
         if( $(window).scrollTop() > $(".class_nav").offset().top ) {
           this.isFixed = true
           this.navHeight = 0
         }
         else{
-          this.isFixed= false
+          this.isFixed = false
           this.navHeight = $(".class_nav__wrapper>ul").height()
         }
       }
@@ -47,22 +65,39 @@ export default {
         this.navHeight = $(".class_nav__wrapper>ul").height()
       }
     },
-
-
-  },
-  computed: {
-
-
   },
 
   mounted(){
-    // this.window.
-    $(window).on('scroll', this.navPosition);
+    this.windowWidth = window.innerWidth
+    if (this.windowWidth > 600){
+      this.currentPage = "pc"
+      console.log("this.currentPage:",this.currentPage);
+      // this.isoffs = false
+    } else if (this.windowWidth < 599) {
+      this.currentPage = "mobile"
+      console.log("this.currentPage:",this.currentPage)
 
+      // this.isoffs = true
+    }
+    window.addEventListener('resize', this.windowResize);
+    window.addEventListener('scroll', this.navPosition);
 
   },
-  destroyed(){
-    window.removeEventListener('scroll', this.navPosition);
+  beforeDestroy() {
+   window.removeEventListener('resize', this.windowResize)
+   window.addEventListener('scroll', this.navPosition);
+
+  },
+  // mounted(){
+  //   // this.window.
+  //   $(window).on('scroll', this.navPosition);
+  // },
+  // destroyed(){
+  //   window.removeEventListener('scroll', this.navPosition);
+  // },
+
+  computed: {
+
   },
 }
 

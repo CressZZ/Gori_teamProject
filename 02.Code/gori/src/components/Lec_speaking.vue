@@ -20,7 +20,6 @@ export default {
 </script>
 
   <style lang="sass">
-    // @import "../sass/gen_source"
-    // @import "../sass/gen_mixin"
-    // @import "../sass/lec_speaking"
+    // .speaking
+    //   transition: all 1s
   </style>

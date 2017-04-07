@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="join"  v-cloak>
+  <div id="login"  v-cloak>
     <div v-if="loginvisibles" class="modal is-active">
       <div class="modal-background" @click="closeModal"></div>
         <div class="modal-content" >
@@ -11,10 +11,11 @@
               <input type="email" placeholder="이메일 주소" title="이메일 주소" ng-model="email" value="123@gmail.com" required="" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-email ng-valid-required">
               <label class="skip-nav" for="">비밀번호</label>
               <input type="password" placeholder="비밀번호" required="" title="비밀번호" ng-model="pw" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required">
-              <div class="checkbox-custom checkbox-default">
               <button class="login__email-btn" ng-click="Login()">로그인</button>
-              <input id="remember_me" name="user[remember_me]" type="checkbox">
-              <label class="remember_me" for="remember_me">로그인 상태 유지</label>
+              <div class="checkbox-custom checkbox-default">
+                <input id="remember_me" name="user[remember_me]" type="checkbox">
+                <label for="remember_me">로그인 상태 유지</label>
+
               </div>
             </form>
             <div class="login_else">
@@ -38,10 +39,16 @@
               <a href="/#/signup"> 회원가입</a>
             </p>
              <button class="modal-close" @click="closeModal">X</button>
+             <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
           </div>
           </div>
           </div>
         </div>
+
   </div>
 </template>
 
@@ -54,15 +61,47 @@ export default {
   },
   methods: {
     closeModal: function() {
-      console.log('clicked');
       this.$emit('loginnonVisible');
     }
   },
   props: ['loginvisibles'],
+
+  created(){
+    console.log("DDDDDDDDDD")
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '198995523925316',
+        cookie     : true,  // enable cookies to allow the server to access
+                        // the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v2.8' // use graph api version 2.8
+      });
+      FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+
+},
 }
+
+
+
+
+
+
 </script>
 
 <style lang="sass">
-  // @import "../sass/total"
-  // @import "../sass/common_login_join"
+
+
 </style>

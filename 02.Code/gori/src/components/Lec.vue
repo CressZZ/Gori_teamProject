@@ -2,6 +2,13 @@
 
   <div>
 
+  <!-- <join>
+
+  </join>
+
+  <login :visible="visibles" @nonVisible = "nonVisible">
+
+  </login> -->
 
   <lec-summary>
 
@@ -51,6 +58,9 @@
 </template>
 
 <script>
+// import Join from './Join.vue'
+// import Login from './Login.vue'
+
 import LecSummary from './Lec_summary.vue'
 import LecSpeaking from './Lec_speaking.vue'
 import LecApply from './Lec_apply.vue'
@@ -65,6 +75,7 @@ import LecReviewModal from './lec_review_modal.vue'
 export default {
   data(){
     return {
+      // intoTop: $(".intro").scrollTop(),
 
     }
   },
@@ -80,12 +91,22 @@ export default {
     LecClassNav,
     LecReviewModal,
 
-  }
+  },
+  // props: ['visibles'],
+  // methods:{
+  //   nonVisible(){
+  //     this.$emit('nonVisible')
+  //   }
+  // },
+  // created() {
+  // },
 
 }
 </script>
 
   <style lang="sass">
+
+
     // @import "../sass/total"
     // @import "../sass/lec-index"
   </style>

@@ -15,8 +15,8 @@
         <li>
           <strong>종합점수</strong>
           <div class="reveiw__stars__total">
-            <div class="star-1st"><i class="icon-star"></i></div>
-            <div class="star-2nd"><i class="icon-star"></i></div>
+            <!-- <div class="star-1st"><i class="icon-star"></i></div> -->
+            <!-- <div class="star-2nd"><i class="icon-star"></i></div> -->
             <div class="star-3rd"><i class="icon-star"></i></div>
             <div class="star-4th"><i class="icon-star"></i></div>
             <div class="star-5th"><i class="icon-star"></i></div>

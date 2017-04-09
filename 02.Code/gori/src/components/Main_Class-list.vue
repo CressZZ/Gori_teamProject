@@ -114,7 +114,7 @@ export default {
       console.log("windowWidth:",this.windowWidth)
       if (this.windowWidth > 960){
         // this.test = 0
-        $('.class-list__carousel').animate({scrollLeft : 0}, 300);
+        // $('.class-list__carousel').animate({scrollLeft : 0}, 300);
       }
       if (this.windowWidth < 959){
         // this.test = 0

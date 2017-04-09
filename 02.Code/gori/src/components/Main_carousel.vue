@@ -8,25 +8,28 @@
       <div class="banner__carousel" id="carousel">
         <!-- Carousel list -->
         <ul class="banner__carousel__list">
-          <li>
-            <video autoplay="" class="video_play" loop="" muted="" width="100%">
-              <source src="../media/video/sample.mp4" type="video/webm">
+            <li class="test" v-bind:style="{ transform: 'translate(' + trans + '%)' }">
+              <video autoplay="" class="video_play" loop="" muted="" width="100%">
+                <source src="src/media/video/sample.mp4" type="video/webm">
               </video>
             </li>
-            <li class="row col-4-4 off"><img class="banner__carousel__list__item" src="img/cat.jpg" alt="홍보배너"></li>
-            <li class="row col-4-4 off"><img class="banner__carousel__list__item" src="img/cat.jpg" alt="소개"></li>
+            <li class="" v-bind:style="{ transform: 'translate(' + trans + '%)' }">
+              <img class="banner__carousel__list__item" src="../media/img/temp/cat.jpg" alt="홍보배너">
+            </li>
+            <li class=" " v-bind:style="{ transform: 'translate(' + trans + '%)' }">
+              <img class="banner__carousel__list__item" src="../media/img/temp/cat.jpg" alt="소개">
+            </li>
           </ul>
           <!-- Carousel nav ( ○○●○○ )  -->
           <ul class="banner__carousel__nav col-2-4 push-1-4">
-            <li data-target="#carousel" data-slide-to="0"><a href="#" class="carousel">◦</a></li>
-            <li data-target="#carousel" data-slide-to="1"><a href="#" class="carousel active">●</a></li>
-            <li data-target="#carousel" data-slide-to="2"><a href="#" class="carousel">◦</a></li>
+            <li data-target="#carousel" data-slide-to="0" @click = "move1"><a href="#" class="carousel">{{target1}}</a></li>
+            <li data-target="#carousel" data-slide-to="1"  @click = "move2"><a href="#" class="carousel active">{{target2}}</a></li>
+            <li data-target="#carousel" data-slide-to="2"  @click = "move3"><a href="#" class="carousel">{{target3}}</a></li>
           </ul>
-          <!-- Carousel buttons-->
+          <!-- Carousel buttons-->●◦
           <div class="banner__carousel__buttons ">
-            <button class="banner__carousel__left pd20" type="button"><i class="icon-left-open-big"></i></button>
-            <button class="banner__carousel__right col-4-4 pd20" type="button"><i class="icon-right-open-big"></i></button>
-            <!-- <button class="header__navi__btn-menu--open pd20 on" type="button" name="button"><i class="icon-menu"></i></button> -->
+            <button class="banner__carousel__left " @click="moveLeft" type="button"><i class="icon-left-open-big"></i></button>
+            <button class="banner__carousel__right " @click="moveRight" type="button"><i class="icon-right-open-big"></i></button>
           </div>
         </div>
         <!-- Banner-input -->
@@ -46,11 +49,81 @@
 
 <script>
 export default {
+  data: function() {
+    return{
+      WindowWidth: window.innerWidth,
+      target1: "●",
+      target2: "◦",
+      target3: "◦",
+      trans: 0,
+    }
+  },
+  methods: {
+    moveRight(){
+      console.log("click")
+      if (this.trans >= -100) {
+
+        this.trans = this.trans - 100;
+        if(this.trans === 0){
+          this.target1 =  "●"
+          this.target2 = "◦"
+          this.target3 = "◦"
+        } else if (this.trans === -100){
+          this.target1 = "◦"
+          this.target2 = "●"
+          this.target3 = "◦"
+        } else if (this.trans === -200){
+          this.target1 = "◦"
+          this.target2 = "◦"
+          this.target3 = "●"
+        }
+      }
+    },
+    moveLeft(){
+      if (this.trans < 0) {
+        this.trans = this.trans + 100;
+        if(this.trans === 0){
+          this.target1 =  "●"
+          this.target2 = "◦"
+          this.target3 = "◦"
+        } else if (this.trans === -100){
+          this.target1 = "◦"
+          this.target2 = "●"
+          this.target3 = "◦"
+        } else if (this.trans === -200){
+          this.target1 = "◦"
+          this.target2 = "◦"
+          this.target3 = "●"
+        }
+      }
+    },
+    move1(){
+      this.trans = 0;
+      this.target1 =  "●"
+      this.target2 = "◦"
+      this.target3 = "◦"
+    },
+    move2(){
+      this.trans = -100;
+      this.target1 = "◦"
+      this.target2 = "●"
+      this.target3 = "◦"
+    },
+    move3(){
+      this.trans = -200;
+      this.target1 = "◦"
+      this.target2 = "◦"
+      this.target3 = "●"
+    }
+}
+
 }
 </script>
 
 <style lang="sass">
   // @import "../sass/total"
   // @import "../sass/main_carousel"
-
+  .banner__carousel__list
+    li
+      transition: 1s all
 </style>

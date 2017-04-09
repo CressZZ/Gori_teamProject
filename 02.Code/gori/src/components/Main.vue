@@ -17,6 +17,10 @@ import MainClassList from './main_class-list.vue'
 
 
 export default {
+  created(){
+    // body.removeChild(script)
+
+  },
   data(){
     return {
 

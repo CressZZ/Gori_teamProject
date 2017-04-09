@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <!-- review -->
   <div v-if="isvisibles" class="modal is-active">
     <div class="modal-background" @click="closeModal"></div>
@@ -14,11 +14,11 @@
                       <h3 class="review__rating__subtitle">종합점수</h3>
                         <ul>
                           <li class="st_off" id="total">
-                            <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
-                            <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
-                            <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
-                            <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
-                            <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                            <button type="button" class="star-1st" @click="point1"><i class="icon-star"></i></button>
+                            <button type="button" class="star-2nd" @click="point2"><i class="icon-star"></i></button>
+                            <button type="button" class="star-3rd" @click="point3"><i class="icon-star"></i></button>
+                            <button type="button" class="star-4th" @click="point4"><i class="icon-star"></i></button>
+                            <button type="button" class="star-5th" @click="point5"><i class="icon-star"></i></button>
                           </li>
                         </ul>
                         <span class="blind">종합점수</span><span class="star_count"><em id="totalValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -27,12 +27,11 @@
                         <h3 class="review__rating__subtitle">커리큘럼</h3>
                         <ul>
                           <li class="st_off" id="curriculum">
-                            <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
-                            <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
-                            <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
-                            <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
-                            <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
-                          </li>
+                            <button type="button" class="star-1st"><i class="icon-star"></i></button>
+                            <button type="button" class="star-2nd"><i class="icon-star"></i></button>
+                            <button type="button" class="star-3rd"><i class="icon-star"></i></button>
+                            <button type="button" class="star-4th"><i class="icon-star"></i></button>
+                            <button type="button" class="star-5th"><i class="icon-star"></i></button>                          </li>
                         </ul>
                         <span class="blind">커리큘럼</span><span class="star_count"><em id="curriculumValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
                       </div>
@@ -40,11 +39,11 @@
                         <h3 class="review__rating__subtitle">전달력</h3>
                         <ul>
                           <li class="st_off" id="skills">
-                            <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
-                            <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
-                            <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
-                            <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
-                            <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                            <button type="button" class="star-1st"><i class="icon-star"></i></button>
+                            <button type="button" class="star-2nd"><i class="icon-star"></i></button>
+                            <button type="button" class="star-3rd"><i class="icon-star"></i></button>
+                            <button type="button" class="star-4th"><i class="icon-star"></i></button>
+                            <button type="button" class="star-5th"><i class="icon-star"></i></button>
                           </li>
                         </ul>
                       <span class="blind">전달력</span><span class="star_count"><em id="skillsValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -53,11 +52,11 @@
                           <h3 class="review__rating__subtitle">준비성</h3>
                           <ul>
                             <li class="st_off" id="preparation">
-                              <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
-                              <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
-                              <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
-                              <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
-                              <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                              <button type="button" class="star-1st"><i class="icon-star"></i></button>
+                              <button type="button" class="star-2nd"><i class="icon-star"></i></button>
+                              <button type="button" class="star-3rd"><i class="icon-star"></i></button>
+                              <button type="button" class="star-4th"><i class="icon-star"></i></button>
+                              <button type="button" class="star-5th"><i class="icon-star"></i></button>
                             </li>
                           </ul>
                         <span class="blind">준비성</span><span class="star_count"><em id="preparationValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -66,11 +65,11 @@
                           <h3 class="review__rating__subtitle">친절도</h3>
                           <ul>
                             <li class="st_off" id="dedication">
-                              <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
-                              <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
-                              <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
-                              <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
-                              <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                              <button type="button" class="star-1st"><i class="icon-star"></i></button>
+                              <button type="button" class="star-2nd"><i class="icon-star"></i></button>
+                              <button type="button" class="star-3rd"><i class="icon-star"></i></button>
+                              <button type="button" class="star-4th"><i class="icon-star"></i></button>
+                              <button type="button" class="star-5th"><i class="icon-star"></i></button>
                             </li>
                           </ul>
                         <span class="blind">친절도</span><span class="star_count"><em id="dedicationValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -79,11 +78,11 @@
                           <h3 class="review__rating__subtitle">시간준수</h3>
                           <ul>
                             <li class="st_off" id="punctuality">
-                              <button type="button" title="0" class="_pointStarRatingList btn_star on">매우 불만족</button>
-                              <button type="button" title="1" class="_pointStarRatingList btn_star">불만족</button>
-                              <button type="button" title="2" class="_pointStarRatingList btn_star st_r">보통</button>
-                              <button type="button" title="3" class="_pointStarRatingList btn_star">만족</button>
-                              <button type="button" title="4" class="_pointStarRatingList btn_star st_r">매우만족</button>
+                              <button type="button" class="star-1st"><i class="icon-star"></i></button>
+                              <button type="button" class="star-2nd"><i class="icon-star"></i></button>
+                              <button type="button" class="star-3rd"><i class="icon-star"></i></button>
+                              <button type="button" class="star-4th"><i class="icon-star"></i></button>
+                              <button type="button" class="star-5th"><i class="icon-star"></i></button>
                             </li>
                           </ul>
                         <span class="blind">시간준수</span><span class="star_count"><em id="punctualityValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -100,12 +99,11 @@
              <button class="modal-close" @click="closeModal">X</button>
           </div>
           </div>
-    
+
 
 </template>
 
 <script>
-import LecReviewModal from './lec_review_modal.vue'
 
 export default {
   data: function() {
@@ -120,7 +118,9 @@ export default {
     }
   },
   props:  ['isvisibles'],
+  created() {
 
+  },
 
 }
 </script>

@@ -1,25 +1,26 @@
 <template>
   <div id="app">
       <router-view name='join' :joinvisibles="joinvisibles" @joinnonVisible = "joinnonVisible"></router-view>
-      <!-- <router-view name='join' v-if="joinvisibles"></router-view> -->
-
-    <router-view name='login' :loginvisibles="loginvisibles" @loginnonVisible = "loginnonVisible" ></router-view>
-    <router-view name="header" @joinvisible = "joinvisible" @loginvisible = "loginvisible"></router-view>
+      <router-view name='login' :loginvisibles="loginvisibles" @loginnonVisible = "loginnonVisible" ></router-view>
+      <router-view name="header" @joinvisible = "joinvisible" @loginvisible = "loginvisible"></router-view>
       <router-view ></router-view>
     <router-view name="footer"></router-view>
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'app',
   data () {
     return {
       joinvisibles: false,
-      loginvisibles: false,
-
+      loginvisibles: false
     }
   },
+created() {
+  // console.log('$:', $.fn.jquery);
+},
  methods: {
   loginvisible(){
     this.loginvisibles = true;

@@ -20,7 +20,7 @@ module.exports = {
             // other preprocessors should work out of the box, no loader config like this necessary.
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
-          }
+          },
           // other vue-loader options go here
         }
       },
@@ -35,12 +35,29 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.mp4$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          mimetype: 'video/mp4'
+        }
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+        options: {
+          attrs: ['video:src']
+        },
       }
+
     ]
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      // '$': 'jquery/dist/jquery.min.js'
     }
   },
   devServer: {

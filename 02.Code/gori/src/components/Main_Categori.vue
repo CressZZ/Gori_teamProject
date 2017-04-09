@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
      <!-- Categori -->
-    <section class="categori row">
+    <section class="categori">
       <h2 class="hidden__heading">CATEGORI</h2>
       <!-- categori list 하나 삭제. 어학? -->
       <!-- 반응형 이미지를 구현하기 위해 img를 div에 한번 더 넣음. 괜히 복잡해보이므로 수정 가능하다면 수정 추천 -->

@@ -20,55 +20,58 @@
 
 
 <script>
+// import $ from 'jquery'
+//
 export default {
 
   data() {
     return{
       isFixed: false,
-      navHeight: $(".class_nav__wrapper>ul").height(),
-
+      navHeight: null,
       isoffs: true,
-      WindowWidth: window.innerWidth,
+      WindowWidth: null,
       currentPage: "pc"
     }
   },
   methods: {
     windowResize(e){
       this.windowWidth = e.currentTarget.innerWidth;
-      console.log("windowWidth:",this.windowWidth)
       if (this.windowWidth > 600){
-        this.isoffs = false
+        this.isFixed= false,
         this.currentPage = "pc"
       } else if (this.windowWidth < 599){
         if(this.currentPage === "pc"){
-          this.isoffs = true
           this.currentPage = "mobile"
+          if( windowScrollTop > this.NavTop ) {
+            this.isFixed= true
+          }
         }
       }
-      // if (this.windowWidth < 599){
-        // this.isoffs = true
-      // }
     },
     navPosition(){
-      if (this.currentPage === "mobile"){
-        if( $(window).scrollTop() > $(".class_nav").offset().top ) {
+      var windowScrollTop = window.pageYOffset
+      this.NavTop = document.querySelector('.class_nav').offsetTop
+      console.log("NavTop",this.NavTop)
+       if (this.currentPage === "mobile"){
+        if( windowScrollTop > this.NavTop ) {
           this.isFixed = true
-          this.navHeight = 0
         }
         else{
           this.isFixed = false
-          this.navHeight = $(".class_nav__wrapper>ul").height()
         }
       }
       else {
         this.isFixed = false
-        this.navHeight = $(".class_nav__wrapper>ul").height()
       }
     },
   },
 
   mounted(){
+    this.navHeight = document.querySelector('.class_nav__wrapper>ul').getBoundingClientRect().height
+    console.log('navHeight:',this.navHeight);
     this.windowWidth = window.innerWidth
+    console.log("windowWidth:",this.windowWidth)
+
     if (this.windowWidth > 600){
       this.currentPage = "pc"
       console.log("this.currentPage:",this.currentPage);
@@ -76,26 +79,16 @@ export default {
     } else if (this.windowWidth < 599) {
       this.currentPage = "mobile"
       console.log("this.currentPage:",this.currentPage)
-
       // this.isoffs = true
     }
     window.addEventListener('resize', this.windowResize);
     window.addEventListener('scroll', this.navPosition);
-
   },
-  beforeDestroy() {
+  destroyed() {
    window.removeEventListener('resize', this.windowResize)
-   window.addEventListener('scroll', this.navPosition);
+   window.removeEventListener('scroll', this.navPosition);
 
   },
-  // mounted(){
-  //   // this.window.
-  //   $(window).on('scroll', this.navPosition);
-  // },
-  // destroyed(){
-  //   window.removeEventListener('scroll', this.navPosition);
-  // },
-
   computed: {
 
   },

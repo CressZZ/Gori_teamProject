@@ -1,12 +1,15 @@
 <template lang="html">
     <div>
-
+      <!-- <router-link tag="li" v-for = "item in classlist" class="" v-bind:style="{ transform: 'translate(' + trans + '%)' }" class="class" :to="`lec/${item.pk}`" :classitem="item">
+        {{item.title}}
+      </router-link> -->
 
           <!-- class -->
           <section class="class-list row">
             <div class="class-list__heading_wrapper">
               <h2 class="class-list__heading ">POPULAR CLASS</h2>
               <p class="class-list__subtitle ">당신이 배우고 싶은것, 무엇이든 Gori</p>
+
             </div>
             <!-- ::before 선택자로 '+' 기호 추가 요망 -->
             <!-- Carousel -->
@@ -15,14 +18,13 @@
               <ul class="class-list__carousel__list row">
 
                 <!-- is_new class -->
-                <li v-for = "classList in classLists" class="" v-bind:style="{ transform: 'translate(' + test + '%)' }">
-                  <!-- <a class="class">는 재활용이 가능 하도록 별도관리. -->
-                  <a href="#" class="class">
-                    <!-- 아래 <div class="is_new"> 는 가상선택자로 하는 것을 추천  -->
+                <!-- <router-link tag="li" to="/lec" class="navi_menu navi_menu_service " v-for = "classlist in classlist" class="" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
+                <!-- <li v-for = "classlist in classlist" class="" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
+                  <router-link tag="li" v-for = "(item, index) in classlist" v-bind:style="{ transform: 'translate(' + trans + '%)' }" class="class" :to="`lec/${index + 1}`" :key="item.id" >
                     <div class="is_new">new</div>
-                    <a href="#"><button type="button" class="class__wish is_wish"><i class="icon-heart"></i></button></a>
-                    <img src="../media/img/temp/cat_4.jpg" alt="" class="class__tutor-picture">
-                    <p class="class__tutor-name">cressZZ</p>
+                    <button type="button" class="class__wish is_wish"><i class="icon-heart"></i></button>
+                    <img :src="`${item.tutor.profile_image}`" :alt="`${item.tutor.nickname}`" class="class__tutor-picture">
+                    <p class="class__tutor-name">{{item.tutor.name}}</p>
                     <div class="class__star-total">
                       <div class="star-1st"><i class="icon-star"></i></div>
                       <div class="star-2nd"><i class="icon-star"></i></div>
@@ -31,15 +33,15 @@
                       <div class="star-5th"><i class="icon-star"></i></div>
                       <p class="start-total-num">(3)</p>
                     </div>
-                    <h2 class="class__intro__title">{{classList.title}}</h2>
+                    <h2 class="class__intro__title">{{item.title}}</h2>
                     <dl class="class__intro">
-                      <dd class="class__intro__group">그룹</dd>
-                      <dd class="class__intro__review-num">서울대입구</dd>
-                      <dd class="class__intro__location">4회</dd>
-                      <dd class="class__intro__times">2시간</dd>
+                      <dd class="class__intro__group">{{item.type}}</dd>
+                      <dd class="class__intro__review-num">{{item.regions[0] ? item.regions[0] : "대한민국"}}</dd>
+                      <dd class="class__intro__location">{{item.number_of_class}} 회</dd>
+                      <dd class="class__intro__times">{{item.hours_per_class}} 시간</dd>
                     </dl>
-                  </a>
-                </li>
+                </router-link>
+              <!-- </li> -->
 
               </ul>
             </div>
@@ -62,63 +64,36 @@ export default {
   data: function() {
     return{
       WindowWidth: window.innerWidth,
-      test: 0,
-      classLists:[
-        {
-          title: "1"
-        },
-        {
-          title: "2"
-        },
-        {
-          title: "3"
-        },
-        {
-          title: "4"
-        },
-        {
-          title: "5"
-        },
-        {
-          title: "6"
-        },
-        {
-          title: "7"
-        },
-        {
-          title: "8"
-        },
-      ],
-
+      trans: 0,
     }
-
+  },
+  watch:{
 
   },
+  props:['classlist'],
   methods: {
     moveRight(){
-      if (this.test >= this.classLength) {
-        this.test = this.test - 102;
-        console.log("this.test:",this.test)
+      if (this.trans >= this.classLength) {
+        this.trans = this.trans - 102;
+        console.log("this.trans:",this.trans)
         console.log("this.classLength():",this.classLength)
        }
     // console.log(this.classLists.length)
     },
     moveLeft(){
-      if (this.test < 0) {
-        this.test = this.test + 102;
-        console.log("this.test:",this.test)
+      if (this.trans < 0) {
+        this.trans = this.trans + 102;
+        console.log("this.trans:",this.trans)
       }
     },
     windowResize(e){
       this.windowWidth = e.currentTarget.innerWidth;
       console.log("windowWidth:",this.windowWidth)
       if (this.windowWidth > 960){
-        // this.test = 0
-        // $('.class-list__carousel').animate({scrollLeft : 0}, 300);
+      document.querySelector(".class-list__carousel").scrollLeft = 0
       }
       if (this.windowWidth < 959){
-        // this.test = 0
-        this.test = 0;
+        this.trans = 0;
       }
 
 
@@ -127,7 +102,7 @@ export default {
 
   computed: {
     classLength(){
-        return (-102 * (this.classLists.length - 5) )
+        return (-102 * (this.classlist.length - 5) )
     }
   },
   mounted() {

@@ -2,7 +2,7 @@
     <div>
       <main-carousel></main-carousel>
       <main-categori></main-categori>
-      <main-class-list></main-class-list>
+      <main-class-list :classlist ="classlist"></main-class-list>
 
     </div>
 </template>
@@ -17,13 +17,13 @@ import MainClassList from './main_class-list.vue'
 
 
 export default {
+  props: ['classlist'],
+
   created(){
-    // body.removeChild(script)
 
   },
   data(){
     return {
-
     }
   },
   components: {

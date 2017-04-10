@@ -42,6 +42,16 @@ export default {
 //
   },
   destroyed(){
+    // var location = document.querySelector('.location')
+    // var script = document.querySelector('.map')
+    // console.log(location)
+    // console.log(script)
+    //
+    // location.removeChild(script)
+
+
+    // location.removeChild(script)
+
     // console.log('destroy')
     // var body = document.querySelector('body')
     // var location = document.querySelector('.location')

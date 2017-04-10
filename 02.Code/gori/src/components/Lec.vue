@@ -1,7 +1,7 @@
 <template lang="html">
 
   <div>
-
+  <!-- <p>parameter ID {{id}}</p> -->
   <!-- <join>
 
   </join>
@@ -10,42 +10,42 @@
 
   </login> -->
 
-  <lec-summary>
+  <lec-summary :classlist = "classlist" :lecid = "id">
 
   </lec-summary>
 
-  <lec-apply>
+  <lec-apply  :classlist = "classlist" :lecid = "id">
   </lec-apply>
 
-  <lec-class-nav>
+  <lec-class-nav >
   </lec-class-nav>
 
 
-  <lec-speaking>
+  <lec-speaking  :classlist = "classlist" :lecid = "id">
 
   </lec-speaking>
 
-  <lec-intro>
+  <lec-intro  :classlist = "classlist" :lecid = "id">
 
   </lec-intro>
 
 
-  <lec-location>
+  <lec-location  :classlist = "classlist" :lecid = "id">
 
   </lec-location>
 
 
-  <lec-curriculum>
+  <lec-curriculum  :classlist = "classlist" :lecid = "id">
 
   </lec-curriculum>
 
 
-  <lec-review >
+  <lec-review  :classlist = "classlist" :lecid = "id">
 
   </lec-review>
 
 
-  <lec-qna>
+  <lec-qna  :classlist = "classlist" :lecid = "id">
 
   </lec-qna>
 
@@ -71,10 +71,21 @@ import LecClassNav from './Lec_class-nav.vue'
 export default {
   data(){
     return {
-      // intoTop: $(".intro").scrollTop(),
-      // isvisibles: false
+      id: this.$route.params.lecid
+
     }
   },
+  watch: {
+    '$route' (to, from){
+      this.id = to.params.lecid
+    }
+  },
+  mounted(){
+    // console.log('this.classitem:', this.clssItem)
+    // window.scrollTo(0, 0);
+    console.log('router.params.params:',this.id)
+      },
+  props: ['test', 'classlist', 'item'],
 
   methods: {
     // isvisible(){
@@ -108,7 +119,6 @@ export default {
 </script>
 
   <style lang="sass">
-
 
     // @import "../sass/total"
     // @import "../sass/lec-index"

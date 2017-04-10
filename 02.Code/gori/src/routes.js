@@ -19,7 +19,7 @@ export const routes = [
     },
   },
   {
-    path: '/lec',
+    path: '/lec/:lecid',
     name: 'lec',
     components: {
       'default': Lec,

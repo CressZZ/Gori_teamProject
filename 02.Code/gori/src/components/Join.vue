@@ -1,10 +1,12 @@
-<template lang="html">
-  <div id="join" v-cloak>
+<template >
+  <div id="join" v-cloak  >
     <div v-if="joinvisibles" class="modal is-active">
-      <div class="modal-background" @click="closeModal"></div>
-        <div class="modal-content">
+      <div class="modal-background" @click="closeModal">
+
+      </div>
+      <div class="modal-content" >
         <div class="box">
-        <div class="sign-up__container">
+          <div class="sign-up__container">
             <h1 class="sign-up__heading">회원가입</h1>
             <form class="sign-up__field ng-pristine ng-valid ng-valid-email ng-valid-required">
               <label class="info skip-nav" for="email"></label>
@@ -24,11 +26,13 @@
             <div class="facebook__join ng-scope" data-ng-controller="FBLoginController">
               <button class="facebook__join-btn" ng-click="FBLogin()">facebook 회원가입</button>
             </div>
+
             <button class="modal-close" @click="closeModal">X</button>
-            </div>
           </div>
         </div>
-      </div>
+    </div>
+    </div>
+
   </div>
 </template>
 
@@ -41,12 +45,43 @@ export default {
     }
   },
   methods: {
+    // keyClose
     closeModal: function() {
       console.log('clicked');
       this.$emit('joinnonVisible');
     }
   },
-props: ['joinvisibles'],
+  props: ['joinvisibles'],
+
+  created(){
+    //   window.fbAsyncInit = function() {
+    //     FB.init({
+    //       appId      : '198995523925316',
+    //       cookie     : true,  // enable cookies to allow the server to access
+    //                       // the session
+    //       xfbml      : true,  // parse social plugins on this page
+    //       version    : 'v2.8' // use graph api version 2.8
+    //     });
+    //     FB.getLoginStatus(function(response) {
+    //   statusChangeCallback(response);
+    // });
+    //
+    // };
+    //
+    // (function(d, s, id) {
+    //   var js, fjs = d.getElementsByTagName(s)[0];
+    //   if (d.getElementById(id)) return;
+    //   js = d.createElement(s); js.id = id;
+    //   js.src = "//connect.facebook.net/en_US/sdk.js";
+    //   fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk'));
+
+
+
+  },
+  mounted(){
+  
+  },
 }
 </script>
 

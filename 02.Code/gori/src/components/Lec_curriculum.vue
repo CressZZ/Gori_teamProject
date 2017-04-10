@@ -36,8 +36,8 @@ export default {
     }
   },
    created(){
-     this.resource = this.$resource('gori_test.json')
-     console.log('this.$resource:', this.resource)
+    //  this.resource = this.$resource('gori_test.json')
+    //  console.log('this.$resource:', this.resource)
     //  console.log(this.$http);
     // this.$http.post('https://gori-f0de6.firebaseio.com/gori_test.json', this.user_input)
     //           .then(function(response){
@@ -57,28 +57,28 @@ export default {
     //             console.log(Array.isArray(datalist));
     //             this.datalist = datalist
     //           })
-    this.resource.save({},this.user_input)
-                  .then(function(response){
-                    console.log(response);
-                    return response.json();
-                  })
-                  .then(function(test){
-                    console.log("test:",test)
-                    console.log("value:",Object.values(test))
-                  })
-    this.resource.get({})
-                  .then(function(r){
-                    console.log(r)
-                    console.log('body:', r.body)
-                    console.log('body:', Object.values(r.body))
-
-                    return r.json()
-                  })
-                  .then(function(t){
-                    console.log("t:",t)
-                    console.log("value:",Object.values(t))
-
-                  })
+    // this.resource.save({},this.user_input)
+    //               .then(function(response){
+    //                 console.log(response);
+    //                 return response.json();
+    //               })
+    //               .then(function(test){
+    //                 console.log("test:",test)
+    //                 console.log("value:",Object.values(test))
+    //               })
+    // this.resource.get({})
+    //               .then(function(r){
+    //                 console.log(r)
+    //                 console.log('body:', r.body)
+    //                 console.log('body:', Object.values(r.body))
+    //
+    //                 return r.json()
+    //               })
+    //               .then(function(t){
+    //                 console.log("t:",t)
+    //                 console.log("value:",Object.values(t))
+    //
+    //               })
 
 
    }

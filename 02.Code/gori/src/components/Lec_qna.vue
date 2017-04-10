@@ -97,7 +97,7 @@ export default {
         name: "박영진",
         date: "99.03.24",
         time: "99:20",
-        content: ""
+        content: "dsssd"
       }
     }
   },
@@ -105,8 +105,14 @@ export default {
     addNewQuestion(){
       this.questions.push(this.newQuestion)
       this.newQuestion.content = ""
+      console.log("questions:",this.questions)
     },
   },
+  created(){
+    console.log("questions:",this.questions)
+    console.log("newQuestion:",this.newQuestion)
+
+  }
 }
 </script>
 

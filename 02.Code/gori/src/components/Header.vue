@@ -75,7 +75,7 @@ export default {
       this.$emit('joinvisible')
     },
     isoff(){
-      if(this.windowWidth < 600){
+      if(this.windowWidth < 689){
         this.isoffs = !this.isoffs
 
       }
@@ -84,10 +84,10 @@ export default {
     windowResize(e){
       this.windowWidth = e.currentTarget.innerWidth;
       console.log("windowWidth:",this.windowWidth)
-      if (this.windowWidth > 600){
+      if (this.windowWidth > 690){
         this.isoffs = false
         this.currentPage = "pc"
-      } else if (this.windowWidth < 599){
+      } else if (this.windowWidth < 689){
         if(this.currentPage === "pc"){
           this.isoffs = true
           this.currentPage = "mobile"
@@ -100,10 +100,10 @@ export default {
   },
   created() {
     this.windowWidth = window.innerWidth
-    if (this.windowWidth > 600){
+    if (this.windowWidth > 690){
       this.currentPage = "pc"
       this.isoffs = false
-    } else if (this.windowWidth < 599) {
+    } else if (this.windowWidth < 689) {
       this.currentPage = "mobile"
       this.isoffs = true
     }

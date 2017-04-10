@@ -36,10 +36,10 @@ export default {
   methods: {
     windowResize(e){
       this.windowWidth = e.currentTarget.innerWidth;
-      if (this.windowWidth > 600){
+      if (this.windowWidth > 690){
         this.isFixed= false,
         this.currentPage = "pc"
-      } else if (this.windowWidth < 599){
+      } else if (this.windowWidth < 689){
         if(this.currentPage === "pc"){
           this.currentPage = "mobile"
           var windowScrollTop = window.pageYOffset
@@ -87,11 +87,11 @@ export default {
     this.windowWidth = window.innerWidth
     console.log("windowWidth:",this.windowWidth)
 
-    if (this.windowWidth > 600){
+    if (this.windowWidth > 690){
       this.currentPage = "pc"
       console.log("this.currentPage:",this.currentPage);
       // this.isoffs = false
-    } else if (this.windowWidth < 599) {
+    } else if (this.windowWidth < 689) {
       this.currentPage = "mobile"
       console.log("this.currentPage:",this.currentPage)
       // this.isoffs = true

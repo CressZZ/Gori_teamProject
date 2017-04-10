@@ -5,12 +5,12 @@
     <nav class="class_nav__wrapper" style="z-index: 99" >
       <ul>
         <li class="right-border">
-          <a href="" @click.prevent="scrollTointro">수업소개</a></li>
+          <a href="" @click.prevent="scrollToIntro">수업소개</a></li>
         <li>
-          <a href="#review" class="">리뷰보기</a>
+          <a href="" @click.prevent="scrollToReview">리뷰보기</a>
         </li>
         <li class="left-border">
-          <a href="#qna" >문의하기</a>
+          <a href="" @click.prevent="scrollToQna" >문의하기</a>
         </li>
       </ul>
     </nav>
@@ -42,6 +42,7 @@ export default {
       } else if (this.windowWidth < 599){
         if(this.currentPage === "pc"){
           this.currentPage = "mobile"
+          var windowScrollTop = window.pageYOffset
           if( windowScrollTop > this.NavTop ) {
             this.isFixed= true
           }
@@ -64,6 +65,20 @@ export default {
         this.isFixed = false
       }
     },
+    scrollToIntro(){
+      this.introTop = document.querySelector('#intro').offsetTop
+      // console.log("introTop:", this.introTop)
+      window.scrollTo(0, this.introTop - 84)
+    },
+    scrollToReview(){
+      this.reviewTop = document.querySelector('#review').offsetTop
+      window.scrollTo(0, this.reviewTop - 84)
+    },
+    scrollToQna(){
+      this.qnaTop = document.querySelector('#qna').offsetTop
+      window.scrollTo(0, this.qnaTop - 84)
+    },
+
   },
 
   mounted(){
@@ -103,7 +118,7 @@ export default {
         position: fixed
         top: 0
 
-    .class_nav
-      height:
-      transition: 0.7s height
+    // .class_nav
+      // height:
+      // transition: 0.7s all
   </style>

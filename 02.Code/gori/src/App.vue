@@ -17,6 +17,8 @@ export default {
       joinvisibles: false,
       loginvisibles: false,
       classlistTemp: [],
+      newclasslist: [],
+      // datalist:[],
       classlist:
       [
     {
@@ -165,37 +167,42 @@ export default {
     }
   },
 created() {
-  for (var i = 0; i < this.classlist.length; i++){
-    if(this.classlist[i].type === "그룹 수업"){
-      this.classlistTemp[i] = {type: "1:1"};
-      console.log('temp:', this.classlistTemp[i])
-    }
-  }
+  // for (var i = 0; i < this.classlist.length; i++){
+  //   if(this.classlist[i].type === "그룹 수업"){
+  //     this.classlistTemp[i] = {type: "1:1"};
+  //     console.log('temp:', this.classlistTemp[i])
+  //   }
+  // };
 
-  // this.$http.get('https://gori-f0de6.firebaseio.com/gori_test')
+  this.newclasslist = this.classlist.filter(function(item){
+    return item.type === "1:1 수업";
+});
+  console.log("Filter results:",this.newclasslist);
+
+  // this.$http.get('https://gori-f0de6.firebaseio.com/gori_test.json')
   //           .then( function(response) {
   //             console.log("response:",response)
   //             });
 
 
   // console.log('$:', $.fn.jquery);
-  // this.$http.get('https://mozzi.co.kr/api/talent/list/')
+  this.$http.get('https://mozzi.co.kr/api/talent/list/')
   // this.$http.get('https://gori-f0de6.firebaseio.com/gori_test.json')
 
-            // .then(function(r){
-              // console.log(r)
-              // return r.json()
-            // })
-            // .then(function(data){
-            //   console.log(data)
-            //   this.datalist = Object.values(data);
-            //   console.log('datalist:',this.datalist)
-            // })
+            .then(function(response){
+            //   console.log(r)
+              return response.json()
+            })
+            .then(function(data){
+              console.log(data)
+              this.datalist = Object.values(data);
+              console.log('datalist:',this.datalist)
+            })
 
 },
 mounted(){
 },
- methods: {
+methods: {
   loginvisible(){
     this.loginvisibles = true;
   },
@@ -208,7 +215,7 @@ mounted(){
   joinnonVisible(){
     this.joinvisibles= false;
   },
- },
+},
 }
 </script>
 

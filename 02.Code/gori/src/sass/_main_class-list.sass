@@ -16,7 +16,6 @@
 
   .class-list__carousel
     // 감추기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    padding: 1px
     overflow: scroll
     &::-webkit-scrollbar
       display: none
@@ -390,34 +389,12 @@
     font-size: 11px
 
   .class-list__carousel__more
-    color: $point-color
+    color: #fff
     margin: 30px
-    font-weight: 600
-    padding: 10px 40px
+    padding: 10px 30px
     border-radius: 2px
-    border: 2px solid $point-color
-    font-size: $font-s-size
-    position: relative
-    transition: all 1s ease-in-out
-
-  .class-list__carousel__more::after
-    content: ''
-    position: absolute
-    transition: all 1s ease-in-out
-
-  .class-list__carousel__more::after
-    z-index: -1
-    top: 0
-    bottom: 0
-    left: 0
-    right: 100%
     background-color: $point-color
-
-  .class-list__carousel__more:hover
-   color: #fff
-   &::after
-     right: 0
-
+    font-size: $font-s-size
 
   .class-list__carousel__left, .class-list__carousel__right
     position: relative

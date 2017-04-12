@@ -11,6 +11,8 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueResource);
 
+// const bus = new Vue();
+
 const store = new Vuex.Store({
   state: {
     is_load_google_map: false
@@ -35,5 +37,6 @@ new Vue({
   el: '#app',
   router,
   store,
+  // bus,
   render: h => h(App)
 })

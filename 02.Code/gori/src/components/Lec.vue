@@ -4,41 +4,42 @@
   <!-- <p>parameter ID {{id}}</p> -->
 
 
-  <lec-summary :detailAll = "detailAll">
+  <lec-summary :classlist = "classlist" :lecid = "id">
 
   </lec-summary>
 
-  <lec-apply :detailAll = "detailAll">
+  <lec-apply  :classlist = "classlist" :lecid = "id">
   </lec-apply>
 
-  <lec-class-nav :detailAll = "detailAll">
+  <lec-class-nav >
   </lec-class-nav>
 
-  <lec-speaking :detailAll= "detailAll">
+
+  <lec-speaking  :classlist = "classlist" :lecid = "id">
 
   </lec-speaking>
 
-  <lec-intro :detailAll = "detailAll">
+  <lec-intro  :classlist = "classlist" :lecid = "id">
 
   </lec-intro>
 
 
-  <lec-location :detailAll = "detailAll">
+  <lec-location  :classlist = "classlist" :lecid = "id">
 
   </lec-location>
 
 
-  <lec-curriculum :detailAll = "detailAll">
+  <lec-curriculum  :classlist = "classlist" :lecid = "id">
 
   </lec-curriculum>
 
 
-  <lec-review :detailReview ="detailReview">
+  <lec-review  :classlist = "classlist" :lecid = "id">
 
   </lec-review>
 
 
-  <lec-qna >
+  <lec-qna  :classlist = "classlist" :lecid = "id">
 
   </lec-qna>
 
@@ -61,14 +62,17 @@ import LecQna from './Lec_qna.vue'
 import LecReview from './Lec_review.vue'
 import LecClassNav from './Lec_class-nav.vue'
 
-import {bus} from '../bus'
-
 export default {
   data(){
     return {
+<<<<<<< HEAD
       id: this.$route.params.lecid,
       detailAll: [],
       detailReview: []
+=======
+      id: this.$route.params.lecid
+
+>>>>>>> ca702718b5ea9b43d598cca8fd1eeab92a9e5faa
     }
   },
   // beforeRouteEnter (to, from, next) {
@@ -86,6 +90,7 @@ export default {
       this.id = to.params.lecid
     }
   },
+<<<<<<< HEAD
   // props: ['classlist'],
   created(){
 
@@ -129,9 +134,20 @@ export default {
   watch:{
 
   },
+=======
+  mounted(){
+    // console.log('this.classitem:', this.clssItem)
+    // window.scrollTo(0, 0);
+    console.log('router.params.params:',this.id)
+      },
+  props: ['test', 'classlist', 'item'],
+>>>>>>> ca702718b5ea9b43d598cca8fd1eeab92a9e5faa
 
   methods: {
-
+    // isvisible(){
+    //   this.isvisibles = !this.isvisibles;
+    //   console.log("isissdsdi");
+    // },
   },
 
   components: {
@@ -144,8 +160,16 @@ export default {
     LecQna,
     LecReview,
     LecClassNav,
-  },
 
+  },
+  // props: ['visibles'],
+  // methods:{
+  //   nonVisible(){
+  //     this.$emit('nonVisible')
+  //   }
+  // },
+  // created() {
+  // },
 
 }
 </script>

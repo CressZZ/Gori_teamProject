@@ -1,6 +1,6 @@
 <template >
   <div id="join" v-cloak  >
-    <div v-if="isVisible" class="modal is-active">
+    <div v-if="joinvisibles" class="modal is-active">
       <div class="modal-background" @click="closeModal">
 
       </div>
@@ -38,26 +38,44 @@
 
 
 <script>
-import {bus} from '../bus'
-
 export default {
   data: function() {
     return {
-      isVisible: false
+      // joinvisible: false
     }
   },
   methods: {
     // keyClose
     closeModal: function() {
-      // console.log('clicked');
-      // this.$emit('joinnonVisible');
-      this.isVisible = false
+      console.log('clicked');
+      this.$emit('joinnonVisible');
     }
   },
-  // props: ['joinvisibles'],
+  props: ['joinvisibles'],
 
   created(){
-    bus.$on('joinvisible', () => {this.isVisible = true})
+    //   window.fbAsyncInit = function() {
+    //     FB.init({
+    //       appId      : '198995523925316',
+    //       cookie     : true,  // enable cookies to allow the server to access
+    //                       // the session
+    //       xfbml      : true,  // parse social plugins on this page
+    //       version    : 'v2.8' // use graph api version 2.8
+    //     });
+    //     FB.getLoginStatus(function(response) {
+    //   statusChangeCallback(response);
+    // });
+    //
+    // };
+    //
+    // (function(d, s, id) {
+    //   var js, fjs = d.getElementsByTagName(s)[0];
+    //   if (d.getElementById(id)) return;
+    //   js = d.createElement(s); js.id = id;
+    //   js.src = "//connect.facebook.net/en_US/sdk.js";
+    //   fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk'));
+
 
 
   },

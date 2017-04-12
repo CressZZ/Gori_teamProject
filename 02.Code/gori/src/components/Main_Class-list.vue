@@ -20,18 +20,18 @@
                 <!-- is_new class -->
                 <!-- <router-link tag="li" to="/lec" class="navi_menu navi_menu_service " v-for = "classlist in classlist" class="" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
                 <!-- <li v-for = "classlist in classlist" class="" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
-                  <router-link tag="li" v-for = "(item, index) in classlist" v-bind:style="{ transform: 'translate(' + trans + '%)' }" class="class-list__item" :to="`lec/${item.pk}`" :key="item.id" >
+                  <router-link tag="li" v-for = "(item, index) in classlist" v-bind:style="{ transform: 'translate(' + trans + '%)' }" class="class" :to="`lec/${index + 1}`" :key="item.id" >
                     <div class="is_new">new</div>
                     <button type="button" class="class__wish is_wish"><i class="icon-heart"></i></button>
                     <img :src="`${item.tutor.profile_image}`" :alt="`${item.tutor.nickname}`" class="class__tutor-picture">
                     <p class="class__tutor-name">{{item.tutor.name}}</p>
                     <div class="class__star-total">
-                      <div v-if = "item.average_rate >= 5" class="star-1st"><i class="icon-star"></i></div>
-                      <div v-if = "item.average_rate > 4"><i class="icon-star"></i></div>
-                      <div v-if = "item.average_rate > 3"><i class="icon-star"></i></div>
-                      <div v-if = "item.average_rate > 2"><i class="icon-star"></i></div>
-                      <div v-if = "item.average_rate > 1"><i class="icon-star"></i></div>
-                      <p class="start-total-num"> ({{item.review_count}})</p>
+                      <div class="star-1st"><i class="icon-star"></i></div>
+                      <div class="star-2nd"><i class="icon-star"></i></div>
+                      <div class="star-3rd"><i class="icon-star"></i></div>
+                      <div class="star-4th"><i class="icon-star"></i></div>
+                      <div class="star-5th"><i class="icon-star"></i></div>
+                      <p class="start-total-num">(3)</p>
                     </div>
                     <h2 class="class__intro__title">{{item.title}}</h2>
                     <dl class="class__intro">
@@ -60,16 +60,12 @@
 </template>
 
 <script>
-
 export default {
   data: function() {
     return{
       WindowWidth: window.innerWidth,
       trans: 0,
     }
-  },
-  created(){
-    console.log('classlist:',this.classlist)
   },
   watch:{
 
@@ -122,5 +118,4 @@ export default {
 <style lang="sass">
   .class-list__carousel__list>li
     transition: 0.8s all
-    cursor: pointer
 </style>

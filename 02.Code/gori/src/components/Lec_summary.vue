@@ -19,14 +19,14 @@
       <h3 class="summery__class-title">{{detailAll.title}}</h3>
       <div class="summery__gen-info">
         <span class="summery__gen-info__group">{{detailAll.type}}</span>
-        <!-- <span class="summery__gen-info__location-detail">{{detailAll.locations[0] ? detailAll.locations[0].region : ""}}  {{detailAll.locations[1] ? "/" + detailAll.locations[1].region : ""}} </span> -->
-
+        <span class="summery__gen-info__location-detail">{{detailAll.locations[0] ? detailAll.locations[0].region : ""}}  {{detailAll.locations[1] ? "/" + detailAll.locations[1].region : ""}} </span>
+<!--
         <span class="summery__gen-info__location-detail">
           <template v-for="location in locations">
             {{ location.region }}
           </template>
         </span>
-
+ -->
         <span class="summery__gen-info__times">{{detailAll.number_of_class}} 회</span>
         <span class="summery__gen-info__time">{{detailAll.hours_per_class}} 시간/회</span>
       </div>

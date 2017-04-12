@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
   <div v-if="is_visible" class="modal is-active">
-
+  <div class="modal-background" @click="closeModal"></div>
   <div class="modal-content">
     <div class="box">
     <div class="login__container">
@@ -41,7 +41,6 @@
       </div>
       </div>
       </div>
-      <div class="modal-background" @click="closeModal"></div>
     </div>
   </div>
 

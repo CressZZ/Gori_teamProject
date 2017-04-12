@@ -3,7 +3,9 @@
   <section class="summery">
 
       <h2 class="hidden__heading">수업 안내</h2>
+
       <div class="summery__wrapper">
+
       <div class="row">
         <div class="summery__review col-2-4">
           <!-- 1.class__stars, 2.summery__stars -->
@@ -16,6 +18,7 @@
           </div>
           <div class="row"><span class="into__review__num">후기 {{detailAll.review_count}}건</span></div>
         </div>
+
       </div>
       <h3 class="summery__class-title">{{detailAll.title}}</h3>
       <div class="summery__gen-info">
@@ -44,9 +47,11 @@
 export default {
   data(){
     return{
+
     }
 
   },
+
   props: ["detailAll"],
 
   watch:{
@@ -54,14 +59,23 @@ export default {
       this.id = to.params.lecid
     }
 
-    // '$route' (to, from){
-    //   this.id = to.params.lecid
+
+  },
+
+  computed: {
+    locations() {
+      return this.detailAll.locations;
+    },
+    // locationOne() {
+    //   return this.locations[0].region;
     // }
   },
+
   created(){
     // this.fetch()
   },
   mounted(){
+
 
   },
   beforeUpdate(){
@@ -80,6 +94,7 @@ export default {
     // }
 
   },
+
 }
 </script>
 

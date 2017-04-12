@@ -4,7 +4,7 @@
     <h2 class="qna__heading" >문의하기 32</h2>
     <div class="row">
       <div class="qna__write col-4-4 col-7-12">
-        <textarea name="" placeholder="input text" wrap="on" v-model = "newQuestion.content"></textarea>
+        <textarea name="" rows="8" cols="80" placeholder="input text" wrap="on" v-model = "newQuestion.content"></textarea>
         <button type="button" class="" @click = "addNewQuestion">등록</button>
       </div>
 

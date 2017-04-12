@@ -38,7 +38,7 @@
                     <a href="#"  @click = "joinvisible">회원가입</a>
                   </li>
                   <li class="navi_menu navi_menu_mypage is_login off ">
-                    <a href="#"  >마이페이지</a>
+                    <a href="#" >마이페이지</a>
                   </li>
                   <li  class="navi_menu navi_menu_login is_logout ">
                     <a href="#" @click = "loginvisible">로그인
@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import {bus} from '../bus'
 export default {
   data(){
     return{
@@ -70,14 +69,10 @@ export default {
   },
   methods: {
     loginvisible(){
-      // this.$emit('loginvisible')
-      bus.$emit('loginvisible')
-
+      this.$emit('loginvisible')
     },
     joinvisible(){
-      // this.$emit('joinvisible')
-      bus.$emit('joinvisible')
-
+      this.$emit('joinvisible')
     },
     isoff(){
       if(this.windowWidth < 689){

@@ -9,20 +9,12 @@
         <!-- Carousel list -->
         <ul class="banner__carousel__list">
             <li class="test" v-bind:style="{ transform: 'translate(' + trans + '%)' }">
-              <div class="copy">
-                <p class="copy__slogan">무엇이 당신을 빛나게 하나요?</p>
-                <p class="copy__slogan__sub">배움으로 삶을 풍요롭게 해보세요!</p>
-              </div>
               <video autoplay="" class="video_play" loop="" muted="" width="100%">
                 <source src="src/media/video/sample.mp4" type="video/webm">
               </video>
             </li>
             <li class="" v-bind:style="{ transform: 'translate(' + trans + '%)' }">
               <img class="banner__carousel__list__item" src="../media/img/temp/cat.jpg" alt="홍보배너">
-              <div class="copy">
-                <p class="copy__slogan">무엇이 당신을 빛나게 하나요?</p>
-                <p class="copy__slogan__sub">배움으로 삶을 풍요롭게 해보세요!</p>
-              </div>
             </li>
             <li class=" " v-bind:style="{ transform: 'translate(' + trans + '%)' }">
               <img class="banner__carousel__list__item" src="../media/img/temp/cat.jpg" alt="소개">
@@ -42,7 +34,10 @@
         </div>
         <!-- Banner-input -->
         <!--모바일에서는 검색란 뺄것-->
-
+        <div class="copy">
+          <p class="copy__slogan">무엇이 당신을 빛나게 하나요?</p>
+          <p class="copy__slogan__sub">배움으로 삶을 풍요롭게 해보세요!</p>
+        </div>
         <div class="banner__search__wrapper">
           <form action="submit" class="banner__search">
             <input class="banner__search__input" type="search" autofocus placeholder="input your message"><button class="banner__search__btn" type="button">검색</button>

@@ -17,15 +17,15 @@ import MainClassList from './main_class-list.vue'
 
 
 export default {
-  // props: ['classlist'],
+  props: ['classlist'],
 
+  created(){
 
+  },
   data(){
     return {
-      // classlist:[],
     }
   },
-  props: ['classlist'],
   components: {
     MainCarousel,
     MainCategori,
@@ -33,19 +33,7 @@ export default {
 
 
 
-  },
-  created(){
-    // this.$http.get('https://mozzi.co.kr/api/talent/list/')
-    // .then(function(response){
-    //   return response.json()
-    // })
-    // .then(function(data){
-    //   this.classlist = data
-    // })
-    // .then(function(){
-    // })
-
-  },
+  }
 
 }
 </script>

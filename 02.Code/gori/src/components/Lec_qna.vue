@@ -105,12 +105,12 @@ export default {
     addNewQuestion(){
       this.questions.push(this.newQuestion)
       this.newQuestion.content = ""
-      // console.log("questions:",this.questions)
+      console.log("questions:",this.questions)
     },
   },
   created(){
-    // console.log("questions:",this.questions)
-    // console.log("newQuestion:",this.newQuestion)
+    console.log("questions:",this.questions)
+    console.log("newQuestion:",this.newQuestion)
 
   }
 }

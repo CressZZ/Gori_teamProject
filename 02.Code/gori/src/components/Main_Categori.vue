@@ -10,6 +10,10 @@
         <a href="#"><img src="../media/img/categori/music.jpg" class="categori__list-1-2"></a>
       </div>
       <div class="categori__section-2">
+
+        <h3 class="categori__subtitle categori__subtitle-m">HEALTH</h3>
+
+
         <a href="#" ><img src="../media/img/categori/dance.jpg" class="categori__list-1-2"></a>
       </div>
       <div class="categori__section-3">

@@ -4,6 +4,7 @@
   <!-- <p>parameter ID {{id}}</p> -->
 
 
+
   <lec-summary :detailAll = "detailAll">
 
   </lec-summary>
@@ -14,7 +15,9 @@
   <lec-class-nav :detailAll = "detailAll">
   </lec-class-nav>
 
-  <lec-speaking :detailAll= "detailAll">
+
+  <lec-speaking :detailAll = "detailAll">
+
 
   </lec-speaking>
 
@@ -68,7 +71,8 @@ export default {
     return {
       id: this.$route.params.lecid,
       detailAll: [],
-      detailReview: []
+      detailReview: [],
+
     }
   },
   // beforeRouteEnter (to, from, next) {
@@ -95,8 +99,10 @@ export default {
         return response.json()
       })
       .then(function(data){
-        this.detailAll = data;
-      });
+
+        this.detailAll = data
+      })
+
 
       // 2. talent Review
       this.$http.get(`https://mozzi.co.kr/api/talent/detail/${this.$route.params.lecid}/review/`)
@@ -115,11 +121,13 @@ export default {
   mounted(){
     // console.log("lec-vue lecid2:", this.id)
     // console.log("class-List2:", this.classlist)
+
   },
 
   updated(){
     // console.log("lec-vue lecid3:", this.id)
     // console.log("class-List3:", this.classlist)
+
   },
   beforeDestroy(){
     // console.log("lec-vue lecid4:", this.id)

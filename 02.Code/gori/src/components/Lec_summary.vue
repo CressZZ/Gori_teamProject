@@ -3,6 +3,9 @@
   <section class="summery">
 
       <h2 class="hidden__heading">수업 안내</h2>
+
+      <div class="summery__wrapper">
+
       <div class="row">
         <div class="summery__review col-2-4">
           <!-- 1.class__stars, 2.summery__stars -->
@@ -15,18 +18,12 @@
           </div>
           <div class="row"><span class="into__review__num">후기 {{detailAll.review_count}}건</span></div>
         </div>
+
       </div>
       <h3 class="summery__class-title">{{detailAll.title}}</h3>
       <div class="summery__gen-info">
         <span class="summery__gen-info__group">{{detailAll.type}}</span>
-        <!-- <span class="summery__gen-info__location-detail">{{detailAll.locations[0] ? detailAll.locations[0].region : ""}}  {{detailAll.locations[1] ? "/" + detailAll.locations[1].region : ""}} </span> -->
-
-        <span class="summery__gen-info__location-detail">
-          <template v-for="location in locations">
-            {{ location.region }}
-          </template>
-        </span>
-
+        <span class="summery__gen-info__location-detail">{{detailAll.locations[0] ? detailAll.locations[0].region : ""}}  {{detailAll.locations[1] ? "/" + detailAll.locations[1].region : ""}} </span>
         <span class="summery__gen-info__times">{{detailAll.number_of_class}} 회</span>
         <span class="summery__gen-info__time">{{detailAll.hours_per_class}} 시간/회</span>
       </div>
@@ -36,6 +33,11 @@
       }}원/회,</span>
         <span class="summery__price-info__each">총 {{String(detailAll.hours_per_class * detailAll.number_of_class * detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " "}}원</span>
       </div>
+      <div class="summery__img_wrapper">
+        <img src="../media/img/categori/health.jpg" alt="" class="summery__img">
+      </div>
+    </div>
+
 
   </section>
 
@@ -47,6 +49,7 @@ export default {
     return{
 
     }
+
   },
 
   props: ["detailAll"],
@@ -56,10 +59,9 @@ export default {
       this.id = to.params.lecid
     }
 
-    // '$route' (to, from){
-    //   this.id = to.params.lecid
-    // }
+
   },
+
   computed: {
     locations() {
       return this.detailAll.locations;
@@ -68,12 +70,17 @@ export default {
     //   return this.locations[0].region;
     // }
   },
+
   created(){
     // this.fetch()
   },
   mounted(){
+
+
   },
   beforeUpdate(){
+  },
+  mounted(){
   },
   methods: {
     // fetch(){
@@ -87,6 +94,7 @@ export default {
     // }
 
   },
+
 }
 </script>
 

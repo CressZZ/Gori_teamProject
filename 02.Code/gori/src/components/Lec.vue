@@ -10,42 +10,42 @@
 
   </login> -->
 
-  <lec-summary :detailAll = "detailAll">
+  <lec-summary :classlist = "classlist" :lecid = "id">
 
   </lec-summary>
 
-  <lec-apply :detailAll = "detailAll">
+  <lec-apply  :classlist = "classlist" :lecid = "id">
   </lec-apply>
 
-  <lec-class-nav :detailAll = "detailAll">
+  <lec-class-nav >
   </lec-class-nav>
 
 
-  <lec-speaking :detailAll = "detailAll">
+  <lec-speaking  :classlist = "classlist" :lecid = "id">
 
-  </lec-speaking :detailAll = "detailAll">
+  </lec-speaking>
 
-  <lec-intro :detailAll = "detailAll">
+  <lec-intro  :classlist = "classlist" :lecid = "id">
 
   </lec-intro>
 
 
-  <lec-location :detailAll = "detailAll">
+  <lec-location  :classlist = "classlist" :lecid = "id">
 
   </lec-location>
 
 
-  <lec-curriculum :detailAll = "detailAll">
+  <lec-curriculum  :classlist = "classlist" :lecid = "id">
 
   </lec-curriculum>
 
 
-  <lec-review :detailReview ="detailReview">
+  <lec-review  :classlist = "classlist" :lecid = "id">
 
   </lec-review>
 
 
-  <lec-qna >
+  <lec-qna  :classlist = "classlist" :lecid = "id">
 
   </lec-qna>
 
@@ -68,14 +68,11 @@ import LecQna from './Lec_qna.vue'
 import LecReview from './Lec_review.vue'
 import LecClassNav from './Lec_class-nav.vue'
 
-import {bus} from '../bus'
-
 export default {
   data(){
     return {
-      id: this.$route.params.lecid,
-      detailAll: [],
-      detailReview: [],
+      id: this.$route.params.lecid
+
     }
   },
   watch: {
@@ -83,54 +80,18 @@ export default {
       this.id = to.params.lecid
     }
   },
-  // props: ['classlist'],
-  created(){
-
-      // 1. detailAll 데이터 get
-      this.$http.get(`https://mozzi.co.kr/api/talent/detail-all/${this.$route.params.lecid}/`)
-      .then(function(response){
-        return response.json()
-      })
-      .then(function(data){
-        this.detailAll = data
-      })
-
-      // 2. talent Review
-      this.$http.get(`https://mozzi.co.kr/api/talent/detail/${this.$route.params.lecid}/review/`)
-      .then(function(response){
-        return response.json()
-      })
-      .then(function(data){
-        this.detailReview = data
-      })
-
-
-
-
-
-  },
   mounted(){
-    // console.log("lec-vue lecid2:", this.id)
-    // console.log("class-List2:", this.classlist)
-
-  },
-
-  updated(){
-    // console.log("lec-vue lecid3:", this.id)
-    // console.log("class-List3:", this.classlist)
-
-  },
-  beforeDestroy(){
-    // console.log("lec-vue lecid4:", this.id)
-    // console.log("class-List4:", this.classlist)
-
-  },
-  watch:{
-
-  },
+    // console.log('this.classitem:', this.clssItem)
+    // window.scrollTo(0, 0);
+    console.log('router.params.params:',this.id)
+      },
+  props: ['test', 'classlist', 'item'],
 
   methods: {
-
+    // isvisible(){
+    //   this.isvisibles = !this.isvisibles;
+    //   console.log("isissdsdi");
+    // },
   },
 
   components: {
@@ -143,8 +104,16 @@ export default {
     LecQna,
     LecReview,
     LecClassNav,
-  },
 
+  },
+  // props: ['visibles'],
+  // methods:{
+  //   nonVisible(){
+  //     this.$emit('nonVisible')
+  //   }
+  // },
+  // created() {
+  // },
 
 }
 </script>

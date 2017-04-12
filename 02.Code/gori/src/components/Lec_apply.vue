@@ -10,28 +10,28 @@
             <ul class="apply__info__list ">
               <li class="apply__info__location">
                 <i class="fontello icon-location"></i>
-                <strong>신촌</strong>
-                <span>지역상의후 변경가능</span>
-              </li>
-              <li class="apply__info__time">
+                <strong>{{detailAll.locations[0] ? detailAll.locations[0].region : ""}}</strong>
+                <span>{{detailAll.locations[0].specific_location}}</span>
+                </li>
+                <li class="apply__info__time">
                 <i class="fontello icon-clock"></i>
-                <strong>1시간/회</strong>
-                <span>AM 9:30-PM 5:00</span>
-              </li>
-              <li class="apply__info__group">
+                <strong>{{detailAll.hours_per_class + " "}} 시간/회 </strong>
+                <span>{{detailAll.locations[0].time[0]}}</span>
+                </li>
+                <li class="apply__info__group">
                 <i class="fontello icon-group-circled"></i>
-                <strong>최대4인</strong>
-                <span>최소인원 3명</span>
+                <strong>{{detailAll.type}}</strong>
+                <span>{{detailAll.type === "1:1 수업" ? "" : "최소인원 2명"}}</span>
               </li>
               <li class="apply__info__week">
                 <i class="fontello icon-calendar"></i>
-                <strong>월/수/금</strong>
-                <span>총4회 / 240,000원</span>
+                <strong>{{detailAll.locations[0].day}}</strong>
+                <span>총 {{detailAll.number_of_class}}회 / {{String(detailAll.hours_per_class * detailAll.number_of_class * detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " "}}원</span>
               </li>
               <li class="apply__info__additional-cost">
                 <i class="fontello icon-won"></i>
-                <strong>추가비용 <span>있음</span></strong>
-                <span>개인카페음료</span>
+                <strong>추가비용 <span>{{detailAll.locations[0].extra_fee === "y" ? "있음" : "없음"}}</span></strong>
+                <span>{{detailAll.locations[0].extra_fee_amount ? detailAll.locations[0].extra_fee_amount : ""}}</span>
               </li>
             </ul>
           </div>
@@ -62,6 +62,8 @@ export default {
       is_wishList: false
     }
   },
+  props: ["detailAll"],
+
   methods: {
     toggleWishList(){
       // console.log("addWishList");

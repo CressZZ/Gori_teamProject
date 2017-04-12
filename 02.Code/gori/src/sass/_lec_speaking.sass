@@ -1,8 +1,6 @@
 
 @media screen and (max-width: 689px)
   .speaking
-    font-size: $font-m-size
-    color: $font-main-color
     //fixed(nav, 수강신청)을 위한 마진 바텀q!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     margin: 24px 20px 0 20px
     // min-width: 380px
@@ -14,7 +12,7 @@
       border-radius: 50%
 
     .speaking__tutor-speaking
-      font-size: $font-xs-size
+      font-size: 1rem
       margin-left: 100px
       margin-right: 0px
       position: relative
@@ -42,37 +40,29 @@
 @media screen and (min-width: 690px)
 
   .speaking
-    font-size: $font-m-size
-    color: $font-main-color
-    background: #fff
     @include bording-pc
     max-width: 1200px
-    padding: 40px 20px 10px 20px
+    padding: 0 20px 0 20px
     margin: 0 auto
 
   .speaking__tutor-picture
     height: 72px
-    width: 72px
+    width: 72px !important
     border-radius: 50%
-    position: relative
-    z-index: 1
-    filter: drop-shadow(1px 1px 0.3px rgba(1, 1, 1, 0.2))
-
-
 
   .speaking__tutor-speaking
-    font-size: $font-s-size
+    font-size: 0.7rem
     height: 72px
     padding: 10px 10px 10px 0
     display: flex
     align-items: center
-    background-color: $font-faint-color
-    border-radius: 5px
+    background-color: rgb(223, 223, 223)
+    border-radius: 8px
 
   .speaking__tutor-speaking::before
     width: 0
     border-top: 15px solid transparent
-    border-right: 30px solid $font-faint-color
+    border-right: 30px solid rgb(223, 223, 223)
     border-bottom: 15px solid transparent
     content: ""
     display: block

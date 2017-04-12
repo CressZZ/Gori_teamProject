@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="login"  v-cloak>
-    <div v-if="loginvisibles" class="modal is-active">
+    <div v-if="isVisible" class="modal is-active">
       <div class="modal-background" @click="closeModal"></div>
         <div class="modal-content" >
         <div class="box">
@@ -47,44 +47,37 @@
   </div>
 </template>
 
+
 <script>
+import {bus} from '../bus'
+
 export default {
   data: function() {
     return {
-      // is_visible: false
+      isVisible: false
     }
   },
   methods: {
     closeModal: function() {
-      this.$emit('loginnonVisible');
+      this.isVisible = false
+
+      // this.$emit('loginnonVisible');
+
     }
   },
-  props: ['loginvisibles'],
+  // props: ['loginvisibles'],
 
-  // created(){
-  //   console.log("DDDDDDDDDD")
-  //   window.fbAsyncInit = function() {
-  //     FB.init({
-  //       appId      : '198995523925316',
-  //       cookie     : true,  // enable cookies to allow the server to access
-  //                       // the session
-  //       xfbml      : true,  // parse social plugins on this page
-  //       version    : 'v2.8' // use graph api version 2.8
-  //     });
-  //     FB.getLoginStatus(function(response) {
-  //   statusChangeCallback(response);
-  // });
-  //
-  // };
-  //
-  // (function(d, s, id) {
-  //   var js, fjs = d.getElementsByTagName(s)[0];
-  //   if (d.getElementById(id)) return;
-  //   js = d.createElement(s); js.id = id;
-  //   js.src = "//connect.facebook.net/en_US/sdk.js";
-  //   fjs.parentNode.insertBefore(js, fjs);
-  // }(document, 'script', 'facebook-jssdk'));
-// },
+  created(){
+    // var self = this;
+    // bus.$on("loginvisible", function(){
+    // console.log("login_isvisible:", self.isVisible)
+    // self.isVisible = true
+    // console.log("login_isvisible:", self.isVisible)
+  // })
+
+
+    bus.$on('loginvisible', () => {this.isVisible = true})
+},
 }
 
 

@@ -10,7 +10,7 @@
         <a href="#"><img src="../media/img/categori/music.jpg" class="categori__list-1-2"></a>
       </div>
       <div class="categori__section-2">
-        <a href="#"><img src="../media/img/categori/dance.jpg" class="categori__list-1-2"></a>
+        <a href="#" ><img src="../media/img/categori/dance.jpg" class="categori__list-1-2"></a>
       </div>
       <div class="categori__section-3">
         <a href="#"><img src="../media/img/categori/computer.jpg" class="categori__list-1-2"></a>
@@ -21,7 +21,10 @@
 </template>
 
 <script>
+
 export default {
+  methods: {
+  },
 }
 </script>
 

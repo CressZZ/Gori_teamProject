@@ -5,17 +5,19 @@
     <div class="row">
 
       <div class="row">
-        <img src="../media/img/user.jpg" alt="tutor picture" class="speaking__tutor-picture  col-1-4">
-        <strong class="speaking__tutor-speaking  col-5-12  push-2-12"> " ?dd그 누구보다 세심히, 꼼꼼하게 가" 그 누구보다 세심히, 꼼꼼하게 가르칠 수 있습니다. "르칠 수 있습니다. "</strong>
+        <img :src="`${detailAll.tutor.profile_image}`" :alt="`${detailAll.tutor.nickname}`" class="speaking__tutor-picture  col-1-4">
+        <strong class="speaking__tutor-speaking  col-5-12  push-2-12"> "{{detailAll.tutor_info ? detailAll.tutor_info : ""}}"</strong>
 
       </div>
-      <p class="speaking__descrip col-4-4 col-7-12">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit ametLorem ipsum dolor sit amet</p>
+      <p class="speaking__descrip col-4-4 col-7-12"></p>
     </div>
   </section>
 </template>
 
 <script>
 export default {
+  props: ["detailAll"],
+
 }
 </script>
 

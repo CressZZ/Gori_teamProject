@@ -13,18 +13,25 @@
 
 .review__write__writer__id
   margin-top: 10px
+  // width: 102%
+  font-size: $font-xs-size
+  font-weight: 400
+  text-align: left
+  margin-left: 7px
 
 .review__write__writer__info-2
-  width: 75%
+  width: 80%
   background-color:
 .review__write__writer__info__date
-  font-size: 0.8rem
+  font-size: $font-xs-size
+  color: $font-sub-color
 
 .review__write__writer__descrip
   margin-top: 5px
 
 @media screen and (max-width: 689px)
   .review
+    font-size: $font-m-size
     padding: 0 20px
     @include bording-mobile
 
@@ -68,7 +75,7 @@
     display: flex
     justify-content: center
     a
-      width: 10%
+      width: 35px
       display: flex
       justify-content: center
     a:first-child::before
@@ -79,9 +86,13 @@
       content: ">"
       display: block
       margin-left: 10px
+  .review__btn
+     color: $font-sub-color
+
 
 @media screen and (min-width: 690px)
   .review
+    font-size: $font-m-size
     max-width: 1200px
     padding: 0 20px 0 20px
     margin: 0 auto
@@ -109,7 +120,7 @@
         color: gold
 
   .review__write > div
-    @include bording-pc (black, dashed)
+    @include bording-pc ($font-faint-color, dashed)
     &:last-child
       &::after
         border-bottom: 0
@@ -117,6 +128,7 @@
       // border-color: black
 
   .review__write__writer__info-1
+    margin: 0 18px
     width: 11%
     display: flex
     flex-flow: column
@@ -130,14 +142,20 @@
     display: flex
     justify-content: center
     a
-      width: 50px
+      padding: 5px
+      width: 35px
       display: flex
       justify-content: center
     a:first-child::before
+      // padding: 5px
       content: "<"
       display: block
       margin-right: 10px
     a:last-child::after
+      // padding: 5px
       content: ">"
       display: block
       margin-left: 10px
+
+  .review__btn
+     color: $font-sub-color

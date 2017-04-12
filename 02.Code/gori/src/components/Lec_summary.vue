@@ -3,6 +3,7 @@
   <section class="summery">
 
       <h2 class="hidden__heading">수업 안내</h2>
+      <div class="summery__wrapper">
       <div class="row">
         <div class="summery__review col-2-4">
           <!-- 1.class__stars, 2.summery__stars -->
@@ -29,6 +30,11 @@
       }}원/회,</span>
         <span class="summery__price-info__each">총 {{String(detailAll.hours_per_class * detailAll.number_of_class * detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " "}}원</span>
       </div>
+      <div class="summery__img_wrapper">
+        <img src="../media/img/categori/health.jpg" alt="" class="summery__img">
+      </div>
+    </div>
+
 
   </section>
 

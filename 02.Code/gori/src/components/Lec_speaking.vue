@@ -5,7 +5,7 @@
     <div class="row">
 
       <div class="row">
-        <img :src="`${detailAll.tutor.profile_image}`" :alt="`${detailAll.tutor.nickname}`" class="speaking__tutor-picture  col-1-4">
+        <img :src="detailAll.tutor.profile_image" :alt="detailAll.tutor.nickname" class="speaking__tutor-picture  col-1-4">
         <strong class="speaking__tutor-speaking  col-5-12  push-2-12"> "{{detailAll.tutor_info ? detailAll.tutor_info : ""}}"</strong>
 
       </div>

@@ -2,13 +2,7 @@
 
   <div>
   <!-- <p>parameter ID {{id}}</p> -->
-  <!-- <join>
 
-  </join>
-
-  <login :visible="visibles" @nonVisible = "nonVisible">
-
-  </login> -->
 
   <lec-summary :detailAll = "detailAll">
 
@@ -20,10 +14,9 @@
   <lec-class-nav :detailAll = "detailAll">
   </lec-class-nav>
 
+  <lec-speaking :detailAll= "detailAll">
 
-  <lec-speaking :detailAll = "detailAll">
-
-  </lec-speaking :detailAll = "detailAll">
+  </lec-speaking>
 
   <lec-intro :detailAll = "detailAll">
 
@@ -75,9 +68,19 @@ export default {
     return {
       id: this.$route.params.lecid,
       detailAll: [],
-      detailReview: [],
+      detailReview: []
     }
   },
+  // beforeRouteEnter (to, from, next) {
+  //   // 이 컴포넌트를 렌더링하는 라우트 앞에 호출됩니다.
+  //   // 이 가드가 호출 될 때 아직 생성되지 않았기 때문에
+  //   // `this` 컴포넌트 인스턴스에 접근 할 수 없습니다!
+  //   // console.log(to);
+  //   next(function(vm){
+  //     console.log(vm.detailAll.tutor);
+  //     return false;
+  //   });
+  // },
   watch: {
     '$route' (to, from){
       this.id = to.params.lecid
@@ -92,8 +95,8 @@ export default {
         return response.json()
       })
       .then(function(data){
-        this.detailAll = data
-      })
+        this.detailAll = data;
+      });
 
       // 2. talent Review
       this.$http.get(`https://mozzi.co.kr/api/talent/detail/${this.$route.params.lecid}/review/`)
@@ -112,13 +115,11 @@ export default {
   mounted(){
     // console.log("lec-vue lecid2:", this.id)
     // console.log("class-List2:", this.classlist)
-
   },
 
   updated(){
     // console.log("lec-vue lecid3:", this.id)
     // console.log("class-List3:", this.classlist)
-
   },
   beforeDestroy(){
     // console.log("lec-vue lecid4:", this.id)

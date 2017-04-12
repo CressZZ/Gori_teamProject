@@ -2,6 +2,7 @@
   <!-- summery -->
   <section class="summery">
     <h2 class="hidden__heading">수업 안내</h2>
+    <div class="summery__wrapper">
     <div class="row">
       <div class="summery__review col-2-4">
         <!-- 재활용을 위해 [class*=__stars]를 활용하는 것을 추천 -->
@@ -26,6 +27,10 @@
     <div class="summery__price-info">
       <span class="summery__price-info__total"><i class="icon-won"></i>20,000</span>
       <span class="summery__price-info__each">총4회 240,000원</span>
+    </div>
+    <div class="summery__img_wrapper">
+      <img src="../media/img/categori/health.jpg" alt="" class="summery__img">
+    </div>
     </div>
   </section>
 

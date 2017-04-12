@@ -4,7 +4,7 @@
     font-size: $font-m-size
     color: $font-main-color
     //fixed(nav, 수강신청)을 위한 마진 바텀q!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    margin: 24px 20px 0 20px
+    margin: 24px 20px 0 10px
     // min-width: 380px
     @include bording-mobile
     position: relative
@@ -13,28 +13,35 @@
       width: 72px
       border-radius: 50%
 
+    .speaking__wrapper
+      margin: 0 1%
+
+
     .speaking__tutor-speaking
-      font-size: $font-xs-size
+      font-size: $font-s-size
       margin-left: 100px
       margin-right: 0px
       position: relative
       height: 72px
+      width: 79%
+      margin-left: 22%
       padding: 10px 10px 10px 20px
       display: flex
       align-items: center
       justify-content: center
-      background-color: rgb(223, 223, 223)
+      background-color: $font-faint-color
       border-radius: 8px
+
     .speaking__tutor-speaking::before
       width: 0
       border-top: 15px solid transparent
-      border-right: 30px solid rgb(223, 223, 223)
+      border-right: 30px solid $font-faint-color
       border-bottom: 15px solid transparent
       content: ""
       display: block
       position: absolute
       left: -20px
-      top: 15px
+      top: 20px
 
     .speaking__descrip
       margin-top: 24px
@@ -47,7 +54,7 @@
     background: #fff
     @include bording-pc
     max-width: 1200px
-    padding: 40px 20px 10px 20px
+    padding: 15px 20px 10px 20px
     margin: 0 auto
 
   .speaking__tutor-picture
@@ -69,6 +76,7 @@
     background-color: $font-faint-color
     border-radius: 5px
 
+
   .speaking__tutor-speaking::before
     width: 0
     border-top: 15px solid transparent
@@ -79,6 +87,8 @@
     position: relative
     left: -30px
     height: 0
+
+
 
   .speaking__descrip
     margin-top: 24px

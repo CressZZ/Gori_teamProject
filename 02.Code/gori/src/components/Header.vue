@@ -28,24 +28,25 @@
                   <li class="navi_menu navi_menu_tutor ">
                     <a href="#" >튜터등록</a>
                   </li>
-                  <router-link tag="li" to="/lec" class="navi_menu navi_menu_service ">
-                    <a href="#" >서비스소개</a>
-                  </router-link>
+                    <li>
+                      <a href="#" @click = "obtainToken" >서비스소개</a>
+
+                    </li>
                 </ul>
 
                 <ul class="header__navi__lnb_list-sec-2">
-                  <li class="navi_menu navi_menu_join  is_logout ">
+                  <li class="navi_menu navi_menu_join  is_logout" :class= "{off: islogin}">
                     <a href="#"  @click = "joinvisible">회원가입</a>
                   </li>
-                  <li class="navi_menu navi_menu_mypage is_login off ">
-                    <a href="#"  >마이페이지</a>
+                  <li class="navi_menu navi_menu_join  is_login" :class= "{off: !islogin}" >
+                    <a href="#" >마이페이지</a>
                   </li>
-                  <li  class="navi_menu navi_menu_login is_logout ">
-                    <a href="#" @click = "loginvisible">로그인
+                  <li  class="navi_menu navi_menu_login is_logout " :class= "{off: islogin}">
+                    <a href="#"  @click = "loginvisible">로그인
                     </a>
                   </li>
-                  <li class="navi_menu navi_menu_logout is_login off">
-                    <a href="#" >로그아웃</a>
+                  <li class="navi_menu navi_menu_login is_login" :class= "{off: !islogin}">
+                    <a href="#" @click = "logout" >로그아웃</a>
                   </li>
 
                 </ul>
@@ -65,11 +66,33 @@ export default {
     return{
       isoffs: true,
       WindowWidth: window.innerWidth,
-      currentPage: "pc"
+      currentPage: "pc",
+      userinfo: {
+        username: "dkt@dkt.dkt",
+        password: "qweasd123"
+      }
     }
   },
   methods: {
+    obtainToken(){
+      console.log("click:")
+      this.$http.post('member/token-auth/', this.userinfo)
+      .then(function(response){
+        return response.json()
+      })
+      .then(function(data){
+        console.log("data:",data)
+        alert("로그인 완료!!")
+        
+        this.$store.commit('Token', data.token)
+      })
+      .catch( error => {
+        console.log("error:",error.bodyText)
+      });
+    },
     loginvisible(){
+      console.log("click:")
+
       // this.$emit('loginvisible')
       bus.$emit('loginvisible')
 
@@ -82,10 +105,14 @@ export default {
     isoff(){
       if(this.windowWidth < 689){
         this.isoffs = !this.isoffs
-
       }
-
     },
+    logout(){
+      alert("로그아웃 완료")
+      this.$store.commit('logout')
+    },
+
+
     windowResize(e){
       this.windowWidth = e.currentTarget.innerWidth;
       console.log("windowWidth:",this.windowWidth)
@@ -103,7 +130,13 @@ export default {
       // }
     }
   },
+  computed: {
+    islogin(){
+      return this.$store.state.login.is_login
+    }
+  },
   created() {
+    console.log("this.$store.state.login.is_login:",this.$store.state.login.is_login)
     this.windowWidth = window.innerWidth
     if (this.windowWidth > 690){
       this.currentPage = "pc"

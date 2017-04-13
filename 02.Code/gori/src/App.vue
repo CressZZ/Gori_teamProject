@@ -12,6 +12,7 @@
 
 <script>
 import {bus} from './bus'
+
 export default {
   name: 'app',
   data () {
@@ -22,18 +23,24 @@ export default {
 watch: {
 
 },
+computed:{
+  stores(){
+  }
+},
 created() {
-  this.$http.get('https://mozzi.co.kr/api/talent/list/')
+  // console.log("$:",$().jquery)
+  this.$http.get('talent/list/',{parameter: {page: 1}})
   .then(function(response){
     return response.json()
   })
   .then(function(data){
     this.classlist = data.results
+
   })
   .then(function(){
+    console.log("hhh")
   })
-
-  console.log("rout????", this.$route)
+  .catch( error => console.error(error.message) );
 
 },
 

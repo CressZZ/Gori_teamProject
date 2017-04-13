@@ -67,6 +67,8 @@ import LecLocation from './Lec_location.vue'
 import LecQna from './Lec_qna.vue'
 import LecReview from './Lec_review.vue'
 import LecClassNav from './Lec_class-nav.vue'
+// import Rating from './Rating.vue'
+
 
 import {bus} from '../bus'
 

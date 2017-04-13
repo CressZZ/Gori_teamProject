@@ -12,7 +12,7 @@
         </a>
         <a href="#">
             <img src="../media/img/categori/music.jpg" class="categori__list-1-2">
-            <h3 class="categori__subtitle image-title">HEALTH</h3>
+            <h3 class="categori__subtitle image-title">MUSIC&#38;ART</h3>
         </a>
       </div>
       <div class="categori__section-2">

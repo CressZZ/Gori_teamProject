@@ -20,12 +20,12 @@
             <li class="" v-bind:style="{ transform: 'translate(' + trans + '%)' }">
               <img class="banner__carousel__list__item" src="../media/img/temp/cat.jpg" alt="홍보배너">
               <div class="copy">
-                <p class="copy__slogan">무엇이 당신을 빛나게 하나요?</p>
-                <p class="copy__slogan__sub">배움으로 삶을 풍요롭게 해보세요!</p>
+                <p class="copy__slogan">재능을 연결해 드립니다!</p>
+                <p class="copy__slogan__sub">다양한 사람, 이야기가 있는 곳</p>
               </div>
             </li>
             <li class=" " v-bind:style="{ transform: 'translate(' + trans + '%)' }">
-              <img class="banner__carousel__list__item" src="../media/img/temp/cat.jpg" alt="소개">
+              <img class="banner__carousel__list__item" src="../media/img/temp/temp.jpg" alt="소개">
             </li>
           </ul>
           <!-- Carousel nav ( ○○●○○ )  -->

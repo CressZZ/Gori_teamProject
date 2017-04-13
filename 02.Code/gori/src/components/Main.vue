@@ -26,6 +26,7 @@ export default {
     }
   },
   props: ['classlist'],
+
   components: {
     MainCarousel,
     MainCategori,

@@ -28,7 +28,7 @@ created() {
     return response.json()
   })
   .then(function(data){
-    this.classlist = data
+    this.classlist = data.results
   })
   .then(function(){
   })

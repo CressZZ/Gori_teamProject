@@ -4,6 +4,7 @@ import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Join from './components/Join.vue'
 import Login from './components/Login.vue'
+import List from './components/Main0.vue'
 // import LecMap from './components/Lec_map.vue'
 
 export const routes = [
@@ -29,10 +30,20 @@ export const routes = [
       'login': Login,
       // 'map': LecMap
     },
-    children: [
-      // {path: '', component: UserEdit, name: 'LecMap' },
-    ]
   },
+  {
+    path: '/list/',
+    name: 'list',
+    components: {
+      'default': List,
+      'header': Header,
+      'footer': Footer,
+      'join': Join,
+      'login': Login,
+    },
+  },
+
+
   {
     path: '*', redirect: '/'
   },

@@ -22,7 +22,7 @@
                 <!-- <li v-for = "classlist in classlist" class="" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
                   <router-link tag="li" v-for = "(item, index) in classlist" v-bind:style="{ transform: 'translate(' + trans + '%)' }" class="class-list__item" :to="`lec/${item.pk}`" :key="item.id" >
                     <div class="is_new">new</div>
-                    <button type="button" class="class__wish is_wish"><i class="icon-heart"></i></button>
+                    <!-- <button type="button" class="class__wish is_wish"><i class="icon-heart"></i></button> -->
                     <img :src="item.tutor.profile_image" :alt="`${item.tutor.nickname}`" class="class__tutor-picture">
                     <p class="class__tutor-name">{{item.tutor.name}}</p>
                     <div class="class__star-total">

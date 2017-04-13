@@ -28,9 +28,8 @@
                   <li class="navi_menu navi_menu_tutor ">
                     <a href="#" >튜터등록</a>
                   </li>
-                    <li>
+                    <li class="navi_menu navi_menu_service ">
                       <a href="#" @click = "obtainToken" >서비스소개</a>
-
                     </li>
                 </ul>
 
@@ -83,7 +82,6 @@ export default {
       .then(function(data){
         console.log("data:",data)
         alert("로그인 완료!!")
-        
         this.$store.commit('Token', data.token)
       })
       .catch( error => {

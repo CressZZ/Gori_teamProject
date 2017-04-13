@@ -35,7 +35,7 @@ created() {
   })
   .then(function(data){
     this.classlist = data.results
-    console.log("data:",data.results)
+
   })
   .then(function(){
     console.log("hhh")

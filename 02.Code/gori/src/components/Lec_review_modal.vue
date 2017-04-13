@@ -14,11 +14,7 @@
                       <h3 class="review__rating__subtitle">종합점수</h3>
                         <ul>
                           <li class="st_off" id="total">
-                            <button type="button" class="star-1st" @click="point1"><i class="icon-star"></i></button>
-                            <button type="button" class="star-2nd" @click="point2"><i class="icon-star"></i></button>
-                            <button type="button" class="star-3rd" @click="point3"><i class="icon-star"></i></button>
-                            <button type="button" class="star-4th" @click="point4"><i class="icon-star"></i></button>
-                            <button type="button" class="star-5th" @click="point5"><i class="icon-star"></i></button>
+                            <lec-review-modal-rating></lec-review-modal-rating>
                           </li>
                         </ul>
                         <span class="blind">종합점수</span><span class="star_count"><em id="totalValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -27,11 +23,8 @@
                         <h3 class="review__rating__subtitle">커리큘럼</h3>
                         <ul>
                           <li class="st_off" id="curriculum">
-                            <button type="button" class="star-1st"><i class="icon-star"></i></button>
-                            <button type="button" class="star-2nd"><i class="icon-star"></i></button>
-                            <button type="button" class="star-3rd"><i class="icon-star"></i></button>
-                            <button type="button" class="star-4th"><i class="icon-star"></i></button>
-                            <button type="button" class="star-5th"><i class="icon-star"></i></button>                          </li>
+                            <lec-review-modal-rating></lec-review-modal-rating>
+                          </li>
                         </ul>
                         <span class="blind">커리큘럼</span><span class="star_count"><em id="curriculumValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
                       </div>
@@ -39,11 +32,7 @@
                         <h3 class="review__rating__subtitle">전달력</h3>
                         <ul>
                           <li class="st_off" id="skills">
-                            <button type="button" class="star-1st"><i class="icon-star"></i></button>
-                            <button type="button" class="star-2nd"><i class="icon-star"></i></button>
-                            <button type="button" class="star-3rd"><i class="icon-star"></i></button>
-                            <button type="button" class="star-4th"><i class="icon-star"></i></button>
-                            <button type="button" class="star-5th"><i class="icon-star"></i></button>
+                            <lec-review-modal-rating></lec-review-modal-rating>
                           </li>
                         </ul>
                       <span class="blind">전달력</span><span class="star_count"><em id="skillsValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -52,11 +41,7 @@
                           <h3 class="review__rating__subtitle">준비성</h3>
                           <ul>
                             <li class="st_off" id="preparation">
-                              <button type="button" class="star-1st"><i class="icon-star"></i></button>
-                              <button type="button" class="star-2nd"><i class="icon-star"></i></button>
-                              <button type="button" class="star-3rd"><i class="icon-star"></i></button>
-                              <button type="button" class="star-4th"><i class="icon-star"></i></button>
-                              <button type="button" class="star-5th"><i class="icon-star"></i></button>
+                              <lec-review-modal-rating></lec-review-modal-rating>
                             </li>
                           </ul>
                         <span class="blind">준비성</span><span class="star_count"><em id="preparationValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -65,11 +50,7 @@
                           <h3 class="review__rating__subtitle">친절도</h3>
                           <ul>
                             <li class="st_off" id="dedication">
-                              <button type="button" class="star-1st"><i class="icon-star"></i></button>
-                              <button type="button" class="star-2nd"><i class="icon-star"></i></button>
-                              <button type="button" class="star-3rd"><i class="icon-star"></i></button>
-                              <button type="button" class="star-4th"><i class="icon-star"></i></button>
-                              <button type="button" class="star-5th"><i class="icon-star"></i></button>
+                              <lec-review-modal-rating></lec-review-modal-rating>
                             </li>
                           </ul>
                         <span class="blind">친절도</span><span class="star_count"><em id="dedicationValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -78,11 +59,7 @@
                           <h3 class="review__rating__subtitle">시간준수</h3>
                           <ul>
                             <li class="st_off" id="punctuality">
-                              <button type="button" class="star-1st"><i class="icon-star"></i></button>
-                              <button type="button" class="star-2nd"><i class="icon-star"></i></button>
-                              <button type="button" class="star-3rd"><i class="icon-star"></i></button>
-                              <button type="button" class="star-4th"><i class="icon-star"></i></button>
-                              <button type="button" class="star-5th"><i class="icon-star"></i></button>
+                              <lec-review-modal-rating></lec-review-modal-rating>
                             </li>
                           </ul>
                         <span class="blind">시간준수</span><span class="star_count"><em id="punctualityValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
@@ -104,6 +81,7 @@
 </template>
 
 <script>
+import LecReviewModalRating from './Rating.vue'
 
 export default {
   data: function() {
@@ -118,6 +96,11 @@ export default {
     }
   },
   props:  ['isvisibles'],
+  components: {
+    LecReviewModalRating
+  },
+
+
   created() {
 
   },

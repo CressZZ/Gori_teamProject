@@ -4,34 +4,39 @@
     <h2 class="qna__heading" >문의하기 32</h2>
     <div class="row">
       <div class="qna__write col-4-4 col-7-12">
-        <textarea name="" placeholder="input text" wrap="on" v-model = "newQuestion.content"></textarea>
-        <button type="button" class="" @click = "addNewQuestion">등록</button>
+        <textarea name="" placeholder="input text" wrap="on"  @keyup.enter = "addNewQuestion"></textarea>
+        <button type="button" class="" @click = "addQuestion">등록</button>
       </div>
 
     </div>
+
     <ul class="qna__list">
 
+      <!-- <li v-for = "question in questions">
+        <p>{{question}}</p>
+      </li> -->
 
 
-      <li class="qna__list__q" v-for = "question in questions" >
+
+      <li class="qna__list__q" v-for = "question in detailQuestion.questions" >
         <div class="row">
           <div class="qna__list__q__writer col-4-4 col-7-12">
-            <span><div>{{question.type}}</div>{{question.name}}</span>
-            <span class="qna__list__q__date">{{question.date}}</span>
+            <span><div>q</div>{{question.user}}</span>
+            <span class="qna__list__q__date">{{question.created_date.substring(0,10)}}</span>
           </div>
         </div>
         <div class="row">
           <p class="qna__list__q__descrip col-4-4 col-7-12">{{question.content}}</p>
         </div>
-        <div class="qna__list__a">
+        <div class="qna__list__a" v-for ="reply in question.replies">
           <div class="row">
             <div class="qna__list__a__writer col-4-4 col-7-12" >
-              <span><div>A</div>작성자</span>
-              <span class="qna__list__a__date">17.03.24 15:08</span>
+              <span><div>A</div>{{reply.tutor}}</span>
+              <span class="qna__list__a__date">{{reply.created_date.substring(0,10)}}</span>
             </div>
           </div>
           <div class="row">
-            <p class="qna__list__a__descrip col-4-4 col-7-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente laudantium velit adipisci repudiandae, eaque tempora quis aliquam ducimus sequi sit dolore pariatur, eos animi id voluptas molestias praesentium illum eveniet.</p>
+            <p class="qna__list__a__descrip col-4-4 col-7-12">{{reply.content}}</p>
           </div>
         </div>
       </li>
@@ -55,63 +60,47 @@
 export default {
   data: function(){
     return {
-      questions: [
-        {
-          id: 1,
-          type: "Q",
-          name: "박영진",
-          date: "99.03.24",
-          time: "99:20",
-          content: "되라 제말",
-          answer: {
-            is_answer: true,
-            type: "A",
-            name: "xbxj",
-            date: "99.03.24",
-            time: "99:20",
-            content: "답변입니다. "
-          },
-        },
-        {
-          // is_answer: false,
-          id: 2,
-          type: "Q",
-          name: "박숙미",
-          date: "399.03.24",
-          time: "39:20",
-          content: "얍!",
-          answer: {
-            is_answer: false,
-            type: "A",
-            name: "xbxj",
-            date: "99.03.24",
-            time: "99:20",
-            content: "답변입니다. "
-          },
-        },
-      ],
-
-      newQuestion: {
-        id: 4,
-        type: "Q",
-        name: "박영진",
-        date: "99.03.24",
-        time: "99:20",
-        content: "dsssd"
+      add:{
+        talent_pk: this.$route.params.lecid,
+        content: "새로운 질문 입니다. "
       }
     }
   },
+  props: ["detailQuestion"],
   methods: {
-    addNewQuestion(){
-      this.questions.push(this.newQuestion)
-      this.newQuestion.content = ""
-      // console.log("questions:",this.questions)
+    addQuestion(){
+      this.$http.post('talent/add/question/', this.add,{
+      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+    })
+      .then(function(response){
+        return response.json()
+      })
+      .then(function(data){
+        console.log("data:",data)
+        this.$emit('reflesh')
+      })
+      .catch( error => {
+        console.log("error:",error)
+      });
     },
+
+    //   this.$http.get('member/profile/user/',{
+    //     headers: {Authorization: 'Token 39248c0f2405edb4202fc393e5d7df367601f9cb'}
+    //   })
+    //   .then(function(response){
+    //     return response.json()
+    //   })
+    //   .then(function(data){
+    //     console.log("data:",data)
+    //   })
+    //   .catch( error => {
+    //     console.log("error:",error)
+    //   });
+    // },
+
   },
   created(){
-    // console.log("questions:",this.questions)
-    // console.log("newQuestion:",this.newQuestion)
-
+      console.log("this.detailQuestion:",this.detailQuestion)
   }
 }
 </script>

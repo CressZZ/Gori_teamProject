@@ -45,7 +45,7 @@
   </lec-review>
 
 
-  <lec-qna >
+  <lec-qna :detailQuestion = "detailQuestion" @reflesh = "questionload">
 
   </lec-qna>
 
@@ -76,6 +76,7 @@ export default {
       id: this.$route.params.lecid,
       detailAll: [],
       detailReview: [],
+      detailQuestion: [],
     }
   },
   watch: {
@@ -87,7 +88,7 @@ export default {
   created(){
 
       // 1. detailAll 데이터 get
-      this.$http.get(`https://mozzi.co.kr/api/talent/detail-all/${this.$route.params.lecid}/`)
+      this.$http.get(`talent/detail-all/${this.$route.params.lecid}/`)
       .then(function(response){
         return response.json()
       })
@@ -96,7 +97,8 @@ export default {
       })
 
       // 2. talent Review
-      this.$http.get(`https://mozzi.co.kr/api/talent/detail/${this.$route.params.lecid}/review/`)
+      
+      this.$http.get(`talent/detail/${this.$route.params.lecid}/review/`)
       .then(function(response){
         return response.json()
       })
@@ -104,7 +106,8 @@ export default {
         this.detailReview = data
       })
 
-
+      // 3. talent Questions
+      this.questionload()
 
 
 
@@ -130,7 +133,16 @@ export default {
   },
 
   methods: {
-
+    questionload(){
+      this.$http.get(`talent/detail/${this.$route.params.lecid}/qna/`)
+    .then(function(response){
+      return response.json()
+    })
+    .then(function(data){
+      this.detailQuestion= data
+      console.log("this.detailQuestion:",this.detailQuestion)
+    })
+    }
   },
 
   components: {

@@ -10,18 +10,18 @@
 
   </login> -->
 
-  <lec-summary :detailAll = "detailAll">
+  <lec-summary v-for="item in dtailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-summary>
 
-  <lec-apply :detailAll = "detailAll">
+  <lec-apply v-for="item in dtailAllArrayTrick" :key="id" :detailAll = "detailAll">
   </lec-apply>
 
   <lec-class-nav :detailAll = "detailAll">
   </lec-class-nav>
 
 
-  <lec-speaking :detailAll = "detailAll">
+  <lec-speaking  v-for="item in dtailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-speaking :detailAll = "detailAll">
 
@@ -45,7 +45,7 @@
   </lec-review>
 
 
-  <lec-qna :detailQuestion = "detailQuestion" @reflesh = "questionload">
+  <lec-qna  v-for="item in qnaArrayTrick" :key="id" :detailQuestion = "detailQuestion" @reflesh = "questionload">
 
   </lec-qna>
 
@@ -79,12 +79,13 @@ export default {
       detailAll: [],
       detailReview: [],
       detailQuestion: [],
+      
+      dtailAllArrayTrick: [],
+      qnaArrayTrick: []
     }
   },
   watch: {
-    '$route' (to, from){
-      this.id = to.params.lecid
-    }
+
   },
   // props: ['classlist'],
   created(){
@@ -96,7 +97,11 @@ export default {
       })
       .then(function(data){
         this.detailAll = data
+
+        //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        this.dtailAllArrayTrick = [1]
       })
+
 
       // 2. talent Review
 
@@ -142,7 +147,9 @@ export default {
     })
     .then(function(data){
       this.detailQuestion= data
-      console.log("this.detailQuestion:",this.detailQuestion)
+
+      //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      this.qnaArrayTrick = [1]
     })
     }
   },

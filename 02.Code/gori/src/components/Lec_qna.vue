@@ -1,10 +1,10 @@
 <template lang="html">
   <!-- QnA -->
   <section class="qna" id="qna">
-    <h2 class="qna__heading" >문의하기 32</h2>
+    <h2 class="qna__heading" >문의하기 {{detailQuestion.questions.length}} 건</h2>
     <div class="row">
       <div class="qna__write col-4-4 col-7-12">
-        <textarea name="" placeholder="input text" wrap="on"  @keyup.enter = "addNewQuestion"></textarea>
+        <textarea name="" placeholder="input text" wrap="on"  v-model = "tempQuestion"></textarea>
         <button type="button" class="" @click = "addQuestion">등록</button>
       </div>
 
@@ -22,7 +22,7 @@
         <div class="row">
           <div class="qna__list__q__writer col-4-4 col-7-12">
             <span><div>q</div>{{question.user}}</span>
-            <span class="qna__list__q__date">{{question.created_date.substring(0,10)}}</span>
+            <span class="qna__list__q__date">{{question.created_date.substring(0,10)}} &nbsp;  &nbsp;  {{question.created_date.substring(11,16)}}</span>
           </div>
         </div>
         <div class="row">
@@ -63,12 +63,18 @@ export default {
       add:{
         talent_pk: this.$route.params.lecid,
         content: "새로운 질문 입니다. "
-      }
+      },
+      tempQuestion: null
     }
   },
   props: ["detailQuestion"],
   methods: {
     addQuestion(){
+      if(!this.tempQuestion || this.tempQuestion === " "){
+        return alert("내용을 입력하셔야죠!!!!!!")
+      }
+      this.add.content = this.tempQuestion;
+      this.tempQuestion = null;
       this.$http.post('talent/add/question/', this.add,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })

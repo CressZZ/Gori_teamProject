@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app"  :class="{ gridon: isgrid }"  @click.meta="gridToggle">
       <router-view name='join' ></router-view>
       <router-view name='login'></router-view>
       <router-view name="header" ></router-view>
@@ -12,12 +12,13 @@
 
 <script>
 import {bus} from './bus'
-
+// import
 export default {
   name: 'app',
   data () {
     return {
       classlist: [],
+      isgrid: false,
     }
   },
 watch: {
@@ -48,6 +49,10 @@ mounted(){
 
   },
 methods: {
+  gridToggle(){
+    console.log("click!!!!!!!!!!!!!!!!!")
+    this.isgrid = !this.isgrid;
+  }
 
   },
 

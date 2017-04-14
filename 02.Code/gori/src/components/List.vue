@@ -1,14 +1,14 @@
 <template lang="html">
     <div>
-      <main-carousel></main-carousel>
-      <main-class-list :classlist ="classlist"></main-class-list>
+      <list-search></list-search>
+      <list-class-list :classlist ="classlist"></list-class-list>
     </div>
 </template>
 
 <script>
 
-import MainCarousel from './main_carousel.vue'
-import MainClassList from './main_class-list.vue'
+import ListSearch from './List_search.vue'
+import ListClassList from './List_class_list.vue'
 
 
 
@@ -24,8 +24,8 @@ export default {
   },
   props: ['classlist'],
   components: {
-    MainCarousel,
-    MainClassList,
+    ListSearch,
+    ListClassList,
 
   },
   created(){

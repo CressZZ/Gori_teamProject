@@ -71,12 +71,12 @@
           </div>
         </div>
 
-
+ <!-- @click.prevent = "toggleWishList" -->
           <div class="apply__buttons">
             <button
             class="apply__buttons__btn-wish"
-             @click.prevent = "toggleWishList"
-             @click="submitWish">찜하기
+
+             @click.prevent="submitWish">찜하기
               <a href="#" class="apply__buttons__heart">
                 <i v-bind:class="{ 'icon-heart-empty': !is_wishList, 'icon-heart': is_wishList }"></i>
               </a>
@@ -107,25 +107,72 @@ export default {
       this.is_wishList = !this.is_wishList
     },
     submitWish(){
+      // if(!this.$store.state.Token){
+      //   alert("로그인해라!")
+      // }
+      
       this.$http.get(`talent/${this.$route.params.lecid}/wish-list/toggle/`,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
 
-
       .then(function(response){
-          return response.json()
+          console.log("response:",response)
+          if(response.status === 201){
+            this.is_wishList = true
+            alert("위시리시트에 추가 되었습니다. 마이페이지에서 찜한 목록을 확인할 수 있습니다!")
+          } else if(response.status === 200){
+            this.is_wishList = false
+            alert("위시리시트에 삭제되었습니다. ")
+            console.log(data)
+            return response.json()
+          }
           })
       .then(function(data){
-        alert("마이페이지에서 찜한 목록을 확인할 수 있습니다!")
-      })
-          .catch(function(error){
-            console.log(error.message);
-            alert("로그인 후 이용가능 합니다!")
+          })
+      .catch(function(error){
+          console.log(error.message);
+            // alert("로그인 후 이용가능 합니다!")
           });
         // this.$store.commit('Token', data.key)
       },
     }
-  },
+
+
+  //   // 오류가 발생하지 않도록 배열을 돌리기 위해 만든 메서드
+  //   locationDetail(location, index) {
+  //     return location && (index===0) ?
+  //       location.region :
+  //       "";
+  //   },
+  //   locationSpecific(location, index) {
+  //     return location && (index===0) ?
+  //       location.specific_location :
+  //       "";
+  //   },
+  //   locationTime(location, index) {
+  //     return location && (index===0) ?
+  //       location.time[0] :
+  //       "";
+  //   },
+  //   locationDay(location, index) {
+  //     return location && (index===0) ?
+  //       location.day :
+  //       "";
+  //   },
+  //   locationAddCost(location, index) {
+  //
+  //     return location && (index===0) ?
+  //       location.extra_fee === "y" ? "있음" : "없음" : "";
+  //   },
+  //   locationAddCostAmount(location, index) {
+  //     return location && (index===0) ?
+  //       location.extra_fee_amount : "";
+  //   },
+  //
+  // },
+  //
+  // },
+
 }
 </script>
 

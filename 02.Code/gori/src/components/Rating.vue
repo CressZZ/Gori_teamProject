@@ -39,6 +39,7 @@ export default {
 
           this.temp_value = value;
           this.value = value;
+
               // this.value = value;
               // this.temp_value = this.value;
 

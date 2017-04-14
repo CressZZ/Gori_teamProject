@@ -1,7 +1,7 @@
 <template lang="html">
   <!-- QnA -->
   <section class="qna" id="qna">
-    <h2 class="qna__heading" >문의하기 {{detailQuestion.questions.length}} 건</h2>
+    <h2 class="qna__heading" >문의하기 {{detailQuestion.questions.length}}건</h2>
     <div class="row">
       <div class="qna__write col-4-4 col-7-12">
         <textarea name="" placeholder="input text" wrap="on"  v-model = "tempQuestion"></textarea>
@@ -62,7 +62,7 @@ export default {
     return {
       add:{
         talent_pk: this.$route.params.lecid,
-        content: "새로운 질문 입니다. "
+        content: "새로운 질문 입니다."
       },
       tempQuestion: null
     }

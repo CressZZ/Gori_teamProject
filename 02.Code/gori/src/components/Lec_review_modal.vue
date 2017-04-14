@@ -66,9 +66,9 @@
                         </div>
                       </div>
                 </div>
-                <div class="review-content">
+                <div class="review-content" v-model="add.comment">
                   <textarea name="content" rows="5" cols="30" placeholder="솔직한 리뷰를 작성해주세요 " id="content"></textarea>
-                <button type="submit" class="review__btn__add">리뷰 작성</button>
+                <button type="submit" class="review__btn__add" @click="submitReview">리뷰 작성</button>
                 </div>
               </div>
             </fieldset>
@@ -86,26 +86,47 @@ import LecReviewModalRating from './Rating.vue'
 export default {
   data: function() {
     return {
-      // isvisibles: true
+      add:{
+        talent_pk: this.$route.params.lecid,
+        curriculum: "",
+        readiness	: "",
+        timeliness: "",
+        delivery: "",
+        friendliness: "",
+        comment: ""
+      }
     }
   },
+  props:['isvisibles'],
   methods: {
     closeModal: function() {
       console.log('clicked');
       this.$emit('isvisibles')
-    }
-  },
-  props:  ['isvisibles'],
+    },
+    submitReview(){
+      this.$http.post(`talent/add/review/`,this.add,{
+      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+    })
+    .then(function(response){
+      return response.json()
+    })
+    .then(function(data){
+      console.log("data:",data)
+      // this.$emit('reflesh')
+    })
+    .catch( error => {
+      console.log("error:",error)
+    });
+  }
+},
   components: {
     LecReviewModalRating
-  },
-
-
+    },
   created() {
-
+    // console.log("kaaaaaaaaaaaaaaaaaa");
   },
-
 }
+
 </script>
 
 <style lang="sass">

@@ -35,9 +35,12 @@ export default {
               this.value = this.temp_value;
         },
         set: function(value) {
-              this.value = value;
-              this.temp_value = this.value;
 
+          this.temp_value = value;
+          this.value = value;
+
+             // this.value = value;
+             // this.temp_value = this.value;
         },
   }
 }

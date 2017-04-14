@@ -46,10 +46,10 @@
               </ul>
             </div>
             <!-- Carousel left button-->
-            <button class="list_class-list__carousel__left " type="button" ><i class="list_icon-left-open-big" @click="moveLeft"></i></button>
+            <button class="list_class-list__carousel__left " type="button" ><i class="icon-left-open-big" @click="moveLeft"></i></button>
             <button class="list_class-list__carousel__more" type="button" >더보기</button>
             <!-- Carousel right button-->
-            <button class="list_class-list__carousel__right " type="button"><i class="list_icon-right-open-big" @click="moveRight"></i></button>
+            <button class="list_class-list__carousel__right " type="button"><i class="icon-right-open-big" @click="moveRight"></i></button>
             <!-- carousel 끝! -->
           </section>
 
@@ -94,7 +94,7 @@ export default {
       this.windowWidth = e.currentTarget.innerWidth;
       console.log("windowWidth:",this.windowWidth)
       if (this.windowWidth > 960){
-      document.querySelector(".class-list__carousel").scrollLeft = 0
+      document.querySelector(".list_class-list__carousel").scrollLeft = 0
       }
       if (this.windowWidth < 959){
         this.trans = 0;
@@ -120,7 +120,7 @@ export default {
 </script>
 
 <style lang="sass">
-  .class-list__carousel__list>li
-    transition: 0.8s all
-    cursor: pointer
+  .list_class-list__carousel__list>li
+    // transition: 0.8s all
+    // cursor: pointer
 </style>

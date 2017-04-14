@@ -110,7 +110,7 @@ export default {
       // if(!this.$store.state.Token){
       //   alert("로그인해라!")
       // }
-      
+
       this.$http.get(`talent/${this.$route.params.lecid}/wish-list/toggle/`,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
@@ -120,20 +120,20 @@ export default {
           if(response.status === 201){
             this.is_wishList = true
             alert("위시리시트에 추가 되었습니다. 마이페이지에서 찜한 목록을 확인할 수 있습니다!")
-          } else if(response.status === 200){
+          } if(response.status === 200){
             this.is_wishList = false
             alert("위시리시트에 삭제되었습니다. ")
-            console.log(data)
-            return response.json()
+            return
           }
-          })
-      .then(function(data){
-          })
-      .catch(function(error){
-          console.log(error.message);
-            // alert("로그인 후 이용가능 합니다!")
-          });
-        // this.$store.commit('Token', data.key)
+        })
+      .catch(function(err){
+        console.log("response_err:",err)
+        switch(err.status){
+          case 401 : alert("로그인을 하세요!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+          break;
+          default : alert("error!",err.body.detail);
+          }
+        });
       },
     }
 

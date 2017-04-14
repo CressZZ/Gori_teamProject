@@ -79,7 +79,7 @@ export default {
       detailAll: [],
       detailReview: [],
       detailQuestion: [],
-      
+
       dtailAllArrayTrick: [],
       qnaArrayTrick: []
     }
@@ -104,7 +104,6 @@ export default {
 
 
       // 2. talent Review
-
       this.$http.get(`talent/detail/${this.$route.params.lecid}/review/`)
       .then(function(response){
         return response.json()
@@ -117,6 +116,19 @@ export default {
       this.questionload()
 
 
+      // 4. user-detail 데이터 get
+      this.$http.get('member/profile/user/', {
+      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("user-detail-response:",response)
+        return response.json()
+      })
+      .then(function(data){
+      })
+      .catch(function(err){
+        console.log("err:",err.bodyText)
+      })
 
   },
   mounted(){

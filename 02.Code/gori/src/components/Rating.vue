@@ -12,6 +12,7 @@
 </template>
 
 
+
 <script>
 import {bus} from '../bus'
 
@@ -35,11 +36,19 @@ export default {
               this.value = this.temp_value;
         },
         set: function(value) {
+
           this.temp_value = value;
-          return this.value = value;
+          this.value = value;
+              // this.value = value;
+              // this.temp_value = this.value;
+
         },
   }
 }
+
+
+
+
 
 
 

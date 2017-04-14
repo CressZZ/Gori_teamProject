@@ -20,7 +20,19 @@
       <h3 class="summery__class-title">{{detailAll.title}}</h3>
       <div class="summery__gen-info">
         <span class="summery__gen-info__group">{{detailAll.type}}</span>
-        <span class="summery__gen-info__location-detail">{{detailAll.locations[0] ? detailAll.locations[0].region : ""}}  {{detailAll.locations[1] ? "/" + detailAll.locations[1].region : ""}} </span>
+
+        <!-- <!!>배열 문제!!!!!</!!> -->
+        <span class="summery__gen-info__location-detail">
+          {{detailAll.locations[0] ? detailAll.locations[0].region : ""}}
+           {{detailAll.locations[1] ? "/" + detailAll.locations[1].region : ""}}
+           <!-- <template v-for="(location, index) in detailAll.locations">
+           {{ ArrayTrick(location, index) }}
+           </template> -->
+
+         </span>
+
+
+
         <span class="summery__gen-info__times">{{detailAll.number_of_class}} 회</span>
         <span class="summery__gen-info__time">{{detailAll.hours_per_class}} 시간/회</span>
       </div>
@@ -31,7 +43,7 @@
         <span class="summery__price-info__each">총 {{String(detailAll.hours_per_class * detailAll.number_of_class * detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " "}}원</span>
       </div>
       <div class="summery__img_wrapper">
-        <img src="../media/img/categori/health.jpg" alt="" class="summery__img">
+        <img :src="detailAll.cover_image" :alt="detailAll.tutor.nickname" class="summery__img">
       </div>
     </div>
 
@@ -44,6 +56,7 @@
 export default {
   data(){
     return{
+      detailItem:[],
     }
 
   },
@@ -52,11 +65,11 @@ export default {
   watch:{
     '$route' (to, from){
       this.id = to.params.lecid
-    }
+    },
+    detailAll: function(){
+        this.detailItem = this.detailAll
+      }
 
-    // '$route' (to, from){
-    //   this.id = to.params.lecid
-    // }
   },
   created(){
     // this.fetch()
@@ -79,6 +92,13 @@ export default {
     //   })
     // }
 
+
+    // 오류가 발생하지 않도록 배열을 돌리기 위해 만든 메서드
+    ArrayTrick(location, index ) {
+      return location && (index===0) ?
+        location.region :
+        "";
+    }
   },
 }
 </script>

@@ -10,13 +10,30 @@
             <ul class="apply__info__list ">
               <li class="apply__info__location">
                 <i class="fontello icon-location"></i>
-                <strong>{{detailAll.locations[0] ? detailAll.locations[0].region : ""}}</strong>
-                <span>{{detailAll.locations[0].specific_location}}</span>
+
+                <strong>
+                  {{detailAll.locations[0].region}}
+                  <!-- <template v-for="(location, index) in detailAll.locations">
+                   {{ locationDetail(location, index) }}
+                   </template> -->
+                </strong>
+                <span>
+                  {{detailAll.locations[0].specific_location}}
+                  <!-- <template v-for="(location, index) in detailAll.locations">
+                  {{ locationSpecific(location, index) }}
+                  </template> -->
+                </span>
+
                 </li>
                 <li class="apply__info__time">
                 <i class="fontello icon-clock"></i>
                 <strong>{{detailAll.hours_per_class + " "}} 시간/회 </strong>
-                <span>{{detailAll.locations[0].time[0]}}</span>
+                <span>
+                  {{detailAll.locations[0].time[0]}}
+                  <!-- <template v-for="(location, index) in detailAll.locations">
+                    {{ locationTime(location, index) }}
+                  </template> -->
+                </span>
                 </li>
                 <li class="apply__info__group">
                 <i class="fontello icon-group-circled"></i>
@@ -25,13 +42,30 @@
               </li>
               <li class="apply__info__week">
                 <i class="fontello icon-calendar"></i>
-                <strong>{{detailAll.locations[0].day}}</strong>
+                <strong>
+                  {{detailAll.locations[0].day}}
+                  <!-- <template v-for="(location, index) in detailAll.locations">
+                    {{ locationDay(location, index) }}
+                  </template> -->
+                </strong>
                 <span>총 {{detailAll.number_of_class}}회 / {{String(detailAll.hours_per_class * detailAll.number_of_class * detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " "}}원</span>
               </li>
               <li class="apply__info__additional-cost">
                 <i class="fontello icon-won"></i>
-                <strong>추가비용 <span>{{detailAll.locations[0].extra_fee === "y" ? "있음" : "없음"}}</span></strong>
-                <span>{{detailAll.locations[0].extra_fee_amount ? detailAll.locations[0].extra_fee_amount : ""}}</span>
+                <strong>추가비용 <span>
+                  {{detailAll.locations[0].extra_fee === "y" ? "있음" : "없음"}}
+                  <!-- <template v-for="(location, index) in detailAll.locations">
+                    {{ locationAddCost(location, index) }}
+                  </template> -->
+
+                </span></strong>
+                <span>
+                  {{detailAll.locations[0].extra_fee_amount ? detailAll.locations[0].extra_fee_amount : ""}}
+                  <!-- <template v-for="(location, index) in detailAll.locations">
+                    {{ locationAddCostAmount(location, index) }}
+                  </template> -->
+
+                </span>
               </li>
             </ul>
           </div>
@@ -90,6 +124,39 @@ export default {
         // this.$store.commit('Token', data.key)
       },
     }
+
+  //   // 오류가 발생하지 않도록 배열을 돌리기 위해 만든 메서드
+  //   locationDetail(location, index) {
+  //     return location && (index===0) ?
+  //       location.region :
+  //       "";
+  //   },
+  //   locationSpecific(location, index) {
+  //     return location && (index===0) ?
+  //       location.specific_location :
+  //       "";
+  //   },
+  //   locationTime(location, index) {
+  //     return location && (index===0) ?
+  //       location.time[0] :
+  //       "";
+  //   },
+  //   locationDay(location, index) {
+  //     return location && (index===0) ?
+  //       location.day :
+  //       "";
+  //   },
+  //   locationAddCost(location, index) {
+  //
+  //     return location && (index===0) ?
+  //       location.extra_fee === "y" ? "있음" : "없음" : "";
+  //   },
+  //   locationAddCostAmount(location, index) {
+  //     return location && (index===0) ?
+  //       location.extra_fee_amount : "";
+  //   },
+  //
+  // },
 }
 </script>
 

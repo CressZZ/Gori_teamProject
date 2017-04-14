@@ -4,7 +4,7 @@ import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Join from './components/Join.vue'
 import Login from './components/Login.vue'
-import List from './components/Main0.vue'
+import List from './components/List.vue'
 // import LecMap from './components/Lec_map.vue'
 
 export const routes = [

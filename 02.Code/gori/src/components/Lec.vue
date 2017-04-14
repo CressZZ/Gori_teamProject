@@ -99,7 +99,7 @@ export default {
       })
 
       // 2. talent Review
-      
+
       this.$http.get(`talent/detail/${this.$route.params.lecid}/review/`)
       .then(function(response){
         return response.json()

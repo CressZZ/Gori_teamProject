@@ -35,7 +35,8 @@ export default {
               this.value = this.temp_value;
         },
         set: function(value) {
-
+          this.temp_value = value;
+          return this.value = value;
         },
   }
 }

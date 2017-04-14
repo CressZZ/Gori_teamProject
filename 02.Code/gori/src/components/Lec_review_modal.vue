@@ -66,8 +66,8 @@
                         </div>
                       </div>
                 </div>
-                <div class="review-content" v-model="add.comment">
-                  <textarea name="content" rows="5" cols="30" placeholder="솔직한 리뷰를 작성해주세요 " id="content"></textarea>
+                <div class="review-content">
+                  <textarea name="content" rows="5" cols="30" placeholder="솔직한 리뷰를 작성해주세요 " id="content" v-model="add.comment"></textarea>
                 <button type="submit" class="review__btn__add" @click="submitReview">리뷰 작성</button>
                 </div>
               </div>
@@ -94,22 +94,39 @@ export default {
         delivery: "",
         friendliness: "",
         comment: ""
-      }
+      },
+      // addReview: null
     }
   },
   props:['isvisibles'],
+        // ['']
   methods: {
     closeModal: function() {
       console.log('clicked');
       this.$emit('isvisibles')
     },
     submitReview(){
+      if(!this.add.comment || this.add.comment === " "){
+        return alert("내용을 입력하셔야죠!!!!!!")
+        // this.
+      }
+      this.add.comment = this.add.comment;
+      this.add.comment = null;
       this.$http.post(`talent/add/review/`,this.add,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
-    .then(function(response){
-      return response.json()
-    })
+    // .then(function(response){
+    //   console.log("response:",response)
+    //   if(response.status === 201){
+    //     this.is_wishList = true
+    //     alert("위시리시트에 추가 되었습니다. 마이페이지에서 찜한 목록을 확인할 수 있습니다!")
+    //   } else if(response.status === 200){
+    //     this.is_wishList = false
+    //     alert("위시리시트에 삭제되었습니다. ")
+    //     console.log(data)
+    //     return response.json()
+    //   }
+    // })
     .then(function(data){
       console.log("data:",data)
       // this.$emit('reflesh')

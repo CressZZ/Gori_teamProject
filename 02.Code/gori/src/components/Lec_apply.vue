@@ -137,7 +137,6 @@ export default {
       },
     }
 
-
   //   // 오류가 발생하지 않도록 배열을 돌리기 위해 만든 메서드
   //   locationDetail(location, index) {
   //     return location && (index===0) ?
@@ -168,8 +167,6 @@ export default {
   //     return location && (index===0) ?
   //       location.extra_fee_amount : "";
   //   },
-  //
-  // },
   //
   // },
 

@@ -36,10 +36,7 @@ created() {
   })
   .then(function(data){
     this.classlist = data.results
-
-  })
-  .then(function(){
-    console.log("hhh")
+    return
   })
   .catch( error => console.error(error.message) );
 

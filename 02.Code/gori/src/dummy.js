@@ -124,6 +124,11 @@ export default {
    },
    submitWish(){
      this.$http.post(`talent/${this.$route.params.lecid}/wish-list/toggle/`)
+
+     submitWish(){
+       this.$http.post(`talent/${this.$route.params.lecid}/wish-list/toggle/`,{
+       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+     })
      .then(function(response){
          return response.json()
          })

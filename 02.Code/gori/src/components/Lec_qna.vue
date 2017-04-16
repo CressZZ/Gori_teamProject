@@ -1,7 +1,7 @@
 <template lang="html">
   <!-- QnA -->
   <section class="qna" id="qna">
-    <h2 class="qna__heading" >문의하기 {{detailQuestion.questions.length}}건</h2>
+    <h2 class="qna__heading" >문의하기 {{detailQuestion.count}}건</h2>
     <div class="row">
       <div class="qna__write col-4-4 col-7-12">
         <textarea name="" placeholder="input text" wrap="on"  v-model = "tempQuestion"></textarea>
@@ -18,7 +18,9 @@
 
 
 
-      <li class="qna__list__q" v-for = "question in detailQuestion.questions" >
+      <!-- <li class="qna__list__q" v-for = "question in detailQuestion.results" > -->
+      <li class="qna__list__q" v-for = "question in questionpage" >
+
         <div class="row">
           <div class="qna__list__q__writer col-4-4 col-7-12">
             <span><div>q</div>{{question.user}}</span>
@@ -47,9 +49,9 @@
     </ul>
     <div class="row">
       <div class="qna__page col-4-4 col-7-12">
-        <a href="#" class="qna__page__btn on_page">1</a>
-        <a href="#" class="qna__page__btn">2</a>
-        <a href="#" class="qna__page__btn">3</a>
+        <a v-for = "n in pagenum" href="#" class="qna__page__btn on_page" @click.prevent = "changePage(n)">{{n}}</a>
+        <!-- <a href="#" class="qna__page__btn">2</a>
+        <a href="#" class="qna__page__btn">3</a> -->
       </div>
 
     </div>
@@ -64,7 +66,12 @@ export default {
         talent_pk: this.$route.params.lecid,
         content: "새로운 질문 입니다."
       },
-      tempQuestion: null
+      tempQuestion: null,
+      count_per_page: 4,
+      page_to: 1,
+      // pagenum: Math.ceil(this.detailQuestion.count / this.count_per_page),
+
+
     }
   },
   props: ["detailQuestion"],
@@ -77,37 +84,40 @@ export default {
       this.tempQuestion = null;
       this.$http.post('talent/add/question/', this.add,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-    })
+      })
       .then(function(response){
         return response.json()
       })
       .then(function(data){
-        console.log("data:",data)
         this.$emit('reflesh')
       })
       .catch( error => {
-        console.log("error:",error)
       });
     },
-
-    //   this.$http.get('member/profile/user/',{
-    //     headers: {Authorization: 'Token 39248c0f2405edb4202fc393e5d7df367601f9cb'}
-    //   })
-    //   .then(function(response){
-    //     return response.json()
-    //   })
-    //   .then(function(data){
-    //     console.log("data:",data)
-    //   })
-    //   .catch( error => {
-    //     console.log("error:",error)
-    //   });
-    // },
-
+    changePage(n){
+       this.page_to = n
+    },
+    pagenumadd(){
+      this.pagenum = Math.ceil(this.detailQuestion.count / this.count_per_page)
+    }
   },
+  watch:{
+    detailQuestion(){
+      this.pagenumadd()
+    }
+  },
+  computed:{
+    questionpage(){
+      const from = ((this.page_to * this.count_per_page) - this.count_per_page)
+      const to = this.page_to * this.count_per_page
+      return this.detailQuestion.results.reverse().slice(from, to)
+    },
+  },
+
   created(){
-      console.log("this.detailQuestion:",this.detailQuestion)
-  }
+      // this.questionpage;
+      this.pagenumadd()
+  },
 }
 </script>
 

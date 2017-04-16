@@ -10,18 +10,18 @@
 
   </login> -->
 
-  <lec-summary v-for="item in dtailAllArrayTrick" :key="id" :detailAll = "detailAll">
+  <lec-summary v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-summary>
 
-  <lec-apply v-for="item in dtailAllArrayTrick" :key="id" :detailAll = "detailAll">
+  <lec-apply v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
   </lec-apply>
 
   <lec-class-nav :detailAll = "detailAll">
   </lec-class-nav>
 
 
-  <lec-speaking  v-for="item in dtailAllArrayTrick" :key="id" :detailAll = "detailAll">
+  <lec-speaking  v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-speaking :detailAll = "detailAll">
 
@@ -79,8 +79,9 @@ export default {
       detailAll: [],
       detailReview: [],
       detailQuestion: [],
+      // questionPage: 4,
 
-      dtailAllArrayTrick: [],
+      detailAllArrayTrick: [],
       qnaArrayTrick: []
     }
   },
@@ -96,10 +97,10 @@ export default {
         return response.json()
       })
       .then(function(data){
-        this.detailAll = data
+        this.detailAll = data,
 
         //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        this.dtailAllArrayTrick = [1]
+        this.detailAllArrayTrick = [1]
       })
 
 
@@ -154,11 +155,14 @@ export default {
   methods: {
     questionload(){
       this.$http.get(`talent/detail/${this.$route.params.lecid}/qna/`)
+        // ,{ params: {page_size: 2, page: this.questionPage}} )
     .then(function(response){
+      console.log("response-question:",response)
       return response.json()
     })
     .then(function(data){
       this.detailQuestion= data
+      console.log("question-data:",data)
 
       //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       this.qnaArrayTrick = [1]

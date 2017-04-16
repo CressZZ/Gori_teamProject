@@ -79,9 +79,11 @@ export default {
       detailAll: [],
       detailReview: [],
       detailQuestion: [],
+
       // questionPage: 4,
 
       detailAllArrayTrick: [],
+
       qnaArrayTrick: []
     }
   },

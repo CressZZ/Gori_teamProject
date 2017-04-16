@@ -9,71 +9,30 @@
                 <h2 class="review__rating__title"><strong>홍길동</strong> 튜터의 수업은 어떠셨나요?</h2>
                 <div class="t_layer_view">
                   <div class="drag_star">
+
                     <div class="review__lists">
+
                       <div class="review__list ">
-                      <h3 class="review__rating__subtitle">종합점수</h3>
                         <ul>
-                          <li class="st_off" id="total">
-                            <lec-review-modal-rating></lec-review-modal-rating>
+
+                          <li class="st_off" id="curriculum" v-for ="(value, key) in ratings">
+                            <h3 class="review__rating__subtitle">{{value}}</h3>
+                            <lec-review-modal-rating :title = "key" ></lec-review-modal-rating>
                           </li>
+
                         </ul>
-                        <span class="blind">종합점수</span><span class="star_count"><em id="totalValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
                       </div>
-                      <div class="review__list ">
-                        <h3 class="review__rating__subtitle">커리큘럼</h3>
-                        <ul>
-                          <li class="st_off" id="curriculum">
-                            <lec-review-modal-rating></lec-review-modal-rating>
-                          </li>
-                        </ul>
-                        <span class="blind">커리큘럼</span><span class="star_count"><em id="curriculumValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
-                      </div>
-                      <div class="review__list ">
-                        <h3 class="review__rating__subtitle">전달력</h3>
-                        <ul>
-                          <li class="st_off" id="skills">
-                            <lec-review-modal-rating></lec-review-modal-rating>
-                          </li>
-                        </ul>
-                      <span class="blind">전달력</span><span class="star_count"><em id="skillsValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
-                      </div>
-                        <div class="review__list ">
-                          <h3 class="review__rating__subtitle">준비성</h3>
-                          <ul>
-                            <li class="st_off" id="preparation">
-                              <lec-review-modal-rating></lec-review-modal-rating>
-                            </li>
-                          </ul>
-                        <span class="blind">준비성</span><span class="star_count"><em id="preparationValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
-                        </div>
-                        <div class="review__list ">
-                          <h3 class="review__rating__subtitle">친절도</h3>
-                          <ul>
-                            <li class="st_off" id="dedication">
-                              <lec-review-modal-rating></lec-review-modal-rating>
-                            </li>
-                          </ul>
-                        <span class="blind">친절도</span><span class="star_count"><em id="dedicationValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
-                        </div>
-                        <div class="review__list ">
-                          <h3 class="review__rating__subtitle">시간준수</h3>
-                          <ul>
-                            <li class="st_off" id="punctuality">
-                              <lec-review-modal-rating></lec-review-modal-rating>
-                            </li>
-                          </ul>
-                        <span class="blind">시간준수</span><span class="star_count"><em id="punctualityValue"><span class="blind">0</span></em><span class="blind"> 총 </span></span>
-                        </div>
-                      </div>
+                    </div>
+
                 </div>
                 <div class="review-content">
                   <textarea name="content" rows="5" cols="30" placeholder="솔직한 리뷰를 작성해주세요 " id="content" v-model="add.comment"></textarea>
-                <button type="submit" class="review__btn__add" @click="submitReview">리뷰 작성</button>
+                <button type="button" class="review__btn__add" @click="submitReview">리뷰 작성</button>
                 </div>
               </div>
             </fieldset>
             </form>
-             <button class="modal-close" @click="closeModal">X</button>
+             <!-- <button class="modal-close" @click="closeModal">X</button> -->
           </div>
           </div>
 
@@ -86,13 +45,27 @@ import LecReviewModalRating from './Rating.vue'
 export default {
   data: function() {
     return {
-      add:{
-        talent_pk: this.$route.params.lecid,
-        curriculum: "",
-        readiness	: "",
-        timeliness: "",
-        delivery: "",
-        friendliness: "",
+      ratings:
+        {
+        curriculum: "커리큘럼",
+        readiness: "준비성",
+        timeliness: "시간준수",
+        delivery: "전달력",
+        friendliness: "친절도"
+      },
+
+      add: {
+        talent_pk: +this.$route.params.lecid,
+        // v-model="add.curriculum"
+        curriculum: "1",
+        // v-model="add.readiness"
+        readiness	: 1,
+        // v-model="add.timeliness"
+        timeliness: 1,
+        // v-model="add.delivery"
+        delivery: 1,
+        // v-model="add.friendliness"
+        friendliness: 1,
         comment: ""
       },
       // addReview: null
@@ -106,15 +79,20 @@ export default {
       this.$emit('isvisibles')
     },
     submitReview(){
+      console.log('modal!!clicked');
+      console.log("add.talent_pk:",this.add);
+
+
       if(!this.add.comment || this.add.comment === " "){
         return alert("내용을 입력하셔야죠!!!!!!")
         // this.
       }
-      this.add.comment = this.add.comment;
-      this.add.comment = null;
+      // this.add.comment = this.add.comment;
+
       this.$http.post(`talent/add/review/`,this.add,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
+
     // .then(function(response){
     //   console.log("response:",response)
     //   if(response.status === 201){
@@ -127,9 +105,11 @@ export default {
     //     return response.json()
     //   }
     // })
+
+
     .then(function(data){
       console.log("data:",data)
-      // this.$emit('reflesh')
+    this.add.comment = null;
     })
     .catch( error => {
       console.log("error:",error)

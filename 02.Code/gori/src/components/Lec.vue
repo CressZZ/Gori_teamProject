@@ -10,7 +10,7 @@
 
   </login> -->
 
-  <lec-summary v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
+  <lec-summary v-for="item in detailAllArrayTrick"  :key="id" :detailAll = "detailAll">
 
   </lec-summary>
 
@@ -30,7 +30,7 @@
   </lec-intro>
 
 
-  <lec-location :detailAll = "detailAll">
+  <lec-location v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-location>
 

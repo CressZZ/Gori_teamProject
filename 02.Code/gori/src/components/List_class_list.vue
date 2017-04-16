@@ -20,7 +20,7 @@
                 <!-- is_new class -->
                 <!-- <router-link tag="li" to="/lec" class="list_navi_menu navi_menu_service " v-for = "classlist in classlist" class="list_" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
                 <!-- <li v-for = "classlist in classlist" class="list_" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
-                  <router-link tag="li" v-for = "(item, index) in classlist" v-bind:style="{ transform: 'translate(' + trans + '%)' }" class="list_class-list__item" :to="`lec/${item.pk}`" :key="item.id" >
+                    <router-link tag="li" v-for = "(item, index) in classlist" v-bind:style="{ transform: 'translate(' + trans + '%)' }" class="class-list__item" :to="{ name: 'lec', params: { lecid: item.pk }}" :key="item.id" >
                     <div class="list_is_new">new</div>
                     <!-- <button type="button" class="list_class__wish is_wish"><i class="list_icon-heart"></i></button> -->
                     <img :src="item.tutor.profile_image" :alt="`${item.tutor.nickname}`" class="list_class__tutor-picture">

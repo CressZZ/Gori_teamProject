@@ -5,8 +5,8 @@ export const stores = {
   state: {
     login: {
       is_login: false,
-      // Token: "39248c0f2405edb4202fc393e5d7df367601f9cb",
-      Token: "",
+      Token: "39248c0f2405edb4202fc393e5d7df367601f9cb",
+      // Token: "",
       loginInfo: {
         username: "",
         email: "",

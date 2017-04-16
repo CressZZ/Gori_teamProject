@@ -25,9 +25,13 @@
 
             <nav class="header__navi":class="{off: isoffs}">
                 <ul class="header__navi__lnb_list"  >
-                  <li class="navi_menu navi_menu_tutor ">
+                  <router-link tag="li" :to = "{ name: 'list'}"> <a href="#" >튜터등록</a></router-link>
+
+
+                  <!-- <li class="navi_menu navi_menu_tutor ">
                     <a href="#" >튜터등록</a>
-                  </li>
+                  </li> -->
+
                     <li class="navi_menu navi_menu_service ">
                       <a href="#" @click = "obtainToken" >서비스소개</a>
                     </li>

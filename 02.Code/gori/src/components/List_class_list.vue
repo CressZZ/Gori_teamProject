@@ -26,11 +26,11 @@
                     <img :src="item.tutor.profile_image" :alt="`${item.tutor.nickname}`" class="list_class__tutor-picture">
                     <p class="list_class__tutor-name">{{item.tutor.name}}</p>
                     <div class="list_class__star-total">
-                      <div v-if = "item.average_rate >= 5" class="list_star-1st"><i class="list_icon-star"></i></div>
-                      <div v-if = "item.average_rate > 4"><i class="list_icon-star"></i></div>
-                      <div v-if = "item.average_rate > 3"><i class="list_icon-star"></i></div>
-                      <div v-if = "item.average_rate > 2"><i class="list_icon-star"></i></div>
-                      <div v-if = "item.average_rate > 1"><i class="list_icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 5" class="list_star-1st"><i class="icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 4"><i class="icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 3"><i class="icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 2"><i class="icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 1"><i class="icon-star"></i></div>
                       <p class="list_start-total-num"> ({{item.review_count}})</p>
                     </div>
                     <h2 class="list_class__intro__title">{{item.title}}</h2>
@@ -122,5 +122,5 @@ export default {
 <style lang="sass">
   .list_class-list__carousel__list>li
     // transition: 0.8s all
-    // cursor: pointer
+    cursor: pointer
 </style>

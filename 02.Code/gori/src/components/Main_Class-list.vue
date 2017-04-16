@@ -28,10 +28,10 @@
                     <p class="class__tutor-name">{{item.tutor.name}}</p>
                     <div class="class__star-total">
                       <div v-if = "item.average_rate >= 5" class="star-1st"><i class="icon-star"></i></div>
-                      <div v-if = "item.average_rate > 4"><i class="icon-star"></i></div>
-                      <div v-if = "item.average_rate > 3"><i class="icon-star"></i></div>
-                      <div v-if = "item.average_rate > 2"><i class="icon-star"></i></div>
-                      <div v-if = "item.average_rate > 1"><i class="icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 4"><i class="icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 3"><i class="icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 2"><i class="icon-star"></i></div>
+                      <div v-if = "item.average_rate >= 1"><i class="icon-star"></i></div>
                       <p class="start-total-num"> ({{item.review_count}})</p>
                     </div>
                     <h2 class="class__intro__title">{{item.title}}</h2>

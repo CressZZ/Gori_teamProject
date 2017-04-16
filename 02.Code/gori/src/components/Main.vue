@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
     <div>
       <main-carousel></main-carousel>
       <main-categori></main-categori>

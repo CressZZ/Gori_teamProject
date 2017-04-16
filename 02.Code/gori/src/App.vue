@@ -30,7 +30,7 @@ computed:{
 },
 created() {
   // console.log("$:",$().jquery)
-  this.$http.get('talent/list/',{parameter: {page: 1}})
+  this.$http.get('talent/list/')
   .then(function(response){
     return response.json()
   })

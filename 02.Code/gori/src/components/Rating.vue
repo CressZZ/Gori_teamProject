@@ -25,8 +25,10 @@ export default {
             value: "",
           }
         },
-        props: {
-         },
+created(){
+  console.log("rating-title:", this.title)
+},
+      props: ["title"],
        methods: {
         star_over: function(index) {
               this.temp_value = this.value;
@@ -36,9 +38,9 @@ export default {
               this.value = this.temp_value;
         },
         set: function(value) {
-
           this.temp_value = value;
           this.value = value;
+          // this.$store.commit
 
               // this.value = value;
               // this.temp_value = this.value;

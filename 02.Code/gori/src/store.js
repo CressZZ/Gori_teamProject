@@ -5,8 +5,8 @@ export const stores = {
   state: {
     login: {
       is_login: false,
-      // Token: "39248c0f2405edb4202fc393e5d7df367601f9cb",
-      Token: "",
+      Token: "39248c0f2405edb4202fc393e5d7df367601f9cb",
+      // Token: "",
       loginInfo: {
         username: "",
         email: "",
@@ -21,6 +21,24 @@ export const stores = {
         name: ""
       },
     },
+    // rating:{
+    //   add:{
+    //     talent_pk: this.$route.params.lecid,
+    //     // v-model="add.curriculum"
+    //     curriculum: "",
+    //     // v-model="add.readiness"
+    //     readiness	: "",
+    //     // v-model="add.timeliness"
+    //     timeliness: "",
+    //     // v-model="add.delivery"
+    //     delivery: "",
+    //     // v-model="add.friendliness"
+    //     friendliness: "",
+    //     comment: ""
+    //   },
+    // },
+
+
   },
   mutations: {
 
@@ -38,6 +56,9 @@ export const stores = {
       logout(state){
         state.login.is_login = false;
         state.login.Token = "";
+      },
+      setRating(state){
+
       }
 
   },

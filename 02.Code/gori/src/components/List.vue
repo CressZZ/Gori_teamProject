@@ -1,7 +1,7 @@
-<template lang="html">
+<template>
     <div>
-      <list-search></list-search>
-      <list-class-list :classlist ="classlist"></list-class-list>
+      <list-search  @refreshList="refreshList" ></list-search>
+      <list-class-list v-for="item in detailAllArrayTrick" :key="item.id" :searchedList ="searchedList"></list-class-list>
     </div>
 </template>
 
@@ -19,27 +19,52 @@ export default {
 
   data(){
     return {
-      // classlist:[],
+      searchedList: [],
+      detailAllArrayTrick: [],
     }
   },
-  props: ['classlist'],
+  // props: ['classlist'],
   components: {
     ListSearch,
     ListClassList,
 
   },
   created(){
-    // this.$http.get('https://mozzi.co.kr/api/talent/list/')
-    // .then(function(response){
-    //   return response.json()
-    // })
-    // .then(function(data){
-    //   this.classlist = data
-    // })
-    // .then(function(){
-    // })
 
+      // 1. detailAll 데이터 get
+      this.$http.get(`talent/list/`,{ params: {category: this.$route.query.category, region: this.$route.query.region, title: this.$route.query.title}} )
+
+      .then(function(response){
+        console.log("response-list:",response)
+        return response.json()
+      })
+      .then(function(data){
+        this.searchedList = data.results,
+        console.log("data.results:",data.results)
+
+
+        //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        this.detailAllArrayTrick = [1]
+      })
   },
+  methods: {
+    refreshList(){
+      this.$http.get(`talent/list/`,{ params: {category: this.$route.query.category, region: this.$route.query.region, title: this.$route.query.title}} )
+
+      .then(function(response){
+        console.log("response-list:",response)
+        return response.json()
+      })
+      .then(function(data){
+        this.searchedList = data.results,
+        console.log("data.results:",data.results)
+
+
+        //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        this.detailAllArrayTrick = [1]
+      })
+    },
+  }
 
 }
 </script>

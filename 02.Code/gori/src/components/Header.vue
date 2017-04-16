@@ -25,6 +25,7 @@
 
             <nav class="header__navi":class="{off: isoffs}">
                 <ul class="header__navi__lnb_list"  >
+                  <router-link tag="li" :to = "{ name: 'list'}"> <a href="#" >검색</a></router-link>
                   <router-link tag="li" :to = "{ name: 'list'}"> <a href="#" >튜터등록</a></router-link>
 
 

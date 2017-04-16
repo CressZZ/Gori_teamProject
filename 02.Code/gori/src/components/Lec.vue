@@ -40,7 +40,7 @@
   </lec-curriculum>
 
 
-  <lec-review :detailReview ="detailReview">
+  <lec-review :detailReview ="detailReview" :detailAll = "detailAll">
 
   </lec-review>
 

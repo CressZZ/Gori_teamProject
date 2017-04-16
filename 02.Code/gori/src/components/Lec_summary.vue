@@ -8,11 +8,11 @@
         <div class="summery__review col-2-4">
           <!-- 1.class__stars, 2.summery__stars -->
           <div class="summery__review__stars">
-            <div class="star-1st"><i class="icon-star"></i></div>
-            <div class="star-2nd"><i class="icon-star"></i></div>
-            <div class="star-3rd"><i class="icon-star"></i></div>
-            <div class="star-4th"><i class="icon-star"></i></div>
-            <div class="star-5th"><i class="icon-star"></i></div>
+            <div v-if = "detailAll.average_rates.total >= 5" class="star-1st"><i class="icon-star"></i></div>
+            <div v-if = "detailAll.average_rates.total >= 4" class="star-2nd"><i class="icon-star"></i></div>
+            <div v-if = "detailAll.average_rates.total >= 3" class="star-3rd"><i class="icon-star"></i></div>
+            <div v-if = "detailAll.average_rates.total >= 2" class="star-4th"><i class="icon-star"></i></div>
+            <div v-if = "detailAll.average_rates.total >= 1" class="star-5th"><i class="icon-star"></i></div>
           </div>
           <div class="row"><span class="into__review__num">후기 {{detailAll.review_count}}건</span></div>
         </div>

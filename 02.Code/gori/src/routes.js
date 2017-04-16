@@ -31,16 +31,26 @@ export const routes = [
       // 'map': LecMap
     },
   },
-  {
-    path: '/list/',
-    name: 'list',
-    components: {
-      'default': List,
-      'header': Header,
-      'footer': Footer,
-      'join': Join,
-      'login': Login,
-    },
+  // {
+  //   path: '/list/:listid',
+  //   name: 'list',
+  //   components: {
+  //     'default': List,
+  //     'header': Header,
+  //     'footer': Footer,
+  //     'join': Join,
+  //     'login': Login,
+  //   },
+    {
+      path: '/list',
+      name: 'list',
+      components: {
+        'default': List,
+        'header': Header,
+        'footer': Footer,
+        'join': Join,
+        'login': Login,
+      },
   },
 
 

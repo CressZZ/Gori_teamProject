@@ -42,6 +42,17 @@ export const routes = [
       'login': Login,
     },
   },
+  {
+    path: '/enroll/',
+    name: 'enroll',
+    components: {
+      'default': Enroll,
+      'header': Header,
+      'footer': Footer,
+      'join': Join,
+      'login': Login,
+    },
+  },
 
 
   {

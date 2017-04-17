@@ -5,6 +5,11 @@ import Footer from './components/Footer.vue'
 import Join from './components/Join.vue'
 import Login from './components/Login.vue'
 import List from './components/List.vue'
+import Enroll from './components/Enroll.vue'
+import EnrollRegister from './components/Enroll_register.vue'
+import EnrollRegisterDetail from './components/Enroll_registerdetail.vue'
+
+
 // import LecMap from './components/Lec_map.vue'
 
 export const routes = [
@@ -31,8 +36,9 @@ export const routes = [
       // 'map': LecMap
     },
   },
+
   {
-    path: '/list/',
+    path: '/list',
     name: 'list',
     components: {
       'default': List,
@@ -43,7 +49,7 @@ export const routes = [
     },
   },
   {
-    path: '/enroll/',
+    path: '/enroll/:id',
     name: 'enroll',
     components: {
       'default': Enroll,
@@ -52,6 +58,11 @@ export const routes = [
       'join': Join,
       'login': Login,
     },
+    children: [
+    // { path: '', component: UserStart },
+    { path: 'register', component: EnrollRegister },
+    { path: 'registerDetail', component: EnrollRegisterDetail}
+  ]
   },
 
 

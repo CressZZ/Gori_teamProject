@@ -44,8 +44,8 @@
         <!--모바일에서는 검색란 뺄것-->
 
         <div class="banner__search__wrapper">
-          <form action="submit" class="banner__search">
-            <input class="banner__search__input" type="search" autofocus placeholder="input your message"><button class="banner__search__btn" type="button">검색</button>
+          <form @keydown.enter = "filtering" action="search" class="list__search">
+            <input @keydown.enter.prevent = "filtering" v-model="filter.title" class="list__search__input" type="search" autofocus placeholder="바숙미 바보"><button @click = "filtering" class="list__search__btn" type="button">검색</button>
           </form>
         </div>
       </section>
@@ -61,9 +61,18 @@ export default {
       target2: "◦",
       target3: "◦",
       trans: 0,
+      filter:{
+
+        title: "",
+      }
     }
   },
   methods: {
+    filtering(){
+        console.log("this.filter:",this.filter)
+        this.$router.push({ name: 'list',  query: {title: this.filter.title}})
+        this.$emit('refreshList')
+    },
     moveRight(){
       console.log("click")
       if (this.trans >= -100) {

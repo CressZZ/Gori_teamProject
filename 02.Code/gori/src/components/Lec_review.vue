@@ -3,7 +3,7 @@
   <section class="review" id="review">
     <div class="row">
       <div class="review-section-1 col-4-4 col-7-12">
-        <h2 class="review__heading">리뷰 {{detailReview.review_count}}건</h2>
+        <h2 class="review__heading">리뷰 {{detailReview.count}}건</h2>
         <div>
           <button type="button" class="review__btn" @click="isvisible">리뷰작성 + </button>
         </div>
@@ -12,14 +12,14 @@
     <div class="review-section-2 row">
 
       <ul class="col-4-4 col-7-12 row review__stars">
-        <li v-for="(value, key) in detailReview.average_rates">
+        <li v-for="(value, key) in detailAll.average_rates">
           <strong>{{key === "total" ? "합계" : key === "curriculum" ? "커리큘럼" : key === "readiness" ? "준비성" : key === "timeliness" ? "시간준수" : key === "delivery" ? "전달력" : key === "friendliness" ? "친절도" : ""}}</strong>
           <div class="reveiw__stars__total">
             <div v-if = "value >= 5" class="star-1st"><i class="icon-star"></i></div>
-            <div v-if = "value > 4" class="star-2nd"><i class="icon-star"></i></div>
-            <div v-if = "value > 3" class="star-3rd"><i class="icon-star"></i></div>
-            <div v-if = "value > 2" class="star-4th"><i class="icon-star"></i></div>
-            <div v-if = "value > 1" class="star-5th"><i class="icon-star"></i></div>
+            <div v-if = "value >= 4" class="star-2nd"><i class="icon-star"></i></div>
+            <div v-if = "value >= 3" class="star-3rd"><i class="icon-star"></i></div>
+            <div v-if = "value >= 2" class="star-4th"><i class="icon-star"></i></div>
+            <div v-if = "value >= 1" class="star-5th"><i class="icon-star"></i></div>
           </div>
         </li>
       </ul>
@@ -27,7 +27,7 @@
     </div>
     <div class="review__write">
 
-      <div class="row" v-for="item in detailReview.reviews">
+      <div class="row" v-for="item in detailReview.results">
         <div class="review__write__writer col-4-4 col-7-12">
           <div class="review__write__writer__info-1">
             <img class="review__write__writer__picture" src="../media/img/user.jpg">
@@ -71,7 +71,7 @@ export default {
 
     }
   },
-  props: ["detailReview"],
+  props: ["detailReview", "detailAll"],
 
   methods: {
     isvisible() {

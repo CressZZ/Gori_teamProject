@@ -40,11 +40,24 @@ created(){
         set: function(value) {
           this.temp_value = value;
           this.value = value;
-          // this.$store.commit
+          switch(this.title){
+            case "curriculum" :
+            this.$store.commit('setRatingcurriculum',  this.value)
+            return;
+            case "readiness" :
+            this.$store.commit('setRatingreadiness',  this.value)
+            return;
+            case "timeliness" :
+            this.$store.commit('setRatingtimeliness',  this.value)
+            return;
+            case "delivery" :
+            this.$store.commit('setRatingdelivery',  this.value)
+            return;
+            case "friendliness" :
+            this.$store.commit('setRatingfriendliness',  this.value)
+            return
 
-              // this.value = value;
-              // this.temp_value = this.value;
-
+          }
         },
   }
 }

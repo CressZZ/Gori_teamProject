@@ -21,22 +21,17 @@ export const stores = {
         name: ""
       },
     },
-    // rating:{
-    //   add:{
-    //     talent_pk: this.$route.params.lecid,
-    //     // v-model="add.curriculum"
-    //     curriculum: "",
-    //     // v-model="add.readiness"
-    //     readiness	: "",
-    //     // v-model="add.timeliness"
-    //     timeliness: "",
-    //     // v-model="add.delivery"
-    //     delivery: "",
-    //     // v-model="add.friendliness"
-    //     friendliness: "",
-    //     comment: ""
-    //   },
-    // },
+    rating:{
+      add:{
+        talent_pk: "",
+        curriculum: "",
+        readiness	: "",
+        timeliness: "",
+        delivery: "",
+        friendliness: "",
+        comment: ""
+      },
+    },
 
 
   },
@@ -57,9 +52,38 @@ export const stores = {
         state.login.is_login = false;
         state.login.Token = "";
       },
-      setRating(state){
-
+      setRatingcurriculum(state,  value){
+        state.rating.add.curriculum = value
+      },
+      setRatingreadiness(state,  value){
+        state.rating.add.readiness = value
+      },
+      setRatingtimeliness(state,  value){
+        state.rating.add.timeliness = value
+      },
+      setRatingdelivery(state,  value){
+        state.rating.add.delivery = value
+      },
+      setRatingfriendliness(state,  value){
+        state.rating.add.friendliness = value
+      },
+      setreview(state,  value){
+        state.rating.add.comment = value
+      },
+      settalent_pk(state,  value){
+        state.rating.add.talent_pk = value
+      },
+      resetreview(state){
+        state.rating.add.curriculum = ""
+        state.rating.add.readiness = "";
+        state.rating.add.timeliness = ""
+        state.rating.add.delivery = ""
+        state.rating.add.friendliness = ""
+        state.rating.add.comment = ""
+        state.rating.add.talent_pk = ""
       }
+
+
 
   },
   actions: {

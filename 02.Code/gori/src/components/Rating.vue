@@ -40,6 +40,7 @@ created(){
         set: function(value) {
           this.temp_value = value;
           this.value = value;
+
           switch(this.title){
             case "curriculum" :
             this.$store.commit('setRatingcurriculum',  this.value)
@@ -58,7 +59,16 @@ created(){
             return
 
           }
+
         },
+        rate: function(ratings){
+          this.$http.post('talent/add/review/', this.ratings,{
+          headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+          })
+          .then(function (response) {
+                    console.log('submitted');
+                });
+        }
   }
 }
 

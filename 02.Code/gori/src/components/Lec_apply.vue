@@ -18,7 +18,7 @@
                    </template> -->
                 </strong>
                 <span>
-                  {{detailAll.locations[0].specific_location}}
+                  {{detailAll.locations[0].results[0].specific_location}}
                   <!-- <template v-for="(location, index) in detailAll.locations">
                   {{ locationSpecific(location, index) }}
                   </template> -->
@@ -29,7 +29,7 @@
                 <i class="fontello icon-clock"></i>
                 <strong>{{detailAll.hours_per_class + " "}} 시간/회 </strong>
                 <span>
-                  {{detailAll.locations[0].time[0]}}
+                  {{detailAll.locations[0].results[0].time[0]}}
                   <!-- <template v-for="(location, index) in detailAll.locations">
                     {{ locationTime(location, index) }}
                   </template> -->
@@ -43,7 +43,7 @@
               <li class="apply__info__week">
                 <i class="fontello icon-calendar"></i>
                 <strong>
-                  {{detailAll.locations[0].day}}
+                  {{detailAll.locations[0].results[0].day}}
                   <!-- <template v-for="(location, index) in detailAll.locations">
                     {{ locationDay(location, index) }}
                   </template> -->
@@ -53,14 +53,14 @@
               <li class="apply__info__additional-cost">
                 <i class="fontello icon-won"></i>
                 <strong>추가비용 <span>
-                  {{detailAll.locations[0].extra_fee === "y" ? "있음" : "없음"}}
+                  {{detailAll.locations[0].results[0].extra_fee === "y" ? "있음" : "없음"}}
                   <!-- <template v-for="(location, index) in detailAll.locations">
                     {{ locationAddCost(location, index) }}
                   </template> -->
 
                 </span></strong>
                 <span>
-                  {{detailAll.locations[0].extra_fee_amount ? detailAll.locations[0].extra_fee_amount : ""}}
+                  {{detailAll.locations[0].results[0].extra_fee_amount ? detailAll.locations[0].results[0].extra_fee_amount : ""}}
                   <!-- <template v-for="(location, index) in detailAll.locations">
                     {{ locationAddCostAmount(location, index) }}
                   </template> -->

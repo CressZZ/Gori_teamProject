@@ -40,7 +40,7 @@
   </lec-curriculum>
 
 
-  <lec-review :detailReview ="detailReview" :detailAll = "detailAll">
+  <lec-review v-for="item in reviewArrayTrick" :key="id" @reflesh = "reviewload" :detailReview ="detailReview" :detailAll = "detailAll">
 
   </lec-review>
 
@@ -83,7 +83,7 @@ export default {
       // questionPage: 4,
 
       detailAllArrayTrick: [],
-
+      reviewArrayTrick: [],
       qnaArrayTrick: []
     }
   },
@@ -107,13 +107,7 @@ export default {
 
 
       // 2. talent Review
-      this.$http.get(`talent/detail/${this.$route.params.lecid}/review/`)
-      .then(function(response){
-        return response.json()
-      })
-      .then(function(data){
-        this.detailReview = data
-      })
+      this.reviewload()
 
       // 3. talent Questions
       this.questionload()
@@ -169,6 +163,19 @@ export default {
       //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       this.qnaArrayTrick = [1]
     })
+  },
+    reviewload(){
+      this.$http.get(`talent/detail/${this.$route.params.lecid}/review/`)
+      .then(function(response){
+        return response.json()
+      })
+      .then(function(data){
+        this.detailReview = data
+
+        //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        this.reviewArrayTrick = [1]
+      })
+
     }
   },
 

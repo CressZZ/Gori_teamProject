@@ -7,22 +7,22 @@
         <div class="member__info">
           <img src="#" alt="프로필이미지" class="member__info-img">
             <!-- <a href="#" title="프로필 이미지 팝업" class="member__info-img__edit">EDIT</a> -->
-          <p class="member__username">홍길동님</p>
+          <p class="member__username">{{userinfo.name}}</p>
         </div>
         <table class="profile__list">
           <caption class="hidden__heading">회원정보</caption>
           <tbody class="profile__list__detail">
              <tr>
                <th class="profile__list__detail-id">아이디</th>
-               <td>아이디</td>
+               <td>{{userinfo.user_id}}</td>
              </tr>
              <tr>
               <th class="profile__list__detail-nickname">닉네임</th>
-              <td>닉네임란</td>
+              <td>{{userinfo.nickname}}</td>
              </tr>
              <tr>
               <th>전화번호</th>
-              <td>01001010100</td>
+              <td>{{userinfo.cellphone}}</td>
              </tr>
           </tbody>
         </table>
@@ -38,25 +38,25 @@
           <li class="member__info__lec-list__item member__info__lec-took">
             <a href="#">
               <p>받은수업신청서</p>
-              <strong>0건</strong>
+              <strong>{{userinfo.received_registrations}}건</strong>
             </a>
           </li>
           <li class="member__info__lec-list__item  member__info__lec-apply">
             <a href="#">
               <p>신청한수업</p>
-              <strong>0건</strong>
+              <strong>{{userinfo.sent_registrations}}건</strong>
             </a>
           </li>
           <li class="member__info__lec-list__item  member__info__lec-wish">
             <a href="#">
               <p>위시리스트</p>
-              <strong>0건</strong>
+              <strong>{{userinfo.wish_list}}건</strong>
             </a>
           </li>
           <li class="member__info__lec-list__item  member__info__lec-my">
             <a href="#">
               <p>내수업</p>
-              <strong>0건</strong>
+              <strong>{{userinfo.received_registrations}}건</strong>
             </a>
           </li>
         </ul>
@@ -75,7 +75,31 @@
 
 <script>
 export default {
+  data(){
+    return {
+      userinfo: {},
+    }
+  },
   props: ["detailAll"],
+  created(){
+    this.$http.get('member/profile/user/', {
+    headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+    })
+    .then(function(response){
+      console.log("user-detail-response:",response)
+
+      return response.json()
+    })
+    .then(function(data){
+      this.userinfo = data
+      console.log("user-name:",data.name)
+      // console.log("data:",data)
+    })
+    .catch(function(err){
+      console.log("err:",err.bodyText)
+    })
+
+  }
 
 
 }

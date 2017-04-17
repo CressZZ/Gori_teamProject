@@ -176,6 +176,17 @@ export default {
         this.reviewArrayTrick = [1]
       })
 
+      this.$http.get(`talent/detail-all/${this.$route.params.lecid}/`)
+      .then(function(response){
+        return response.json()
+      })
+      .then(function(data){
+        this.detailAll = data,
+
+        //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        this.detailAllArrayTrick = [1]
+      })
+
     }
   },
 

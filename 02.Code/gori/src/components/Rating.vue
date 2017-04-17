@@ -44,8 +44,15 @@ created(){
 
               // this.value = value;
               // this.temp_value = this.value;
-
         },
+        rate: function(ratings){
+          this.$http.post('talent/add/review/', this.ratings,{
+          headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+          })
+          .then(function (response) {
+                    console.log('submitted');
+                });
+        }
   }
 }
 

@@ -74,8 +74,10 @@ export default {
         return response.json()
       })
       .then(function(data){
+
         this.$store.commit('Token', data.key)
         this.$store.commit('loginInfo', this.loginInfo)
+
         this.closeModal()
         alert("로그인 완료!!")
       })

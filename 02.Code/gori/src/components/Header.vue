@@ -26,7 +26,7 @@
             <nav class="header__navi":class="{off: isoffs}">
                 <ul class="header__navi__lnb_list"  >
                   <router-link tag="li" :to = "{ name: 'list'}" class="navi_menu_search"> <a href="#" >검색</a></router-link>
-                  <router-link tag="li" :to = "{ name: 'list'}" class="navi_menu_tutor"> <a href="#" >튜터등록</a></router-link>
+                  <li > <a href="#" >튜터등록</a></li>
 
 
                   <!-- <li class="navi_menu navi_menu_tutor ">
@@ -114,6 +114,20 @@ export default {
       alert("로그아웃 완료")
       this.$store.commit('logout')
     },
+    // verifyTutor(){
+    //   this.$http.post('member/token-auth/', this.userinfo)
+    //   .then(function(response){
+    //     return response.json()
+    //   })
+    //   .then(function(data){
+    //     console.log("data:",data)
+    //     alert("로그인 완료!!")
+    //     this.$store.commit('Token', data.token)
+    //   })
+    //   .catch( error => {
+    //     console.log("error:",error.bodyText)
+    //   });
+    // }
 
 
     windowResize(e){

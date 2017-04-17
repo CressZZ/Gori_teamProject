@@ -5,12 +5,12 @@
       <div class="">
         <div class="enroll-lec__list">
           <h3 class="">수업제목</h3>
-          <input type="text" placeholder="과목명을 입력해주세요" class="enroll-lec__list-title">
+          <input v-model = "registerInfo.title" type="text" placeholder="과목명을 입력해주세요" class="enroll-lec__list-title">
         </div>
         <div class="enroll-lec__list">
           <h3>카테고리</h3>
           <label class="enroll-lec__category">
-            <select class="">
+            <select @change = "" v-model="registerInfo.category" class="">
               <option value=""> 카테고리 전체</option>
               <option value="hnb"> 헬스/뷰티 </option>
               <option value="lan">외국어</option>
@@ -26,31 +26,61 @@
         <div class="enroll-lec__list">
         <h3 >수업형태</h3>
           <form class="enroll-lec__type">
-            <label><input type="radio" name="type" value="1"> 1:1 수업</label>
-            <label><input type="radio"  name="type" value="2"> 그룹수업</label>
-            <label><input type="radio"  name="type" value="3"> 원데이</label>
+            <input v-model = "registerInfo.type" id="1on1"type="radio" name="type" value="0"> <label for="1on1">1:1 수업</label>
+            <input v-model = "registerInfo.type" id="group"type="radio"  name="type" value="1"><label for="group"> 그룹수업</label>
+            <input v-model = "registerInfo.type" id="oneday"type="radio"  name="type" value="2"><label for="oneday"> 원데이</label>
           </form>
         </div>
         <div class="enroll-lec__list enroll-lec__picture">
           <h3 class="">커버사진</h3>
           <label>
-            <input class="enroll-lec__picture"type="file" multiple="">
+            <input class="enroll-lec__picture" type="file" multiple="">
           </label>
         </div>
         <div class="enroll-lec__list enroll-lec__introduce-tutor">
           <h3 class="">튜터소개</h3>
-          <input type="text" placeholder="내용을 입력해주세요" class="">
+          <input v-model = "registerInfo.tutor_info" type="text" placeholder="내용을 입력해주세요" class="">
         </div>
         <div class="enroll-lec__list enroll-lec__introduce-lec">
           <h3 class="">수업소개</h3>
-          <input type="text" placeholder="내용을 입력해주세요" class="">
+          <input v-model = "registerInfo.class_info" type="text" placeholder="내용을 입력해주세요" class="">
         </div>
-        <div class="enroll-lec__curriculum">
+        <div class="enroll-lec__list enroll-lec__timeperday">
+          <h3 class="">기본시간</h3>
+          <label class="enroll-lec__timeperday-list">
+            <select v-model = "registerInfo.hours_per_class" class="">
+              <option value = "1">1 시간</option>
+              <option value = "2">2 시간</option>
+              <option value = "3">3 시간</option>
+              <option value = "4">4 시간</option>
+              <option value = "5">5 시간</option>
+              <option value = "6">6 시간</option>
+              <option value = "7">7 시간</option>
+              <option value = "8">8 시간</option>
+              <option value = "9">9 시간</option>
+              <option value = "10">10 시간</option>
+            </select>
+          </label>
+        </div>
+        <div class="enroll-lec__list enroll-lec__num">
+          <h3 class="">수업횟수</h3>
+          <input v-model = "registerInfo.number_of_class" type="text" placeholder="총 수업 횟수를 적어주세요" class=""> &nbsp &nbsp 회
+        </div>
+        <div class="enroll-lec__list enroll-lec__cost">
+          <h3 class="">시간당 가격</h3>
+          <input v-model = "registerInfo.price_per_hour" type="text" placeholder="1시간 당 가격을 적어주세요" class="">&nbsp &nbsp 원/시간
+        </div>
+        <div class="enroll-lec__list enroll-lec__totalcost">
+          <h3 class="">수업비용</h3>
+          <input type="text" placeholder="총 수업 비용을 안내합니다" class="">
+        </div>
+      <!-- </div> -->
+        <!-- <div class="enroll-lec__curriculum">
           <h3 class="">커리큘럼</h3>
           <ul class="enroll-lec__curriculum-list">
-            <li v-for = "item in curriculum">
+            <li v-for = "(item, index) in curriculumnum">
               <p class="enroll-lec__curriculum1">{{item}}회차</p>
-              <textarea placeholder="내용을 입력해주세요" class=""></textarea>
+              <textarea  v-model = "tempcurriculum" @onchange = "inputCurriculum" placeholder="내용을 입력해주세요" class=""></textarea>
             </li>
 
 
@@ -61,7 +91,7 @@
             </div>
           </ul>
 
-        </div>
+        </div> -->
       </div>
     </fieldset>
     <button type="button" class="enroll__next-btn"> 다음 </button>
@@ -71,21 +101,43 @@
 <script>
 export default {
   data(){
-    return {
-      curriculum: 2,
+    return{
+      registerInfo: {
+        title: "",
+        turtor_info: "",
+        class_info: "",
+        cover_image: {},
+        category: "",
+        type: null,
+        number_of_class: null,
+        price_per_hour: "",
+        hours_per_class: ""
+      },
+      curriculumnum: 2,
+      tempcurriculum:
+        {
+          talent_pk: "",
+          information: ""
+        },
+
+      curriculum:[],
     }
   },
   methods: {
     addCurriculum(){
-      this.curriculum = this.curriculum + 1;
-      console.log("this.curriculum:",this.curriculum)
+      this.curriculumnum = this.curriculumnum + 1;
+      console.log("this.curriculum:",this.curriculumnum)
     },
     deleteCurriculum(){
-      if(this.curriculum > 2){
-        this.curriculum = this.curriculum - 1;
+      if(this.curriculumnum > 2){
+        this.curriculumnum = this.curriculumnum - 1;
       } else {
         console.log("nonononono")
       }
+    },
+    inputCurriculum(){
+      this.curriculum.push(this.tempcurriculum);
+      this.tempcurriculum = ""
     }
   },
 }

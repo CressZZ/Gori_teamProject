@@ -27,7 +27,7 @@
     </div>
     <div class="review__write">
 
-      <div class="row" v-for="item in detailReview.results">
+      <div class="row" v-for="item in reviewpage">
         <div class="review__write__writer col-4-4 col-7-12">
           <div class="review__write__writer__info-1">
             <img class="review__write__writer__picture" src="../media/img/user.jpg">
@@ -45,15 +45,15 @@
 
     </div>
     <div class="row">
-      <div class="review__page col-4-4 col-7-12" style="">
-        <a href="#" class="review__page__btn on_page">1</a>
-        <a href="#" class="review__page__btn">2</a>
-        <a href="#" class="review__page__btn">3</a>
+      <div class="review__page col-4-4 col-7-12">
+        <a v-for = "n in pagenum" href="#" class="riview__page__btn on_page" @click.prevent = "changePage(n)">{{n}}</a>
+        <!-- <a href="#" class="qna__page__btn">2</a>
+        <a href="#" class="qna__page__btn">3</a> -->
       </div>
 
     </div>
 
-    <lec-review-modal :isvisibles="isvisibles" @isvisibles = "isvisible">
+    <lec-review-modal @reflesh= "reflesh" :isvisibles="isvisibles" @isvisibles = "isvisible">
     </lec-review-modal>
 
   </section>
@@ -67,7 +67,9 @@ import LecReviewModal from './lec_review_modal.vue'
 export default {
   data(){
     return{
-      isvisibles: false
+      isvisibles: false,
+      count_per_page: 4,
+      page_to: 1,
 
     }
   },
@@ -77,11 +79,38 @@ export default {
     isvisible() {
       this.isvisibles = !this.isvisibles
       console.log('click');
+    },
+    changePage(n){
+       this.page_to = n
+    },
+    pagenumadd(){
+      this.pagenum = Math.ceil(this.detailReview.count / this.count_per_page)
+    },
+    reflesh(){
+      this.$emit('reflesh')
+    }
+  },
+  watch:{
+    detailReview(){
+      this.pagenumadd()
     }
   },
   components: {
     LecReviewModal,
+
   },
+  computed:{
+    reviewpage(){
+      const from = ((this.page_to * this.count_per_page) - this.count_per_page)
+      const to = this.page_to * this.count_per_page
+      return this.detailReview.results.reverse().slice(from, to)
+    },
+  },
+  created(){
+      // this.questionpage;
+      this.pagenumadd()
+  },
+
 
 }
 </script>

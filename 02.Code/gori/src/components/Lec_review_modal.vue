@@ -55,61 +55,40 @@ export default {
       },
 
       add: {
-        talent_pk: +this.$route.params.lecid,
-        // v-model="add.curriculum"
-        curriculum: "1",
-        // v-model="add.readiness"
-        readiness	: 1,
-        // v-model="add.timeliness"
-        timeliness: 1,
-        // v-model="add.delivery"
-        delivery: 1,
-        // v-model="add.friendliness"
-        friendliness: 1,
-        comment: ""
+          talent_pk: +this.$route.params.lecid,
+          // curriculum: 1,
+          // readiness	: 3,
+          // timeliness: 4,
+          // delivery: 2,
+          // friendliness: 1,
+          comment: ""
       },
-      // addReview: null
     }
   },
   props:['isvisibles'],
         // ['']
   methods: {
     closeModal: function() {
-      console.log('clicked');
+      this.$store.commit('resetreview')
       this.$emit('isvisibles')
+
     },
     submitReview(){
-      console.log('modal!!clicked');
-      console.log("add.talent_pk:",this.add);
-
-
       if(!this.add.comment || this.add.comment === " "){
         return alert("내용을 입력하셔야죠!!!!!!")
-        // this.
       }
-      // this.add.comment = this.add.comment;
+      this.$store.commit("setreview", this.add.comment)
+      this.$store.commit("settalent_pk", this.add.talent_pk)
 
-      this.$http.post(`talent/add/review/`,this.add,{
+      this.$http.post(`talent/add/review/`,this.$store.state.rating.add,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
-
-    // .then(function(response){
-    //   console.log("response:",response)
-    //   if(response.status === 201){
-    //     this.is_wishList = true
-    //     alert("위시리시트에 추가 되었습니다. 마이페이지에서 찜한 목록을 확인할 수 있습니다!")
-    //   } else if(response.status === 200){
-    //     this.is_wishList = false
-    //     alert("위시리시트에 삭제되었습니다. ")
-    //     console.log(data)
-    //     return response.json()
-    //   }
-    // })
-
-
     .then(function(data){
+      this.$store.commit('resetreview')
+      this.$emit('reflesh')
+      this.$emit('isvisibles')
       console.log("data:",data)
-    this.add.comment = null;
+
     })
     .catch( error => {
       console.log("error:",error)

@@ -12,14 +12,14 @@
           <label class="enroll-lec__category">
             <select @change = "" v-model="registerInfo.category" class="">
               <option value=""> 카테고리 전체</option>
-              <option value="hnb"> 헬스/뷰티 </option>
-              <option value="lan">외국어</option>
-              <option value="com">컴퓨터</option>
-              <option value="art">미술/음악</option>
-              <option value="spo">스포츠</option>
-              <option value="job">전공/취업</option>
-              <option value="hob">이색취미</option>
-              <option value="etc">기타</option>
+              <option value="HNB"> 헬스/뷰티 </option>
+              <option value="LAN">외국어</option>
+              <option value="COM">컴퓨터</option>
+              <option value="ART">미술/음악</option>
+              <option value="SPO">스포츠</option>
+              <option value="JOB">전공/취업</option>
+              <option value="HOB">이색취미</option>
+              <option value="ETC">기타</option>
             </select>
           </label>
         </div>
@@ -34,7 +34,7 @@
         <div class="enroll-lec__list enroll-lec__picture">
           <h3 class="">커버사진</h3>
           <label>
-            <input class="enroll-lec__picture" type="file" multiple="">
+            <input @change="sync" class="enroll-lec__picture" type="file" multiple="">
           </label>
         </div>
         <div class="enroll-lec__list enroll-lec__introduce-tutor">
@@ -49,7 +49,7 @@
           <h3 class="">기본시간</h3>
           <label class="enroll-lec__timeperday-list">
             <select v-model = "registerInfo.hours_per_class" class="">
-              <option value = "1">1 시간</option>
+              <option value = 1 >1 시간</option>
               <option value = "2">2 시간</option>
               <option value = "3">3 시간</option>
               <option value = "4">4 시간</option>
@@ -94,7 +94,7 @@
         </div> -->
       </div>
     </fieldset>
-    <button type="button" class="enroll__next-btn"> 다음 </button>
+    <button type="button" class="enroll__next-btn" @click="register"> 다음 </button>
   </section>
 </template>
 
@@ -104,14 +104,15 @@ export default {
     return{
       registerInfo: {
         title: "",
-        turtor_info: "",
+        tutor_info: "",
         class_info: "",
-        cover_image: {},
+        cover_image: "",
         category: "",
         type: null,
         number_of_class: null,
-        price_per_hour: "",
-        hours_per_class: ""
+        price_per_hour: null,
+        hours_per_class: null,
+        image: ""
       },
       curriculumnum: 2,
       tempcurriculum:
@@ -124,7 +125,15 @@ export default {
     }
   },
   methods: {
+    sync: function(e) {
+    e.preventDefault()
+    this.registerInfo.cover_image = e.target.files[0]
+    console.log("this.image:",this.cover_image)
+
+  },
+
     addCurriculum(){
+
       this.curriculumnum = this.curriculumnum + 1;
       console.log("this.curriculum:",this.curriculumnum)
     },
@@ -136,9 +145,52 @@ export default {
       }
     },
     inputCurriculum(){
+
       this.curriculum.push(this.tempcurriculum);
       this.tempcurriculum = ""
+    },
+    register(){
+      const data = new FormData()
+      data.append('cover_image', this.registerInfo.cover_image)
+      data.append('title', this.registerInfo.title)
+      data.append('tutor_info', this.registerInfo.tutor_info)
+      data.append('class_info', this.registerInfo.class_info)
+      data.append('category', this.registerInfo.category)
+      data.append('type', this.registerInfo.type)
+      data.append('number_of_class', this.registerInfo.number_of_class)
+      data.append('price_per_hour', this.registerInfo.price_per_hour)
+      data.append('hours_per_class', this.registerInfo.hours_per_class)
+
+
+      console.log("data:",data)
+
+      this.$http.post('talent/create/',data,  {
+      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("register-response:",response)
+        this.registerInfo.title= ""
+        this.registerInfo.tutor_info= ""
+        this.registerInfo.class_info= ""
+        this.registerInfo.cover_image= ""
+        this.registerInfo.category= ""
+        this.registerInfo.type= null
+        this.registerInfo.number_of_class= null
+        this.registerInfo.price_per_hour= null
+        this.registerInfo.hours_per_class= null
+        this.registerInfo.image= ""
+
+      })
+      .then(function(data){
+        console.log("register-data:",data)
+      })
+      .catch( error => {
+        console.error("error!!",error)
+        alert(error.bodyText)
+      });
+
     }
+
   },
 }
 </script>

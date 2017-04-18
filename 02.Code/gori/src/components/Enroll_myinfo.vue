@@ -1,6 +1,6 @@
 <template >
   <section class="enroll-myinfo-all-myinfo">
-    <h2 class="enroll-myinfo__heading">나의정보</h2>
+    <h2 class="enroll-myinfo__heading">나의정보 수정</h2>
     <form class="">
       <fieldset>
           <legend class="blind">나의정보 작성폼</legend>

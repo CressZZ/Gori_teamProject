@@ -1,8 +1,8 @@
 <template>
     <div>
-      <main-carousel></main-carousel>
-      <main-categori></main-categori>
-      <main-class-list :classlist ="classlist"></main-class-list>
+      <main-carousel ></main-carousel>
+      <main-categori ></main-categori>
+      <main-class-list  :classlist ="classlist"></main-class-list>
 
     </div>
 </template>

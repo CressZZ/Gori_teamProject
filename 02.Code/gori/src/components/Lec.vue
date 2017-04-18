@@ -114,18 +114,18 @@ export default {
 
 
       // 4. user-detail 데이터 get
-      this.$http.get('member/profile/user/', {
-      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-      })
-      .then(function(response){
-        console.log("user-detail-response:",response)
-        return response.json()
-      })
-      .then(function(data){
-      })
-      .catch(function(err){
-        console.log("err:",err.bodyText)
-      })
+      // this.$http.get('member/profile/user/', {
+      // headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      // })
+      // .then(function(response){
+      //   console.log("user-detail-response:",response)
+      //   return response.json()
+      // })
+      // .then(function(data){
+      // })
+      // .catch(function(err){
+      //   console.log("err:",err.bodyText)
+      // })
 
   },
   mounted(){

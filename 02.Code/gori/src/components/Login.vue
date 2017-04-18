@@ -59,7 +59,7 @@ export default {
     return {
       isVisible: false,
       loginInfo: {
-        username: "",
+        // username: "",
         email: "",
         password: "",
       },
@@ -68,37 +68,69 @@ export default {
   },
 
   methods: {
-    submitLogin(){
+    closeModal: function() {
+      this.isVisible = false
+    },
+    submitLogin() {
+      this.login()
+    },
+    login(){
       this.$http.post('member/login/', this.loginInfo)
       .then(function(response){
         return response.json()
       })
       .then(function(data){
-
         this.$store.commit('Token', data.key)
-        this.$store.commit('loginInfo', this.loginInfo)
-
         this.closeModal()
         alert("로그인 완료!!")
+        this.userInfo()
+        this.wishlist()
+
+
       })
       .catch( error => {
         console.log("error:",error)
       });
     },
-
-
-    closeModal: function() {
-      this.isVisible = false
-
-      // this.$emit('loginnonVisible');
-
-    }
+    userInfo(){
+      this.$http.get('member/profile/user/', {
+        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("user-detail-response:",response)
+        return response.json()
+      })
+      .then(function(data){
+        console.log("data:",data)
+        this.$store.commit('loginInfo', data)
+      })
+      .catch(function(err){
+        console.log("err:",err.bodyText)
+      })
+    },
+    wishlist(){
+      this.$http.get('member/wish-list/', {
+        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("user-detail-response:",response)
+        return response.json()
+      })
+      .then(function(data){
+        console.log("data:",data)
+        this.$store.commit('wishlist', data)
+        bus.$emit('wishrefreash')
+      })
+      .catch(function(err){
+        console.log("err:",err.bodyText)
+      })
+    },
   },
-  // props: ['loginvisibles'],
 
   created(){
     bus.$on('loginvisible', () => {this.isVisible = true})
-},
+  },
+
 }
 
 

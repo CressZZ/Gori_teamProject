@@ -32,7 +32,7 @@
 
       <div class="row_group">
         <div class="enroll-lec__list">
-          <h3 class="">수업가능 요일</h3>
+          <h3 class="">수업요일</h3>
 
           <form  class="enroll-lec__day">
             <input type="radio" name="day"  id="mon" value="MO" v-model="registerdetailInfo.day">
@@ -95,14 +95,14 @@
           </label>
         </div>
         <div class="enroll-lec__list enroll-lec-location-notice-qa">
-          <h3 class="enroll-lec-location-notice-q">추가 비용</h3>
+          <h3 class="enroll-lec-location-notice-q">추가비용</h3>
           <form class="enroll-lec__addcost">
             <input  v-model = "registerdetailInfo.extra_fee" type="radio" name="addcost" value="Y"> <label>예, 있습니다. </label>
             <input  v-model = "registerdetailInfo.extra_fee" type="radio"  name="addcost" value="N"><label> 아니오,없습니다.</label>
           </form>
         </div>
         <div class="enroll-lec__list enroll-lec-location__heading-comment">
-          <h3 class="">추가비용 코멘트</h3>
+          <h3 class="">비용안내</h3>
           <input  v-model = "registerdetailInfo.extra_fee_amount" type="text"
           placeholder="신청자 분들이 수업 장소와 시간에 대해 알면 좋은 사항들이 있나요?"
           class="">

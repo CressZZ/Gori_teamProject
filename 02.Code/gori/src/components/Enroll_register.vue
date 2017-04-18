@@ -50,7 +50,7 @@
         <div class="enroll-lec__list enroll-lec__timeperday">
           <h3 class="">기본시간</h3>
           <label class="enroll-lec__timeperday-list">
-            <select v-model = "registerInfo.hours_per_class" class="">
+            <select v-model = "registerInfo.hours_per_class" class="hours_per_class">
               <option value = 1 >1 시간</option>
               <option value = "2">2 시간</option>
               <option value = "3">3 시간</option>
@@ -65,16 +65,19 @@
           </label>
         </div>
         <div class="enroll-lec__list enroll-lec__num">
-          <h3 class="">수업횟수</h3>
-          <input v-model = "registerInfo.number_of_class" type="text" placeholder="총 수업 횟수를 적어주세요" class=""> &nbsp &nbsp 회
+          <h3 class="number_of_class">수업횟수</h3>
+          <input :value="tempNumber" @focus="clearNumClass" @change="commaNumClass" type="text" placeholder="총 수업 횟수를 적어주세요" class="number_of_class"> &nbsp &nbsp 회
         </div>
         <div class="enroll-lec__list enroll-lec__cost">
           <h3 class="">시간당 가격</h3>
-          <input v-model = "registerInfo.price_per_hour" type="text" placeholder="1시간 당 가격을 적어주세요" class="">&nbsp &nbsp 원/시간
+          <!-- <input v-model = "registerInfo.price_per_hour" type="number"  placeholder="1시간 당 가격을 적어주세요" class=""> -->
+          <input :value="tempPrice" @focus="clearPerPrice" @change="commaPerPrice" type="text"  placeholder="1시간 당 가격을 적어주세요" class="price_per_hour">
+
+          &nbsp &nbsp 원/시간
         </div>
         <div class="enroll-lec__list enroll-lec__totalcost">
           <h3 class="">수업비용</h3>
-          <input type="text" placeholder="총 수업 비용을 안내합니다" class="">
+          <input type="text" :value="totalPrice"  readonly="readonly" placeholder="총 수업 비용을 안내합니다" class="totalPrice">&nbsp &nbsp 원
         </div>
       <!-- </div> -->
         <!-- <div class="enroll-lec__curriculum">
@@ -125,9 +128,44 @@ export default {
         },
 
       curriculum:[],
+      tempPrice: null,
+      tempNumber: null,
     }
   },
+  computed: {
+    totalPrice(){
+      if(this.registerInfo.number_of_class && this.registerInfo.price_per_hour && this.registerInfo.hours_per_class){
+        var totalPrice = (this.registerInfo.number_of_class * this.registerInfo.price_per_hour * this.registerInfo.hours_per_class)
+        return String(totalPrice).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " ";
+    } else{
+      return ""
+    }
+  },
+},
   methods: {
+    commaPerPrice(e){
+      this.registerInfo.price_per_hour = e.target.value
+      console.log("registerInfo.price_per_hour:",this.registerInfo.price_per_hour)
+      this.tempPrice = String(e.target.value).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " ";
+      console.log("registerInfo.price_per_hour:",this.registerInfo.price_per_hour)
+    },
+    commaNumClass(e){
+      this.registerInfo.number_of_class = e.target.value
+      console.log("registerInfo.number_of_class:",this.registerInfo.number_of_class)
+      this.tempNumber = String(e.target.value).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " ";
+      console.log("registerInfo.number_of_class:",this.registerInfo.number_of_class)
+    },
+    clearPerPrice(e){
+      e.target.value = ""
+      this.tempPrice = ""
+      this.registerInfo.price_per_hour = ""
+    },
+    clearNumClass(e){
+      e.target.value = ""
+      this.tempNumber = ""       
+      this.registerInfo.number_of_class = ""
+    },
+
     sync: function(e) {
     e.preventDefault()
     this.registerInfo.cover_image = e.target.files[0]
@@ -182,5 +220,11 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="sass">
+  .price_per_hour, .number_of_class, .hours_per_class, .totalPrice
+    text-align: right
+
+
+
+
 </style>

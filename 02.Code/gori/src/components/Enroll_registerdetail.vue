@@ -124,7 +124,7 @@ export default {
   data(){
     return{
       registerdetailInfo: {
-        talent_pk: 8,
+        talent_pk: 9,
         region: "",
         specific_location: "NEGO",
         day: "",
@@ -136,11 +136,11 @@ export default {
       curriculumnum: 2,
       curriculum:[
         {
-          talent_pk: 4
+          talent_pk: 9
 
         },
         {
-          talent_pk: 4
+          talent_pk: 9
 
         },
       ],
@@ -148,28 +148,48 @@ export default {
   },
   methods:{
     complite(){
+      this.submitCurriculum();
       console.log("click")
-      this.$http.post('talent/add/curriculum/',this.curriculum,  {
-      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-      })
-      .then(function(response){
-        console.log("register-response:",response)
+      // this.$http.post('talent/add/curriculum/',this.curriculum,  {
+      // headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      // })
+      // .then(function(response){
+      //   console.log("register-response:",response)
+      //
+      // })
+      this.submitLocation();
+      // this.$http.post('talent/add/location/',this.registerdetailInfo,  {
+      // headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      // })
+      // .then(function(response){
+      //   console.log("register-response:",response)
+      //
+      // })
 
-      })
+
+      // }
+    },
+    submitCurriculum(){
+      for (var i = 0; i < this.curriculumnum ; i++){
+        this.$http.post('talent/add/curriculum/',this.curriculum[i],  {
+        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+        })
+        .then(function(response){
+          console.log("register-response:",response)
+        })
+      }
+    },
+    submitLocation(){
       this.$http.post('talent/add/location/',this.registerdetailInfo,  {
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
       })
       .then(function(response){
         console.log("register-response:",response)
-
       })
-
-
-      // }
     },
     addCurriculum(){
       this.curriculumnum = this.curriculumnum + 1;
-      this.curriculum.push({talent_pk: 4})
+      this.curriculum.push({talent_pk: 9})
       console.log("this.curriculum:",this.curriculumnum)
     },
     deleteCurriculum(){

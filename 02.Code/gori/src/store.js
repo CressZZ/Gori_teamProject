@@ -12,11 +12,11 @@ export const stores = {
       },
       loginInfo: {
 
-        },
       },
+    },
     register:{
       talent_pk: null,
-    }
+    },
     join: {
       joinInfo: {
         username: "",
@@ -89,6 +89,10 @@ export const stores = {
       wishlist(state, value){
         state.login.wishlist = value
       },
+      talentRegister(state, value){
+        state.register.talent_pk = value
+      },
+      
 
 
 

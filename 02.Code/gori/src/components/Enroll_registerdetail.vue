@@ -125,7 +125,7 @@ export default {
   data(){
     return{
       registerdetailInfo: {
-        talent_pk: 9,
+        talent_pk: this.$store.state.register.talent_pk,
         region: "",
         specific_location: "NEGO",
         day: "",
@@ -137,11 +137,11 @@ export default {
       curriculumnum: 2,
       curriculum:[
         {
-          talent_pk: 9
+          talent_pk: this.$store.state.register.talent_pk
 
         },
         {
-          talent_pk: 9
+          talent_pk: this.$store.state.register.talent_pk
 
         },
       ],
@@ -150,25 +150,8 @@ export default {
   methods:{
     complite(){
       this.submitCurriculum();
-      console.log("click")
-      // this.$http.post('talent/add/curriculum/',this.curriculum,  {
-      // headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-      // })
-      // .then(function(response){
-      //   console.log("register-response:",response)
-      //
-      // })
-      this.submitLocation();
-      // this.$http.post('talent/add/location/',this.registerdetailInfo,  {
-      // headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-      // })
-      // .then(function(response){
-      //   console.log("register-response:",response)
-      //
-      // })
 
 
-      // }
     },
     submitCurriculum(){
       for (var i = 0; i < this.curriculumnum ; i++){
@@ -176,7 +159,8 @@ export default {
         headers: {Authorization: `Token ${this.$store.state.login.Token}`}
         })
         .then(function(response){
-          console.log("register-response:",response)
+          console.log("submitCurriculum:",response)
+          this.submitLocation();
         })
       }
     },
@@ -185,12 +169,19 @@ export default {
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
       })
       .then(function(response){
-        console.log("register-response:",response)
+        console.log("submitLocation:",response)
+        this.registerdetailInfo.region= ""
+        this.registerdetailInfo.day= ""
+        this.registerdetailInfo.time= ""
+        this.registerdetailInfo.extra_fee= ""
+        this.registerdetailInfo.extra_fee_amount= ""
+        this.registerdetailInfo.location_info= ""
       })
     },
+
     addCurriculum(){
       this.curriculumnum = this.curriculumnum + 1;
-      this.curriculum.push({talent_pk: 9})
+      this.curriculum.push({talent_pk: this.$store.state.register.talent_pk})
       console.log("this.curriculum:",this.curriculumnum)
     },
     deleteCurriculum(){

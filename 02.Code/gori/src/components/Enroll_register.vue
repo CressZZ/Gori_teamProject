@@ -162,7 +162,7 @@ export default {
     },
     clearNumClass(e){
       e.target.value = ""
-      this.tempNumber = ""       
+      this.tempNumber = ""
       this.registerInfo.number_of_class = ""
     },
 

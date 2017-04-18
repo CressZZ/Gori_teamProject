@@ -59,7 +59,7 @@
           <li class="member__info__lec-list__item  member__info__lec-my">
             <a href="#">
               <p>내수업</p>
-              <strong>{{userinfo.received_registrations}}건</strong>
+        <strong>{{userinfo.received_registrations}}건</strong>
             </a>
           </li>
         </ul>

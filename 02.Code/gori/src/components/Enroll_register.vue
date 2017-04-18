@@ -175,7 +175,6 @@ export default {
 
 
     register(){
-      this.$router.push({ path: 'registerDetail' })
       const data = new FormData()
       data.append('cover_image', this.registerInfo.cover_image)
       data.append('title', this.registerInfo.title)
@@ -192,7 +191,7 @@ export default {
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
       })
       .then(function(response){
-        console.log("register-response:",response)
+        console.log("register:",response)
         this.registerInfo.title= ""
         this.registerInfo.tutor_info= ""
         this.registerInfo.class_info= ""
@@ -203,11 +202,13 @@ export default {
         this.registerInfo.price_per_hour= null
         this.registerInfo.hours_per_class= null
         this.registerInfo.image= ""
-
+        return response.json()
 
       })
       .then(function(data){
-        console.log("register-data:",data)
+        console.log("data.talent_pk:",data)
+        this.$store.commit("talentRegister", data.talent_pk)
+        this.$router.push({ path: 'registerDetail' })
       })
       .catch( error => {
         console.error("error!!",error)

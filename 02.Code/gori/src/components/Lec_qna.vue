@@ -23,8 +23,8 @@
 
         <div class="row">
           <div class="qna__list__q__writer col-4-4 col-7-12">
-            <span><div>q</div>{{question.user}}</span>
-            <span class="qna__list__q__date">{{question.created_date.substring(0,10)}} &nbsp;  &nbsp;  {{question.created_date.substring(11,16)}}</span>
+            <span><div>Q</div>{{question.user}}</span>
+            <span class="qna__list__q__date">{{question.created_date.substring(0,10)}} </span>
           </div>
         </div>
         <div class="row">

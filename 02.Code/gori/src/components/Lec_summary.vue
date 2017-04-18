@@ -39,7 +39,7 @@
       <div class="summery__price-info">
         <span class="summery__price-info__total"><i class="icon-won"></i>{{
           String(detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " "
-      }}원/회,</span>
+      }}원</span>
         <span class="summery__price-info__each">총 {{String(detailAll.hours_per_class * detailAll.number_of_class * detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " "}}원</span>
       </div>
       <div class="summery__img_wrapper">

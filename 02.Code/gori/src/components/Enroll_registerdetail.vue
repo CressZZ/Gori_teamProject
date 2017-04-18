@@ -1,5 +1,6 @@
 <template >
 
+
 <div class="enroll__detail">
   <section class="enroll-lec__time-cost">
     <h2 class="enroll-lec__time-cost__heading">커리큘럼</h2>

@@ -45,7 +45,7 @@
                   <li class="navi_menu navi_menu_join  is_logout" :class= "{off: islogin}">
                     <a href="#"  @click = "joinvisible">회원가입</a>
                   </li>
-                  <router-link tag="li" :to = "{ name: 'enroll'}"  class="navi_menu navi_menu_join  is_login" :class= "{off: !islogin}" > <a href="#" >마이페이지</a></router-link>
+                  <router-link tag="li" :to = "{ name: 'myinfo'}"  class="navi_menu navi_menu_join  is_login" :class= "{off: !islogin}" > <a href="#" >마이페이지</a></router-link>
 
                   <!-- <li class="navi_menu navi_menu_join  is_login" :class= "{off: !islogin}" >
                     <a href="#" >마이페이지</a>

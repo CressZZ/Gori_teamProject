@@ -16,7 +16,7 @@ export const stores = {
       },
     register:{
       talent_pk: null,
-    }
+    },
     join: {
       joinInfo: {
         username: "",

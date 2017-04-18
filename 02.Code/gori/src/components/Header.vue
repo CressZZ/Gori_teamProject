@@ -34,7 +34,7 @@
                   </li> -->
 
                     <li class="navi_menu navi_menu_service ">
-                      <a href="#" @click = "obtainToken" >서비스소개</a>
+                      <a href="#" @click = "submitLogin" >서비스소개</a>
                     </li>
                 </ul>
 
@@ -73,27 +73,70 @@ export default {
       isoffs: true,
       WindowWidth: window.innerWidth,
       currentPage: "pc",
-      userinfo: {
+      loginInfo: {
         username: "dkt@dkt.dkt",
         password: "qweasd123"
       }
     }
   },
   methods: {
-    obtainToken(){
-      console.log("click:")
-      this.$http.post('member/token-auth/', this.userinfo)
+    submitLogin() {
+      this.login()
+    },
+    login(){
+      this.$http.post('member/login/', this.loginInfo)
       .then(function(response){
         return response.json()
       })
       .then(function(data){
-        console.log("data:",data)
+        this.$store.commit('Token', data.key)
         alert("로그인 완료!!")
-        this.$store.commit('Token', data.token)
+        this.userInfo()
+        this.wishlist()
+
+
+
       })
       .catch( error => {
-        console.log("error:",error.bodyText)
+        console.log("error:",error)
       });
+    },
+    userInfo(){
+      this.$http.get('member/profile/user/', {
+        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("user-detail-response:",response)
+        return response.json()
+      })
+      .then(function(data){
+        console.log("data:",data)
+        this.$store.commit('loginInfo', data)
+
+      })
+      .catch(function(err){
+        console.log("err:",err.bodyText)
+      })
+    },
+    wishlist(){
+      this.$http.get('member/wish-list/', {
+        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("user-detail-response:",response)
+        return response.json()
+      })
+      .then(function(data){
+        console.log("data:",data)
+        this.$store.commit('wishlist', data)
+      })
+      .then(function(){
+        bus.$emit('wishrefreash')
+
+      })
+      .catch(function(err){
+        console.log("err:",err.bodyText)
+      })
     },
     loginvisible(){
       console.log("click:")
@@ -115,6 +158,8 @@ export default {
     logout(){
       alert("로그아웃 완료")
       this.$store.commit('logout')
+      this.$router.push({ name: 'main' })
+
     },
     // verifyTutor(){
     //   this.$http.post('member/token-auth/', this.userinfo)

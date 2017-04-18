@@ -5,12 +5,13 @@ export const stores = {
   state: {
     login: {
       is_login: false,
-      Token: "39248c0f2405edb4202fc393e5d7df367601f9cb",
-      // Token: "",
+      // Token: "39248c0f2405edb4202fc393e5d7df367601f9cb",
+      Token: "",
+      wishlist:{
+
+      },
       loginInfo: {
-        username: "",
-        email: "",
-        password: "",
+
         },
       },
     join: {
@@ -81,7 +82,10 @@ export const stores = {
         state.rating.add.friendliness = ""
         state.rating.add.comment = ""
         state.rating.add.talent_pk = ""
-      }
+      },
+      wishlist(state, value){
+        state.login.wishlist = value
+      },
 
 
 

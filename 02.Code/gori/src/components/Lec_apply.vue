@@ -13,15 +13,9 @@
 
                 <strong>
                   {{detailAll.locations[0].region}}
-                  <!-- <template v-for="(location, index) in detailAll.locations">
-                   {{ locationDetail(location, index) }}
-                   </template> -->
                 </strong>
                 <span>
                   {{detailAll.locations[0].results[0].specific_location}}
-                  <!-- <template v-for="(location, index) in detailAll.locations">
-                  {{ locationSpecific(location, index) }}
-                  </template> -->
                 </span>
 
                 </li>
@@ -30,9 +24,6 @@
                 <strong>{{detailAll.hours_per_class + " "}} 시간/회 </strong>
                 <span>
                   {{detailAll.locations[0].results[0].time[0]}}
-                  <!-- <template v-for="(location, index) in detailAll.locations">
-                    {{ locationTime(location, index) }}
-                  </template> -->
                 </span>
                 </li>
                 <li class="apply__info__group">
@@ -44,9 +35,6 @@
                 <i class="fontello icon-calendar"></i>
                 <strong>
                   {{detailAll.locations[0].results[0].day}}
-                  <!-- <template v-for="(location, index) in detailAll.locations">
-                    {{ locationDay(location, index) }}
-                  </template> -->
                 </strong>
                 <span>총 {{detailAll.number_of_class}}회 / {{String(detailAll.hours_per_class * detailAll.number_of_class * detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " "}}원</span>
               </li>
@@ -54,16 +42,10 @@
                 <i class="fontello icon-won"></i>
                 <strong>추가비용 <span>
                   {{detailAll.locations[0].results[0].extra_fee === "y" ? "있음" : "없음"}}
-                  <!-- <template v-for="(location, index) in detailAll.locations">
-                    {{ locationAddCost(location, index) }}
-                  </template> -->
 
                 </span></strong>
                 <span>
                   {{detailAll.locations[0].results[0].extra_fee_amount ? detailAll.locations[0].results[0].extra_fee_amount : ""}}
-                  <!-- <template v-for="(location, index) in detailAll.locations">
-                    {{ locationAddCostAmount(location, index) }}
-                  </template> -->
 
                 </span>
               </li>
@@ -100,26 +82,61 @@ export default {
     }
   },
   props: ["detailAll"],
+  created(){
+    bus.$on('wishrefreash', () => {this.refreash()})
+
+  },
+
+
+  computed: {
+  },
+
+  mounted() {
+    this.refreash()
+    bus.$on('wishrefreash', () => {this.refreash()})
+    
+
+  },
 
   methods: {
+    refreash(){
+      console.log("login????????")
+      var wish = this.$store.state.login.wishlist.results
+      var islogin = this.$store.state.login.is_login
+      var self = this
+      if(this.$store.state.login.is_login === true){
+        wish.forEach(function(item){
+          if( item.pk === self.$route.params.lecid ) {
+            self.is_wishList = true
+            console.log("true!!")
+            return
+          }
+          console.log("false!!")
+          // self.is_wishList = false;
+        })
+      } else {
+        // self.is_wishList = false
+      }
+    },
     toggleWishList(){
-      // console.log("addWishList");
       this.is_wishList = !this.is_wishList
     },
     submitWish(){
-      // if(!this.$store.state.Token){
-      //   alert("로그인해라!")
-      // }
-
+      this.refreash()
+      if(!this.$store.state.login.is_login){
+        alert("로그인이 필요합니다. ")
+        return;
+      }
       this.$http.get(`talent/${this.$route.params.lecid}/wish-list/toggle/`,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
-
       .then(function(response){
+          this.wishlist()
           console.log("response:",response)
           if(response.status === 201){
             this.is_wishList = true
             alert("위시리시트에 추가 되었습니다. 마이페이지에서 찜한 목록을 확인할 수 있습니다!")
+
           } if(response.status === 200){
             this.is_wishList = false
             alert("위시리시트에 삭제되었습니다. ")
@@ -135,40 +152,24 @@ export default {
           }
         });
       },
+      wishlist(){
+        this.$http.get('member/wish-list/', {
+          headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+        })
+        .then(function(response){
+          console.log("user-detail-response:",response)
+          return response.json()
+        })
+        .then(function(data){
+          console.log("data:",data)
+          this.$store.commit('wishlist', data)
+        })
+        .catch(function(err){
+          console.log("err:",err.bodyText)
+        })
+      },
     }
 
-  //   // 오류가 발생하지 않도록 배열을 돌리기 위해 만든 메서드
-  //   locationDetail(location, index) {
-  //     return location && (index===0) ?
-  //       location.region :
-  //       "";
-  //   },
-  //   locationSpecific(location, index) {
-  //     return location && (index===0) ?
-  //       location.specific_location :
-  //       "";
-  //   },
-  //   locationTime(location, index) {
-  //     return location && (index===0) ?
-  //       location.time[0] :
-  //       "";
-  //   },
-  //   locationDay(location, index) {
-  //     return location && (index===0) ?
-  //       location.day :
-  //       "";
-  //   },
-  //   locationAddCost(location, index) {
-  //
-  //     return location && (index===0) ?
-  //       location.extra_fee === "y" ? "있음" : "없음" : "";
-  //   },
-  //   locationAddCostAmount(location, index) {
-  //     return location && (index===0) ?
-  //       location.extra_fee_amount : "";
-  //   },
-  //
-  // },
 
 }
 </script>

@@ -1,5 +1,5 @@
 <template >
-  <section class="enroll-myinfo-all-myinfo">
+  <section class="enroll-myinfo-all">
     <h2 class="enroll-myinfo__heading">나의정보</h2>
     <form class="">
       <fieldset>
@@ -73,6 +73,66 @@
 
 			</tbody>
 		</table>
+    <table class="enroll-myinfo__tutor">
+      <caption class="blind">튜터 정보</caption>
+        <tbody>
+          <tr>
+            <th class="th4"><p>인증수단</p></th>
+            <td>
+                <label class="">
+                  <select  @change = "" v-model = "tutorUpdate.verification_method" class="">
+                    <option value="UN">대학생</option>
+                    <option value="GR">대학원생</option>
+                    <option value="ID">신분증</option>
+                  </select>
+                </label>
+            </td>
+          </tr>
+          <tr>
+            <th class="th4"><p>학적상태</p></th>
+            <td>
+              <label class="">
+                <select @change = "" v-model="tutorUpdate.current_status" class="">
+                  <option value="G">졸업</option>
+                  <option value="E">재학</option>
+                  <option value="I">수료</option>
+                </select>
+              </label>
+            </td>
+          </tr>
+      <tr>
+        <th class="th4"><p>인증사진</p></th>
+        <td class="file_upload">
+          <input @change="sync2" type="file" multiple="">
+        </td>
+      </tr>
+      <tr>
+        <th class="th4"><p>학교정보</p></th>
+        <td>
+          <p class="">
+            <input v-model = "tutorUpdate.school" type="text">
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <th class="th2"><p>전공</p></th>
+        <td>
+          <p class="">
+            <input v-model = "tutorUpdate.major" type="text">
+          </p>
+        </td>
+      </tr>
+      <!-- <tr>
+        <th class="th4"><p>학적상태</p></th>
+        <td>
+          <p class="">
+            <input v-model = "tutorUpdate.current_status" type="text">
+          </p>
+        </td>
+      </tr> -->
+
+      </tbody>
+    </table>
   </fieldset>
 </form>
     <button type="button" class="enroll__register-btn" @click="register"> 등록 </button>
@@ -91,6 +151,13 @@ export default {
         nickname: "",
         profile_image: "",
         cellphone: "",
+      },
+      tutorUpdate:{
+        verification_method: "",
+        verification_images: "",
+        school: "",
+        major: "",
+        current_status: ""
       },
       curriculumnum: 2,
       tempcurriculum:
@@ -128,7 +195,11 @@ export default {
     this.userUpdate.profile_image = e.target.files[0]
 
   },
+    sync2: function(e) {
+    e.preventDefault()
+    this.tutorUpdate.verification_images = e.target.files[0]
 
+  },
     // userRegister(){
     //   this.$router.push({ path: 'registerDetail' })
     //   const data = new FormData()

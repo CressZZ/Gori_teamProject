@@ -1,6 +1,23 @@
 
 @media screen and (max-width: 689px)
-  .enroll-lec-all ,.enroll-myinfo-all
+
+
+
+  .enroll__register-btn
+    display: block
+    margin: 20px auto
+    padding: 20px 20px
+    border-radius: 5px
+    width: 100%
+    background-color: $point-color
+
+  .enroll-myinfo-all-myinfo
+    height: 70vh
+
+  .enroll-myinfo-all-tutor
+    height: 570px
+
+  .enroll-lec-all ,.enroll-myinfo-all-tutor ,.enroll-myinfo-all-myinfo
     width: 100%
     margin-top: 48px
     border-top: 5px solid $main-color
@@ -11,6 +28,7 @@
     background-color: white
     input
       border: 1px solid $point-color
+
 
 
   .enroll-lec__heading
@@ -94,7 +112,7 @@
 
 
 
-  .enroll-lec__list-title , .enroll-myinfo-all input
+  .enroll-lec__list-title , .enroll-myinfo-all-tutor input , .enroll-myinfo-all-myinfo input
     width: 75.86%
     height: 48px
     font-size: 16px
@@ -102,11 +120,9 @@
     border-radius: 5px
     // background: #193
 
-  .enroll-myinfo-all input
+  .enroll-myinfo-all-tutor input , .enroll-myinfo-all-myinfo input
     width: 100%
 
-
-//////////////////////////////////
 
   .enroll-lec__category
     width: 75.86%
@@ -174,7 +190,6 @@
       display: flex
       width: 100%
       justify-content: center
-
       button
         margin: 10px auto
         display: block
@@ -182,18 +197,20 @@
         padding: 5px 10px
         background-color: $point-color
 
-  .enroll__next-btn
-    display: block
-    margin: 0 auto
-    padding: 20px 20px
-    border-radius: 5px
-    width: 100%
-    background-color: rgb(198, 164, 175)
+
+
 
 
 @media screen and (min-width: 690px)
 
-  .enroll-lec-all
+  .enroll-myinfo-all-myinfo
+    height: 70vh
+
+
+  .enroll-myinfo-all-tutor
+    height: 570px
+
+  .enroll-lec-all, .enroll-myinfo-all-tutor ,.enroll-myinfo-all-myinfo
     border-top: 5px solid $main-color
     float: left
     max-width: 1200px
@@ -206,7 +223,7 @@
       border: 1px solid $point-color
 
 
-  .enroll-lec__heading
+  .enroll-lec__heading, .enroll-myinfo__heading
     margin-bottom: 24px
 
   .enroll-lec__list
@@ -214,7 +231,6 @@
     align-items: center
     height: 48px
     margin-bottom: 24px
-
     h3
       width: 20.69%
       margin-right: 3.44%
@@ -222,12 +238,48 @@
       display: flex
       align-items: center
 
-  .enroll-lec__list-title
+  .enroll-myinfo__basic,
+  .enroll-myinfo__tutor
+    // background: #229
+    width: 100%
+
+  .enroll-myinfo__basic th, .enroll-myinfo__tutor th
+    // background: #339
+    float: left
+    font-size: 1.17em
+    font-weight: bold
+    padding: 24px 0
+
+  .th2
+    letter-spacing: 40px
+
+  .th3
+    letter-spacing: 13px
+
+  .th4
+    letter-spacing: 4px
+
+  .user__pw-cg
+    margin: 5px 0
+
+  .file_upload input
+    border: 0px solid #fff
+    float: left
+    text-align: left
+
+  // .file_upload input
+  //   border: 0px solid #fff
+
+
+  .enroll-lec__list-title, .enroll-myinfo-all-tutor input , .enroll-myinfo-all-myinfo input
     width: 75.86%
     height: 48px
     font-size: 16px
     padding-left: 10px
     border-radius: 5px
+
+  .enroll-myinfo-all-tutor input , .enroll-myinfo-all-myinfo input
+    width: 100%
 
   .enroll-lec__category
     width: 75.86%
@@ -310,10 +362,10 @@
         padding: 5px 10px
         background-color: $point-color
 
-  .enroll__next-btn
+  .enroll__register-btn
     display: block
-    margin: 0 auto
+    margin: 20px auto
     padding: 20px 20px
     border-radius: 5px
     width: 100%
-    background-color: rgb(198, 164, 175)
+    background-color: $point-color

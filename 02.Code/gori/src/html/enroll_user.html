@@ -38,16 +38,16 @@
           </p>
         </td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<th scope="col"><p>비밀번호</p></th>
 				<td>
 					<div class="pw__wrap">
 						<p class="">
 							<label for="user__pw">현재 비밀번호</label>
-							<input class="" type="password" placeholder="현재비밀번호를 입력">
+							<input v-model = "joinInfo.password1" class="" type="password" placeholder="현재비밀번호를 입력">
 						</p>
 						<p class="">
-							<label for="user__pw">새 비밀번호</label>
+							<label v-model = "joinInfo.password2" for="user__pw">새 비밀번호</label>
               <input class="" type="password" placeholder="새비밀번호를 입력">
 						</p>
 						<p class="">
@@ -56,7 +56,7 @@
 						</p>
 					</div>
 				</td>
-			</tr>
+			</tr> -->
 			<tr>
 				<th scope="col"><p>연락처</p></th>
 				<td>

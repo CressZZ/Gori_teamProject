@@ -10,7 +10,7 @@
     <ul class="enroll-lec__curriculum-list">
       <li v-for = "(item, index) in curriculumnum">
         <p class="enroll-lec__curriculum1">{{item}}회차</p>
-        <textarea  v-model = "tempcurriculum" @onchange = "inputCurriculum" placeholder="내용을 입력해주세요" class=""></textarea>
+        <textarea  v-model = "curriculum[index].information" @onchange = "inputCurriculum" placeholder="내용을 입력해주세요" class=""></textarea>
       </li>
 
 
@@ -35,19 +35,19 @@
           <h3 class="">수업가능 요일</h3>
 
           <form  class="enroll-lec__day">
-            <input type="checkbox" id="mon" value="mon" v-model="registerdetailInfo.day">
+            <input type="radio" name="day"  id="mon" value="MO" v-model="registerdetailInfo.day">
             <label for="mon">월</label>
-            <input type="checkbox" id="tue" value="tue" v-model="registerdetailInfo.day">
+            <input type="radio" name="day" id="tue" value="TU" v-model="registerdetailInfo.day">
             <label for="tue">화</label>
-            <input type="checkbox" id="wed" value="wed" v-model="registerdetailInfo.day">
+            <input type="radio" name="day" id="wed" value="WE" v-model="registerdetailInfo.day">
             <label for="wed">수</label>
-            <input type="checkbox" id="thu" value="thu" v-model="registerdetailInfo.day">
+            <input type="radio" name="day" id="thu" value="TH" v-model="registerdetailInfo.day">
             <label for="thu">목</label>
-            <input type="checkbox" id="fri" value="fri" v-model="registerdetailInfo.day">
+            <input type="radio" name="day" id="fri" value="FR" v-model="registerdetailInfo.day">
             <label for="fri">금</label>
-            <input type="checkbox" id="sat" value="sat" v-model="registerdetailInfo.day">
+            <input type="radio" name="day" id="sat" value="SA" v-model="registerdetailInfo.day">
             <label for="sat">토</label>
-            <input type="checkbox" id="sun" value="sun" v-model="registerdetailInfo.day">
+            <input type="radio" name="day" id="sun" value="SU" v-model="registerdetailInfo.day">
             <label for="sun">일</label>
           </form>
 
@@ -56,35 +56,7 @@
           <h3 class="">수업시간</h3>
           <input type="text" v-model = "registerdetailInfo.time" placeholder="수업가능한 시간을 적어주세요 예:9:00~11:00/13:00~14:00" class="">
         </div>
-        <!-- <div class="enroll-lec__list enroll-lec__timeperday">
-          <h3 class="">기본시간</h3>
-          <label class="enroll-lec__timeperday-list">
-            <select v-model = "registerInfo.hours_per_class" class="">
-              <option value = "1">1 시간</option>
-              <option value = "2">2 시간</option>
-              <option value = "3">3 시간</option>
-              <option value = "4">4 시간</option>
-              <option value = "5">5 시간</option>
-              <option value = "6">6 시간</option>
-              <option value = "7">7 시간</option>
-              <option value = "8">8 시간</option>
-              <option value = "9">9 시간</option>
-              <option value = "10">10 시간</option>
-            </select>
-          </label>
-        </div>
-        <div class="enroll-lec__list enroll-lec__num">
-          <h3 class="">수업횟수</h3>
-          <input v-model = "registerInfo.number_of_class" type="text" placeholder="총 수업 횟수를 적어주세요" class=""> &nbsp &nbsp 회
-        </div>
-        <div class="enroll-lec__list enroll-lec__cost">
-          <h3 class="">시간당 가격</h3>
-          <input v-model = "registerInfo.price_per_hour" type="text" placeholder="1시간 당 가격을 적어주세요" class="">&nbsp &nbsp 원/시간
-        </div>
-        <div class="enroll-lec__list enroll-lec__totalcost">
-          <h3 class="">수업비용</h3>
-          <input type="text" placeholder="총 수업 비용을 안내합니다" class="">
-        </div> -->
+
       </div>
     </fieldset>
   </section>
@@ -100,33 +72,33 @@
           <label class="enroll-lec__location">
             <select  v-model = "registerdetailInfo.region" >
               <option value=""> 지역 전체</option>
-              <option value="kou">고려대</option>
-              <option value="snu">서울대</option>
-              <option value="you">연세대</option>
-              <option value="hou">홍익대</option>
-              <option value="ewwu">이화여대</option>
-              <option value="bsu">부산대</option>
-              <option value="jau">중앙대</option>
-              <option value="ggu">건국대</option>
-              <option value="hyu">한양대</option>
-              <option value="kn">강남</option>
-              <option value="sc">신촌</option>
-              <option value="sd">사당</option>
-              <option value="js">잠실</option>
-              <option value="jr">종로</option>
-              <option value="hh">혜화</option>
-              <option value="ys">용산</option>
-              <option value="hj">합정</option>
-              <option value="md">목동</option>
-              <option value="etc">기타</option>
+              <option value="KOU">고려대</option>
+              <option value="SNU">서울대</option>
+              <option value="YOU">연세대</option>
+              <option value="HOU">홍익대</option>
+              <option value="EWWU">이화여대</option>
+              <option value="BSU">부산대</option>
+              <option value="JAU">중앙대</option>
+              <option value="GGU">건국대</option>
+              <option value="HYU">한양대</option>
+              <option value="KN">강남</option>
+              <option value="SC">신촌</option>
+              <option value="SD">사당</option>
+              <option value="JS">잠실</option>
+              <option value="JR">종로</option>
+              <option value="HH">혜화</option>
+              <option value="YS">용산</option>
+              <option value="HJ">합정</option>
+              <option value="MD">목동</option>
+              <option value="ETC">기타</option>
             </select>
           </label>
         </div>
         <div class="enroll-lec__list enroll-lec-location-notice-qa">
           <h3 class="enroll-lec-location-notice-q">추가 비용</h3>
           <form class="enroll-lec__addcost">
-            <input  v-model = "registerdetailInfo.extra_fee" type="radio" name="addcost" value="y"> <label>예, 있습니다. </label>
-            <input  v-model = "registerdetailInfo.extra_fee" type="radio"  name="addcost" value="n"><label> 아니오,없습니다.</label>
+            <input  v-model = "registerdetailInfo.extra_fee" type="radio" name="addcost" value="Y"> <label>예, 있습니다. </label>
+            <input  v-model = "registerdetailInfo.extra_fee" type="radio"  name="addcost" value="N"><label> 아니오,없습니다.</label>
           </form>
         </div>
         <div class="enroll-lec__list enroll-lec-location__heading-comment">
@@ -141,7 +113,7 @@
 
   </section>
   <div class="enroll-btn-all">
-    <button class="enroll-btn">등록하기</button>
+    <button @click = "complite "class="enroll-btn ">등록하기</button>
   </div>
 
 </div>
@@ -152,32 +124,52 @@ export default {
   data(){
     return{
       registerdetailInfo: {
-        talent_pk: null,
+        talent_pk: 8,
         region: "",
         specific_location: "NEGO",
-        day: [],
+        day: "",
         time: "",
         extra_fee: "",
         extra_fee_amount: "",
         location_info: "",
       },
-      // registerInfo:{
-      //   price_per_hour: "",
-      //   hours_per_class: ""
-      // },
       curriculumnum: 2,
-      tempcurriculum:
+      curriculum:[
         {
-          talent_pk: "",
-          information: ""
-        },
+          talent_pk: 4
 
-      curriculum:[],
+        },
+        {
+          talent_pk: 4
+
+        },
+      ],
     }
   },
   methods:{
+    complite(){
+      console.log("click")
+      this.$http.post('talent/add/curriculum/',this.curriculum,  {
+      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("register-response:",response)
+
+      })
+      this.$http.post('talent/add/location/',this.registerdetailInfo,  {
+      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("register-response:",response)
+
+      })
+
+
+      // }
+    },
     addCurriculum(){
       this.curriculumnum = this.curriculumnum + 1;
+      this.curriculum.push({talent_pk: 4})
       console.log("this.curriculum:",this.curriculumnum)
     },
     deleteCurriculum(){

@@ -27,8 +27,11 @@
           </tbody>
         </table>
         <div class="enroll__button-wrapper">
-          <button type="button" class="enroll__myinfo">나의정보 수정</button>
-          <button type="button" class="enroll__regist-class">수업 등록 </button>
+          <router-link tag="button" :to = "{ path: '/enroll/registerDetail'}"  class="enroll__myinfo ">나의정보 수정</router-link>
+
+          <!-- <button type="button" class="enroll__myinfo">나의정보 수정</button> -->
+          <router-link tag="button" :to = "{ path: '/enroll/register'}"  class="enroll__myinfo ">수업등록 </router-link>
+          <!-- <button type="button" class="enroll__regist-class">수업 등록 </button> -->
         </div>
       </div>
 
@@ -64,9 +67,11 @@
 
     </section>
 
+    <transition name="slide"  mode="out-in">
 
     <router-view></router-view>
 
+    </transition>
 
 
 
@@ -106,6 +111,41 @@ export default {
 </script>
 
   <style lang="sass">
+    .slide-leave-active
+      // transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+      animation: slide-out 0.5s
+
+
+    .slide-enter-active
+      // transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+      animation: slide-in 0.5s
+
+    @keyframes slide-in
+      from
+        transform: translateX(-1000px)
+
+      to
+        transform: translateX(0px)
+        opacity: 1
+
+    @keyframes slide-out
+      from
+        transform: translateX(0px)
+      to
+        transform: translateX(1000px)
+        opacity: 0
+
+
+    // .slide-leave-to
+    //
+    //   transform: translateX(1000px)
+    //   opacity: 0
+    //
+    // .slide-fade-enter
+    //   transform: translateX(-1000px)
+    //   opacity: 0
+
+
     // @import "../sass/gen_source"
     // @import "../sass/gen_mixin"
     // @import "../sass/lec_intro"

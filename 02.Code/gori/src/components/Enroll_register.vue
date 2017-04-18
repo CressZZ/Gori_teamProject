@@ -132,24 +132,9 @@ export default {
 
   },
 
-    addCurriculum(){
 
-      this.curriculumnum = this.curriculumnum + 1;
-      console.log("this.curriculum:",this.curriculumnum)
-    },
-    deleteCurriculum(){
-      if(this.curriculumnum > 2){
-        this.curriculumnum = this.curriculumnum - 1;
-      } else {
-        console.log("nonononono")
-      }
-    },
-    inputCurriculum(){
-
-      this.curriculum.push(this.tempcurriculum);
-      this.tempcurriculum = ""
-    },
     register(){
+      this.$router.push({ path: 'registerDetail' })
       const data = new FormData()
       data.append('cover_image', this.registerInfo.cover_image)
       data.append('title', this.registerInfo.title)
@@ -160,8 +145,6 @@ export default {
       data.append('number_of_class', this.registerInfo.number_of_class)
       data.append('price_per_hour', this.registerInfo.price_per_hour)
       data.append('hours_per_class', this.registerInfo.hours_per_class)
-
-
       console.log("data:",data)
 
       this.$http.post('talent/create/',data,  {
@@ -179,6 +162,7 @@ export default {
         this.registerInfo.price_per_hour= null
         this.registerInfo.hours_per_class= null
         this.registerInfo.image= ""
+
 
       })
       .then(function(data){

@@ -49,7 +49,7 @@ export const routes = [
     },
   },
   {
-    path: '/enroll/:id',
+    path: '/enroll/',
     name: 'enroll',
     components: {
       'default': Enroll,

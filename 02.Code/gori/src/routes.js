@@ -8,6 +8,7 @@ import List from './components/List.vue'
 import Enroll from './components/Enroll.vue'
 import EnrollRegister from './components/Enroll_register.vue'
 import EnrollRegisterDetail from './components/Enroll_registerdetail.vue'
+import EnrollRegisterMyinfo from './components/Enroll_myinfo.vue'
 
 
 // import LecMap from './components/Lec_map.vue'
@@ -60,6 +61,7 @@ export const routes = [
     },
     children: [
     // { path: '', component: UserStart },
+    { path: 'registerMyinfo', component: EnrollRegisterMyinfo },
     { path: 'register', component: EnrollRegister },
     { path: 'registerDetail', component: EnrollRegisterDetail}
   ]

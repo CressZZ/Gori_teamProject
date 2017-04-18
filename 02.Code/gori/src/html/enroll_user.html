@@ -32,7 +32,11 @@
 			</tr>
 			<tr>
 				<th scope="col"><p>닉네임</p></th>
-				<td><p>닉네임</p></td>
+				<td>
+          <p class="">
+            <input type="text">
+          </p>
+        </td>
 			</tr>
 			<tr>
 				<th scope="col"><p>비밀번호</p></th>
@@ -77,20 +81,69 @@
           <input type="file" multiple="">
 				</td>
 			</tr>
+
+			</tbody>
+		</table>
+    <table class="">
+      <caption>튜터 정보</caption>
+      <colgroup>
+        <col width="">
+        <col width="">
+      </colgroup>
+        <tbody>
+          <tr>
+            <th scope="col"><p>인증이미지</p></th>
+            <td>
+              <input type="file" multiple="">
+            </td>
+          </tr>
+          <tr>
+            <th scope="col"><p>인증수단</p></th>
+            <td>
+                <label class="">
+                  <select @change = "" v-model="" class="">
+                    <option value="UN">대학생</option>
+                    <option value="GR">대학원생</option>
+                    <option value="ID">신분증</option>
+                  </select>
+                </label>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col"><p>인증수단</p></th>
+            <td>
+              <label class="">
+                <select @change = "" v-model="" class="">
+                  <option value="G">졸업</option>
+                  <option value="E">재학</option>
+                  <option value="I">수료</option>
+                </select>
+              </label>
+            </td>
+          </tr>
+      <tr>
+        <th scope="col"><p>인증이미지</p></th>
+        <td>
+          <input type="file" multiple="">
+        </td>
+      </tr>
       <tr>
         <th scope="col"><p>학교정보</p></th>
         <td><p>학교정보</p></td>
       </tr>
       <tr>
-        <th scope="col"><p>계정정보</p></th>
-        <td><p>계정정보</p></td>
+        <th scope="col"><p>전공</p></th>
+        <td><p>전공</p></td>
+      </tr>
+      <tr>
+        <th scope="col"><p>학적상태</p></th>
+        <td><p>학적상태</p></td>
       </tr>
 
-			</tbody>
-		</table>
+      </tbody>
+    </table>
 
     <input type="submit">
-
-</div>
+  </div>
 </body>
 </html>

@@ -1,7 +1,9 @@
 <template >
   <section class="enroll-lec-all">
     <h2 class="enroll-lec__heading">수업등록</h2>
+    <form>
     <fieldset class="">
+      <legend class="blind">수업등록작성</legend>
       <div class="">
         <div class="enroll-lec__list">
           <h3 class="">수업제목</h3>
@@ -97,6 +99,7 @@
         </div> -->
       </div>
     </fieldset>
+  </form>
     <button type="button" class="enroll__next-btn" @click="register"> 다음 </button>
   </section>
 </template>

@@ -26,8 +26,7 @@
             <nav class="header__navi":class="{off: isoffs}">
                 <ul class="header__navi__lnb_list"  >
                   <router-link tag="li" :to = "{ name: 'list'}" class="navi_menu_search"> <a href="#" >검색</a></router-link>
-
-                  <router-link tag="li" :to = "{ name: 'tutor'}"  class="navi_menu navi_menu_join  is_login" :class= "{off: !islogin}" > <a href="#" >튜터등록</a></router-link>
+                  <router-link tag="li" :to = "{ name: 'tutor'}"  class="navi_menu navi_menu_tutor  is_login" :class= "{off: !islogin}" > <a href="#" >튜터등록</a></router-link>
 
                   <!-- <li > <a href="#" class="navi_menu_enroll">튜터등록</a></li> -->
 

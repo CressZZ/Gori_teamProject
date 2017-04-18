@@ -27,7 +27,7 @@
           </tbody>
         </table>
         <div class="enroll__button-wrapper">
-          <router-link tag="button" :to = "{ path: '/enroll/registerDetail'}"  class="enroll__myinfo ">나의정보 수정</router-link>
+          <router-link tag="button" :to = "{ name: 'myinfo'}"  class="enroll__myinfo ">나의정보 수정</router-link>
 
           <!-- <button type="button" class="enroll__myinfo">나의정보 수정</button> -->
           <router-link tag="button" :to = "{ path: '/enroll/register'}"  class="enroll__myinfo ">수업등록 </router-link>

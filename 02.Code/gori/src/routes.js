@@ -62,8 +62,8 @@ export const routes = [
     },
     children: [
     // { path: '', component: UserStart },
-    { path: 'registertutor', component: EnrollRegisterTutor },
-    { path: 'registerMyinfo', component: EnrollRegisterMyinfo },
+    { path: 'registertutor', component: EnrollRegisterTutor, name: 'tutor' },
+    { path: 'registerMyinfo', component: EnrollRegisterMyinfo, name: 'myinfo'},
     { path: 'register', component: EnrollRegister },
     { path: 'registerDetail', component: EnrollRegisterDetail}
   ]

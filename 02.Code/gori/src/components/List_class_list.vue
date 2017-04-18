@@ -6,7 +6,7 @@
 
           <!-- class -->
           <section class="list_class-list row">
-            <p class="list_class-list__subtitle ">당신이 배우고 싶은것, 무엇이든 Gori</p>
+            <!-- <p class="list_class-list__subteitle ">당신이 배우고 싶은것, 무엇이든 Gori</p> -->
 
             <!-- <div class="list_class-list__heading_wrapper">
               <p v-if="titleFilter" class=" "> {{ titleFilter}}</p>

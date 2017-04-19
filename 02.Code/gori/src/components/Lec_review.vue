@@ -27,7 +27,7 @@
     </div>
     <div class="review__write">
 
-      <div class="row" v-for="item in reviewpage">
+      <div class="row" v-for="item in detailReview.results">
         <div class="review__write__writer col-4-4 col-7-12">
           <div class="review__write__writer__info-1">
             <img class="review__write__writer__picture" src="../media/img/user.jpg">
@@ -37,7 +37,7 @@
             <time class="review__write__writer__info__date" data-type="date">
               {{item.created_date.substring(0,10)}}
             </time>
-            <p class="review__write__writer__descrip">{{item.comment}}</p>
+            <p class="review__write__writer__descrip" v-html = "whiteSpace(item.comment)">{{}}</p>
           </div>
         </div>
       </div>
@@ -46,9 +46,7 @@
     </div>
     <div class="row">
       <div class="review__page col-4-4 col-7-12">
-        <a v-for = "n in pagenum" href="#" class="riview__page__btn on_page" @click.prevent = "changePage(n)">{{n}}</a>
-        <!-- <a href="#" class="qna__page__btn">2</a>
-        <a href="#" class="qna__page__btn">3</a> -->
+        <a v-for = "n in pagenum" href="#" class="qna__page__btn on_page" @click.prevent = "changePage(n)">{{n}}</a>
       </div>
 
     </div>
@@ -62,7 +60,7 @@
 </template>
 
 <script>
-import LecReviewModal from './lec_review_modal.vue'
+import LecReviewModal from './Lec_review_modal.vue'
 
 export default {
   data(){
@@ -80,35 +78,33 @@ export default {
       this.isvisibles = !this.isvisibles
       console.log('click');
     },
-    changePage(n){
-       this.page_to = n
-    },
-    pagenumadd(){
-      this.pagenum = Math.ceil(this.detailReview.count / this.count_per_page)
-    },
+
     reflesh(){
       this.$emit('reflesh')
-    }
+    },
+    whiteSpace(text){
+      return text.replace(/\r\n/gi,"<br>")
+    },
+    changePage(n){
+      this.$store.commit("pageChangeReview", n)
+      this.$emit('reflesh')
+    },
   },
   watch:{
-    detailReview(){
-      this.pagenumadd()
-    }
+
+
   },
   components: {
     LecReviewModal,
 
   },
   computed:{
-    reviewpage(){
-      const from = ((this.page_to * this.count_per_page) - this.count_per_page)
-      const to = this.page_to * this.count_per_page
-      return this.detailReview.results.reverse().slice(from, to)
-    },
+    pagenum(){
+      return Math.ceil(this.detailReview.count / this.$store.state.page.review.requestCountPerPage)
+    }
   },
   created(){
-      // this.questionpage;
-      this.pagenumadd()
+
   },
 
 

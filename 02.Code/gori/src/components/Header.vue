@@ -26,13 +26,12 @@
             <nav class="header__navi":class="{off: isoffs}">
                 <ul class="header__navi__lnb_list"  >
                   <router-link tag="li" :to = "{ name: 'list'}" class="navi_menu_search"> <a href="#" >검색</a></router-link>
-                  <router-link tag="li" :to = "{ name: 'tutor'}"  class="navi_menu navi_menu_tutor  is_login" :class= "{off: !islogin}" > <a href="#" >튜터등록</a></router-link>
-
-                  <!-- <li > <a href="#" class="navi_menu_enroll">튜터등록</a></li> -->
 
 
-                  <!-- <li class="navi_menu navi_menu_tutor ">
-                    <a href="#" >튜터등록</a>
+                  <router-link tag="li" :to = "{ name: 'tutor'}"  class="navi_menu navi_menu_join  is_login" :class= "{off: !islogin}" > <a href="#" >튜터등록</a></router-link>
+                  <!-- <li class="navi_menu navi_menu_service ">
+                    <a href="#" @click = "verifyTalent" >강의 승인</a>
+
                   </li> -->
 
                     <li class="navi_menu navi_menu_service ">
@@ -46,9 +45,7 @@
                   </li>
                   <router-link tag="li" :to = "{ name: 'myinfo'}"  class="navi_menu navi_menu_join  is_login" :class= "{off: !islogin}" > <a href="#" >마이페이지</a></router-link>
 
-                  <!-- <li class="navi_menu navi_menu_join  is_login" :class= "{off: !islogin}" >
-                    <a href="#" >마이페이지</a>
-                  </li> -->
+
                   <li  class="navi_menu navi_menu_login is_logout " :class= "{off: islogin}">
                     <a href="#"  @click = "loginvisible">로그인
                     </a>
@@ -73,6 +70,7 @@ export default {
   data(){
     return{
       isoffs: true,
+      // islogin: this.$store.state.login.is_login,
       WindowWidth: window.innerWidth,
       currentPage: "pc",
       loginInfo: {
@@ -82,21 +80,34 @@ export default {
     }
   },
   methods: {
+    logout(){
+      alert("로그아웃 완료")
+      sessionStorage.setItem('is_login', false)
+      this.islogouts()
+      sessionStorage.clear()
+
+      // this.$store.commit('logout')
+      this.$router.push({ name: 'main' })
+    },
     submitLogin() {
       this.login()
     },
     login(){
       this.$http.post('member/login/', this.loginInfo)
       .then(function(response){
+        console.log("login-response:",response)
         return response.json()
       })
       .then(function(data){
-        this.$store.commit('Token', data.key)
+        sessionStorage.setItem('Token', data.key)
+        sessionStorage.setItem('is_login', JSON.stringify(true))
+        // this.$store.commit('Token', data.key)
+        // this.closeModal()
+        console.log("login-data:",data)
         alert("로그인 완료!!")
         this.userInfo()
         this.wishlist()
-
-
+        // this.loginUpdate()
 
       })
       .catch( error => {
@@ -105,16 +116,18 @@ export default {
     },
     userInfo(){
       this.$http.get('member/profile/user/', {
-        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+        headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
       })
       .then(function(response){
-        console.log("user-detail-response:",response)
+        console.log("user-response:",response)
         return response.json()
       })
       .then(function(data){
-        console.log("data:",data)
-        this.$store.commit('loginInfo', data)
+        console.log("user-data:",data)
+        sessionStorage.setItem('loginInfo', JSON.stringify(data))
+        this.loginUpdate()
 
+        // this.$store.commit('loginInfo', data)
       })
       .catch(function(err){
         console.log("err:",err.bodyText)
@@ -122,62 +135,47 @@ export default {
     },
     wishlist(){
       this.$http.get('member/wish-list/', {
-        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+        headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
       })
       .then(function(response){
-        console.log("user-detail-response:",response)
+        console.log("wishlist-response:",response)
         return response.json()
       })
       .then(function(data){
-        console.log("data:",data)
-        this.$store.commit('wishlist', data)
-      })
-      .then(function(){
-        bus.$emit('wishrefreash')
+        console.log("wishlist-data:",data)
+        sessionStorage.setItem('wishlist', JSON.stringify(data))
+        this.loginUpdate()
 
+        // this.$store.commit('wishlist', data)
+        bus.$emit('wishrefreash')
       })
       .catch(function(err){
         console.log("err:",err.bodyText)
       })
     },
+
+
     loginvisible(){
       console.log("click:")
-
-      // this.$emit('loginvisible')
       bus.$emit('loginvisible')
-
     },
     joinvisible(){
-      // this.$emit('joinvisible')
       bus.$emit('joinvisible')
-
     },
     isoff(){
       if(this.windowWidth < 689){
         this.isoffs = !this.isoffs
       }
     },
-    logout(){
-      alert("로그아웃 완료")
-      this.$store.commit('logout')
-      this.$router.push({ name: 'main' })
-
+    verifyTalent(){
+      // this.$http.get('member/staff/verify/talent/23/', {
+      //   headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      // })
+      // .then(function(response){
+      //   console.log("verifyTalent-response:",response)
+      //   return response.json()
+      // })
     },
-    // verifyTutor(){
-    //   this.$http.post('member/token-auth/', this.userinfo)
-    //   .then(function(response){
-    //     return response.json()
-    //   })
-    //   .then(function(data){
-    //     console.log("data:",data)
-    //     alert("로그인 완료!!")
-    //     this.$store.commit('Token', data.token)
-    //   })
-    //   .catch( error => {
-    //     console.log("error:",error.bodyText)
-    //   });
-    // }
-
 
     windowResize(e){
       this.windowWidth = e.currentTarget.innerWidth;
@@ -194,6 +192,21 @@ export default {
       // if (this.windowWidth < 599){
         // this.isoffs = true
       // }
+    },
+    loginUpdate(){
+      console.log("session_login:",JSON.parse(sessionStorage.getItem("is_login")))
+      if (JSON.parse(sessionStorage.getItem("is_login")) === true){
+        this.$store.commit("islogin")
+        this.$store.commit("Token", sessionStorage.getItem("Token"))
+        this.$store.commit("loginInfo", JSON.parse(sessionStorage.getItem("loginInfo")))
+        this.$store.commit("wishlist", JSON.parse(sessionStorage.getItem("wishlist")))
+      }
+    },
+    islogouts(){
+      console.log("session_login:",JSON.parse(sessionStorage.getItem("is_login")))
+      if (JSON.parse(sessionStorage.getItem("is_login")) === false){
+        this.$store.commit("islogout")
+      }
     }
   },
   computed: {
@@ -202,6 +215,9 @@ export default {
     }
   },
   created() {
+    this.userInfo()
+    this.wishlist()
+
     console.log("this.$store.state.login.is_login:",this.$store.state.login.is_login)
     this.windowWidth = window.innerWidth
     if (this.windowWidth > 690){

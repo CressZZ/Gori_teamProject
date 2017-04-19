@@ -104,114 +104,47 @@ export default {
   },
   props: ["detailAll"],
   created(){
+    this.getUserInfo()
+},
+
+methods: {
+    sync: function(e) {
+    e.preventDefault()
+    this.userUpdate.profile_image = e.target.files[0]
+  },
+  getUserInfo() {
     this.$http.get('member/profile/user/', {
-    headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+    headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
     })
     .then(function(response){
       console.log("user-detail-response:",response)
-
       return response.json()
     })
     .then(function(data){
-      this.userinfo = data
-      console.log("user-name:",data.name)
-      // console.log("data:",data)
+      this.$store.commit('loginInfo', data)
+      console.log("user-nickname:",data.nickname)
+      console.log("data:",data)
     })
     .catch(function(err){
       console.log("err:",err.bodyText)
     })
-
-  },
-  methods: {
-    sync: function(e) {
-    e.preventDefault()
-    this.userUpdate.profile_image = e.target.files[0]
-
   },
 
-    // userRegister(){
-    //   this.$router.push({ path: 'registerDetail' })
-    //   const data = new FormData()
-    //   data.append('name', this.userUpdate.name)
-    //   data.append('nickname', this.userUpdate.nickname)
-    //   data.append('profile_image', this.userUpdate.profile_image)
-    //   data.append('cellphone', this.userUpdate.cellphone)
-    //   console.log("data:",data)
-    //
-    //   this.$http.patch('member/update/user/',data,  {
-    //   headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-    //   })
-    //   .then(function(response){
-    //     console.log("register-response:",response)
-    //     this.userUpdate.name= ""
-    //     this.userUpdate.nickname= ""
-    //     this.userUpdate.profile_image= ""
-    //     this.userUpdate.cellphone= ""
-    //
-    //   })
-    //   .then(function(data){
-    //     console.log("register-data:",data)
-    //   })
-    //   .catch( error => {
-    //     console.error("error!!",error)
-    //     alert(error.bodyText)
-    //   });
-    //
-    // },
-    register(){
-      // this.$router.push({ path: 'registerDetail' })
-      const data2 = new FormData()
-      // data.append('name', this.userUpdate.name)
-      data2.append('nickname', this.userUpdate.nickname)
-      data2.append('profile_image', this.userUpdate.profile_image)
-      data2.append('cellphone', this.userUpdate.cellphone)
+  register() {
+    const data2 = new FormData()
+    data2.append('nickname', this.userUpdate.nickname)
+    data2.append('profile_image', this.userUpdate.profile_image)
+    data2.append('cellphone', this.userUpdate.cellphone)
 
-      this.$http.patch('member/update/user/',data2,  {
-      headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+    this.$http.patch('member/update/user/',data2,  {
+    headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
       })
-      .then(function(data){
-        console.log("register-data:",data)
+    .then(function(data){
+      console.log("fatch-userdata:",data)
+      console.log("this.$store.state.login.loginInfo:",this.$store.state.login.loginInfo)
+      this.getUserInfo()
       })
-
-      // const data = new FormData()
-      //
-      // data.append('verification_method', this.tutorUpdate.verification_method)
-      // data.append('verification_images', this.tutorUpdate.verification_images)
-      // data.append('school', this.tutorUpdate.school)
-      // data.append('major', this.tutorUpdate.major)
-      // data.append('current_status', this.tutorUpdate.current_status)
-      // console.log("data:",data)
-      //
-      //
-      // const data = new FormData()
-      //
-      // this.$http.post('member/register/tutor/',data,  {
-      // headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-      // })
-      // .then(function(response){
-      //   console.log("register-response:",response)
-      //   // this.userUpdate.name= ""
-      //   this.userUpdate.nickname= ""
-      //   this.userUpdate.profile_image= ""
-      //   this.userUpdate.cellphone= ""
-      //
-      //   this.tutorUpdate.verification_method= ""
-      //   this.tutorUpdate.verification_images= ""
-      //   this.tutorUpdate.school= ""
-      //   this.tutorUpdate.current_status= ""
-      //   this.tutorUpdate.current_status= ""
-      //
-      // })
-      // .then(function(data){
-      //   console.log("register-data:",data)
-      // })
-      // .catch( error => {
-      //   console.error("error!!",error)
-      //   alert(error.bodyText)
-      // });
-
     },
-
 
   },
 }

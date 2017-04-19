@@ -6,9 +6,9 @@
       <div class="intro__wrap col-4-4 col-7-12">
         <h2 class="intro__heading" >수업소개</h2>
         <div class="intro__img-container">
-          <img :src="`${detailAll.cover_image}`" :alt="`${detailAll.title}`">
+          <img :src="`${detailAll.cover_image}`" :alt="`${detailAll.title}`" v-cloak>
         </div>
-        <p class="intro__description">{{detailAll.class_info}}</p>
+        <p class="intro__description" v-html="whiteSpace(detailAll.class_info)" v-cloak></p>
 
       </div>
 
@@ -20,12 +20,23 @@
 <script>
 export default {
   props: ["detailAll"],
+  created(){
+  },
+  computed:{
+  },
+  methods:{
+    whiteSpace(text){
+      return text.replace(/\r\n/gi,"<br>")
+    }
 
-
+  }
+//
 }
 </script>
 
   <style lang="sass">
+    [v-cloak]
+      display: none
     // @import "../sass/gen_source"
     // @import "../sass/gen_mixin"
     // @import "../sass/lec_intro"

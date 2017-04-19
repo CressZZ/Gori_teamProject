@@ -12,6 +12,7 @@ Vue.use(Vuex);
 Vue.use(VueResource);
 
 Vue.http.options.root = 'https://mozzi.co.kr/api';
+
 // Vue.http.headers.common['Authorization'] = 'Token 39248c0f2405edb4202fc393e5d7df367601f9cb';
 
 

@@ -9,9 +9,9 @@
 
 <script>
 
-import MainCarousel from './main_carousel.vue'
-import MainCategori from './main_categori.vue'
-import MainClassList from './main_class-list.vue'
+import MainCarousel from './Main_carousel.vue'
+import MainCategori from './Main_Categori.vue'
+import MainClassList from './Main_Class-list.vue'
 
 
 

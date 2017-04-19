@@ -92,9 +92,9 @@ export default {
   },
 
   mounted() {
-    this.refreash()
     bus.$on('wishrefreash', () => {this.refreash()})
-    
+    this.refreash()
+
 
   },
 
@@ -102,11 +102,17 @@ export default {
     refreash(){
       console.log("login????????")
       var wish = this.$store.state.login.wishlist.results
+      console.log("wish>>>>>>:",wish)
       var islogin = this.$store.state.login.is_login
       var self = this
       if(this.$store.state.login.is_login === true){
         wish.forEach(function(item){
-          if( item.pk === self.$route.params.lecid ) {
+          console.log("item.pk:",item.pk)
+          console.log("item.pk:",typeof item.pk)
+          console.log("self.$route.params.lecid:",typeof self.$route.params.lecid)
+
+          console.log("self.$route.params.lecid:",self.$route.params.lecid)
+          if( item.pk === +self.$route.params.lecid ) {
             self.is_wishList = true
             console.log("true!!")
             return
@@ -148,7 +154,7 @@ export default {
         switch(err.status){
           case 401 : alert("로그인을 하세요!!!!!!!!!!!!!!!!!!!!!!!!!!!");
           break;
-          default : alert("error!",err.body.detail);
+          default : alert("error!",err.bodytext);
           }
         });
       },

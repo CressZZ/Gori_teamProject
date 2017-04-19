@@ -6,8 +6,8 @@
       <ul class="curriculum__list">
         <li class="row" v-for = "(item, index) in detailAll.curriculums">
           <strong>{{index + 1}} 회차</strong></br>
-          <span class="col-7-12 col-4-4">
-            {{item.information}}
+          <span class="col-7-12 col-4-4" v-html="whiteSpace(item.information)">
+
           </span>
         </li>
 
@@ -22,8 +22,14 @@ export default {
     }
   },
   props: ["detailAll"],
-   created(){
-   }
+  created(){
+
+  },
+  methods:{
+    whiteSpace(text){
+      return text.replace(/\r\n/gi,"<br>")
+    }
+  },
 
 }
 </script>

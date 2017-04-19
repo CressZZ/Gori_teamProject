@@ -77,15 +77,19 @@ export default {
     login(){
       this.$http.post('member/login/', this.loginInfo)
       .then(function(response){
+        console.log("login-response:",response)
         return response.json()
       })
       .then(function(data){
-        this.$store.commit('Token', data.key)
+        sessionStorage.setItem('Token', data.key)
+        sessionStorage.setItem('is_login', JSON.stringify(true))
+        this.islogins()
+        // this.$store.commit('Token', data.key)
         this.closeModal()
+        console.log("login-data:",data)
         alert("로그인 완료!!")
         this.userInfo()
         this.wishlist()
-
 
       })
       .catch( error => {
@@ -94,15 +98,16 @@ export default {
     },
     userInfo(){
       this.$http.get('member/profile/user/', {
-        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+        headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
       })
       .then(function(response){
-        console.log("user-detail-response:",response)
+        console.log("user-response:",response)
         return response.json()
       })
       .then(function(data){
-        console.log("data:",data)
-        this.$store.commit('loginInfo', data)
+        console.log("user-data:",data)
+        sessionStorage.setItem('loginInfo', JSON.stringify(data))
+        // this.$store.commit('loginInfo', data)
       })
       .catch(function(err){
         console.log("err:",err.bodyText)
@@ -110,24 +115,32 @@ export default {
     },
     wishlist(){
       this.$http.get('member/wish-list/', {
-        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+        headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
       })
       .then(function(response){
-        console.log("user-detail-response:",response)
+        console.log("wishlist-response:",response)
         return response.json()
       })
       .then(function(data){
-        console.log("data:",data)
-        this.$store.commit('wishlist', data)
+        console.log("wishlist-data:",data)
+        sessionStorage.setItem('wishlist', JSON.stringify(data))
+        // this.$store.commit('wishlist', data)
         bus.$emit('wishrefreash')
       })
       .catch(function(err){
         console.log("err:",err.bodyText)
       })
     },
+    islogins(){
+      console.log("session_login:",JSON.parse(sessionStorage.getItem("is_login")))
+      if (JSON.parse(sessionStorage.getItem("is_login")) === true){
+        this.$store.commit("islogin")
+      }
+    },
   },
 
   created(){
+    //헤더에서 로그인 클릭하면 활성화 됨
     bus.$on('loginvisible', () => {this.isVisible = true})
   },
 

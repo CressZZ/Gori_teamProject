@@ -19,7 +19,7 @@
 
 
       <!-- <li class="qna__list__q" v-for = "question in detailQuestion.results" > -->
-      <li class="qna__list__q" v-for = "question in detailQuestion.results" >
+      <li class="qna__list__q" v-for = "question in questionpage" >
 
         <div class="row">
           <div class="qna__list__q__writer col-4-4 col-7-12">
@@ -78,7 +78,6 @@ export default {
         return alert("내용을 입력하셔야죠!!!!!!")
       }
       this.add.content = this.tempQuestion;
-      console.log("replace:",this.tempQuestion.replace("\n","<br>"))
       this.tempQuestion = null;
       this.$http.post('talent/add/question/', this.add,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
@@ -92,30 +91,32 @@ export default {
       .catch( error => {
       });
     },
-    whiteSpace(text){
-      return text.replace(/\r\n|\r|\n/gi,"<br>")
-    },
     changePage(n){
-      this.$store.commit("pageChange", n)
-      this.$emit('reflesh')
+       this.page_to = n
     },
-
+    pagenumadd(){
+      this.pagenum = Math.ceil(this.detailQuestion.count / this.count_per_page)
+    },
+    whiteSpace(text){
+      return text.replace(/\r\n/gi,"<br>")
+    }
   },
   watch:{
-
+    detailQuestion(){
+      this.pagenumadd()
+    },
     tempQuestion(){
       console.log(this.tempQuestion)
     }
   },
   computed:{
-    pagenum(){
-      return Math.ceil(this.detailQuestion.count / this.$store.state.page.question.requestCountPerPage)
-    }
-    },
 
+    },
+  },
 
   created(){
-
+      this.pagenumadd()
+      console.log(this.detailQuestion.results.reverse()[0].content)
   },
 }
 </script>

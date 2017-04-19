@@ -23,9 +23,9 @@
 
   <lec-speaking  v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
-  </lec-speaking :detailAll = "detailAll">
+  </lec-speaking >
 
-  <lec-intro :detailAll = "detailAll">
+  <lec-intro  v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-intro>
 
@@ -55,9 +55,6 @@
 </template>
 
 <script>
-// import Join from './Join.vue'
-// import Login from './Login.vue'
-
 import LecSummary from './Lec_summary.vue'
 import LecSpeaking from './Lec_speaking.vue'
 import LecApply from './Lec_apply.vue'
@@ -67,7 +64,6 @@ import LecLocation from './Lec_location.vue'
 import LecQna from './Lec_qna.vue'
 import LecReview from './Lec_review.vue'
 import LecClassNav from './Lec_class-nav.vue'
-// import Rating from './Rating.vue'
 
 
 import {bus} from '../bus'
@@ -80,8 +76,7 @@ export default {
       detailReview: [],
       detailQuestion: [],
 
-      // questionPage: 4,
-
+      // 데이터 뿌리는 순서를 위한  Trick
       detailAllArrayTrick: [],
       reviewArrayTrick: [],
       qnaArrayTrick: []
@@ -96,11 +91,12 @@ export default {
       // 1. detailAll 데이터 get
       this.$http.get(`talent/detail-all/${this.$route.params.lecid}/`)
       .then(function(response){
+        console.log("detailAll-response:",response)
         return response.json()
       })
       .then(function(data){
+        console.log("detailAll-data:",data)
         this.detailAll = data,
-
         //Array 해결을 위한 트릭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         this.detailAllArrayTrick = [1]
       })
@@ -113,36 +109,15 @@ export default {
       this.questionload()
 
 
-      // 4. user-detail 데이터 get
-      // this.$http.get('member/profile/user/', {
-      // headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-      // })
-      // .then(function(response){
-      //   console.log("user-detail-response:",response)
-      //   return response.json()
-      // })
-      // .then(function(data){
-      // })
-      // .catch(function(err){
-      //   console.log("err:",err.bodyText)
-      // })
+
 
   },
   mounted(){
-    // console.log("lec-vue lecid2:", this.id)
-    // console.log("class-List2:", this.classlist)
-
   },
 
   updated(){
-    // console.log("lec-vue lecid3:", this.id)
-    // console.log("class-List3:", this.classlist)
-
   },
   beforeDestroy(){
-    // console.log("lec-vue lecid4:", this.id)
-    // console.log("class-List4:", this.classlist)
-
   },
   watch:{
 
@@ -150,8 +125,8 @@ export default {
 
   methods: {
     questionload(){
-      this.$http.get(`talent/detail/${this.$route.params.lecid}/qna/`)
-        // ,{ params: {page_size: 2, page: this.questionPage}} )
+      this.$http.get(`talent/detail/${this.$route.params.lecid}/qna/`
+        ,{ params: {page_size: this.$store.state.page.question.requestCountPerPage, page: this.$store.state.page.question.page}} )
     .then(function(response){
       console.log("response-question:",response)
       return response.json()
@@ -165,8 +140,10 @@ export default {
     })
   },
     reviewload(){
-      this.$http.get(`talent/detail/${this.$route.params.lecid}/review/`)
+      this.$http.get(`talent/detail/${this.$route.params.lecid}/review/`,{ params: {page_size: this.$store.state.page.review.requestCountPerPage, page: this.$store.state.page.review.page}} )
       .then(function(response){
+        console.log("response-review:",response)
+
         return response.json()
       })
       .then(function(data){
@@ -207,6 +184,8 @@ export default {
 </script>
 
   <style lang="sass">
+    [v-cloak]
+      display: none
 
     // @import "../sass/total"
     // @import "../sass/lec-index"

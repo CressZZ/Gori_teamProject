@@ -5,7 +5,7 @@
       <div class="profile__wrapper__user">
         <h2 class="hidden__heading">profile</h2>
         <div class="member__info">
-          <img src="#" alt="프로필이미지" class="member__info-img">
+          <img :src="`${userinfo.profile_image}`" :alt="`${userinfo.name}의 사진`" class="member__info-img">
             <!-- <a href="#" title="프로필 이미지 팝업" class="member__info-img__edit">EDIT</a> -->
           <p class="member__username">{{userinfo.name}}</p>
         </div>
@@ -82,31 +82,18 @@
 export default {
   data(){
     return {
-      userinfo: {},
+      // userinfo: this.$store.state.login.loginInfo,
     }
   },
   props: ["detailAll"],
-  created(){
-    this.$http.get('member/profile/user/', {
-    headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-    })
-    .then(function(response){
-      console.log("user-detail-response:",response)
-
-      return response.json()
-    })
-    .then(function(data){
-      this.userinfo = data
-      console.log("user-name:",data.name)
-      // console.log("data:",data)
-    })
-    .catch(function(err){
-      console.log("err:",err.bodyText)
-    })
-
+  created() {
+    console.log("this.$store.state.login.loginInfo:",this.$store.state.login.loginInfo)
+  },
+  computed:{
+    userinfo(){
+      return this.$store.state.login.loginInfo
+    }
   }
-
-
 }
 </script>
 

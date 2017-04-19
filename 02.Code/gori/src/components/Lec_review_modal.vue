@@ -15,9 +15,9 @@
                       <div class="review__list ">
                         <ul>
 
-                          <li class="st_off" id="curriculum" v-for ="(value, key) in ratings">
+                          <li class="st_off star-raing-box" v-for ="(value, key) in ratings">
                             <h3 class="review__rating__subtitle">{{value}}</h3>
-                            <lec-review-modal-rating :title = "key" ></lec-review-modal-rating>
+                            <lec-review-modal-rating :title = "key" class="star-raing-sub" ></lec-review-modal-rating>
                           </li>
 
                         </ul>
@@ -48,10 +48,10 @@ export default {
       ratings:
         {
         curriculum: "커리큘럼",
-        readiness: "준비성",
+        readiness: "준  비  성",
         timeliness: "시간준수",
-        delivery: "전달력",
-        friendliness: "친절도"
+        delivery: "전  달  력",
+        friendliness: "친  절  도"
       },
 
       add: {

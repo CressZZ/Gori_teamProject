@@ -5,7 +5,7 @@
       <div class="review-section-1 col-4-4 col-7-12">
         <h2 class="review__heading">리뷰 {{detailReview.count}}건</h2>
         <div>
-          <button type="button" class="review__btn" @click="isvisible">리뷰작성 + </button>
+          <button type="button" class="review__btn" @click="isvisible">리뷰작성+ </button>
         </div>
       </div>
     </div>

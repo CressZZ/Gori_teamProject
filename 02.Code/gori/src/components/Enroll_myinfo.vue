@@ -8,7 +8,7 @@
 			<caption class="blind">기본 정보</caption>
 			<tbody>
 			<tr>
-				<th class="th2"><p>이름</p></th>
+				<th class="th2"><p>이&nbsp;&nbsp;&nbsp;름</p></th>
 				<td>
 					<p>{{userinfo.name}}</p>
 				</td>
@@ -65,7 +65,7 @@
 				</td>
 			</tr> -->
       <tr>
-        <th class="th"><p>프로필사진</p></th>
+        <th class="th"><p>내사진</p></th>
         <td class="file_upload">
           <input @change="sync" type="file" multiple="">
         </td>

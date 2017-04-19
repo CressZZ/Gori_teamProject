@@ -14,10 +14,9 @@
         <textarea  v-model = "curriculum[index].information" @onchange = "inputCurriculum" placeholder="내용을 입력해주세요" class=""></textarea>
       </li>
 
-
       <div class="curriculum__button-wrapper">
-        <button @click = "addCurriculum" type= "button"> + </button>
-        <button @click = "deleteCurriculum" type= "button"> - </button>
+        <button @click = "deleteCurriculum" type= "button">커리큘럼 삭제 - </button>
+        <button @click = "addCurriculum" type= "button">커리큘럼 추가 + </button>
 
       </div>
     </ul>
@@ -28,7 +27,7 @@
 
 
   <section class="enroll-lec__time-cost">
-    <h2 class="enroll-lec__time-cost__heading">시간 및 비용 설정</h2>
+    <h2 class="enroll-lec__time-cost__heading-set">시간 및 비용 설정</h2>
     <fieldset class="">
 
       <div class="row_group">
@@ -55,7 +54,7 @@
         </div>
         <div class="enroll-lec__list enroll-lec__time">
           <h3 class="">수업시간</h3>
-          <input type="text" v-model = "registerdetailInfo.time" placeholder="수업가능한 시간을 적어주세요 예:9:00~11:00/13:00~14:00" class="">
+          <input type="text" v-model = "registerdetailInfo.time" placeholder=" 예:9:00~11:00/13:00~14:00" class="">
         </div>
 
       </div>
@@ -105,7 +104,7 @@
         <div class="enroll-lec__list enroll-lec-location__heading-comment">
           <h3 class="">비용안내</h3>
           <input  v-model = "registerdetailInfo.extra_fee_amount" type="text"
-          placeholder="신청자 분들이 수업 장소와 시간에 대해 알면 좋은 사항들이 있나요?"
+          placeholder="비용에 관한 추가 안내를 적어주세요"
           class="">
         </div>
       </div>
@@ -134,16 +133,16 @@ export default {
         extra_fee_amount: "",
         location_info: "",
       },
-      curriculumnum: 2,
+      curriculumnum: 1,
       curriculum:[
         {
           talent_pk: this.$store.state.register.talent_pk
 
         },
-        {
-          talent_pk: this.$store.state.register.talent_pk
-
-        },
+        // {
+        //   talent_pk: this.$store.state.register.talent_pk
+        //
+        // },
       ],
     }
   },
@@ -185,7 +184,7 @@ export default {
       console.log("this.curriculum:",this.curriculumnum)
     },
     deleteCurriculum(){
-      if(this.curriculumnum > 2){
+      if(this.curriculumnum > 1){
         this.curriculumnum = this.curriculumnum - 1;
       } else {
         console.log("nonononono")

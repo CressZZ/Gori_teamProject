@@ -1,4 +1,5 @@
 <template lang="html">
+  <div class="wrapper-enroll-all">
   <div class="wrapper-enroll">
     <section class="wrapper-enroll-section">
 
@@ -74,7 +75,7 @@
     </transition>
 
 
-
+  </div>
   </div>
 </template>
 

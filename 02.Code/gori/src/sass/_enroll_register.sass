@@ -4,15 +4,19 @@
 
 
   .enroll__register-btn
+    font-size: $font-m-size
+    color: #fff
     display: block
     margin: 20px auto
     padding: 20px 20px
     border-radius: 5px
     width: 100%
-    background-color: $point-color
+    background-color: $font-sub-color
+    &:hover
+      background: $point-color
 
   .enroll-myinfo-all-myinfo
-    height: 70vh
+    // height: 75vh
 
   .enroll-myinfo-all-tutor
     height: 570px
@@ -20,14 +24,17 @@
   .enroll-lec-all ,.enroll-myinfo-all-tutor ,.enroll-myinfo-all-myinfo
     width: 100%
     margin-top: 48px
-    border-top: 5px solid $main-color
+    border-top: 1px solid $main-color
     float: left
     padding: 20px
     color: $font-main-color
     font-weight: 400
     background-color: white
     input
-      border: 1px solid $point-color
+      border: 1px solid $font-sub-color
+
+  .enroll-lec-all h3
+      // background: #32c
 
 
 
@@ -64,9 +71,10 @@
     border-radius: 5px
     select
       padding-left: 10px
-      width: 50%
+      width: 99.86%
       font-size: 16px
       height: 48px
+      border-color: $font-sub-color
 
   .enroll-lec__type
     width: 75.86%
@@ -75,6 +83,11 @@
     display: flex
     label
       margin-right: 20px
+      margin-left: 7px
+
+  .enroll-myinfo__basic th
+    // background: #19c
+    width: 50px
 
 
   .enroll-myinfo__basic,
@@ -89,14 +102,9 @@
     font-weight: bold
     padding: 24px 0
 
-  .th2
-    letter-spacing: 40px
 
-  .th3
-    letter-spacing: 13px
-
-  .th4
-    letter-spacing: 4px
+  th
+    margin-right: 10px
 
   .user__pw-cg
     margin: 5px 0
@@ -105,6 +113,7 @@
     border: 0px solid #fff
     float: left
     text-align: left
+    padding-top: 12px
 
   // .file_upload input
   //   border: 0px solid #fff
@@ -131,9 +140,10 @@
     border-radius: 5px
     select
       padding-left: 10px
-      width: 50%
+      width: 99.86%
       font-size: 16px
       height: 48px
+      border-color: $font-sub-color
 
   .enroll-lec__picture
     label
@@ -168,7 +178,7 @@
       margin-bottom: 24px
       h3
         width: 20.69%
-        margin-right: 3.44%
+        // margin-right: 3.44%
         height: 48px
         display: flex
         align-items: center
@@ -181,22 +191,27 @@
         display: flex
         align-items: center
       textarea
-        border-radius: 5px
+        // border-radius: 5px
         width: 100%
         height: 96px
-        border: 1px solid $point-color
+        // border: 1px solid $font-sub-color
+        background: $bg-color
+        padding: 10px
 
     .curriculum__button-wrapper
       display: flex
       width: 100%
-      justify-content: center
+      float: right
+      justify-content: space-between
       button
-        margin: 10px auto
+        margin: 10px
         display: block
-        border-radius: 5px
-        padding: 5px 10px
-        background-color: $point-color
-
+        border-radius: 2px
+        text-align: right
+        // padding: 5px 8px
+        // background-color: $font-faint-color
+        &:hover
+          font-weight: 600
 
 
 
@@ -204,7 +219,8 @@
 @media screen and (min-width: 690px)
 
   .enroll-myinfo-all-myinfo
-    height: 70vh
+    // height: 623px
+
 
 
   .enroll-myinfo-all-tutor
@@ -215,12 +231,12 @@
     float: left
     max-width: 1200px
     width: 65.96%
-    padding: 20px
+    padding: 20px 20px 30px 20px
     color: $font-main-color
     font-weight: 400
     background-color: white
     input
-      border: 1px solid $point-color
+      border: 1px solid $font-sub-color
 
 
   .enroll-lec__heading, .enroll-myinfo__heading
@@ -238,10 +254,15 @@
       display: flex
       align-items: center
 
+  .enroll-myinfo__basic th
+    // background: #19c
+    width: 50px
+
   .enroll-myinfo__basic,
   .enroll-myinfo__tutor
     // background: #229
     width: 100%
+
 
   .enroll-myinfo__basic th, .enroll-myinfo__tutor th
     // background: #339
@@ -249,15 +270,17 @@
     font-size: 1.17em
     font-weight: bold
     padding: 24px 0
+    margin-right: 20px
 
-  .th2
-    letter-spacing: 40px
 
-  .th3
-    letter-spacing: 13px
-
-  .th4
-    letter-spacing: 4px
+  // .th2
+  //   letter-spacing: 40px
+  //
+  // .th3
+  //   letter-spacing: 13px
+  //
+  // .th4
+  //   letter-spacing: 4px
 
   .user__pw-cg
     margin: 5px 0
@@ -266,6 +289,8 @@
     border: 0px solid #fff
     float: left
     text-align: left
+    margin-top: 22px
+    // padding-top: 12px
 
   // .file_upload input
   //   border: 0px solid #fff
@@ -288,9 +313,10 @@
     border-radius: 5px
     select
       padding-left: 10px
-      width: 50%
+      width: 99.86%
       font-size: 16px
       height: 48px
+      border-color: $font-sub-color
 
   .enroll-lec__type
     width: 75.86%
@@ -299,6 +325,7 @@
     display: flex
     label
       margin-right: 20px
+      margin-left: 7px
 
   .enroll-lec__picture
     label
@@ -332,7 +359,7 @@
       margin-bottom: 24px
       h3
         width: 20.69%
-        margin-right: 3.44%
+        // margin-right: 3.44%
         height: 48px
         display: flex
         align-items: center
@@ -341,31 +368,48 @@
     width: 75.86%
     li
       p
-        height: 48px
-        display: flex
-        align-items: center
+        height: 20px
+        // padding: 5px 0
+        margin: 15px 0 10px 0
+        // display: flex
+        font-weight: 600
+        // align-items: center
+        // background: #202
       textarea
-        border-radius: 5px
+        // border-radius: 5px
         width: 100%
         height: 96px
-        border: 1px solid $point-color
+        // border: 1px solid hours_per_class
+        background: $bg-color
+        padding: 10px
+
 
     .curriculum__button-wrapper
       display: flex
       width: 100%
-      justify-content: center
+      float: right
+      justify-content: space-between
 
       button
-        margin: 10px auto
+        margin: 10px
         display: block
-        border-radius: 5px
-        padding: 5px 10px
-        background-color: $point-color
+        border-radius: 2px
+        text-align: right
+        // padding: 5px 8px
+        // background-color: $font-faint-color
+        &:hover
+          font-weight: 600
+
+
 
   .enroll__register-btn
+    font-size: $font-s-size
+    color: #fff
     display: block
-    margin: 20px auto
-    padding: 20px 20px
+    margin: 130px auto 0
+    padding: 14px 15px
     border-radius: 5px
-    width: 100%
-    background-color: $point-color
+    width: 20%
+    background-color: $font-sub-color
+    &:hover
+      background: $point-color

@@ -64,7 +64,7 @@
           <input @change="sync" type="file" multiple="">
 				</td>
 			</tr> -->
-      <tr>
+      <tr class="tenroll-myinfo-mypic">
         <th class="th"><p>내사진</p></th>
         <td class="file_upload">
           <input @change="sync" type="file" multiple="">

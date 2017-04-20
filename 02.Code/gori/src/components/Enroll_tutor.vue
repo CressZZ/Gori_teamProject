@@ -10,8 +10,8 @@
           <tr>
             <th class="th4"><p>인증수단</p></th>
             <td>
-                <label class="">
-                  <select  @change = "" v-model = "tutorUpdate.verification_method" class="">
+                <label class="enroll-myinfo__tutor-id">
+                  <select class=""  @change = "" v-model = "tutorUpdate.verification_method">
                     <option value="UN">대학생</option>
                     <option value="GR">대학원생</option>
                     <option value="ID">신분증</option>
@@ -22,7 +22,7 @@
           <tr>
             <th class="th4"><p>학적상태</p></th>
             <td>
-              <label class="">
+              <label class="enroll-myinfo__tutor-status">
                 <select @change = "" v-model="tutorUpdate.current_status" class="">
                   <option value="G">졸업</option>
                   <option value="E">재학</option>
@@ -32,7 +32,7 @@
             </td>
           </tr>
       <tr>
-        <th class="th4"><p>인증사진</p></th>
+        <th class=""><p>인증사진</p></th>
         <td class="file_upload">
           <input @change="sync2" type="file" multiple="">
         </td>
@@ -40,7 +40,7 @@
       <tr>
         <th class="th4"><p>학교정보</p></th>
         <td>
-          <p class="">
+          <p class="enroll-myinfo__tutor-pic">
             <input v-model = "tutorUpdate.school" type="text">
           </p>
         </td>

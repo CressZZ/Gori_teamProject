@@ -63,6 +63,7 @@
 </template>
 
 <script>
+
 export default {
   data: function() {
     return{
@@ -114,6 +115,7 @@ export default {
         console.log("this.filter:",this.filter)
         this.$router.push({ name: 'list',  query: {category: this.filter.category, region: this.filter.region, title: this.filter.title}})
         this.$emit('refreshList')
+
     },
     moveRight(){
       console.log("click")

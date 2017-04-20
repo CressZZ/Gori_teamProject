@@ -212,7 +212,11 @@ export default {
       })
       .catch( error => {
         console.error("error!!",error)
-        alert(error.bodyText)
+        return error.json()
+      })
+      .then( error => {
+        console.error("error!!",error)
+        alert(error)
       });
 
     }

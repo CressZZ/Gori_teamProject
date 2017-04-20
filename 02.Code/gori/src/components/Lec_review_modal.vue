@@ -56,11 +56,6 @@ export default {
 
       add: {
           talent_pk: +this.$route.params.lecid,
-          // curriculum: 1,
-          // readiness	: 3,
-          // timeliness: 4,
-          // delivery: 2,
-          // friendliness: 1,
           comment: ""
       },
     }
@@ -71,27 +66,35 @@ export default {
     closeModal: function() {
       this.$store.commit('resetreview')
       this.$emit('isvisibles')
-
     },
     submitReview(){
       if(!this.add.comment || this.add.comment === " "){
         return alert("내용을 입력하셔야죠!!!!!!")
       }
+      var rate = this.$store.state.rating.add
+      if(!rate.friendliness ||!rate.curriculum ||!rate.readiness ||!rate.timeliness ||!rate.delivery ){
+        return alert("별점을 빠짐없이 입력하셔야죠!!!!!!")
+      }
       this.$store.commit("setreview", this.add.comment)
       this.$store.commit("settalent_pk", this.add.talent_pk)
-
       this.$http.post(`talent/add/review/`,this.$store.state.rating.add,{
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
     .then(function(data){
       this.$store.commit('resetreview')
+      this.add.comment = ""
       this.$emit('reflesh')
       this.$emit('isvisibles')
       console.log("data:",data)
-
     })
     .catch( error => {
-      console.log("error:",error)
+      console.error("error",error)
+      return error.json()
+
+    })
+    .then( error => {
+      console.error("error",error)
+      alert(error.detail)
     });
   }
 },

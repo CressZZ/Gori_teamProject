@@ -96,22 +96,7 @@ export default {
   },
   props: ["detailAll"],
   created(){
-    this.$http.get('member/profile/user/', {
-    headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-    })
-    .then(function(response){
-      console.log("user-detail-response:",response)
 
-      return response.json()
-    })
-    .then(function(data){
-      this.userinfo = data
-      console.log("user-name:",data.name)
-      // console.log("data:",data)
-    })
-    .catch(function(err){
-      console.log("err:",err.bodyText)
-    })
 
   },
   methods: {
@@ -120,65 +105,33 @@ export default {
     this.tutorUpdate.verification_images = e.target.files[0]
 
   },
-    // userRegister(){
-    //   this.$router.push({ path: 'registerDetail' })
-    //   const data = new FormData()
-    //   data.append('name', this.userUpdate.name)
-    //   data.append('nickname', this.userUpdate.nickname)
-    //   data.append('profile_image', this.userUpdate.profile_image)
-    //   data.append('cellphone', this.userUpdate.cellphone)
-    //   console.log("data:",data)
-    //
-    //   this.$http.patch('member/update/user/',data,  {
-    //   headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-    //   })
-    //   .then(function(response){
-    //     console.log("register-response:",response)
-    //     this.userUpdate.name= ""
-    //     this.userUpdate.nickname= ""
-    //     this.userUpdate.profile_image= ""
-    //     this.userUpdate.cellphone= ""
-    //
-    //   })
-    //   .then(function(data){
-    //     console.log("register-data:",data)
-    //   })
-    //   .catch( error => {
-    //     console.error("error!!",error)
-    //     alert(error.bodyText)
-    //   });
-    //
-    // },
     register(){
-
-
       const data = new FormData()
-
+      data.append('verification_method', this.tutorUpdate.verification_method)
+      data.append('verification_images', this.tutorUpdate.verification_images)
+      data.append('school', this.tutorUpdate.school)
+      data.append('major', this.tutorUpdate.major)
+      data.append('current_status', this.tutorUpdate.current_status)
       this.$http.post('member/register/tutor/',data,  {
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
       })
       .then(function(response){
         console.log("register-response:",response)
-        // this.userUpdate.name= ""
-        this.userUpdate.nickname= ""
-        this.userUpdate.profile_image= ""
-        this.userUpdate.cellphone= ""
-
         this.tutorUpdate.verification_method= ""
         this.tutorUpdate.verification_images= ""
         this.tutorUpdate.school= ""
         this.tutorUpdate.current_status= ""
-        this.tutorUpdate.current_status= ""
-
-      })
-      .then(function(data){
-        console.log("register-data:",data)
+        this.tutorUpdate.major= ""
+        alert(response.body.detail)
+        return
       })
       .catch( error => {
-        console.error("error!!",error)
-        alert(error.bodyText)
+        return error.json()
+      })
+      .then( error => {
+        console.error("error",error)
+        alert(error.detail)
       });
-
     },
 
 

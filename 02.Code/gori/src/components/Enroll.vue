@@ -14,7 +14,7 @@
           <caption class="hidden__heading">회원정보</caption>
           <tbody class="profile__list__detail">
              <tr>
-               <th class="profile__list__detail-id">아이디</th>
+               <th class="profile__list__detail-id">아이디(Email)</th>
                <td>{{userinfo.user_id}}</td>
              </tr>
              <tr>
@@ -83,7 +83,6 @@
 export default {
   data(){
     return {
-      // userinfo: this.$store.state.login.loginInfo,
     }
   },
   props: ["detailAll"],
@@ -100,12 +99,10 @@ export default {
 
   <style lang="sass">
     .slide-leave-active
-      // transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
       animation: slide-out 0.5s
 
 
     .slide-enter-active
-      // transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
       animation: slide-in 0.5s
 
     @keyframes slide-in
@@ -124,17 +121,4 @@ export default {
         opacity: 0
 
 
-    // .slide-leave-to
-    //
-    //   transform: translateX(1000px)
-    //   opacity: 0
-    //
-    // .slide-fade-enter
-    //   transform: translateX(-1000px)
-    //   opacity: 0
-
-
-    // @import "../sass/gen_source"
-    // @import "../sass/gen_mixin"
-    // @import "../sass/lec_intro"
   </style>

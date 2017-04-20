@@ -102,22 +102,16 @@ export default {
     refreash(){
       console.log("login????????")
       var wish = this.$store.state.login.wishlist.results
-      console.log("wish>>>>>>:",wish)
       var islogin = this.$store.state.login.is_login
       var self = this
       if(this.$store.state.login.is_login === true){
         wish.forEach(function(item){
-          console.log("item.pk:",item.pk)
-          console.log("item.pk:",typeof item.pk)
-          console.log("self.$route.params.lecid:",typeof self.$route.params.lecid)
-
-          console.log("self.$route.params.lecid:",self.$route.params.lecid)
           if( item.pk === +self.$route.params.lecid ) {
             self.is_wishList = true
-            console.log("true!!")
+            console.log("위시리스에 추가 되어 있는 강의 입니다.")
             return
           }
-          console.log("false!!")
+          console.log("위시리스에 없는 강의 입니다")
           // self.is_wishList = false;
         })
       } else {

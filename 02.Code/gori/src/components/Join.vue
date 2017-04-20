@@ -21,7 +21,7 @@
                 <input id="policy" type="checkbox" required>
                 <label for="policy" class="policy">서비스 이용 약관에 동의합니다.</label>
               </div>
-              <button class="join__email-btn" ng-click="Join()" @click = "submitLogin">회원가입</button>
+              <button class="join__email-btn" ng-click="Join()" @click = "submitSiginup">회원가입</button>
             </form>
             <div class="facebook__join ng-scope" data-ng-controller="FBLoginController">
               <button class="facebook__join-btn" ng-click="FBLogin()">facebook 회원가입</button>
@@ -49,11 +49,15 @@ export default {
           password1: "",
           password2: "",
           name: ""
-      }
+      },
+      loginInfo: {
+        username: "",
+        password: "",
+      },
     }
   },
   methods: {
-    submitLogin(){
+    submitSiginup(){
       this.$http.post('member/signup/', this.joinInfo)
       .then(function(response){
         return response.json()
@@ -62,24 +66,25 @@ export default {
         this.$store.commit('Token', data.key)
         this.$store.commit('joinInfo', this.joinInfo)
         this.closeModal()
+        this.loginInfo.username = this.joinInfo.username
+        this.loginInfo.password = this.joinInfo.password1
         this.joinInfo.username = "";
         this.joinInfo.password1 = "";
         this.joinInfo.password2 = "";
         this.joinInfo.name = "";
+        bus.$emit('submitLogin', this.loginInfo)
+        console.log("submitSiginup-data:",data)
 
       })
       .catch( error => {
-        console.log("error:",error)
+        console.log("error:",error.bodyText)
+        alert(error.bodyText)
       });
     },
-    // keyClose
     closeModal: function() {
-      // console.log('clicked');
-      // this.$emit('joinnonVisible');
       this.isVisible = false
     }
   },
-  // props: ['joinvisibles'],
 
   created(){
     bus.$on('joinvisible', () => {this.isVisible = true})

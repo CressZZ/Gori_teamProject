@@ -11,7 +11,7 @@
     <ul class="enroll-lec__curriculum-list">
       <li v-for = "(item, index) in curriculumnum">
         <p class="enroll-lec__curriculum1">{{item}}회차</p>
-        <textarea  v-model = "curriculum[index].information" @onchange = "inputCurriculum" placeholder="내용을 입력해주세요" class=""></textarea>
+        <textarea  v-model = "curriculum.input_list[index].information" @onchange = "inputCurriculum" placeholder="내용을 입력해주세요" class=""></textarea>
       </li>
 
       <div class="curriculum__button-wrapper">
@@ -134,16 +134,13 @@ export default {
         location_info: "",
       },
       curriculumnum: 1,
-      curriculum:[
-        {
-          talent_pk: this.$store.state.register.talent_pk
-
-        },
-        // {
-        //   talent_pk: this.$store.state.register.talent_pk
-        //
-        // },
-      ],
+      curriculum: {
+        input_list: [
+          {
+            talent_pk: this.$store.state.register.talent_pk
+          },
+        ],
+      }
     }
   },
   methods:{
@@ -153,22 +150,22 @@ export default {
 
     },
     submitCurriculum(){
-      for (var i = 0; i < this.curriculumnum ; i++){
-        this.$http.post('talent/add/curriculum/',this.curriculum[i],  {
+      // for (var i = 0; i < this.curriculumnum ; i++){
+        this.$http.post('talent/add/curriculum/',this.curriculum,  {
         headers: {Authorization: `Token ${this.$store.state.login.Token}`}
         })
         .then(function(response){
           console.log("submitCurriculum:",response)
           this.submitLocation();
         })
-      }
+      // }
     },
     submitLocation(){
       this.$http.post('talent/add/location/',this.registerdetailInfo,  {
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
       })
       .then(function(response){
-        console.log("submitLocation:",response)
+        console.log("submitLocation-response:",response)
         this.registerdetailInfo.region= ""
         this.registerdetailInfo.day= ""
         this.registerdetailInfo.time= ""
@@ -180,7 +177,7 @@ export default {
 
     addCurriculum(){
       this.curriculumnum = this.curriculumnum + 1;
-      this.curriculum.push({talent_pk: this.$store.state.register.talent_pk})
+      this.curriculum.input_list.push({talent_pk: this.$store.state.register.talent_pk})
       console.log("this.curriculum:",this.curriculumnum)
     },
     deleteCurriculum(){

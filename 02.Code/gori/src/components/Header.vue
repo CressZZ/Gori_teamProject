@@ -90,10 +90,10 @@ export default {
       this.$router.push({ name: 'main' })
     },
     submitLogin() {
-      this.login()
+      this.login(this.loginInfo)
     },
-    login(){
-      this.$http.post('member/login/', this.loginInfo)
+    login(loginInfo){
+      this.$http.post('member/login/', loginInfo)
       .then(function(response){
         console.log("login-response:",response)
         return response.json()
@@ -211,12 +211,22 @@ export default {
   },
   computed: {
     islogin(){
-      return this.$store.state.login.is_login
+        if(!this.$store.state.login.is_login){
+          return JSON.parse(sessionStorage.getItem("is_login"))
+        } else {
+          return this.$store.state.login.is_login
+        }
     }
   },
   created() {
-    this.userInfo()
-    this.wishlist()
+    if (JSON.parse(sessionStorage.getItem("is_login"))){
+      this.userInfo()
+      this.wishlist()
+    }
+
+    bus.$on('userInforRefreash', () => {this.userInfo()})
+    bus.$on('submitLogin', (loginInfo) => {this.login(loginInfo)})
+
 
     console.log("this.$store.state.login.is_login:",this.$store.state.login.is_login)
     this.windowWidth = window.innerWidth

@@ -82,6 +82,8 @@
 <!-- v-model = "userUpdate.profile_image" -->
 
 <script>
+import {bus} from '../bus'
+
 export default {
   data(){
     return{
@@ -104,7 +106,7 @@ export default {
   },
   props: ["detailAll"],
   created(){
-    this.getUserInfo()
+    bus.$emit('userInforRefreash')
 },
 
 methods: {
@@ -112,38 +114,52 @@ methods: {
     e.preventDefault()
     this.userUpdate.profile_image = e.target.files[0]
   },
-  getUserInfo() {
-    this.$http.get('member/profile/user/', {
-    headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
-    })
-    .then(function(response){
-      console.log("user-detail-response:",response)
-      return response.json()
-    })
-    .then(function(data){
-      this.$store.commit('loginInfo', data)
-      console.log("user-nickname:",data.nickname)
-      console.log("data:",data)
-    })
-    .catch(function(err){
-      console.log("err:",err.bodyText)
-    })
-  },
+  // getUserInfo() {
+  //   this.$http.get('member/profile/user/', {
+  //   headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+  //   })
+  //   .then(function(response){
+  //     console.log("user-detail-response:",response)
+  //     return response.json()
+  //   })
+  //   .then(function(data){
+  //     this.$store.commit('loginInfo', data)
+  //     console.log("user-nickname:",data.nickname)
+  //     console.log("data:",data)
+  //   })
+  //   .catch(function(err){
+  //     console.log("err:",err.bodyText)
+  //   })
+  // },
 
   register() {
     const data2 = new FormData()
-    data2.append('nickname', this.userUpdate.nickname)
-    data2.append('profile_image', this.userUpdate.profile_image)
-    data2.append('cellphone', this.userUpdate.cellphone)
-
+    if(this.userUpdate.nickname){
+      data2.append('nickname', this.userUpdate.nickname)
+    }
+    if(this.userUpdate.profile_image){
+      data2.append('profile_image', this.userUpdate.profile_image)
+    }
+    if(this.userUpdate.cellphone){
+      data2.append('cellphone', this.userUpdate.cellphone)
+    }
     this.$http.patch('member/update/user/',data2,  {
     headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
       })
     .then(function(data){
       console.log("fatch-userdata:",data)
-      console.log("this.$store.state.login.loginInfo:",this.$store.state.login.loginInfo)
-      this.getUserInfo()
+      bus.$emit('userInforRefreash')
+      this.userUpdate.nickname = ""
+      this.userUpdate.profile_image = ""
+      this.userUpdate.cellphone = ""
       })
+    .catch( error => {
+      return error.json()
+      })
+    .then( error => {
+      console.error("error",error)
+      alert(error.detail)
+      });
     },
 
   },

@@ -49,7 +49,7 @@ export const stores = {
         state.login.Token = Token;
       },
       islogout(state){
-        state.login.Token = ""         
+        state.login.Token = ""
         state.login.is_login = false;
         state.login.loginInfo = ""
         state.login.wishlist = ""

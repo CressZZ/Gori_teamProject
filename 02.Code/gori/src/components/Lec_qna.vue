@@ -90,8 +90,11 @@ export default {
         this.$emit('reflesh')
       })
       .catch( error => {
+        console.log("error.bodyText:",error)
+          alert(error.bodyText)         
       });
     },
+
     whiteSpace(text){
       return text.replace(/\r\n|\r|\n/gi,"<br>")
     },

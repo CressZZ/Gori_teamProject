@@ -10,6 +10,8 @@ import EnrollRegister from './components/Enroll_register.vue'
 import EnrollRegisterDetail from './components/Enroll_registerdetail.vue'
 import EnrollRegisterMyinfo from './components/Enroll_myinfo.vue'
 import EnrollRegisterTutor from './components/Enroll_tutor.vue'
+import EnrollWishList from './components/Enroll_wish_list.vue'
+import EnrollAppledList from './components/Enroll_appled_list.vue'
 
 
 // import LecMap from './components/Lec_map.vue'
@@ -80,7 +82,9 @@ export const routes = [
     { path: 'registertutor', component: EnrollRegisterTutor, name: 'tutor' },
     { path: 'registerMyinfo', component: EnrollRegisterMyinfo, name: 'myinfo'},
     { path: 'register', component: EnrollRegister },
-    { path: 'registerDetail', component: EnrollRegisterDetail}
+    { path: 'registerDetail', component: EnrollRegisterDetail},
+    { path: 'wishList', component: EnrollWishList, name: 'mywish'},
+    { path: 'appledList', component: EnrollAppledList, name: 'myapply'}
   ]
   },
 

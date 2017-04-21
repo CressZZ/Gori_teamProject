@@ -202,7 +202,7 @@ export default {
 
   <style lang="sass">
     .lec-wrap
-      min-height: 100vh
+      min-height: 10000px
     [v-cloak]
       display: none
 

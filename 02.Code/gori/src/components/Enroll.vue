@@ -45,18 +45,25 @@
               <strong>{{userinfo.received_registrations}}건</strong>
             </a>
           </li>
-          <li class="member__info__lec-list__item  member__info__lec-apply">
-            <a href="#">
-              <p>신청한수업</p>
-              <strong>{{userinfo.sent_registrations}}건</strong>
-            </a>
-          </li>
-          <li class="member__info__lec-list__item  member__info__lec-wish">
+
+          <!-- <router-link tag="li" :to = "{ path:  '/enroll/wishList'}"  class="member__info__lec-list__item  member__info__lec-apply"><a href="#"> <p>신청한수업</p>
+          <strong>{{userinfo.received_registrations}}건</strong></a></router-link> -->
+
+          <router-link tag="li" :to = "{ path: '/enroll/appledList'}"  class="member__info__lec-list__item  member__info__lec-wish"><a href="#"><p>신청한수업</p>
+          <strong>{{userinfo.wish_list}}건</strong></a></router-link>
+
+          <!-- <li class="member__info__lec-list__item  member__info__lec-wish">
             <a href="#">
               <p>위시리스트</p>
               <strong>{{userinfo.wish_list}}건</strong>
             </a>
-          </li>
+          </li> -->
+
+
+  <router-link tag="li" :to = "{ path: '/enroll/wishList'}"  class="member__info__lec-list__item  member__info__lec-wish"><a href="#"><p>위시리스트</p>
+  <strong>{{userinfo.wish_list}}건</strong></a></router-link>
+
+
           <li class="member__info__lec-list__item  member__info__lec-my">
             <a href="#">
               <p>내수업</p>

@@ -62,7 +62,7 @@ export default {
     },
     refreshList(){
       this.listpagenum = 1
-      this.$http.get(`talent/list/`,{ params: {category: this.$route.query.category, region: this.$route.query.region, title: this.$route.query.title, page_size: 3, page: this.listpagenum}} )
+      this.$http.get(`talent/list/`,{ params: {category: this.$route.query.category, region: this.$route.query.region, title: this.$route.query.title, page_size: 8, page: this.listpagenum}} )
 
       .then(function(response){
         console.log("response-list:",response)
@@ -79,7 +79,7 @@ export default {
       })
     },
     addList(){
-      this.$http.get(`talent/list/`,{ params: {category: this.$route.query.category, region: this.$route.query.region, title: this.$route.query.title, page_size: 3, page: this.listpagenum}} )
+      this.$http.get(`talent/list/`,{ params: {category: this.$route.query.category, region: this.$route.query.region, title: this.$route.query.title, page_size: 8, page: this.listpagenum}} )
 
       .then(function(response){
         console.log("response-list:",response)

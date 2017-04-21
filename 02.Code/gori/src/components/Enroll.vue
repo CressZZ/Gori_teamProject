@@ -14,7 +14,7 @@
           <caption class="hidden__heading">회원정보</caption>
           <tbody class="profile__list__detail">
              <tr>
-               <th class="profile__list__detail-id">아이디(Email)</th>
+               <th class="profile__list__detail-id">아이디</th>
                <td>{{userinfo.user_id}}</td>
              </tr>
              <tr>

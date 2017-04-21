@@ -5,8 +5,8 @@
       <h2 class="curriculum__heading">커리큘럼</h2>
       <ul class="curriculum__list">
         <li class="row" v-for = "(item, index) in detailAll.curriculums">
-          <strong>{{index + 1}} 회차</strong></br>
-          <span class="col-7-12 col-4-4" v-html="whiteSpace(item.information)">
+          <strong class="curriculum__time">{{index + 1}}<span>회차</span></strong></br>
+          <span class="col-7-12 col-4-4 curriculum__time-des" v-html="whiteSpace(item.information)">
 
           </span>
         </li>

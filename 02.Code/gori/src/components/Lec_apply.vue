@@ -12,10 +12,10 @@
                 <i class="fontello icon-location"></i>
 
                 <strong>
-                  {{detailAll.locations[0].region}}
+                  {{detailAll.locations[0] ? detailAll.locations[0].region : ""}}
                 </strong>
                 <span>
-                  {{detailAll.locations[0].results[0].specific_location}}
+                  {{detailAll.locations[0] ? detailAll.locations[0].results[0].specific_location : ""}}
                 </span>
 
                 </li>
@@ -23,7 +23,7 @@
                 <i class="fontello icon-clock"></i>
                 <strong>{{detailAll.hours_per_class + " "}} 시간/회 </strong>
                 <span>
-                  {{detailAll.locations[0].results[0].time[0]}}
+                  {{detailAll.locations[0] ? detailAll.locations[0].results[0].time[0] : ""}}
                 </span>
                 </li>
                 <li class="apply__info__group">
@@ -34,18 +34,18 @@
               <li class="apply__info__week">
                 <i class="fontello icon-calendar"></i>
                 <strong>
-                  {{detailAll.locations[0].results[0].day}}
+                  {{detailAll.locations[0] ? detailAll.locations[0].results[0].day : ""}}
                 </strong>
                 <span>총 {{detailAll.number_of_class}}회 / {{String(detailAll.hours_per_class * detailAll.number_of_class * detailAll.price_per_hour).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+ " "}}원</span>
               </li>
               <li class="apply__info__additional-cost">
                 <i class="fontello icon-won"></i>
                 <strong>추가비용 <span>
-                  {{detailAll.locations[0].results[0].extra_fee === "y" ? "있음" : "없음"}}
+                  {{detailAll.locations[0] ? detailAll.locations[0].results[0].extra_fee === "y" ? "있음" : "없음" : ""}}
 
                 </span></strong>
                 <span>
-                  {{detailAll.locations[0].results[0].extra_fee_amount ? detailAll.locations[0].results[0].extra_fee_amount : ""}}
+                  {{detailAll.locations[0] ? detailAll.locations[0].results[0].extra_fee_amount : ""}}
 
                 </span>
               </li>
@@ -63,7 +63,7 @@
                 <i v-bind:class="{ 'icon-heart-empty': !is_wishList, 'icon-heart': is_wishList }"></i>
               </a>
             </button>
-            <button class="apply__buttons__btn-apply">수업 신청하기</button>
+            <button type="button" @click = "applySubmit" class="apply__buttons__btn-apply">수업 신청하기</button>
             <!-- 하트를 div에서 a로 change 함. 클릭이 되야 한다고 판단 -->
           </div>
 
@@ -78,7 +78,10 @@ export default {
   data(){
     return {
       is_wishList: false,
-
+      applyData: {
+        location_pk: this.detailAll.locations[0].results[0].pk,
+        message_to_tutor:"좋은 강의 부탁 드립니다."
+      },
     }
   },
   props: ["detailAll"],
@@ -152,23 +155,53 @@ export default {
           }
         });
       },
-      wishlist(){
-        this.$http.get('member/wish-list/', {
-          headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-        })
-        .then(function(response){
-          console.log("user-detail-response:",response)
-          return response.json()
-        })
-        .then(function(data){
-          console.log("data:",data)
-          this.$store.commit('wishlist', data)
-        })
-        .catch(function(err){
-          console.log("err:",err.bodyText)
-        })
-      },
-    }
+
+    wishlist(){
+      this.$http.get('member/wish-list/', {
+        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("user-detail-response:",response)
+        return response.json()
+      })
+      .then(function(data){
+        console.log("data:",data)
+        this.$store.commit('wishlist', data)
+      })
+      .catch(function(err){
+        console.log("err:",err.bodyText)
+      })
+    },
+
+    applySubmit(){
+      if(!this.$store.state.login.Token){
+        alert("로그인을 하셔야 합니다.")
+        return
+      }
+
+      this.$http.post('talent/add/registration/', this.applyData, {
+        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log("user-detail-response:",response)
+        return response.json()
+      })
+      .then(function(data){
+        console.log("data:",data)
+        alert("성공적으로 수업이 신청되었습니다" )
+      })
+      .catch( error => {
+        console.error("error",error)
+
+        return error.json()
+      })
+      .then( error => {
+        console.error("error",error)
+        alert(error.detail)
+      });
+
+  },
+}
 
 
 }

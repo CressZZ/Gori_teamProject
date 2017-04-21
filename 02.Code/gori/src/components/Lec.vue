@@ -124,7 +124,10 @@ export default {
 
       // 3. talent Questions
       this.questionload()
-
+  },
+  beforeDestroy(){
+    this.$store.commit("pageChangeReview", 1)
+    this.$store.commit("pageChange", 1)
 
 
 
@@ -202,13 +205,13 @@ export default {
 
   <style lang="sass">
     .lec-wrap
-      min-height: 10000px
+      min-height: 100vh
     [v-cloak]
       display: none
 
 
     .fade-enter-active, .fade-leave-active
-      transition: opacity 1s
+      transition: opacity 2s
 
     .fade-enter, .fade-leave-to
       opacity: 0

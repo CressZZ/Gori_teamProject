@@ -83,7 +83,7 @@ export default {
       this.$emit('reflesh')
     },
     whiteSpace(text){
-      return text.replace(/\r\n/gi,"<br>")
+      return text.replace(/\r\n|\r|\n/gi,"<br>")
     },
     changePage(n){
       this.$store.commit("pageChangeReview", n)

@@ -17,7 +17,7 @@
           <p class="enroll-lec__curriculum1">{{item}}회차</p>
 
           <label>
-            <input @change="syncs[index]" class="enroll-lec__curriculum__picture" type="file" multiple="">
+            <input @change="sync(this.event, index)" class="enroll-lec__curriculum__picture" type="file" multiple="">
           </label>
 
         </div>
@@ -162,10 +162,9 @@ export default {
     sync: function(e, index) {
     console.log("e, index", index)
     e.preventDefault(index),
-    thie.tempfile = e.target.files[0]
-    this.curriculum[index] = e.target.files[0]
-    console.log("this.image:",this.cover_image)
-
+    // thie.tempfile = e.target.files[0]
+    this.curriculum[index].image = e.target.files[0]
+    console.log("this.image:",this.curriculum[index].image)
     },
     complite(){
       this.submitCurriculum();
@@ -178,7 +177,7 @@ export default {
         data.append('information', this.curriculum[i].information)
         data.append('image', this.curriculum[i].image)
 
-        this.$http.post('talent/add/curriculum/',daga,  {
+        this.$http.post('talent/add/curriculum/',data,  {
         headers: {Authorization: `Token ${this.$store.state.login.Token}`}
         })
         .then(function(response){
@@ -213,6 +212,7 @@ export default {
     deleteCurriculum(){
       if(this.curriculumnum > 1){
         this.curriculumnum = this.curriculumnum - 1;
+          this.curriculum.pop({talent_pk: this.$store.state.register.talent_pk})
       } else {
         console.log("nonononono")
       }

@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div>
+  <div class="lec-wrap">
   <!-- <p>parameter ID {{id}}</p> -->
   <!-- <join>
 
@@ -9,43 +9,59 @@
   <login :visible="visibles" @nonVisible = "nonVisible">
 
   </login> -->
+<transition name="fade"  mode="in-out">
+  <Loading  v-if="!isLoading">
+  </Loading>
+</transition>
+<transition name="fade"  mode="in-out">
 
-  <lec-summary v-for="item in detailAllArrayTrick"  :key="id" :detailAll = "detailAll">
+  <lec-summary v-if="isLoading" v-for="item in detailAllArrayTrick"  :key="id" :detailAll = "detailAll">
 
   </lec-summary>
+</transition>
 
-  <lec-apply v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
+<transition name="fade"  mode="in-out">
+
+  <lec-apply v-if="isLoading" v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
   </lec-apply>
+</transition>
+<transition name="fade"  mode="in-out">
 
-  <lec-class-nav :detailAll = "detailAll">
+  <lec-class-nav  v-if="isLoading" v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
   </lec-class-nav>
+</transition>
 
+  <transition name="fade"  mode="in-out">
 
-  <lec-speaking  v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
+  <lec-speaking  v-if="isLoading" v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-speaking >
+</transition>
 
-  <lec-intro  v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
+  <transition name="fade"  mode="in-out">
+
+  <lec-intro  v-if="isLoading" v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-intro>
+</transition>
 
 
-  <lec-location v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
+  <lec-location  v-if="isLoading" v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-location>
 
 
-  <lec-curriculum :detailAll = "detailAll">
+  <lec-curriculum v-if="isLoading" v-for="item in detailAllArrayTrick" :key="id" :detailAll = "detailAll">
 
   </lec-curriculum>
 
 
-  <lec-review v-for="item in reviewArrayTrick" :key="id" @reflesh = "reviewload" :detailReview ="detailReview" :detailAll = "detailAll">
+  <lec-review v-if="isLoading" v-for="item in reviewArrayTrick" :key="id" @reflesh = "reviewload" :detailReview ="detailReview" :detailAll = "detailAll">
 
   </lec-review>
 
 
-  <lec-qna  v-for="item in qnaArrayTrick" :key="id" :detailQuestion = "detailQuestion" @reflesh = "questionload">
+  <lec-qna  v-if="isLoading" v-for="item in qnaArrayTrick" :key="id" :detailQuestion = "detailQuestion" @reflesh = "questionload">
 
   </lec-qna>
 
@@ -64,6 +80,8 @@ import LecLocation from './Lec_location.vue'
 import LecQna from './Lec_qna.vue'
 import LecReview from './Lec_review.vue'
 import LecClassNav from './Lec_class-nav.vue'
+import Loading from './Loading.vue'
+
 
 
 import {bus} from '../bus'
@@ -87,7 +105,6 @@ export default {
   },
   // props: ['classlist'],
   created(){
-
       // 1. detailAll 데이터 get
       this.$http.get(`talent/detail-all/${this.$route.params.lecid}/`)
       .then(function(response){
@@ -112,16 +129,15 @@ export default {
 
 
   },
-  mounted(){
+  computed: {
+    isLoading(){
+      if (this.detailAllArrayTrick[0] === 1 && this.reviewArrayTrick[0] === 1 && this.qnaArrayTrick[0] === 1){
+        return true
+      }
+
+    },
   },
 
-  updated(){
-  },
-  beforeDestroy(){
-  },
-  watch:{
-
-  },
 
   methods: {
     questionload(){
@@ -177,6 +193,7 @@ export default {
     LecQna,
     LecReview,
     LecClassNav,
+    Loading,
   },
 
 
@@ -184,8 +201,18 @@ export default {
 </script>
 
   <style lang="sass">
+    .lec-wrap
+      min-height: 100vh
     [v-cloak]
       display: none
+
+
+    .fade-enter-active, .fade-leave-active
+      transition: opacity 1s
+
+    .fade-enter, .fade-leave-to
+      opacity: 0
+
 
     // @import "../sass/total"
     // @import "../sass/lec-index"

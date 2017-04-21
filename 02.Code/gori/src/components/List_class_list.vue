@@ -18,12 +18,14 @@
             <!-- Carousel -->
             <div class="list_class-list__carousel" id="carousel-class" >
 
-              <ul class="list_class-list__carousel__list row">
+              <!-- <ul class="list_class-list__carousel__list row"> -->
+                <transition-group  tag = "ul" name="list"  mode="out-in" class="list_class-list__carousel__list row">
 
                 <!-- is_new class -->
                 <!-- <router-link tag="li" to="/lec" class="list_navi_menu navi_menu_service " v-for = "classlist in classlist" class="list_" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
                 <!-- <li v-for = "classlist in classlist" class="list_" v-bind:style="{ transform: 'translate(' + test + '%)' }"> -->
-                    <router-link tag="li" v-for = "(item, index) in searchedList"  class="class-list__item" :to="{ name: 'lec', params: { lecid: item.pk }}" :key="item.id" >
+
+                    <router-link tag="li" v-for = "(item, index) in searchedList"  class="class-list__item" :to="{ name: 'lec', params: { lecid: item.pk }}" :key="item" >
                     <div class="list_is_new">new</div>
                     <!-- <button type="button" class="list_class__wish is_wish"><i class="list_icon-heart"></i></button> -->
                     <img :src="item.tutor.profile_image" :alt="`${item.tutor.nickname}`" class="list_class__tutor-picture">
@@ -44,9 +46,11 @@
                       <dd class="list_class__intro__times">{{item.hours_per_class}} 시간</dd>
                     </dl>
                 </router-link>
+
               <!-- </li> -->
 
-              </ul>
+            </transition-group>
+              <!-- </ul> -->
             </div>
             <!-- Carousel left button-->
             <button class="list_class-list__carousel__left " type="button" ><i class="icon-left-open-big" ></i></button>
@@ -88,6 +92,17 @@ export default {
 </script>
 
 <style lang="sass">
+  .list_class-list
+    transition: all 1s
+
+  .list-enter-active
+    transition: all 2s
+
+  .list-enter
+    opacity: 0
+    // transform: translateY(30px)
+
+
   .list_class-list__carousel__list>li
     // transition: 0.8s all
     cursor: pointer

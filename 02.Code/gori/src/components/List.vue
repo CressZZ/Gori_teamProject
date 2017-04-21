@@ -43,8 +43,8 @@ export default {
   },
   created(){
       this.refreshList()
+      console.log("list create");
       // 1. detailAll 데이터 get
-
   },
   computed: {
     isLoading(){

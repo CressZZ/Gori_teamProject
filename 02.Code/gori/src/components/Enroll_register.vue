@@ -215,8 +215,8 @@ export default {
         return error.json()
       })
       .then( error => {
-        console.error("error!!",error)
-        alert(error)
+        console.error("error!! Json",error)
+        alert(error.detail)
       });
 
     }

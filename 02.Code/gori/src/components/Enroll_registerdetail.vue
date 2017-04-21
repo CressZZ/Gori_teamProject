@@ -8,18 +8,30 @@
 
   <div class="enroll-lec__curriculum">
     <h3 class="">커리큘럼</h3>
+    <div class="enroll-lec__curriculum-wrap">
+
     <ul class="enroll-lec__curriculum-list">
+
       <li v-for = "(item, index) in curriculumnum">
-        <p class="enroll-lec__curriculum1">{{item}}회차</p>
-        <textarea  v-model = "curriculum.input_list[index].information" @onchange = "inputCurriculum" placeholder="내용을 입력해주세요" class=""></textarea>
+        <div class="enroll-lec__curriculum-label-wrap">
+          <p class="enroll-lec__curriculum1">{{item}}회차</p>
+
+          <label>
+            <input @change="syncs[index]" class="enroll-lec__curriculum__picture" type="file" multiple="">
+          </label>
+
+        </div>
+
+        <textarea  v-model = "curriculum[index].information" @onchange = "inputCurriculum" placeholder="내용을 입력해주세요" class=""></textarea>
       </li>
+
+    </ul>
 
       <div class="curriculum__button-wrapper">
         <button @click = "deleteCurriculum" type= "button">커리큘럼 삭제 - </button>
         <button @click = "addCurriculum" type= "button">커리큘럼 추가 + </button>
-
       </div>
-    </ul>
+    </div>
 
   </div>
 </fieldset>
@@ -54,7 +66,7 @@
         </div>
         <div class="enroll-lec__list enroll-lec__time">
           <h3 class="">수업시간</h3>
-          <input type="text" v-model = "registerdetailInfo.time" placeholder=" 예:9:00~11:00/13:00~14:00" class="">
+          <input type="text" v-model = "registerdetailInfo.time" placeholder=" 예:9:00~11:00/13:00~14:00" class="enroll-lec__time__input">
         </div>
 
       </div>
@@ -134,33 +146,49 @@ export default {
         location_info: "",
       },
       curriculumnum: 1,
-      curriculum: {
-        input_list: [
+      curriculum:
+      // {
+        // input_list: [
+        [
           {
             talent_pk: this.$store.state.register.talent_pk
           },
-        ],
-      }
+        ]
+        // ],
+      // }
     }
   },
   methods:{
-    complite(){
-      this.submitCurriculum();
-
+    sync: function(e, index) {
+    console.log("e, index", index)
+    e.preventDefault(index),
+    thie.tempfile = e.target.files[0]
+    this.curriculum[index] = e.target.files[0]
+    console.log("this.image:",this.cover_image)
 
     },
+    complite(){
+      this.submitCurriculum();
+    },
     submitCurriculum(){
-      // for (var i = 0; i < this.curriculumnum ; i++){
-        this.$http.post('talent/add/curriculum/',this.curriculum,  {
+
+      for (var i = 0; i < this.curriculumnum ; i++){
+        const data = new FormData()
+        data.append('talent_pk', this.curriculum[i].talent_pk)
+        data.append('information', this.curriculum[i].information)
+        data.append('image', this.curriculum[i].image)
+
+        this.$http.post('talent/add/curriculum/',daga,  {
         headers: {Authorization: `Token ${this.$store.state.login.Token}`}
         })
         .then(function(response){
           console.log("submitCurriculum:",response)
-          this.submitLocation();
         })
-      // }
+      }
+      this.submitLocation();
     },
     submitLocation(){
+
       this.$http.post('talent/add/location/',this.registerdetailInfo,  {
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
       })
@@ -177,7 +205,9 @@ export default {
 
     addCurriculum(){
       this.curriculumnum = this.curriculumnum + 1;
-      this.curriculum.input_list.push({talent_pk: this.$store.state.register.talent_pk})
+      // this.curriculum.input_list.push({talent_pk: this.$store.state.register.talent_pk})
+      this.curriculum.push({talent_pk: this.$store.state.register.talent_pk})
+
       console.log("this.curriculum:",this.curriculumnum)
     },
     deleteCurriculum(){

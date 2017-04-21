@@ -13,11 +13,11 @@ export const stores = {
     page:{
       question: {
         page: 1,
-        requestCountPerPage: 1
+        requestCountPerPage: 4
       },
       review: {
         page: 1,
-        requestCountPerPage: 1
+        requestCountPerPage: 4
       }
     },
     register:{

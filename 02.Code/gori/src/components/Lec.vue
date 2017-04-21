@@ -124,7 +124,10 @@ export default {
 
       // 3. talent Questions
       this.questionload()
-
+  },
+  beforeDestroy(){
+    this.$store.commit("pageChangeReview", 1)
+    this.$store.commit("pageChange", 1)
 
 
 

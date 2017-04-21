@@ -73,7 +73,10 @@ export default {
     },
     submitLogin() {
       // this.login()
+      console.log(":click login");
       bus.$emit('submitLogin', this.loginInfo)
+      this.loginInfo.username = ""
+      this.loginInfo.password = ""
       this.closeModal()
     },
   },

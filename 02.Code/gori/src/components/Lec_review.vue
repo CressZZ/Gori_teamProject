@@ -30,7 +30,7 @@
       <div class="row" v-for="item in detailReview.results">
         <div class="review__write__writer col-4-4 col-7-12">
           <div class="review__write__writer__info-1">
-            <img class="review__write__writer__picture" src="../media/img/user.jpg">
+            <img :src="`${item.user.profile_image}`" :alt="`${item.user.name}`"  class="review__write__writer__picture" >
             <strong class="review__write__writer__id">{{item.user.name}}</strong>
           </div>
           <div class="review__write__writer__info-2">
@@ -66,8 +66,8 @@ export default {
   data(){
     return{
       isvisibles: false,
-      count_per_page: 4,
-      page_to: 1,
+      // count_per_page: 4,
+      // page_to: 1,
 
     }
   },

@@ -64,6 +64,8 @@ export default {
         // ['']
   methods: {
     closeModal: function() {
+      this.add.comment = ""
+
       this.$store.commit('resetreview')
       this.$emit('isvisibles')
     },
@@ -81,10 +83,11 @@ export default {
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
     .then(function(data){
-      this.$store.commit('resetreview')
-      this.add.comment = ""
       this.$emit('reflesh')
-      this.$emit('isvisibles')
+      // this.add.comment = ""
+      // this.$store.commit('resetreview')
+      // this.$emit('isvisibles')
+      this.closeModal()
       console.log("data:",data)
     })
     .catch( error => {
@@ -94,7 +97,7 @@ export default {
     })
     .then( error => {
       console.error("error",error)
-      alert(error.detail)
+      // alert(error.detail)
     });
   }
 },

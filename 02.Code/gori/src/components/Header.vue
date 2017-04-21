@@ -85,8 +85,6 @@ export default {
       sessionStorage.setItem('is_login', false)
       this.islogouts()
       sessionStorage.clear()
-
-      // this.$store.commit('logout')
       this.$router.push({ name: 'main' })
     },
     submitLogin() {
@@ -101,19 +99,22 @@ export default {
       .then(function(data){
         sessionStorage.setItem('Token', data.key)
         sessionStorage.setItem('is_login', JSON.stringify(true))
-        // this.$store.commit('Token', data.key)
-        // this.closeModal()
         console.log("login-data:",data)
         alert("로그인 완료!!")
         this.userInfo()
         this.wishlist()
-        // this.loginUpdate()
-
       })
       .catch( error => {
-        console.log("error:",error)
-      });
+        console.log("error-login!!!",error)
+        if(error.status === 400){
+          alert("아이디와 비밀번호를 확인하세요")
+        }
+        // return error.json()
+      })
+      // .then( error => {
+      // });
     },
+    //
     userInfo(){
       this.$http.get('member/profile/user/', {
         headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
@@ -148,10 +149,15 @@ export default {
 
         // this.$store.commit('wishlist', data)
         bus.$emit('wishrefreash')
+        // return
       })
-      .catch(function(err){
-        console.log("err:",err.bodyText)
+      .catch( error => {
+        return error.json()
       })
+      .then( error => {
+        console.error("error",error)
+        // alert(error)
+      });
     },
 
 

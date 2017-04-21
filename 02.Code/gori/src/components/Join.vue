@@ -58,6 +58,10 @@ export default {
   },
   methods: {
     submitSiginup(){
+      if(this.joinInfo.password1 !== this.joinInfo.password2 ){
+        alert("비밀번호가 일치하지 않습니다. ")
+        return
+      }
       this.$http.post('member/signup/', this.joinInfo)
       .then(function(response){
         return response.json()
@@ -76,9 +80,23 @@ export default {
         console.log("submitSiginup-data:",data)
 
       })
+      // .catch( error => {
+      //   this.joinInfo.username = "";
+      //   this.joinInfo.password1 = "";
+      //   this.joinInfo.password2 = "";
+      //   this.joinInfo.name = "";
+      //   alert(error.bodyText)
+      // });
       .catch( error => {
-        console.log("error:",error.bodyText)
-        alert(error.bodyText)
+        this.joinInfo.username = "";
+        this.joinInfo.password1 = "";
+        this.joinInfo.password2 = "";
+        this.joinInfo.name = "";
+        return error.json()
+      })
+      .then( error => {
+        console.log("error:",error)
+
       });
     },
     closeModal: function() {

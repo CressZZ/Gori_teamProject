@@ -6,9 +6,16 @@
       <ul class="curriculum__list">
         <li class="row" v-for = "(item, index) in detailAll.curriculums">
           <strong class="curriculum__time">{{index + 1}}<span>회차</span></strong></br>
-          <span class="col-7-12 col-4-4 curriculum__time-des" v-html="whiteSpace(item.information)">
+          <div class="curriculum__img-wrapper" v-if = "item.image">
+            <img  :src="`${item.image}`" :alt="`${item.information}`" v-cloak class="curriculum__img">
+          </div>
+          <div class="curriculum__p-wrapper row">
 
-          </span>
+            <span class="col-7-12 col-4-4 curriculum__time-des" v-html="whiteSpace(item.information)">
+            </span>
+          </div>
+
+
         </li>
 
       </ul>

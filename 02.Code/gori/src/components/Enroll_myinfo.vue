@@ -87,7 +87,7 @@ import {bus} from '../bus'
 export default {
   data(){
     return{
-      userinfo: {},
+      // userinfo: {},
       userUpdate: {
         name: "",
         nickname: "",
@@ -108,7 +108,11 @@ export default {
   created(){
     bus.$emit('userInforRefreash')
 },
-
+computed:{
+  userinfo(){
+    return this.$store.state.login.loginInfo
+  }
+},
 methods: {
     sync: function(e) {
     e.preventDefault()

@@ -3,8 +3,8 @@
       <!-- <router-link tag="li" v-for = "item in classlist" class="list_" v-bind:style="{ transform: 'translate(' + trans + '%)' }" class="list_class" :to="`lec/${item.pk}`" :classitem="item">
         {{item.title}}
       </router-link> -->
-
           <!-- class -->
+          
           <section class="list_class-list row">
             <!-- <p class="list_class-list__subteitle ">당신이 배우고 싶은것, 무엇이든 Gori</p> -->
 

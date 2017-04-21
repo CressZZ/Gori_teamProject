@@ -4,7 +4,7 @@
         {{item.title}}
       </router-link> -->
           <!-- class -->
-          
+
           <section class="list_class-list row">
             <!-- <p class="list_class-list__subteitle ">당신이 배우고 싶은것, 무엇이든 Gori</p> -->
 

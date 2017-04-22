@@ -18,14 +18,18 @@
               </video>
             </li>
             <li class="" v-bind:style="{ transform: 'translate(' + trans + '%)' }">
-              <img class="banner__carousel__list__item" src="../media/img/temp/cat.jpg" alt="홍보배너">
+              <img class="banner__carousel__list__item" src="../media/img/categori/02.jpg" alt="홍보배너">
               <div class="copy">
                 <p class="copy__slogan">재능을 연결해 드립니다!</p>
                 <p class="copy__slogan__sub">다양한 사람, 이야기가 있는 곳</p>
               </div>
             </li>
             <li class=" " v-bind:style="{ transform: 'translate(' + trans + '%)' }">
-              <img class="banner__carousel__list__item" src="../media/img/temp/temp.jpg" alt="소개">
+              <img class="banner__carousel__list__item" src="../media/img/categori/03.jpg" alt="소개">
+              <div class="copy">
+                <p class="copy__slogan">쉽고 빠른 재능 연결!</p>
+                <p class="copy__slogan__sub">고리에서 여러분의 선생님을 찾고, 또 누군가의 선생님이 되어보세요.</p>
+              </div>
             </li>
           </ul>
           <!-- Carousel nav ( ○○●○○ )  -->

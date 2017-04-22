@@ -12,6 +12,7 @@ import EnrollRegisterMyinfo from './components/Enroll_myinfo.vue'
 import EnrollRegisterTutor from './components/Enroll_tutor.vue'
 import EnrollWishList from './components/Enroll_wish_list.vue'
 import EnrollAppledList from './components/Enroll_appled_list.vue'
+import EnrollmyLecList from './components/Enroll_mylec_list.vue'
 
 
 // import LecMap from './components/Lec_map.vue'
@@ -84,7 +85,8 @@ export const routes = [
     { path: 'register', component: EnrollRegister },
     { path: 'registerDetail', component: EnrollRegisterDetail},
     { path: 'wishList', component: EnrollWishList, name: 'mywish'},
-    { path: 'appledList', component: EnrollAppledList, name: 'myapply'}
+    { path: 'appledList', component: EnrollAppledList, name: 'myapply'},
+    { path: 'myLecList', component: EnrollmyLecList, name: 'mylec'}
   ]
   },
 

@@ -71,8 +71,12 @@
             </a>
           </li>
         </ul>
-      </div>
 
+      <!-- <router-link tag="li" :to = "{ path: '/enroll/myLecList'}"  class="member__info__lec-list__item  member__info__lec-my"><a href="#"><p>내수업</p>
+      <strong>{{myLecList.wish_list}}건</strong></a></router-link> -->
+
+
+    </div>
     </section>
 
     <transition name="slide"  mode="out-in">
@@ -94,12 +98,16 @@ export default {
   },
   props: ["detailAll"],
   created() {
-    console.log("this.$store.state.login.loginInfo:",this.$store.state.login.loginInfo)
+
   },
+
   computed:{
     userinfo(){
       return this.$store.state.login.loginInfo
     }
+    // tutotinfo(){
+    //   return this.$store.state.login.loginInfo
+    // }
   }
 }
 </script>

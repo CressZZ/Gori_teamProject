@@ -1,17 +1,17 @@
 <template lang="html">
   <div class="enroll-wish-all">
 
-        <section >
-            <h2 class="enroll-myinfo__heading">신청한 수업</h2>
+        <section>
+            <h2 class="enroll-myinfo__heading">나의 수업</h2>
 
-          <div class="list_class-wishlist-wrap" >
+            <div class="list_class-wishlist-wrap" >
 
               <ul class="list_class-wishlist">
 
-                  <router-link tag="li" v-for = "(item, index) in appledList"  class="class-wishlist__item" :to="{ name: 'lec', params: { lecid: item.talent.pk }}" :key="item" >
+                  <router-link tag="li" v-for = "(item, index) in myLecList"  class="class-wishlist__item" :to="{ name: 'lec', params: { lecid: item.pk }}" :key="item" >
 
-                  <p class="list_class__wish-name">{{item.talent.title}}</p>
-                </li>
+                  <p class="list_class__wish-name">{{item.title}}</p>
+
 
               </router-link>
 
@@ -29,19 +29,19 @@
 </template>
 
 <script>
-// import {bus} from '../bus'
+import {bus} from '../bus'
 
 export default {
 data: function() {
   return{
     id: this.$route.params.lecid,
-    appledList:[]
+    myLecList:[]
 
 
   }
 },
 created(){
-  this.$http.get('member/registrations/', {
+  this.$http.get('member/applicants/', {
   headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
   })
   .then(function(response){
@@ -49,8 +49,8 @@ created(){
     return response.json()
   })
   .then(function(data){
-    this.appledList = data.results
-    console.log("sdfsfsdfs",this.appledList);
+    this.myLecList = data.results
+    console.log("sdfsfsdfs",this.myLecList);
   })
   // console.log('searchedList:',this.searchedList)
 },

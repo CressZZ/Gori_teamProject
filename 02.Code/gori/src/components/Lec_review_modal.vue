@@ -1,12 +1,12 @@
 <template>
   <!-- review -->
-  <div v-if="isvisibles" class="modal is-active">
+  <div v-if="isvisibles" class="modal is-active" >
     <div class="modal-background" @click="closeModal"></div>
     <div class="modal-content">
           <form id="pointWriteArea">
             <fieldset>
               <legend><h1 class="blind">리뷰</h1></legend>
-                <h2 class="review__rating__title"><strong>홍길동</strong> 튜터의 수업은 어떠셨나요?</h2>
+                <h2 class="review__rating__title"><strong>{{detailAll.tutor.name}}</strong> 튜터의 수업은 어떠셨나요?</h2>
                 <div class="t_layer_view">
                   <div class="drag_star">
 
@@ -60,7 +60,7 @@ export default {
       },
     }
   },
-  props:['isvisibles'],
+  props:['isvisibles','detailAll'],
         // ['']
   methods: {
     closeModal: function() {
@@ -105,7 +105,7 @@ export default {
     LecReviewModalRating
     },
   created() {
-    // console.log("kaaaaaaaaaaaaaaaaaa");
+    // console.log(">>>>>>>>>>>>",this.item);
   },
 }
 

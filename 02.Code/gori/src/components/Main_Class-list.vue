@@ -48,7 +48,8 @@
             </div>
             <!-- Carousel left button-->
             <button class="class-list__carousel__left " type="button" ><i class="icon-left-open-big" @click="moveLeft"></i></button>
-            <button class="class-list__carousel__more" type="button" >더보기</button>
+            <router-link tag="button" :to = "{ name: 'list'}" class="class-list__carousel__more">더보기</router-link>
+            <!-- <button class="class-list__carousel__more" type="button" @click = "goSearch">더보기</button> -->
             <!-- Carousel right button-->
             <button class="class-list__carousel__right " type="button"><i class="icon-right-open-big" @click="moveRight"></i></button>
             <!-- carousel 끝! -->
@@ -83,6 +84,9 @@ export default {
   },
   props:['classlist'],
   methods: {
+    // goSearch(){
+    //   this.$emit("goSearch")
+    // }
     moveRight(){
       if (this.trans >= this.classLength) {
         this.trans = this.trans - 100;

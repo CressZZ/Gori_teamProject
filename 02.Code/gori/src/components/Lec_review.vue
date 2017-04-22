@@ -51,7 +51,7 @@
 
     </div>
 
-    <lec-review-modal @reflesh= "reflesh" :isvisibles="isvisibles" @isvisibles = "isvisible">
+    <lec-review-modal :detailAll = "detailAll" @reflesh= "reflesh" :isvisibles="isvisibles" @isvisibles = "isvisible">
     </lec-review-modal>
 
   </section>

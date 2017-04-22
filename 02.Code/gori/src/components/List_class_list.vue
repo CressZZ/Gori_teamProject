@@ -28,6 +28,7 @@
                     <router-link tag="li" v-for = "(item, index) in searchedList"  class="class-list__item" :to="{ name: 'lec', params: { lecid: item.pk }}" :key="item" >
                     <div class="list_is_new">new</div>
                     <!-- <button type="button" class="list_class__wish is_wish"><i class="list_icon-heart"></i></button> -->
+                    <div class="class-list__carousel__list__item__wrap">
                     <img :src="item.tutor.profile_image" :alt="`${item.tutor.nickname}`" class="list_class__tutor-picture">
                     <p class="list_class__tutor-name">{{item.tutor.name}}</p>
                     <div class="list_class__star-total">
@@ -45,6 +46,7 @@
                       <dd class="list_class__intro__location">{{item.number_of_class}} 회</dd>
                       <dd class="list_class__intro__times">{{item.hours_per_class}} 시간</dd>
                     </dl>
+                      </div>
                 </router-link>
 
               <!-- </li> -->

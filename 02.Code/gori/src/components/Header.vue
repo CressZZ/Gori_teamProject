@@ -103,6 +103,7 @@ export default {
         alert("로그인 완료!!")
         this.userInfo()
         this.wishlist()
+        this.registrationlist()
       })
       .catch( error => {
         console.log("error-login!!!",error)
@@ -148,7 +149,10 @@ export default {
         this.loginUpdate()
 
         // this.$store.commit('wishlist', data)
+
+        // 최근 삭제
         bus.$emit('wishrefreash')
+
         // return
       })
       .catch( error => {
@@ -159,8 +163,23 @@ export default {
         // alert(error)
       });
     },
-    registrationlist(){
 
+
+    registrationlist(){
+      this.$http.get('member/registrations/', {
+      headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+      })
+      .then(function(response){
+        console.log("dsdfdsfsdfd",response);
+        return response.json()
+      })
+      .then(function(data){
+        sessionStorage.setItem('registration', JSON.stringify(data))
+        this.loginUpdate()
+
+        // this.appledList = data
+        console.log("sdfsfsdfs",this.appledList);
+      })
     },
 
 
@@ -209,6 +228,8 @@ export default {
         this.$store.commit("Token", sessionStorage.getItem("Token"))
         this.$store.commit("loginInfo", JSON.parse(sessionStorage.getItem("loginInfo")))
         this.$store.commit("wishlist", JSON.parse(sessionStorage.getItem("wishlist")))
+        this.$store.commit("registration", JSON.parse(sessionStorage.getItem("registration")))
+
       }
     },
     islogouts(){
@@ -231,9 +252,12 @@ export default {
     if (JSON.parse(sessionStorage.getItem("is_login"))){
       this.userInfo()
       this.wishlist()
+      this.registrationlist()
     }
 
     bus.$on('userInforRefreash', () => {this.userInfo()})
+    bus.$on('wishlistRefreash', () => {this.wishlist()})
+    bus.$on('registrationRefreash', () => {this.registrationlist()})
     bus.$on('submitLogin', (loginInfo) => {this.login(loginInfo)})
 
 

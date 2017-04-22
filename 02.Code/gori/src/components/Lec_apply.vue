@@ -86,17 +86,42 @@ export default {
   },
   props: ["detailAll"],
   created(){
+    // bus.$on('wishrefreash', () => {this.refreash()})
     bus.$on('wishrefreash', () => {this.refreash()})
+    this.refreash()
 
   },
 
 
   computed: {
+    // is_wishList(){
+    //   console.log("login????????")
+    //   var wish = this.$store.state.login.wishlist.results
+    //   var islogin = this.$store.state.login.is_login
+    //   var self = this
+    //   if(this.$store.state.login.is_login === true){
+    //     wish.forEach(function(item){
+    //       if( item.pk === +self.$route.params.lecid ) {
+    //         console.log("위시리스에 추가 되어 있는 강의 입니다.")
+    //         // self.is_wishList = true
+    //         // return
+    //         return true
+    //       }
+    //       // console.log("위시리스에 없는 강의 입니다")
+    //       // return false
+    //       // self.is_wishList = false;
+    //     })
+    //   } else {
+    //     return false
+    //
+    //     // self.is_wishList = false
+    //   }
+    // }
   },
 
   mounted() {
-    bus.$on('wishrefreash', () => {this.refreash()})
-    this.refreash()
+    // bus.$on('wishrefreash', () => {this.refreash()})
+    // this.refreash()
 
 
   },
@@ -105,27 +130,44 @@ export default {
     refreash(){
       console.log("login????????")
       var wish = this.$store.state.login.wishlist.results
+      console.log(wish);
       var islogin = this.$store.state.login.is_login
       var self = this
       if(this.$store.state.login.is_login === true){
-        wish.forEach(function(item){
-          if( item.pk === +self.$route.params.lecid ) {
+        for (var i = 0; i < wish.length ; i++) {
+          if (wish[i].pk === +self.$route.params.lecid) {
             self.is_wishList = true
-            console.log("위시리스에 추가 되어 있는 강의 입니다.")
+                console.log("위시리스에 추가 되어 있는 강의 입니다.")
+
             return
+          } else  {
+            self.is_wishList = false
+                // console.log("위시리스에 없는 강의 입니다")
+
           }
-          console.log("위시리스에 없는 강의 입니다")
-          // self.is_wishList = false;
-        })
+        }
+        // wish.forEach(function(item){
+        //   if( item.pk === +self.$route.params.lecid ) {
+        //     console.log("위시리스에 추가 되어 있는 강의 입니다.")
+        //     return self.is_wishList = true
+        //
+        //   } else {
+        //     console.log("위시리스에 없는 강의 입니다")
+        //     self.is_wishList = false;
+        //   }
+        // })
       } else {
+        self.is_wishList = false
+        return
+
         // self.is_wishList = false
       }
     },
-    toggleWishList(){
-      this.is_wishList = !this.is_wishList
-    },
+    // toggleWishList(){
+    //   this.is_wishList = !this.is_wishList
+    // },
     submitWish(){
-      this.refreash()
+      // this.refreash()
       if(!this.$store.state.login.is_login){
         alert("로그인이 필요합니다. ")
         return;
@@ -134,14 +176,17 @@ export default {
       headers: {Authorization: `Token ${this.$store.state.login.Token}`}
     })
       .then(function(response){
-          this.wishlist()
+          // this.wishlist()
+          bus.$emit('wishlistRefreash')
+          console.log("wishirefreash");
+
           console.log("response:",response)
           if(response.status === 201){
-            this.is_wishList = true
+            // this.is_wishList = true
             alert("위시리시트에 추가 되었습니다. 마이페이지에서 찜한 목록을 확인할 수 있습니다!")
 
           } if(response.status === 200){
-            this.is_wishList = false
+            // this.is_wishList = false
             alert("위시리시트에 삭제되었습니다. ")
             return
           }
@@ -167,6 +212,7 @@ export default {
       .then(function(data){
         console.log("data:",data)
         this.$store.commit('wishlist', data)
+
       })
       .catch(function(err){
         console.log("err:",err.bodyText)
@@ -189,6 +235,8 @@ export default {
       .then(function(data){
         console.log("data:",data)
         alert("성공적으로 수업이 신청되었습니다" )
+        bus.$emit('registrationRefreash')
+
       })
       .catch( error => {
         console.error("error",error)

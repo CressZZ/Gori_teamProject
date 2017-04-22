@@ -159,7 +159,7 @@ export default {
         return error.json()
       })
       .then( error => {
-        console.error("error",error)
+        // console.error("error",error)
         // alert(error)
       });
     },

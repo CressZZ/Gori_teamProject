@@ -50,7 +50,9 @@
           <strong>{{userinfo.received_registrations}}건</strong></a></router-link> -->
 
           <router-link tag="li" :to = "{ path: '/enroll/appledList'}"  class="member__info__lec-list__item  member__info__lec-wish"><a href="#"><p>신청한수업</p>
-          <strong>{{this.$store.state.login.registration.count}}건</strong></a></router-link>
+
+          <strong>{{userinfo.sent_registrations}}건</strong></a></router-link>
+
 
           <!-- <li class="member__info__lec-list__item  member__info__lec-wish">
             <a href="#">
@@ -64,17 +66,17 @@
   <strong>{{userinfo.wish_list}}건</strong></a></router-link>
 
 
-          <li class="member__info__lec-list__item  member__info__lec-my">
+          <!-- <li class="member__info__lec-list__item  member__info__lec-my">
             <a href="#">
               <p>내수업</p>
         <strong>{{userinfo.received_registrations}}건</strong>
             </a>
-          </li>
-        </ul>
+          </li> -->
 
-      <!-- <router-link tag="li" :to = "{ path: '/enroll/myLecList'}"  class="member__info__lec-list__item  member__info__lec-my"><a href="#"><p>내수업</p>
-      <strong>{{myLecList.wish_list}}건</strong></a></router-link> -->
+      <router-link tag="li" :to = "{ path: '/enroll/myLecList'}"  class="member__info__lec-list__item  member__info__lec-my"><a href="#"><p>내수업</p>
+      <strong>{{appledList.count}}건</strong></a></router-link>
 
+    </ul>
 
     </div>
     </section>
@@ -94,7 +96,10 @@
 export default {
   data(){
     return {
-      // appledList:[],
+
+      appledList:[],
+      myLecList: []
+
     }
   },
   props: ["detailAll"],
@@ -103,6 +108,21 @@ export default {
     console.log("this.$store.state.login.loginInfo:",this.$store.state.login.loginInfo)
 
 
+    this.$http.get('member/registrations/', {
+    headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+  }),
+  this.$http.get('member/talents/', {
+  headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+  })
+    .then(function(response){
+      console.log("dsdfdsfsdfd",response);
+      return response.json()
+    })
+    .then(function(data){
+      this.appledList = data
+      this.myLecList = data.results
+      console.log("sdfsfsdfs",this.appledList);
+    })
 
 
   },

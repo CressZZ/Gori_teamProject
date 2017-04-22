@@ -41,7 +41,7 @@ data: function() {
   }
 },
 created(){
-  this.$http.get('member/applicants/', {
+  this.$http.get('member/talents/', {
   headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
   })
   .then(function(response){

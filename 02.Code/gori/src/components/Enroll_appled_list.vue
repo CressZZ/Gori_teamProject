@@ -8,7 +8,7 @@
 
               <ul class="list_class-wishlist">
 
-                  <router-link tag="li" v-for = "(item, index) in appledList"  class="class-wishlist__item" :to="{ name: 'lec', params: { lecid: item.pk }}" :key="item" >
+                  <router-link tag="li" v-for = "(item, index) in appledList"  class="class-wishlist__item" :to="{ name: 'lec', params: { lecid: item.talent.pk }}" :key="item" >
 
                   <p class="list_class__wish-name">{{item.talent.title}}</p>
                 </li>

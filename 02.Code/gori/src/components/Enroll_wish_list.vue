@@ -35,23 +35,28 @@ export default {
 data: function() {
   return{
     id: this.$route.params.lecid,
-    wishList:[]
+    // wishList:[]
 
 
   }
 },
+computed:{
+  wishList(){
+    return this.$store.state.login.wishlist.results
+  }
+},
 created(){
-  this.$http.get('member/wish-list/', {
-  headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
-  })
-  .then(function(response){
-    console.log("dsdfdsfsdfd",response);
-    return response.json()
-  })
-  .then(function(data){
-    this.wishList = data.results
-    console.log("sdfsfsdfs",this.wishList);
-  })
+  // this.$http.get('member/wish-list/', {
+  // headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+  // })
+  // .then(function(response){
+  //   console.log("dsdfdsfsdfd",response);
+  //   return response.json()
+  // })
+  // .then(function(data){
+  //   this.wishList = data.results
+  //   console.log("sdfsfsdfs",this.wishList);
+  // })
   // console.log('searchedList:',this.searchedList)
 },
 

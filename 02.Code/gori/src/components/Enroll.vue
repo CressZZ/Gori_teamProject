@@ -50,7 +50,7 @@
           <strong>{{userinfo.received_registrations}}건</strong></a></router-link> -->
 
           <router-link tag="li" :to = "{ path: '/enroll/appledList'}"  class="member__info__lec-list__item  member__info__lec-wish"><a href="#"><p>신청한수업</p>
-          <strong>{{appledList.count}}건</strong></a></router-link>
+          <strong>{{this.$store.state.login.registration.count}}건</strong></a></router-link>
 
           <!-- <li class="member__info__lec-list__item  member__info__lec-wish">
             <a href="#">
@@ -94,7 +94,7 @@
 export default {
   data(){
     return {
-      appledList:[],
+      // appledList:[],
     }
   },
   props: ["detailAll"],
@@ -103,17 +103,6 @@ export default {
     console.log("this.$store.state.login.loginInfo:",this.$store.state.login.loginInfo)
 
 
-    this.$http.get('member/registrations/', {
-    headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
-    })
-    .then(function(response){
-      console.log("dsdfdsfsdfd",response);
-      return response.json()
-    })
-    .then(function(data){
-      this.appledList = data
-      console.log("sdfsfsdfs",this.appledList);
-    })
 
 
   },

@@ -93,6 +93,8 @@
 </template>
 
 <script>
+import {bus} from '../bus'
+
 export default {
   data(){
     return {
@@ -105,24 +107,28 @@ export default {
   props: ["detailAll"],
   created() {
 
+    bus.$on('talentsrefreash', () => {this.talentsrefreash()})
+
     console.log("this.$store.state.login.loginInfo:",this.$store.state.login.loginInfo)
+    this.talentsrefreash()
 
+  //
+  //   this.$http.get('member/registrations/', {
+  //   headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+  // }),
 
-    this.$http.get('member/registrations/', {
-    headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
-  }),
-  this.$http.get('member/talents/', {
-  headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
-  })
-    .then(function(response){
-      console.log("dsdfdsfsdfd",response);
-      return response.json()
-    })
-    .then(function(data){
-      this.appledList = data
-      this.myLecList = data.results
-      console.log("sdfsfsdfs",this.appledList);
-    })
+  // this.$http.get('member/talents/', {
+  // headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+  // })
+  // .then(function(response){
+  //     console.log("dsdfdsfsdfd",response);
+  //     return response.json()
+  // })
+  // .then(function(data){
+  //     this.appledList = data
+  //     // this.myLecList = data.results
+  //     console.log("sdfsfsdfs",this.appledList);
+  // })
 
 
   },
@@ -134,6 +140,22 @@ export default {
     // tutotinfo(){
     //   return this.$store.state.login.loginInfo
     // }
+  },
+  methods:{
+    talentsrefreash(){
+      this.$http.get('member/talents/', {
+      headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+      })
+      .then(function(response){
+          console.log("dsdfdsfsdfd",response);
+          return response.json()
+      })
+      .then(function(data){
+          this.appledList = data
+          // this.myLecList = data.results
+          console.log("sdfsfsdfs",this.appledList);
+      })
+    }
   }
 }
 </script>

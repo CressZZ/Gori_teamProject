@@ -10,7 +10,10 @@
 			<tr>
 				<th class="th2"><p>이&nbsp;&nbsp;&nbsp;름</p></th>
 				<td>
-					<p>{{userinfo.name}}</p>
+					<p>
+            <!-- {{userinfo.name}} -->
+            <input v-model = "userUpdate.name"  type="text">
+          </p>
 				</td>
 			</tr>
 			<tr>
@@ -141,6 +144,9 @@ methods: {
     if(this.userUpdate.nickname){
       data2.append('nickname', this.userUpdate.nickname)
     }
+    if(this.userUpdate.name){
+      data2.append('name', this.userUpdate.name)
+    }
     if(this.userUpdate.profile_image){
       data2.append('profile_image', this.userUpdate.profile_image)
     }
@@ -156,12 +162,14 @@ methods: {
       this.userUpdate.nickname = ""
       this.userUpdate.profile_image = ""
       this.userUpdate.cellphone = ""
+      this.userUpdate.name = ""
+
       })
     .catch( error => {
       return error.json()
       })
     .then( error => {
-      console.error("error",error)
+      // console.error("error",error)
       alert(error.detail)
       });
     },

@@ -9,6 +9,7 @@ export const stores = {
       Token: "",
       wishlist: {},
       loginInfo: {},
+      registration: {},
     },
     page:{
       question: {
@@ -21,7 +22,7 @@ export const stores = {
       }
     },
     register:{
-      talent_pk: 43,
+      talent_pk: 49,
     },
     join: {
       joinInfo: {
@@ -63,10 +64,15 @@ export const stores = {
       wishlist(state, value){
         state.login.wishlist = value
       },
+      registration(state, value){
+        state.login.registration = value
+      },
+
       joinInfo (state, joinInfo){
         console.log(joinInfo)
         state.join.joinInfo = joinInfo
       },
+
       logout(state){
         state.login.is_login = false;
         state.login.Token = "";

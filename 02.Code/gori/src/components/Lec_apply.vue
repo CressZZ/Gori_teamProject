@@ -196,9 +196,15 @@ export default {
         switch(err.status){
           case 401 : alert("로그인을 하세요!!!!!!!!!!!!!!!!!!!!!!!!!!!");
           break;
-          default : alert("error!",err.bodytext);
+          default : return err.json()
+
           }
+        })
+        .then( error => {
+          console.error("error!! Json",error)
+          alert(error.detail)
         });
+
       },
 
     wishlist(){

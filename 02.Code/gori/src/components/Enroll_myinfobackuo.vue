@@ -8,9 +8,16 @@
 			<caption class="blind">기본 정보</caption>
 			<tbody>
 			<tr>
-				<th class="th2"><p>이름</p></th>
+				<th class="th2">
+          <p>
+            이름
+          </p>
+        </th>
 				<td>
-					<p>{{userinfo.name}}</p>
+					<p>
+            <!-- {{userinfo.name}} -->
+            <input v-model = "userUpdate.name"  type="text">
+          </p>
 				</td>
 			</tr>
 			<tr>
@@ -171,22 +178,22 @@ export default {
   },
   props: ["detailAll"],
   created(){
-    this.$http.get('member/profile/user/', {
-    headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-    })
-    .then(function(response){
-      console.log("user-detail-response:",response)
-
-      return response.json()
-    })
-    .then(function(data){
-      this.userinfo = data
-      console.log("user-name:",data.name)
-      // console.log("data:",data)
-    })
-    .catch(function(err){
-      console.log("err:",err.bodyText)
-    })
+    // this.$http.get('member/profile/user/', {
+    // headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+    // })
+    // .then(function(response){
+    //   console.log("user-detail-response:",response)
+    //
+    //   return response.json()
+    // })
+    // .then(function(data){
+    //   this.userinfo = data
+    //   console.log("user-name:",data.name)
+    //   // console.log("data:",data)
+    // })
+    // .catch(function(err){
+    //   console.log("err:",err.bodyText)
+    // })
 
   },
   methods: {
@@ -195,11 +202,11 @@ export default {
     this.userUpdate.profile_image = e.target.files[0]
 
   },
-    sync2: function(e) {
-    e.preventDefault()
-    this.tutorUpdate.verification_images = e.target.files[0]
-
-  },
+  //   sync2: function(e) {
+  //   e.preventDefault()
+  //   this.tutorUpdate.verification_images = e.target.files[0]
+  //
+  // },
     // userRegister(){
     //   this.$router.push({ path: 'registerDetail' })
     //   const data = new FormData()
@@ -234,6 +241,10 @@ export default {
       const data2 = new FormData()
       // data.append('name', this.userUpdate.name)
       data2.append('nickname', this.userUpdate.nickname)
+      data2.append('name', this.userUpdate.name)
+
+      // data2.append('nickname', this.userUpdate.nickname)
+
       data2.append('profile_image', this.userUpdate.profile_image)
       data2.append('cellphone', this.userUpdate.cellphone)
 

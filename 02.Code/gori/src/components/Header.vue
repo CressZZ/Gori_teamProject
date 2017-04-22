@@ -159,6 +159,9 @@ export default {
         // alert(error)
       });
     },
+    registrationlist(){
+
+    },
 
 
     loginvisible(){

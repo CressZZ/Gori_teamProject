@@ -50,7 +50,9 @@
           <strong>{{userinfo.received_registrations}}건</strong></a></router-link> -->
 
           <router-link tag="li" :to = "{ path: '/enroll/appledList'}"  class="member__info__lec-list__item  member__info__lec-wish"><a href="#"><p>신청한수업</p>
+
           <strong>{{userinfo.sent_registrations}}건</strong></a></router-link>
+
 
           <!-- <li class="member__info__lec-list__item  member__info__lec-wish">
             <a href="#">
@@ -94,8 +96,10 @@
 export default {
   data(){
     return {
+
       appledList:[],
       myLecList: []
+
     }
   },
   props: ["detailAll"],

@@ -35,23 +35,28 @@ export default {
 data: function() {
   return{
     id: this.$route.params.lecid,
-    appledList:[]
+    // appledList: this.$store.state.login.registration.results
 
 
   }
 },
+computed:{
+  appledList(){
+    return this.$store.state.login.registration.results
+  }
+},
 created(){
-  this.$http.get('member/registrations/', {
-  headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
-  })
-  .then(function(response){
-    console.log("dsdfdsfsdfd",response);
-    return response.json()
-  })
-  .then(function(data){
-    this.appledList = data.results
-    console.log("sdfsfsdfs",this.appledList);
-  })
+  // this.$http.get('member/registrations/', {
+  // headers: {Authorization: `Token ${sessionStorage.getItem("Token")}`}
+  // })
+  // .then(function(response){
+  //   console.log("dsdfdsfsdfd",response);
+  //   return response.json()
+  // })
+  // .then(function(data){
+  //   this.appledList = data.results
+  //   console.log("sdfsfsdfs",this.appledList);
+  // })
   // console.log('searchedList:',this.searchedList)
 },
 

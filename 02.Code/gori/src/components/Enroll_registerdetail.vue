@@ -132,6 +132,8 @@
 </template>
 
 <script>
+import {bus} from '../bus'
+
 export default {
   data(){
     return{
@@ -143,7 +145,7 @@ export default {
         time: "",
         extra_fee: "",
         extra_fee_amount: "",
-        location_info: "",
+        location_info: "상세장소 협의",
       },
       curriculumnum: 1,
       curriculum:
@@ -170,12 +172,19 @@ export default {
       this.submitCurriculum();
     },
     submitCurriculum(){
-
+      if(this.registerdetailInfo.region === "" || this.registerdetailInfo.day === "" || this.registerdetailInfo.time === "" || this.registerdetailInfo.location_info === "" || this.registerdetailInfo.extra_fee === "" ){
+        alert("항목을 빠짐 없이 입력해 주세요")
+        return
+      }
       for (var i = 0; i < this.curriculumnum ; i++){
         const data = new FormData()
+
         data.append('talent_pk', this.curriculum[i].talent_pk)
         data.append('information', this.curriculum[i].information)
-        data.append('image', this.curriculum[i].image)
+        if(this.curriculum[i].image){
+          data.append('image', this.curriculum[i].image)
+
+        }
 
         this.$http.post('talent/add/curriculum/',data,  {
         headers: {Authorization: `Token ${this.$store.state.login.Token}`}
@@ -199,6 +208,18 @@ export default {
         this.registerdetailInfo.extra_fee= ""
         this.registerdetailInfo.extra_fee_amount= ""
         this.registerdetailInfo.location_info= ""
+        this.curriculum  = [
+          {
+            talent_pk: this.$store.state.register.talent_pk
+          },
+        ]
+
+        alert("수업등록이 완료되었습니다. 관리자 승인 후 검색페이지에서 확인 하 실 수 있습니다. ")
+
+        bus.$emit('talentsrefreash')
+        this.$router.push({ path: '/enroll/register'})
+
+
       })
     },
 

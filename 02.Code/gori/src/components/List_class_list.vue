@@ -108,4 +108,6 @@ export default {
   .list_class-list__carousel__list>li
     // transition: 0.8s all
     cursor: pointer
+  .list_class__tutor-name
+    min-height: 38px
 </style>

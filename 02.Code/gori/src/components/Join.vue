@@ -77,7 +77,7 @@ export default {
         return response.json()
       })
       .then(function(data){
-        this.$store.commit('Token', data.key)
+        // this.$store.commit('Token', data.key)
         this.$store.commit('joinInfo', this.joinInfo)
         this.closeModal()
         this.joinInfo.username = "";

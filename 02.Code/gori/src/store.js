@@ -22,7 +22,7 @@ export const stores = {
       }
     },
     register:{
-      talent_pk: 49,
+      talent_pk: 56,
     },
     join: {
       joinInfo: {

@@ -137,6 +137,7 @@ import {bus} from '../bus'
 export default {
   data(){
     return{
+      i: 0,
       registerdetailInfo: {
         talent_pk: this.$store.state.register.talent_pk,
         region: "",
@@ -176,25 +177,60 @@ export default {
         alert("항목을 빠짐 없이 입력해 주세요")
         return
       }
-      for (var i = 0; i < this.curriculumnum ; i++){
-        const data = new FormData()
 
-        data.append('talent_pk', this.curriculum[i].talent_pk)
-        data.append('information', this.curriculum[i].information)
-        if(this.curriculum[i].image){
-          data.append('image', this.curriculum[i].image)
+
+
+
+      // for (var i = 0; i < this.curriculumnum ; i++){
+      //   const data = new FormData()
+      //   console.log(`>>>>>>>>>>>>>>>>>>${i}`);
+      //   data.append('talent_pk', this.curriculum[i].talent_pk)
+      //   data.append('information', this.curriculum[i].information)
+      //   if(this.curriculum[i].image){
+      //     data.append('image', this.curriculum[i].image)
+      //
+      //   }
+      //
+      //   this.$http.post('talent/add/curriculum/',data,  {
+      //   headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      //   })
+      //   .then(function(response){
+      //     console.log(`submitCurriculum:${i}`,response)
+      //   })
+      // }
+      this.curriculums()
+    },
+
+    curriculums(){
+      // for (var i = 0; i < this.curriculumnum ; i++){
+
+      const data = new FormData()
+      console.log(`>>>>>>>>>>>>>>>>>>${this.i}`);
+      data.append('talent_pk', this.curriculum[this.i].talent_pk)
+      data.append('information', this.curriculum[this.i].information)
+      if(this.curriculum[this.i].image){
+        data.append('image', this.curriculum[this.i].image)
+      }
+      this.$http.post('talent/add/curriculum/',data,  {
+        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
+      })
+      .then(function(response){
+        console.log(`submitCurriculum:${this.i}`,response)
+
+        if(this.i < this.curriculumnum - 1) {
+          this.i = this.i + 1
+          this.curriculums()
+        } else {
+          this.i = 0
+          this.submitLocation();
 
         }
+      })
 
-        this.$http.post('talent/add/curriculum/',data,  {
-        headers: {Authorization: `Token ${this.$store.state.login.Token}`}
-        })
-        .then(function(response){
-          console.log("submitCurriculum:",response)
-        })
-      }
-      this.submitLocation();
+    // }
+
     },
+
     submitLocation(){
 
       this.$http.post('talent/add/location/',this.registerdetailInfo,  {

@@ -1,11 +1,11 @@
 <template>
-  <div id="app"  :class="{ gridon: isgrid }"  @click.meta="gridToggle">
+  <div id="app2"  :class="{ gridon: isgrid }"  @click.meta="gridToggle">
       <router-view name='join' ></router-view>
       <router-view name='login'></router-view>
       <router-view name="header" ></router-view>
 
       <router-view :classlist = "classlist"></router-view>
-    <router-view name="footer"></router-view>
+      <router-view name="footer"></router-view>
 
   </div>
 </template>
@@ -14,7 +14,7 @@
 import {bus} from './bus'
 // import
 export default {
-  name: 'app',
+  // name: 'app',
   data () {
     return {
       classlist: [],

@@ -21,7 +21,7 @@
                     <div class="class-list__carousel__list__item__wrap">
 
                       <div class="is_new">new</div>
-                      <img :src="item.tutor.profile_image" :alt="`${item.tutor.nickname}`" class="class__tutor-picture">
+                      <img :src="item.tutor.profile_image" :alt="item.tutor.nickname" class="class__tutor-picture">
                       <p class="class__tutor-name">{{item.tutor.name}}</p>
                       <div class="class__star-total">
                         <div v-if = "item.average_rate >= 5" class="star-1st"><i class="icon-star"></i></div>
